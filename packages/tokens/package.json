@@ -14,7 +14,8 @@
     "generate-tokens": "style-dictionary build --config ./style-dictionary-config.js && npm run lint",
     "build-tokens": "npm run transform-tokens && npm run generate-tokens",
     "build": "npm run build-tokens && tsup src/index.ts --format esm,cjs --dts",
-    "lint": "eslint src/**/*.ts* --fix"
+    "lint": "eslint src/**/*.ts* --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "keywords": [],
   "author": "Dana Rocha",

@@ -1,6 +1,7 @@
 {
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "config": {
@@ -27,6 +28,9 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "changeset": "changeset",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "version-packages": "changeset version",
     "release": "turbo run build --filter=packages/docs && changeset publish"
   }
