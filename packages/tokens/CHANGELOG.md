@@ -1,5 +1,12 @@
 # @skala/design-tokens
 
+## 1.2.1
+
+### Patch Changes
+
+- 4ba5bac: Adding action danger tokens
+- 453a626: Changing some design tokens
+
 ## 1.2.0
 
 ### Minor Changes
