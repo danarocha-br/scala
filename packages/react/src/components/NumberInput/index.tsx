@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { ElementRef, forwardRef, useCallback, useState } from 'react';
 import { CSS } from '../../styles';
 import { NumericFormatProps, NumericFormat } from 'react-number-format';
 
@@ -39,148 +39,158 @@ export type NumberInputProps = {
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> &
   NumericFormatProps;
 
-export const NumberInput = ({
-  name,
-  icon,
-  label,
-  value,
-  placeholder,
-  variant = 'default',
-  disabled = false,
-  loading = false,
-  readOnly = false,
-  hasAction = false,
-  addon,
-  onAction,
-  actionLabel = 'Settings',
-  actionIcon = 'settings',
-  decimalScale = 2,
-  allowNegative = false,
-  decimalSeparator = ',',
-  type = 'text',
-  css,
-  errors,
-  ...props
-}: NumberInputProps): JSX.Element => {
-  /**
-   * Get UI States
-   */
-  const [isFocused, setFocus] = useState(Boolean(value));
+export const NumberInput = forwardRef<
+  ElementRef<typeof NumericFormat>,
+  NumberInputProps
+>(
+  ({
+    name,
+    icon,
+    label,
+    value,
+    placeholder,
+    variant = 'default',
+    disabled = false,
+    loading = false,
+    readOnly = false,
+    hasAction = false,
+    addon,
+    onAction,
+    actionLabel = 'Settings',
+    actionIcon = 'settings',
+    decimalScale = 2,
+    allowNegative = false,
+    decimalSeparator = ',',
+    type = 'text',
+    css,
+    errors,
+    ...props
+  }: NumberInputProps): JSX.Element => {
+    /**
+     * Get UI States
+     */
+    const [isFocused, setFocus] = useState(Boolean(value));
 
-  const handleInputFocus = useCallback(() => {
-    setFocus(true);
-  }, [setFocus]);
+    const handleInputFocus = useCallback(() => {
+      setFocus(true);
+    }, [setFocus]);
 
-  const handleInputBlur = useCallback(() => {
-    if (!value || value.length > 0) {
-      setFocus(false);
-    }
-  }, [setFocus, value]);
+    const handleInputBlur = useCallback(() => {
+      if (!value || value.length > 0) {
+        setFocus(false);
+      }
+    }, [setFocus, value]);
 
-  const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
+    const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
-  return (
-    <Box css={{ w: '100%', css }}>
-      <StyledInput.Container
-        isFocused={isFocused}
-        hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
-        isDisabled={disabled || loading}
-        isReadOnly={readOnly}
-        hasIcon={Boolean(icon)}
-        isLoading={loading}
-        variant={variant}
-      >
-        {hasAction && (
-          <StyledInput.SettingsButton
-            aria-label={actionLabel}
-            onClick={onAction}
-            type="button"
-            className="input__action"
-            disabled={disabled || readOnly || loading}
-          >
-            {actionLabel}{' '}
-            <Icon label="action" name={actionIcon} size="xs" color="current" />
-          </StyledInput.SettingsButton>
-        )}
+    return (
+      <Box css={{ w: '100%', css }}>
+        <StyledInput.Container
+          isFocused={isFocused}
+          hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
+          isDisabled={disabled || loading}
+          isReadOnly={readOnly}
+          hasIcon={Boolean(icon)}
+          isLoading={loading}
+          variant={variant}
+        >
+          {hasAction && (
+            <StyledInput.SettingsButton
+              aria-label={actionLabel}
+              onClick={onAction}
+              type="button"
+              className="input__action"
+              disabled={disabled || readOnly || loading}
+            >
+              {actionLabel}{' '}
+              <Icon
+                label="action"
+                name={actionIcon}
+                size="xs"
+                color="current"
+              />
+            </StyledInput.SettingsButton>
+          )}
 
-        {variant !== 'table' && (
-          <StyledInput.Label htmlFor={name} isReadOnly={readOnly}>
-            <Stack gap="1">
-              {Boolean(icon) && (
-                <Icon
-                  label="input icon"
-                  name={icon || 'user'}
-                  size="xs"
-                  className="input__icon"
-                />
+          {variant !== 'table' && (
+            <StyledInput.Label htmlFor={name} isReadOnly={readOnly}>
+              <Stack gap="1">
+                {Boolean(icon) && (
+                  <Icon
+                    label="input icon"
+                    name={icon || 'user'}
+                    size="xs"
+                    className="input__icon"
+                  />
+                )}
+
+                {label}
+              </Stack>
+
+              {loading && (
+                <Box
+                  as="span"
+                  className="input__icon--loading"
+                  css={{ position: 'absolute', right: '$spacing-2' }}
+                >
+                  <Spinner size="xs" />
+                </Box>
               )}
 
-              {label}
-            </Stack>
+              {Boolean(errors) && !areErrorsEmpty ? (
+                <Icon
+                  className="input__icon--error"
+                  label="error"
+                  name="alert"
+                  size="xs"
+                  color="danger"
+                  css={{ mr: -8 }}
+                />
+              ) : null}
+            </StyledInput.Label>
+          )}
 
-            {loading && (
-              <Box
-                as="span"
-                className="input__icon--loading"
-                css={{ position: 'absolute', right: '$spacing-2' }}
-              >
-                <Spinner size="xs" />
-              </Box>
-            )}
+          {Boolean(addon) && (
+            <StyledInput.Addon
+              isFocused={isFocused}
+              isTable={variant === 'table'}
+              isReadOnly={readOnly}
+              isDisabled={disabled}
+            >
+              {addon}
+            </StyledInput.Addon>
+          )}
 
-            {Boolean(errors) && !areErrorsEmpty ? (
-              <Icon
-                className="input__icon--error"
-                label="error"
-                name="alert"
-                size="xs"
-                color="danger"
-                css={{ mr: -8 }}
-              />
-            ) : null}
-          </StyledInput.Label>
-        )}
-
-        {Boolean(addon) && (
-          <StyledInput.Addon
+          <NumericFormat
+            id={name}
+            {...props}
+            aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
+            aria-label={label}
+            placeholder={placeholder}
+            type={type}
+            disabled={disabled || loading}
+            readOnly={readOnly}
+            hasAddon={Boolean(addon)}
+            variant={variant}
             isFocused={isFocused}
-            isTable={variant === 'table'}
-            isReadOnly={readOnly}
-            isDisabled={disabled}
-          >
-            {addon}
-          </StyledInput.Addon>
-        )}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            customInput={S.Input}
+            allowLeadingZeros
+            allowNegative={allowNegative}
+            decimalSeparator={decimalSeparator}
+            decimalScale={decimalScale}
+            thousandsGroupStyle="thousand"
+            thousandSeparator={props.thousandSeparator}
+          />
+        </StyledInput.Container>
 
-        <NumericFormat
-          id={name}
-          {...props}
-          aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
-          aria-label={label}
-          placeholder={placeholder}
-          type={type}
-          disabled={disabled || loading}
-          readOnly={readOnly}
-          hasAddon={Boolean(addon)}
-          variant={variant}
-          isFocused={isFocused}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
-          customInput={S.Input}
-          allowLeadingZeros
-          allowNegative={allowNegative}
-          decimalSeparator={decimalSeparator}
-          decimalScale={decimalScale}
-          thousandsGroupStyle="thousand"
-          thousandSeparator={props.thousandSeparator}
-        />
-      </StyledInput.Container>
-
-      {Boolean(errors) && !areErrorsEmpty ? (
-        <FormErrorMessage>{errors.message}</FormErrorMessage>
-      ) : null}
-    </Box>
-  );
-};
+        {Boolean(errors) && !areErrorsEmpty ? (
+          <FormErrorMessage>{errors.message}</FormErrorMessage>
+        ) : null}
+      </Box>
+    );
+  }
+);
 
 NumberInput.displayName = 'NumberInput';

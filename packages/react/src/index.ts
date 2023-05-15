@@ -42,3 +42,5 @@ export * from './hooks/useDialog';
 export * from './hooks/usePanel';
 export * from './hooks/useOverlay';
 export * from './hooks/useToast';
+
+export * from './styles';

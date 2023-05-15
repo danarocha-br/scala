@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ElementRef, forwardRef } from 'react';
 import { CSS } from '../../styles';
 import {
   components,
@@ -51,139 +51,144 @@ export type SelectProps = {
   css?: CSS;
 };
 
-export function Select({
-  name,
-  label,
-  disabled = false,
-  loading = false,
-  isSearchable = false,
-  isClearable = false,
-  placeholder = 'Selecione',
-  options,
-  isMulti,
-  variant = 'default',
-  buttonLabel,
-  onAction,
-  actionIcon = 'plus',
-  noOptionMessage = 'No options found.',
-  icon,
-  errors,
-  css,
-  value,
-  ...props
-}: SelectProps) {
-  const Menu = (props: MenuProps) => {
-    return (
-      <components.Menu {...props}>
-        <div>
-          <div>{props.children}</div>
-        </div>
-        {Boolean(buttonLabel) && (
-          <S.ActionMenuButton onClick={onAction} type="button">
-            <Icon label="icon" name={actionIcon} color="current" size="sm" />
-            {buttonLabel}
-          </S.ActionMenuButton>
-        )}
-      </components.Menu>
-    );
-  };
+export const Select = forwardRef<
+  ElementRef<typeof S.CustomSelect>,
+  SelectProps
+>(
+  ({
+    name,
+    label,
+    disabled = false,
+    loading = false,
+    isSearchable = false,
+    isClearable = false,
+    placeholder = 'Selecione',
+    options,
+    isMulti,
+    variant = 'default',
+    buttonLabel,
+    onAction,
+    actionIcon = 'plus',
+    noOptionMessage = 'No options found.',
+    icon,
+    errors,
+    css,
+    value,
+    ...props
+  }: SelectProps) => {
+    const Menu = (props: MenuProps) => {
+      return (
+        <components.Menu {...props}>
+          <div>
+            <div>{props.children}</div>
+          </div>
+          {Boolean(buttonLabel) && (
+            <S.ActionMenuButton onClick={onAction} type="button">
+              <Icon label="icon" name={actionIcon} color="current" size="sm" />
+              {buttonLabel}
+            </S.ActionMenuButton>
+          )}
+        </components.Menu>
+      );
+    };
 
-  const NoOptionsMessage = (props: NoticeProps) => {
+    const NoOptionsMessage = (props: NoticeProps) => {
+      return (
+        <components.NoOptionsMessage {...props}>
+          <Text
+            as="p"
+            color="body-lighter"
+            align="center"
+            css={{ py: '$spacing-2' }}
+          >
+            {noOptionMessage}
+          </Text>
+        </components.NoOptionsMessage>
+      );
+    };
+
+    const LoadingIndicator = (props: LoadingIndicatorProps) => {
+      return <div {...props} />;
+    };
+
+    const DropdownIndicator = (props: DropdownIndicatorProps) => {
+      return (
+        <components.DropdownIndicator {...props}>
+          <Icon
+            name="chevronDown"
+            size="sm"
+            color="current"
+            label="dropdown indicator"
+          />
+        </components.DropdownIndicator>
+      );
+    };
+
+    const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
+
     return (
-      <components.NoOptionsMessage {...props}>
-        <Text
-          as="p"
-          color="body-lighter"
-          align="center"
-          css={{ py: '$spacing-2' }}
+      <Box css={{ w: '100%', css }}>
+        <S.Container
+          hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
+          isDisabled={disabled}
+          isTable={variant === 'table' ? true : false}
         >
-          {noOptionMessage}
-        </Text>
-      </components.NoOptionsMessage>
-    );
-  };
+          {variant === 'default' && (
+            <S.Label htmlFor={name}>
+              <Stack gap="1">
+                {Boolean(icon) && (
+                  <Icon
+                    label="select icon"
+                    name={icon ?? 'user'}
+                    size="xs"
+                    className="c-select__icon"
+                  />
+                )}
+                {label}
+              </Stack>
+              {loading && <Spinner size="sm" css={{ mr: -2 }} />}
 
-  const LoadingIndicator = (props: LoadingIndicatorProps) => {
-    return <div {...props} />;
-  };
-
-  const DropdownIndicator = (props: DropdownIndicatorProps) => {
-    return (
-      <components.DropdownIndicator {...props}>
-        <Icon
-          name="chevronDown"
-          size="sm"
-          color="current"
-          label="dropdown indicator"
-        />
-      </components.DropdownIndicator>
-    );
-  };
-
-  const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
-
-  return (
-    <Box css={{ w: '100%', css }}>
-      <S.Container
-        hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
-        isDisabled={disabled}
-        isTable={variant === 'table' ? true : false}
-      >
-        {variant === 'default' && (
-          <S.Label htmlFor={name}>
-            <Stack gap="1">
-              {Boolean(icon) && (
+              {Boolean(errors) && !areErrorsEmpty && (
                 <Icon
-                  label="select icon"
-                  name={icon ?? 'user'}
+                  label="error icon"
+                  name="alert"
                   size="xs"
-                  className="c-select__icon"
+                  color="danger"
+                  className="c-select__icon--error"
                 />
               )}
-              {label}
-            </Stack>
-            {loading && <Spinner size="sm" css={{ mr: -2 }} />}
+            </S.Label>
+          )}
 
-            {Boolean(errors) && !areErrorsEmpty && (
-              <Icon
-                label="error icon"
-                name="alert"
-                size="xs"
-                color="danger"
-                className="c-select__icon--error"
-              />
-            )}
-          </S.Label>
-        )}
+          <S.CustomSelect
+            id={name}
+            classNamePrefix="c-select"
+            options={options}
+            isLoading={loading}
+            isDisabled={disabled || loading}
+            isSearchable={isSearchable}
+            isClearable={isClearable}
+            isMulti={isMulti}
+            placeholder={placeholder}
+            value={value}
+            components={{
+              Menu,
+              NoOptionsMessage,
+              LoadingIndicator,
+              DropdownIndicator,
+            }}
+            hasButton={Boolean(buttonLabel)}
+            isTable={variant === 'table'}
+            {...props}
+          />
+        </S.Container>
 
-        <S.CustomSelect
-          id={name}
-          classNamePrefix="c-select"
-          options={options}
-          isLoading={loading}
-          isDisabled={disabled || loading}
-          isSearchable={isSearchable}
-          isClearable={isClearable}
-          isMulti={isMulti}
-          placeholder={placeholder}
-          value={value}
-          components={{
-            Menu,
-            NoOptionsMessage,
-            LoadingIndicator,
-            DropdownIndicator,
-          }}
-          hasButton={Boolean(buttonLabel)}
-          isTable={variant === 'table'}
-          {...props}
-        />
-      </S.Container>
-
-      {Boolean(errors) && !areErrorsEmpty ? (
-        <FormErrorMessage>{errors.message}</FormErrorMessage>
-      ) : null}
-    </Box>
-  );
-}
+        {Boolean(errors) && !areErrorsEmpty ? (
+          <FormErrorMessage>{errors.message}</FormErrorMessage>
+        ) : null}
+      </Box>
+    );
+  }
+);
 
 Select.displayName = 'Select';
