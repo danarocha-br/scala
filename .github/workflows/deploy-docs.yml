@@ -18,15 +18,15 @@ jobs:
           node-version: 16
           cache: "npm"
 
-      - run: npm ci
+      - run: yarn ci
 
-      - run: npm run build
+      - run: yarn build
         env:
           TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TURBO_TEAM: danarocha
 
       - name: Deploy storybook
         working-directory: ./packages/docs
-        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
+        run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}

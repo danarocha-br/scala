@@ -20,15 +20,15 @@ jobs:
         with:
           node-version: 16
           cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+          cache-dependency-path: "**/yarn.lock"
 
-      - run: npm ci
+      - run: yarn ci
 
       - name: Create Release and Publish to NPM
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run release
+          publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
