@@ -30,11 +30,11 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "changeset": "changeset",
+    "version-packages": "changeset version",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "version-packages": "changeset version",
-    "release": "turbo run build --filter=packages/docs && changeset publish"
+    "release": "turbo run build --filter=apps/storybook && changeset publish"
   },
   "installConfig": {
     "hoistingLimits": "workspaces"

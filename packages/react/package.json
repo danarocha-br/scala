@@ -7,7 +7,8 @@
     "dev": "tsup src/index.ts --format esm,cjs --dts --external react --watch",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "lint": "eslint src/**/*.ts* --fix",
-    "commit": "git-cz"
+    "commit": "npx cz",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "keywords": [],
   "author": "Dana Rocha",

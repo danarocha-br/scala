@@ -7,9 +7,10 @@
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
     "lint": "eslint src/**/*.ts* --fix",
-    "commit": "git-cz",
+    "commit": "npx cz",
     "chromatic": "npx chromatic --project-token=f81f00dd3e9c",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "lint-staged": {
     "src/**/*": [
