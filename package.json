@@ -34,7 +34,7 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "turbo run build --filter=apps/storybook && changeset publish"
+    "release": "turbo run build --filter=!storybook && changeset publish"
   },
   "installConfig": {
     "hoistingLimits": "workspaces"
