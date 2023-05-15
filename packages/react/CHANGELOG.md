@@ -1,5 +1,11 @@
 # @skala/react
 
+## 1.4.0
+
+### Minor Changes
+
+- Add package destionation for ts
+
 ## 1.3.0
 
 ### Minor Changes
