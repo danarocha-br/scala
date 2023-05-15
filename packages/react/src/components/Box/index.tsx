@@ -1,3 +1,4 @@
+import React from 'react';
 import { CSS, styled } from '../../styles';
 
 export type BoxProps = {

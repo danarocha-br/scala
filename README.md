@@ -1,5 +1,6 @@
 # Skala
 
+
 ## TurboRepo
 
 To run all packages in parallel:
@@ -19,6 +20,7 @@ npm run build
 ---
 
 ## React Lib
+Runs on node 16.16.0
 
 ### Adding new components
 

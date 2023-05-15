@@ -1,4 +1,0 @@
-{
-  "extends": "@skala/ts-config/react.json",
-  "include": ["src"]
-}

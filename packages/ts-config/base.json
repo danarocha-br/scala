@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "composite": false,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
@@ -12,7 +11,9 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "noEmit": false
   },
   "exclude": ["node_modules"]
 }

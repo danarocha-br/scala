@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --external react --watch",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "lint": "eslint src/**/*.ts* --fix",
     "commit": "git-cz"
