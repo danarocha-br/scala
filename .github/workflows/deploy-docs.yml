@@ -26,7 +26,7 @@ jobs:
           TURBO_TEAM: danarocha
 
       - name: Deploy storybook
-        working-directory: ./packages/docs
+        working-directory: ./apps/storybook
         run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
