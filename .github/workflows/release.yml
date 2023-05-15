@@ -22,7 +22,8 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/yarn.lock"
 
-      - run: yarn ci
+      - run:
+          yarn install --frozen-lockfile
 
       - name: Create Release and Publish to NPM
         id: changesets
