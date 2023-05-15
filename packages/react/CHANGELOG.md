@@ -1,5 +1,11 @@
 # @skala/react
 
+## 1.3.0
+
+### Minor Changes
+
+- Form elements with ref prop exposed
+
 ## 1.2.0
 
 ### Minor Changes
