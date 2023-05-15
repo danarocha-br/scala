@@ -21,15 +21,18 @@ export const PasswordInput = forwardRef<
   ElementRef<typeof TextInput>,
   PasswordInputProps
 >(
-  ({
-    name,
-    label,
-    placeholder,
-    icon,
-    css,
-    value,
-    ...props
-  }: PasswordInputProps): JSX.Element => {
+  (
+    {
+      name,
+      label,
+      placeholder,
+      icon,
+      css,
+      value,
+      ...props
+    }: PasswordInputProps,
+    ref
+  ): JSX.Element => {
     const [isVisible, setVisible] = useState(false);
     const [isHovered, setHover] = useState(false);
 
@@ -66,6 +69,7 @@ export const PasswordInput = forwardRef<
             icon={icon}
             type={isVisible ? 'text' : 'password'}
             value={value}
+            ref={ref}
             {...props}
           />
         </Box>

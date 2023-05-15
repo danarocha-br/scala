@@ -37,23 +37,26 @@ export const DateInput = forwardRef<
   ElementRef<typeof S.DateInput>,
   DateInputProps
 >(
-  ({
-    name,
-    icon,
-    label,
-    value,
-    locale,
-    placeholder,
-    variant = 'default',
-    disabled = false,
-    loading = false,
-    readOnly = false,
-    isClearable = true,
-    selected,
-    errors,
-    css,
-    ...props
-  }: DateInputProps): JSX.Element => {
+  (
+    {
+      name,
+      icon,
+      label,
+      value,
+      locale,
+      placeholder,
+      variant = 'default',
+      disabled = false,
+      loading = false,
+      readOnly = false,
+      isClearable = true,
+      selected,
+      errors,
+      css,
+      ...props
+    }: DateInputProps,
+    ref
+  ): JSX.Element => {
     /**
      * Get UI States
      */
@@ -123,6 +126,7 @@ export const DateInput = forwardRef<
           <S.DateInput
             id={name}
             name={name}
+            ref={ref}
             aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
             aria-label={label}
             disabled={disabled || loading}

@@ -73,27 +73,30 @@ export const SelectCreatable = forwardRef<
   ElementRef<typeof S.CustomSelect>,
   SelectCreatableProps
 >(
-  ({
-    name,
-    label,
-    disabled = false,
-    loading = false,
-    isSearchable = false,
-    isClearable = false,
-    placeholder = 'Selecione',
-    options,
-    isMulti,
-    variant = 'default',
-    buttonLabel,
-    onAction,
-    actionIcon = 'plus',
-    noOptionMessage = 'No options found.',
-    icon,
-    errors,
-    css,
-    value,
-    ...props
-  }: SelectCreatableProps) => {
+  (
+    {
+      name,
+      label,
+      disabled = false,
+      loading = false,
+      isSearchable = false,
+      isClearable = false,
+      placeholder = 'Selecione',
+      options,
+      isMulti,
+      variant = 'default',
+      buttonLabel,
+      onAction,
+      actionIcon = 'plus',
+      noOptionMessage = 'No options found.',
+      icon,
+      errors,
+      css,
+      value,
+      ...props
+    }: SelectCreatableProps,
+    ref
+  ) => {
     const Menu = (props: MenuProps) => {
       return (
         <components.Menu {...props}>
@@ -180,6 +183,7 @@ export const SelectCreatable = forwardRef<
 
           <S.CustomSelect
             id={name}
+            ref={ref}
             classNamePrefix="c-select"
             options={options}
             isLoading={loading}

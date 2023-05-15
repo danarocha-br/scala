@@ -35,26 +35,29 @@ export type TextInputProps = {
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
 
 export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
-  ({
-    name,
-    type,
-    icon,
-    label,
-    value,
-    placeholder,
-    variant = 'default',
-    disabled = false,
-    loading = false,
-    readOnly = false,
-    hasAction = false,
-    addon,
-    onAction,
-    actionLabel = 'Settings',
-    actionIcon = 'settings',
-    css,
-    errors,
-    ...props
-  }: TextInputProps): JSX.Element => {
+  (
+    {
+      name,
+      type,
+      icon,
+      label,
+      value,
+      placeholder,
+      variant = 'default',
+      disabled = false,
+      loading = false,
+      readOnly = false,
+      hasAction = false,
+      addon,
+      onAction,
+      actionLabel = 'Settings',
+      actionIcon = 'settings',
+      css,
+      errors,
+      ...props
+    }: TextInputProps,
+    ref
+  ): JSX.Element => {
     /**
      * Get UI States
      */
@@ -152,6 +155,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
 
           <S.Input
             id={name}
+            ref={ref}
             {...props}
             aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
             aria-label={label}
