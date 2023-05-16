@@ -1,7 +1,7 @@
 {
   "name": "@e-scala/react",
   "version": "1.0.0",
-  "description": "Escala components packages for react",
+  "description": "Escala components package for react",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
