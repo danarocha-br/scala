@@ -1,4 +1,4 @@
-# E.Scala
+# E-Scala
 
 
 ## TurboRepo
