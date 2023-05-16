@@ -1,6 +1,6 @@
 {
   "name": "@skala/react",
-  "version": "1.5.1",
+  "version": "1.0.0",
   "description": "Skala components packages for react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,6 +15,11 @@
   "keywords": [],
   "author": "Dana Rocha",
   "license": "ISC",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "devDependencies": {
     "@skala/eslint-config": "*",
     "@skala/ts-config": "*",
