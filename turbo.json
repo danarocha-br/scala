@@ -5,7 +5,10 @@
       "cache": false
     },
     "build": {
-      "outputs": ["dist/**", "storybook-static/**"],
+      "outputs": [
+        "dist/**",
+        "storybook-static/**"
+      ],
       "dependsOn": ["^build"]
     },
     "clean": {

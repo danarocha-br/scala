@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
-    "lint": "eslint src/**/*.ts* --fix",
+    "lint": "npx eslint src/**/*.ts* --fix",
     "commit": "npx cz",
     "chromatic": "npx chromatic --project-token=f81f00dd3e9c",
     "deploy-storybook": "storybook-to-ghpages",

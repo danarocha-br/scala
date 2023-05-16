@@ -1,14 +1,14 @@
 {
   "name": "@skala/react",
   "version": "1.5.1",
-  "description": "",
+  "description": "Skala components packages for react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch",
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "lint": "eslint src/**/*.ts* --fix",
+    "lint": "npx eslint src/**/*.ts* --fix",
     "commit": "npx cz",
     "clean": "turbo run clean && rm -rf node_modules"
   },
