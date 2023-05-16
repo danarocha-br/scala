@@ -1,4 +1,4 @@
-import { Box, Grid, Stack } from '@e-scala/react';
+import { Box, Grid, Stack } from '@compasso/scala';
 import { getContrast } from 'polished';
 
 type ColorsGridProps = {

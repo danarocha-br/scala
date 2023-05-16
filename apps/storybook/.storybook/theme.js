@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { color } from '@e-scala/design-tokens';
+import { color } from '@compasso/design-tokens';
 
 export default create({
   base: 'dark',

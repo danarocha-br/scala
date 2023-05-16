@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Toast, ToastProps } from '@e-scala/react';
+import { Toast, ToastProps } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

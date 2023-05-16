@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { DateInput, DateInputProps, Stack } from '@e-scala/react';
+import { DateInput, DateInputProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
 

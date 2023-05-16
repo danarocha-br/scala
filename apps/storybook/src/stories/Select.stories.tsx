@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Form, Select, SelectProps, Stack } from '@e-scala/react';
+import { Form, Select, SelectProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

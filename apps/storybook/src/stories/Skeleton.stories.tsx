@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Skeleton, SkeletonProps, Stack } from '@e-scala/react';
+import { Skeleton, SkeletonProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

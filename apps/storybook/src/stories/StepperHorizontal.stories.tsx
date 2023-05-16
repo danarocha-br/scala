@@ -1,5 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Box, StepperHorizontal, StepperHorizontalProps } from '@e-scala/react';
+import {
+  Box,
+  StepperHorizontal,
+  StepperHorizontalProps,
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

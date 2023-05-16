@@ -7,7 +7,7 @@ import {
   PanelProvider,
   OverlayProvider,
   Stack,
-} from '@e-scala/react';
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useCallback, useRef } from 'react';
 

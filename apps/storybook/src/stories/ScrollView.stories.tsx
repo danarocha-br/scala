@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { ScrollView, ScrollViewProps, Stack, Text } from '@e-scala/react';
+import { ScrollView, ScrollViewProps, Stack, Text } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 const TAGS = Array.from({ length: 50 }).map(

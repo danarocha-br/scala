@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { RadioGroup, RadioGroupProps, Stack } from '@e-scala/react';
+import { RadioGroup, RadioGroupProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Box, Icon, SelectMenu, SelectMenuProps, Stack } from '@e-scala/react';
+import { Box, Icon, SelectMenu, SelectMenuProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

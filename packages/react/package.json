@@ -1,7 +1,7 @@
 {
-  "name": "@e-scala/react",
+  "name": "@compasso/scala",
   "version": "1.0.0",
-  "description": "Escala components package for react",
+  "description": "Scala components package for react",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -19,8 +19,8 @@
     "dist"
   ],
   "devDependencies": {
-    "@e-scala/eslint-config": "*",
-    "@e-scala/ts-config": "*",
+    "@compasso/eslint-config": "*",
+    "@compasso/ts-config": "*",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
@@ -31,7 +31,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@e-scala/design-tokens": "*",
+    "@compasso/design-tokens": "*",
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-collapsible": "^1.0.1",

@@ -1,1 +1,1 @@
-# @e-scala/react
+# @compasso/scala

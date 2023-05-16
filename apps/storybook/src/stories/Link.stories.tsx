@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { Link, LinkProps, Stack } from '@e-scala/react';
+import { Link, LinkProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

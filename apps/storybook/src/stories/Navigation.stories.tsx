@@ -10,7 +10,7 @@ import {
   Shortcut,
   Text,
   Box,
-} from '@e-scala/react';
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
 

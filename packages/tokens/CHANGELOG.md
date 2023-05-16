@@ -1,2 +1,2 @@
-# @e-scala/design-tokens
+# @compasso/design-tokens
 

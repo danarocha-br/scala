@@ -1,7 +1,7 @@
 {
-  "name": "@e-scala/storybook-docs",
+  "name": "@compasso/storybook-docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Scala docs",
   "main": "index.js",
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@e-scala/eslint-config": "*",
+    "@compasso/eslint-config": "*",
     "@pbutlewski/storybook-html": "^5.0.2",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
@@ -42,10 +42,10 @@
     "vite": "^3.1.8"
   },
   "dependencies": {
-    "@e-scala/design-tokens": "*",
-    "@e-scala/eslint-config": "*",
-    "@e-scala/react": "*",
-    "@e-scala/ts-config": "*",
+    "@compasso/design-tokens": "*",
+    "@compasso/eslint-config": "*",
+    "@compasso/scala": "*",
+    "@compasso/ts-config": "*",
     "@geometricpanda/storybook-addon-badges": "^0.2.2",
     "polished": "^4.2.2",
     "react": "^18.2.0",

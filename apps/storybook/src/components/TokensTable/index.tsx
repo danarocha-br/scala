@@ -1,4 +1,4 @@
-import { Box, Text } from '@e-scala/react';
+import { Box, Text } from '@compasso/scala';
 import './styles.css';
 
 type TokensTableProps = {

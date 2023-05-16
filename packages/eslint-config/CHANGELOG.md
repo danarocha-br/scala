@@ -1,4 +1,4 @@
-# @e-scala/eslint-config
+# @compasso/eslint-config
 
 ## 1.1.0
 

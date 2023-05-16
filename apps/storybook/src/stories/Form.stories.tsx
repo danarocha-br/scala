@@ -6,7 +6,7 @@ import {
   PasswordInput,
   Stack,
   TextInput,
-} from '@e-scala/react';
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

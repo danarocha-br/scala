@@ -12,7 +12,7 @@ import {
   elevation,
   light,
   dark,
-} from '@e-scala/design-tokens';
+} from '@compasso/design-tokens';
 
 export const {
   styled,
