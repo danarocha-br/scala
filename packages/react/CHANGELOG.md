@@ -1,5 +1,11 @@
 # @skala/react
 
+## 1.5.1
+
+### Patch Changes
+
+- Change the main index directory for building the lib
+
 ## 1.5.0
 
 ### Minor Changes
