@@ -1,10 +1,10 @@
 {
-  "name": "@skala/design-tokens",
-  "version": "1.0.1",
+  "name": "@e-scala/design-tokens",
+  "version": "1.4.0",
   "description": "",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "token-transform-light": "npx token-transformer src/data/figma-tokens.json src/data/build/light.json global,light,theme global",
@@ -20,13 +20,12 @@
   "keywords": [],
   "author": "Dana Rocha",
   "license": "ISC",
-  "sideEffects": false,
-  "exports": {
-    ".": "./dist/index.js"
-  },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "@skala/eslint-config": "*",
-    "@skala/ts-config": "*",
+    "@e-scala/eslint-config": "*",
+    "@e-scala/ts-config": "*",
     "style-dictionary": "^3.7.1",
     "token-transformer": "^0.0.27",
     "tsup": "^6.2.3",

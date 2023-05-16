@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Stack, TextInput, TextInputProps } from '@skala/react';
+import { Stack, TextInput, TextInputProps } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from '@storybook/addons';
 

@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Separator, SeparatorProps, Stack } from '@skala/react';
+import { Separator, SeparatorProps, Stack } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

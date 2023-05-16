@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Stack, Stepper, StepperProps } from '@skala/react';
+import { Stack, Stepper, StepperProps } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

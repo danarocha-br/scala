@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Tooltip, TooltipProps, Stack, Button, Shortcut } from '@skala/react';
+import { Tooltip, TooltipProps, Stack, Button, Shortcut } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

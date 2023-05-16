@@ -24,7 +24,7 @@ module.exports = {
   },
   // viteFinal: (config, { configType }) => {
   //   if (configType === 'PRODUCTION') {
-  //     config.base = '/skala/';
+  //     config.base = '/escala/';
   //   }
 
   //   return config;
@@ -33,7 +33,7 @@ module.exports = {
     // return the customized config
 
     if (configType === 'PRODUCTION') {
-      config.base = '/skala/';
+      config.base = '/escala/';
     }
 
     return mergeConfig(config, {

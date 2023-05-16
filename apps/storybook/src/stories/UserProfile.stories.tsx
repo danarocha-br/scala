@@ -5,7 +5,7 @@ import {
   Stack,
   UserProfile,
   UserProfileProps,
-} from '@skala/react';
+} from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

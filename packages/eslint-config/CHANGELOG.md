@@ -1,4 +1,4 @@
-# @skala/eslint-config
+# @e-scala/eslint-config
 
 ## 1.0.1
 

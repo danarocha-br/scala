@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { PasswordInput, PasswordInputProps, Stack } from '@skala/react';
+import { PasswordInput, PasswordInputProps, Stack } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
 

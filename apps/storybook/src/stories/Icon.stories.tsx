@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Grid, Icon, IconProps, iconPath, Text, Stack } from '@skala/react';
+import { Grid, Icon, IconProps, iconPath, Text, Stack } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 const icons = Object.keys(iconPath);

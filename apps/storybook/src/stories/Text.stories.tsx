@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Text, TextProps, Grid } from '@skala/react';
+import { Text, TextProps, Grid } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

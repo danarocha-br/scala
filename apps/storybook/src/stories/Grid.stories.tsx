@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Grid, GridProps, Text } from '@skala/react';
+import { Grid, GridProps, Text } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 const CHILDREN = Array.from({ length: 5 }).map((_, i) => (

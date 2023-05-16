@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Callout, CalloutProps, Stack, Text } from '@skala/react';
+import { Callout, CalloutProps, Stack, Text } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

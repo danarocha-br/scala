@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { FormErrorMessage, FormErrorMessageProps } from '@skala/react';
+import { FormErrorMessage, FormErrorMessageProps } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

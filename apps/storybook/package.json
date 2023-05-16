@@ -1,5 +1,5 @@
 {
-  "name": "@skala/storybook-docs",
+  "name": "@e-scala/storybook-docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,8 +21,8 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@e-scala/eslint-config": "*",
     "@pbutlewski/storybook-html": "^5.0.2",
-    "@skala/eslint-config": "*",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
@@ -42,11 +42,11 @@
     "vite": "^3.1.8"
   },
   "dependencies": {
+    "@e-scala/design-tokens": "*",
+    "@e-scala/eslint-config": "*",
+    "@e-scala/react": "*",
+    "@e-scala/ts-config": "*",
     "@geometricpanda/storybook-addon-badges": "^0.2.2",
-    "@skala/design-tokens": "*",
-    "@skala/eslint-config": "*",
-    "@skala/react": "*",
-    "@skala/ts-config": "*",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

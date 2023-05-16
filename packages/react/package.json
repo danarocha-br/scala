@@ -1,10 +1,10 @@
 {
-  "name": "@skala/react",
-  "version": "1.0.2",
-  "description": "Skala components packages for react",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "name": "@e-scala/react",
+  "version": "1.0.0",
+  "description": "Escala components packages for react",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch",
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
@@ -15,26 +15,12 @@
   "keywords": [],
   "author": "Dana Rocha",
   "license": "ISC",
-  "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "tsup": {
-    "dts": true,
-    "bundle": false,
-    "treeshake": true,
-    "format": ["esm", "cjs"],
-    "entry": ["src/index.tsx"]
-  },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "@skala/eslint-config": "*",
-    "@skala/ts-config": "*",
+    "@e-scala/eslint-config": "*",
+    "@e-scala/ts-config": "*",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
@@ -45,6 +31,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@e-scala/design-tokens": "*",
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-collapsible": "^1.0.1",
@@ -56,7 +43,6 @@
     "@radix-ui/react-separator": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.2",
     "@radix-ui/react-visually-hidden": "^1.0.1",
-    "@skala/design-tokens": "*",
     "@stitches/react": "^1.2.8",
     "@types/react-datepicker": "^4.8.0",
     "framer-motion": "^7.6.2",

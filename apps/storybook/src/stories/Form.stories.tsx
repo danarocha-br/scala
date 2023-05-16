@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Form, FormProps, PasswordInput, Stack, TextInput } from '@skala/react';
+import {
+  Form,
+  FormProps,
+  PasswordInput,
+  Stack,
+  TextInput,
+} from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {

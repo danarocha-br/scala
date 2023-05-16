@@ -1,9 +1,9 @@
 import { create } from '@storybook/theming';
-import { color } from '@skala/design-tokens';
+import { color } from '@e-scala/design-tokens';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Skala Design System',
+  brandTitle: 'Escala Design System',
   brandUrl: 'https://ocompasso.com',
   brandImage: '',
   brandTarget: '_self',

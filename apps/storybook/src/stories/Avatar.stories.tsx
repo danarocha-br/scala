@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { Avatar, AvatarProps, Stack } from '@skala/react';
+import { Avatar, AvatarProps, Stack } from '@e-scala/react';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
