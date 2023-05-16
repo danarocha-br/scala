@@ -21,7 +21,6 @@
   "author": "Dana Rocha",
   "license": "ISC",
   "sideEffects": false,
-  "type": "module",
   "exports": {
     ".": "./dist/index.js"
   },
