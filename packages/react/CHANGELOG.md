@@ -1,5 +1,11 @@
 # @skala/react
 
+## 1.5.0
+
+### Minor Changes
+
+- Changes on exporting dist files
+
 ## 1.4.0
 
 ### Minor Changes
