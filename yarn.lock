@@ -2043,6 +2043,7 @@ __metadata:
     eslint-plugin-react: latest
     eslint-plugin-react-hooks: ^4.6.0
     prettier: ^2.7.1
+    tsup: ^6.7.0
   languageName: unknown
   linkType: soft
 
@@ -19999,7 +20000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^6.2.3":
+"tsup@npm:^6.2.3, tsup@npm:^6.7.0":
   version: 6.7.0
   resolution: "tsup@npm:6.7.0"
   dependencies:
