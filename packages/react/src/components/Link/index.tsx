@@ -27,7 +27,7 @@ export const Link = ({
   const Component = as || React.Fragment;
 
   return (
-    <Component>
+    <Component href={href}>
       <S.Anchor
         href={href}
         target={target}
