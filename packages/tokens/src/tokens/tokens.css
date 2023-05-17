@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 16 May 2023 23:12:49 GMT
+ * Generated on Wed, 17 May 2023 16:57:32 GMT
  */
 
 :root {
@@ -340,7 +340,7 @@
   --font-size-xs: 0.8rem;
   --font-size-xxs: 0.625rem;
   --font-weight-semibold: 700;
-  --font-weight-medium: 500;
+  --font-weight-medium: 600;
   --font-weight-regular: 400;
   --font-weight-light: 300;
   --line-height-9: 3.1725rem;
@@ -380,7 +380,7 @@
   --typography-4xl-medium-letter-spacing: var(--letter-spacing-0);
   --typography-4xl-medium-font-size: var(--font-size-4xl);
   --typography-4xl-medium-line-height: var(--line-height-9);
-  --typography-4xl-medium-font-weight: 500;
+  --typography-4xl-medium-font-weight: 600;
   --typography-4xl-medium-font-family: var(--font-family-effra);
   --typography-4xl-regular-text-decoration: var(--text-decoration-none);
   --typography-4xl-regular-text-case: var(--text-case-none);
@@ -412,7 +412,7 @@
   --typography-3xl-medium-letter-spacing: var(--letter-spacing-0);
   --typography-3xl-medium-font-size: var(--font-size-3xl);
   --typography-3xl-medium-line-height: var(--line-height-8);
-  --typography-3xl-medium-font-weight: 500;
+  --typography-3xl-medium-font-weight: 600;
   --typography-3xl-medium-font-family: var(--font-family-effra);
   --typography-3xl-regular-text-decoration: var(--text-decoration-none);
   --typography-3xl-regular-text-case: var(--text-case-none);
@@ -444,7 +444,7 @@
   --typography-2xl-medium-letter-spacing: var(--letter-spacing-0);
   --typography-2xl-medium-font-size: var(--font-size-2xl);
   --typography-2xl-medium-line-height: var(--line-height-7);
-  --typography-2xl-medium-font-weight: 500;
+  --typography-2xl-medium-font-weight: 600;
   --typography-2xl-medium-font-family: var(--font-family-effra);
   --typography-2xl-regular-text-decoration: var(--text-decoration-none);
   --typography-2xl-regular-text-case: var(--text-case-none);
@@ -476,7 +476,7 @@
   --typography-xl-medium-letter-spacing: var(--letter-spacing-0);
   --typography-xl-medium-font-size: var(--font-size-xl);
   --typography-xl-medium-line-height: var(--line-height-6);
-  --typography-xl-medium-font-weight: 500;
+  --typography-xl-medium-font-weight: 600;
   --typography-xl-medium-font-family: var(--font-family-effra);
   --typography-xl-regular-text-decoration: var(--text-decoration-none);
   --typography-xl-regular-text-case: var(--text-case-none);
@@ -508,7 +508,7 @@
   --typography-lg-medium-letter-spacing: var(--letter-spacing-0);
   --typography-lg-medium-font-size: var(--font-size-lg);
   --typography-lg-medium-line-height: var(--line-height-5);
-  --typography-lg-medium-font-weight: 500;
+  --typography-lg-medium-font-weight: 600;
   --typography-lg-medium-font-family: var(--font-family-effra);
   --typography-lg-regular-text-decoration: var(--text-decoration-none);
   --typography-lg-regular-text-case: var(--text-case-none);
@@ -540,7 +540,7 @@
   --typography-md-medium-letter-spacing: var(--letter-spacing-0);
   --typography-md-medium-font-size: var(--font-size-md);
   --typography-md-medium-line-height: var(--line-height-4);
-  --typography-md-medium-font-weight: 500;
+  --typography-md-medium-font-weight: 600;
   --typography-md-medium-font-family: var(--font-family-effra);
   --typography-md-regular-text-decoration: var(--text-decoration-none);
   --typography-md-regular-text-case: var(--text-case-none);
@@ -572,7 +572,7 @@
   --typography-sm-medium-letter-spacing: var(--letter-spacing-0);
   --typography-sm-medium-font-size: var(--font-size-sm);
   --typography-sm-medium-line-height: var(--line-height-3);
-  --typography-sm-medium-font-weight: 500;
+  --typography-sm-medium-font-weight: 600;
   --typography-sm-medium-font-family: var(--font-family-effra);
   --typography-sm-regular-text-decoration: var(--text-decoration-none);
   --typography-sm-regular-text-case: var(--text-case-none);
@@ -604,7 +604,7 @@
   --typography-xs-medium-letter-spacing: var(--letter-spacing-0);
   --typography-xs-medium-font-size: var(--font-size-xs);
   --typography-xs-medium-line-height: var(--line-height-2);
-  --typography-xs-medium-font-weight: 500;
+  --typography-xs-medium-font-weight: 600;
   --typography-xs-medium-font-family: var(--font-family-effra);
   --typography-xs-regular-text-decoration: var(--text-decoration-none);
   --typography-xs-regular-text-case: var(--text-case-none);
@@ -636,7 +636,7 @@
   --typography-xxs-medium-letter-spacing: var(--letter-spacing-0);
   --typography-xxs-medium-font-size: var(--font-size-xxs);
   --typography-xxs-medium-line-height: var(--line-height-1);
-  --typography-xxs-medium-font-weight: 500;
+  --typography-xxs-medium-font-weight: 600;
   --typography-xxs-medium-font-family: var(--font-family-effra);
   --typography-xxs-regular-text-decoration: var(--text-decoration-none);
   --typography-xxs-regular-text-case: var(--text-case-none);
