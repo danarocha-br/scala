@@ -340,8 +340,7 @@ export const Label = styled('label', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  h: '$spacing-3',
-  w: 'stretch',
+  width: 'stretch',
 
   position: 'relative',
 
