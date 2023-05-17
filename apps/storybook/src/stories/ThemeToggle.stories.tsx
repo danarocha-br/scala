@@ -1,14 +1,10 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { ScrollView, ScrollViewProps, Stack, Text } from '@compasso/scala';
+import { ThemeToggle, ThemeToggleProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
-const TAGS = Array.from({ length: 50 }).map(
-  (_, i, a) => `Lorem ipsum ${a.length - i}`
-);
-
 export default {
-  title: 'Structure & Layout/ScrollView',
-  component: ScrollView,
+  title: 'Components/ThemeToggle',
+  component: ThemeToggle,
   parameters: {
     layout: 'centered',
     badges: [BADGE.STABLE],
@@ -18,19 +14,21 @@ export default {
     },
   },
   args: {
-    children: TAGS.map((tag) => (
-      <Text css={{ mr: '$spacing-6' }} key={tag}>
-        {tag}
-      </Text>
-    )),
+    isDark: false,
+    onThemeChange: () => console.log('change theme'),
   },
   argTypes: {
+    isDark: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
     css: {
       table: {
         category: 'Modifiers',
       },
     },
-    children: {
+    onThemeChange: {
       table: {
         category: 'Modifiers',
       },
@@ -39,7 +37,14 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', p: 100 }}>
+        <Stack
+          align="center"
+          justify="center"
+          css={{
+            h: '100vh',
+            px: 200,
+          }}
+        >
           {Story()}
         </Stack>
       );
@@ -47,4 +52,4 @@ export default {
   ],
 } as Meta;
 
-export const Default: StoryObj<ScrollViewProps> = {};
+export const Default: StoryObj<ThemeToggleProps> = {};

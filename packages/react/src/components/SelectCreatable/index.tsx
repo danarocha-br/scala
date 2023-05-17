@@ -28,7 +28,7 @@ type Option = {
 
 export type SelectCreatableProps = {
   label?: string;
-  name: string;
+  name?: string;
   value: Option | null | undefined;
   noOptionMessage?: string;
   placeholder?: string;

@@ -25,7 +25,7 @@ type Option = {
 
 export type SelectProps = {
   label?: string;
-  name: string;
+  name?: string;
   value: Option | null | undefined;
   noOptionMessage?: string;
   placeholder?: string;

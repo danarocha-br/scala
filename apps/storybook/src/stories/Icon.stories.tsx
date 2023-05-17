@@ -5,7 +5,7 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges';
 const icons = Object.keys(iconPath);
 
 export default {
-  title: 'Components/Icon',
+  title: 'Primitives/Icon',
   component: Icon,
   parameters: {
     layout: 'fullscreen',

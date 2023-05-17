@@ -12,7 +12,7 @@ import { FormErrorMessage } from '../FormErrorMessage';
 import * as S from './styles';
 
 export type NumberInputProps = {
-  name: string;
+  name?: string;
   label?: string;
   placeholder?: string;
   value: string;

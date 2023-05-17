@@ -3,7 +3,7 @@ import { Box, BoxProps, Stack, Text } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
-  title: 'Primitives/Box',
+  title: 'Structure & Layout/Box',
   component: Box,
   parameters: {
     layout: 'centered',

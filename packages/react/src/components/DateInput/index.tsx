@@ -12,7 +12,7 @@ import { Stack } from '../Stack';
 import { Spinner } from '../Spinner';
 
 export type DateInputProps = {
-  name: string;
+  name?: string;
   label?: string;
   value: Date | null | undefined;
   selected: Date | null | undefined;

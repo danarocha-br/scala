@@ -9,7 +9,7 @@ import { CSS } from '../../styles';
 import * as S from './styles';
 
 export type PasswordInputProps = {
-  name: string;
+  name?: string;
   label: string;
   placeholder?: string;
   icon?: keyof typeof iconPath;

@@ -3,7 +3,7 @@ import { Box, Icon, SelectMenu, SelectMenuProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
-  title: 'Components/SelectMenu',
+  title: 'Form/SelectMenu',
   component: SelectMenu.Root,
   parameters: {
     layout: 'centered',

@@ -6,7 +6,8 @@ import * as S from './styles';
 
 export type LinkProps = {
   /** to render a wrapper to the a tag */
-  as?: React.ElementType<unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: React.ElementType<unknown> | any;
   href: string;
   target?: string;
   color?: 'primary' | 'secondary' | 'caption';

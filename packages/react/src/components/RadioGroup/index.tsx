@@ -15,7 +15,7 @@ export type RadioOptionProps = {
 };
 
 export type RadioGroupProps = {
-  name: string;
+  name?: string;
   value: string;
   defaultValue?: string;
   /** to use for the group title */

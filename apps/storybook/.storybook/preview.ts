@@ -20,6 +20,7 @@ export const parameters = {
         'Intro',
         'Foundations',
         'Primitives',
+        'Structure & Layout/Box',
         'Components',
         'Navigation',
         'Form',

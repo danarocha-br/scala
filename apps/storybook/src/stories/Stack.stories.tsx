@@ -9,7 +9,7 @@ const CHILDREN = Array.from({ length: 5 }).map((_, i) => (
 ));
 
 export default {
-  title: 'Primitives/Stack',
+  title: 'Structure & Layout/Stack',
   component: Stack,
   parameters: {
     layout: 'centered',

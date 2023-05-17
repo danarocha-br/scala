@@ -9,7 +9,7 @@ const CHILDREN = Array.from({ length: 5 }).map((_, i) => (
 ));
 
 export default {
-  title: 'Primitives/Grid',
+  title: 'Structure & Layout/Grid',
   component: Grid,
   parameters: {
     layout: 'centered',
