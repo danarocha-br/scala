@@ -1,10 +1,14 @@
 # @compasso/design-tokens
 
-## 1.0.2
+## 1.0.3
 
 ### Patch Changes
 
-- 8c70b6e: Font weight medium update
+- Link component to have a span child
+
+## 1.0.2
+
+Font weight medium update
 
 ## 1.0.1
 

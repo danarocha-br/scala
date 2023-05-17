@@ -1,5 +1,16 @@
 # @compasso/scala
 
+## 1.1.4
+
+### Patch Changes
+
+- Link component to have a span child
+
+### Patch Changes
+
+- Updated dependencies
+  - @compasso/design-tokens@2.0.0
+
 ## 1.1.3
 
 ### Patch Changes

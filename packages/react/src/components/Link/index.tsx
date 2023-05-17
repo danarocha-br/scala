@@ -27,15 +27,8 @@ export const Link = ({
   const Component = as || React.Fragment;
 
   return (
-    <Component href={href}>
-      <S.Anchor
-        href={href}
-        target={target}
-        color={color}
-        role="navigation"
-        css={css}
-        {...props}
-      >
+    <Component href={href} target={target} role="navigation">
+      <S.Anchor color={color} css={css} {...props}>
         <Box as="span">{children}</Box>
       </S.Anchor>
     </Component>

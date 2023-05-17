@@ -1,6 +1,6 @@
 import { styled } from '../../styles';
 
-export const Anchor = styled('a', {
+export const Anchor = styled('span', {
   fontFamily: '$font-family-sans',
   fontWeight: '$font-weight-medium',
 
