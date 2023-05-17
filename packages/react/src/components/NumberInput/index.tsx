@@ -15,7 +15,7 @@ export type NumberInputProps = {
   name?: string;
   label?: string;
   placeholder?: string;
-  value: string;
+  value?: string;
   disabled?: boolean;
   loading?: boolean;
   readOnly?: boolean;

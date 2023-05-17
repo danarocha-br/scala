@@ -29,7 +29,7 @@ type Option = {
 export type SelectCreatableProps = {
   label?: string;
   name?: string;
-  value: Option | null | undefined;
+  value?: Option | null | undefined;
   noOptionMessage?: string;
   placeholder?: string;
   disabled?: boolean;

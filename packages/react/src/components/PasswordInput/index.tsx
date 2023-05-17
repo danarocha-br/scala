@@ -13,7 +13,7 @@ export type PasswordInputProps = {
   label: string;
   placeholder?: string;
   icon?: keyof typeof iconPath;
-  value: string;
+  value?: string;
   css?: CSS;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
 

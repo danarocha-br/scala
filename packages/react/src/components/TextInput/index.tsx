@@ -13,7 +13,7 @@ export type TextInputProps = {
   name?: string;
   label?: string;
   placeholder?: string;
-  value: string;
+  value?: string;
   type?: string;
   disabled?: boolean;
   loading?: boolean;

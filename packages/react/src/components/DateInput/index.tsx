@@ -14,7 +14,7 @@ import { Spinner } from '../Spinner';
 export type DateInputProps = {
   name?: string;
   label?: string;
-  value: Date | null | undefined;
+  value?: Date | null | undefined;
   selected: Date | null | undefined;
   locale?: string;
   placeholder?: string;

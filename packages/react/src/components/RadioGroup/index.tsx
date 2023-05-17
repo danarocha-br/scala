@@ -16,7 +16,7 @@ export type RadioOptionProps = {
 
 export type RadioGroupProps = {
   name?: string;
-  value: string;
+  value?: string;
   defaultValue?: string;
   /** to use for the group title */
   legend?: string;
