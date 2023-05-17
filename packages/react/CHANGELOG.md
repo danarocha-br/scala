@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.1
+
+### Patch Changes
+
+- Link: Expose href to Component that wrapps the Link
+
 ## 1.1.0
 
 ### Minor Changes
