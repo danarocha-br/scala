@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.2
+
+### Patch Changes
+
+- Form elements: remove the obligation for the value props
+
 ## 1.1.1
 
 ### Patch Changes
