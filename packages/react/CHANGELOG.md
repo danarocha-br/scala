@@ -1,5 +1,13 @@
 # @compasso/scala
 
+## 1.1.3
+
+### Patch Changes
+
+- Font weight token changes
+- Updated dependencies
+  - @compasso/design-tokens@1.0.1
+
 ## 1.1.2
 
 ### Patch Changes
