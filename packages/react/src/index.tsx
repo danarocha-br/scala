@@ -41,6 +41,8 @@ export * from './components/UserProfile';
 export * from './hooks/useDialog';
 export * from './hooks/usePanel';
 export * from './hooks/useOverlay';
+export * from './hooks/useSidebarNavigation';
 export * from './hooks/useToast';
+export * from './hooks/useToggle';
 
 export * from './styles';

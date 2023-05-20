@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.7
+
+### Patch Changes
+
+- Including new hooks on the lib
+
 ## 1.1.6
 
 ### Patch Changes

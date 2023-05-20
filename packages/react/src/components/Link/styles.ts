@@ -26,11 +26,11 @@ export const Anchor = styled('span', {
   },
 
   '&:focus': {
+    outline: 'none',
     background: 'transparent',
-    outline: '1px dashed',
-    outlineOffset: '3px',
-    outlineColor: '$interactive-color-background-disabled',
-    borderRadius: '$radii-sm',
+    paddingBottom: 1,
+    borderBottom: '2px solid',
+    borderColor: '$interactive-color-background-disabled',
   },
 
   '&::before': {

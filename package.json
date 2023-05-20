@@ -15,7 +15,7 @@
     ]
   },
   "scripts": {
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "commit": "npx cz",
     "generate": "plop --plopfile ./generators/plopfile.js",
     "dev": "turbo run dev --parallel",
