@@ -54,7 +54,7 @@ export const PasswordInput = forwardRef<
         align="center"
         justify="end"
         fullWidth
-        css={{ position: 'relative', h: 64, css }}
+        css={{ position: 'relative', css }}
         {...props}
       >
         <Box

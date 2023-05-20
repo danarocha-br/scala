@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.6
+
+### Patch Changes
+
+- PasswordInput: styling fixes
+
 ## 1.1.5
 
 ### Patch Changes

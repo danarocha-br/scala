@@ -76,7 +76,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', css }}>
+      <Box css={{ w: '100%', position: 'relative', css }}>
         <S.Container
           isFocused={isFocused}
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
