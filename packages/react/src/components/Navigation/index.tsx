@@ -16,7 +16,7 @@ export type NavigationProps = {
   css?: CSS;
   user_name: string;
   user_email: string;
-  user_imageURL: string;
+  user_imageURL?: string;
   showNavigation?: boolean;
   loading?: boolean;
   children?: React.ReactNode;
@@ -145,7 +145,7 @@ const Wrapper = ({
               <Stack
                 direction="column"
                 gap={3}
-                css={{ mt: '$spacing-5', mb: 'auto', width: '93.5%' }}
+                css={{ mt: '$spacing-5', mb: 'auto', width: '100%' }}
               >
                 {children}
               </Stack>
