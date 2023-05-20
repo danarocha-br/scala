@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.5
+
+### Patch Changes
+
+- cc577ba: Form components styling fix
+
 ## 1.1.4
 
 ### Patch Changes
