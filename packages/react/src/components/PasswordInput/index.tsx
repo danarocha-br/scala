@@ -3,7 +3,7 @@ import { ElementRef, forwardRef, useCallback, useState } from 'react';
 import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Icon, iconPath } from '../Icon';
-import { TextInput } from '../TextInput';
+import { TextInput, TextInputProps } from '../TextInput';
 import { CSS } from '../../styles';
 
 import * as S from './styles';
@@ -15,7 +15,8 @@ export type PasswordInputProps = {
   icon?: keyof typeof iconPath;
   value?: string;
   css?: CSS;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> &
+  TextInputProps;
 
 export const PasswordInput = forwardRef<
   ElementRef<typeof TextInput>,
