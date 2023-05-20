@@ -10,7 +10,7 @@ import * as S from './styles';
 export type UserProfileProps = {
   user_name: string;
   user_email: string;
-  user_imageURL: string;
+  user_imageURL?: string;
   loading?: boolean;
   children: React.ReactNode;
   css?: CSS;

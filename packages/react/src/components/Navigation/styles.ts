@@ -233,7 +233,7 @@ export const ToogleButton = styled('button', {
   w: 'auto',
 
   p: '$spacing-2',
-  pb: '$spacing-1',
+  pb: '2px',
   borderRadius: '$radii-md',
   transition: '$base',
   border: '1px solid transparent',

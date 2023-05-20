@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.9
+
+### Patch Changes
+
+- Navigation styles updates
+
 ## 1.1.8
 
 ### Patch Changes
