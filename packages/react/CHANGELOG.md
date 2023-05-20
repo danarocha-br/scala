@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.0
+
+### Major Changes
+
+- Fix import on project
+
 ## 1.1.9
 
 ### Patch Changes

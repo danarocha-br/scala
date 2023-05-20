@@ -40,7 +40,6 @@
     "hoistingLimits": "workspaces"
   },
   "dependencies": {
-    "@artsy/fresnel": "^6.1.0",
     "framer-motion": "^10.12.12"
   }
 }
