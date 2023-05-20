@@ -39,6 +39,7 @@ export * from './components/Tooltip';
 export * from './components/UserProfile';
 
 export * from './hooks/useDialog';
+export * from './hooks/useMediaQuery';
 export * from './hooks/usePanel';
 export * from './hooks/useOverlay';
 export * from './hooks/useSidebarNavigation';

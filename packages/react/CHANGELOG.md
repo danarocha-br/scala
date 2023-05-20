@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 1.1.8
+
+### Patch Changes
+
+- useMediaQuery hook added to the lib
+
 ## 1.1.7
 
 ### Patch Changes
