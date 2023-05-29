@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.3
+
+### Patch Changes
+
+- 34c2c21: CalendarCard added to the library
+
 ## 2.0.2
 
 ### Patch Changes
