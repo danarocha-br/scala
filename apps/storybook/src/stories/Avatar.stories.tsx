@@ -37,6 +37,16 @@ export default {
         category: 'Modifiers',
       },
     },
+    bg: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
+    initialsColor: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
     variant: {
       table: {
         category: 'Modifiers',
@@ -50,7 +60,7 @@ export default {
       table: {
         category: 'Modifiers',
       },
-      options: ['md', 'lg'],
+      options: ['sm', 'md', 'lg'],
       control: {
         type: 'inline-radio',
       },
@@ -84,6 +94,7 @@ export default {
 
 export const Sizes: Story<AvatarProps> = (args) => (
   <>
+    <Avatar {...args} size="sm" bgColor="pink" initialsColor="black" />
     <Avatar {...args} />
     <Avatar {...args} size="lg" />
   </>

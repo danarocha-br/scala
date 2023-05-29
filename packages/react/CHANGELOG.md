@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.2
+
+### Patch Changes
+
+- Icons have now a small size prop
+
 ## 2.0.1
 
 ### Patch Changes

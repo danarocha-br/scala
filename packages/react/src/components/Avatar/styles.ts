@@ -4,7 +4,6 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 export const Container = styled(AvatarPrimitive.Root, {
   fontFamily: '$font-family-sans',
   textTransform: 'uppercase',
-  background: '$brand-color-primary',
 
   d: 'inline-flex',
   align: 'center',
@@ -25,6 +24,12 @@ export const Container = styled(AvatarPrimitive.Root, {
     },
 
     size: {
+      sm: {
+        fontSize: '$font-size-xs',
+        w: '$spacing-4',
+        h: '$spacing-4',
+      },
+
       md: {
         fontSize: '$font-size-sm',
         w: '$spacing-5',
@@ -54,8 +59,6 @@ export const Image = styled(AvatarPrimitive.Image, {
 });
 
 export const Fallback = styled(AvatarPrimitive.Fallback, {
-  color: '$text-color-on-dark',
-  bg: '$brand-color-primary',
   fontSize: 'inherit',
   fontWeight: '$font-weight-medium',
 
