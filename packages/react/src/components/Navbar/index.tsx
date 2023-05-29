@@ -37,7 +37,7 @@ export const Navbar = ({
         align="center"
         gap={4}
         justify="end"
-        css={{ flex: 2, px: '$spacing-12' }}
+        css={{ flex: 2, px: !pageTitle ? '' : '$spacing-12' }}
       >
         {slot}
       </Stack>

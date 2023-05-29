@@ -176,7 +176,7 @@ export const CollapsibleRoot = styled(Root, {
   top: 0,
 
   '&[data-state="open"]': {
-    bg: '$surface-color-background-subdued',
+    // bg: '$surface-color-background-subdued',
     borderRight: '1px solid',
     borderColor: `${transparentize(0.7, '#D5DBDB')}`,
     minWidth: 280,
