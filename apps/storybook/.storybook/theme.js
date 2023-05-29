@@ -3,7 +3,7 @@ import { color } from '@compasso/design-tokens';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Escala Design System',
+  brandTitle: 'Scala Design System',
   brandUrl: 'https://ocompasso.com',
   brandImage: '',
   brandTarget: '_self',
