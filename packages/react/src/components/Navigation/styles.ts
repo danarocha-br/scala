@@ -203,7 +203,7 @@ export const CollapsibleRoot = styled(Root, {
 export const Header = styled('div', {
   px: '$spacing-2',
   pb: 4,
-  pt: '$spacing-1',
+  pt: '$spacing-2',
 
   d: 'flex',
   justify: 'space-between',
@@ -214,7 +214,7 @@ export const Header = styled('div', {
   },
 
   '&[data-state="closed"]': {
-    backgroundColor: '$surface-color-background-default',
+    backgroundColor: 'transparent',
   },
 
   variants: {
