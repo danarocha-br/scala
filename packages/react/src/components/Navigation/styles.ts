@@ -177,7 +177,7 @@ export const CollapsibleContent = styled(Content, {
     animation: `${open} 400ms ease-in`,
     backgroundColor: '$surface-color-background-default',
     [`.dark-theme &`]: {
-      bg: '$surface-color-background-subdued',
+      bg: '$surface-color-background-pressed',
     },
   },
   '&[data-state="closed"]': {
@@ -197,7 +197,7 @@ export const CollapsibleRoot = styled(Root, {
     minWidth: 280,
 
     [`.dark-theme &`]: {
-      bg: '$surface-color-background-subdued',
+      bg: '$surface-color-background-pressed',
     },
   },
 
@@ -210,6 +210,7 @@ export const Header = styled('div', {
   px: '$spacing-2',
   pb: 4,
   pt: '$spacing-2',
+  h: 53,
 
   d: 'flex',
   justify: 'space-between',
@@ -219,7 +220,7 @@ export const Header = styled('div', {
     backgroundColor: '$surface-color-background-default',
 
     [`.dark-theme &`]: {
-      bg: '$surface-color-background-subdued',
+      bg: '$surface-color-background-pressed',
     },
   },
 
@@ -232,6 +233,7 @@ export const Header = styled('div', {
 
         ['.dark-theme &']: {
           borderColor: `${transparentize(0.7, '#252e30')}`,
+          bg: '$surface-color-background-pressed',
         },
       },
     },

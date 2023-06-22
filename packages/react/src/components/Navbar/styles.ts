@@ -21,6 +21,6 @@ export const Container = styled('nav', {
 
   ['.dark-theme &']: {
     borderColor: `${transparentize(0.7, '#252e30')}`,
-    bg: '$surface-color-background-subdued',
+    bg: '$surface-color-background-pressed',
   },
 });
