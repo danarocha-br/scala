@@ -47,7 +47,11 @@ export const CalendarCard = ({
       outlineColor: 'transparent',
 
       '&:hover': {
-        background: '$color-neutral-100',
+        background: 'hsl(60, 10%, 98.3%)',
+        [`.dark-theme &`]: {
+          color: '$text-color-on-dark',
+          background: '$surface-color-background-subdued',
+        },
       },
 
       '&:focus': {

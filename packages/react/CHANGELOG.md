@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.6
+
+### Patch Changes
+
+- Change navigation items dark mode styling
+
 ## 2.0.5
 
 ### Patch Changes
