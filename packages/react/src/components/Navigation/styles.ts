@@ -1,6 +1,18 @@
 import { Content, Root } from '@radix-ui/react-collapsible';
 import { transparentize } from 'polished';
-import { styled } from '../../styles';
+import { styled, keyframes } from '../../styles';
+
+const open = keyframes({
+  from: { width: 0, opacity: 1 },
+  to: { width: 0, opacity: 1 },
+  // to: { width: 280, opacity: 1 },
+});
+
+const close = keyframes({
+  from: { width: 0, opacity: 1 },
+  to: { width: 0, opacity: 1 },
+  // to: { width: 0, opacity: 0 },
+});
 
 export const Anchor = styled('a', {
   color: '$text-color-body',
@@ -74,7 +86,7 @@ export const Anchor = styled('a', {
         '&::after': {
           content: 'PRO',
           position: 'absolute',
-          right: '$spacing-2',
+          right: '$spacing-4',
 
           color: '$text-color-on-dark',
           backgroundColor: '$action-color-background-primary-enabled',
@@ -167,6 +179,7 @@ export const CollapsibleContent = styled(Content, {
   },
   '&[data-state="closed"]': {
     animation: `${close} 200ms ease-in`,
+    backgroundColor: '$surface-color-background-default',
   },
 });
 
@@ -176,7 +189,7 @@ export const CollapsibleRoot = styled(Root, {
   top: 0,
 
   '&[data-state="open"]': {
-    // bg: '$surface-color-background-subdued',
+    bg: '$surface-color-background-default',
     borderRight: '1px solid',
     borderColor: `${transparentize(0.7, '#D5DBDB')}`,
     minWidth: 280,
@@ -190,13 +203,17 @@ export const CollapsibleRoot = styled(Root, {
 export const Header = styled('div', {
   px: '$spacing-2',
   pb: 4,
-  pt: '$spacing-2',
+  pt: '$spacing-1',
 
   d: 'flex',
   justify: 'space-between',
   align: 'center',
 
   '&[data-state="open"]': {
+    backgroundColor: '$surface-color-background-default',
+  },
+
+  '&[data-state="closed"]': {
     backgroundColor: '$surface-color-background-default',
   },
 
