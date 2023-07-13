@@ -7,6 +7,7 @@ export * from './components/Stack';
 export * from './components/Icon';
 
 export * from './components/Avatar';
+export * from './components/Badge';
 export * from './components/Button';
 export * from './components/Callout';
 export * from './components/CalendarCard';

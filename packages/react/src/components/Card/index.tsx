@@ -6,6 +6,9 @@ export type CardProps = {
   as?: React.ElementType<unknown> | any;
   css?: CSS;
   children: React.ReactNode;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onClick?: () => void;
 };
 
 export const Card = ({

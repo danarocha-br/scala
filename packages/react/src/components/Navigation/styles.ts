@@ -5,7 +5,7 @@ import { styled, keyframes } from '../../styles';
 const open = keyframes({
   from: { width: 0, opacity: 1 },
   to: { width: 0, opacity: 1 },
-  // to: { width: 280, opacity: 1 },
+  // to: { width: 260, opacity: 1 },
 });
 
 const close = keyframes({
@@ -194,7 +194,7 @@ export const CollapsibleRoot = styled(Root, {
     bg: '$surface-color-background-default',
     borderRight: '1px solid',
     borderColor: `${transparentize(0.7, '#D5DBDB')}`,
-    minWidth: 280,
+    minWidth: 260,
 
     [`.dark-theme &`]: {
       bg: '$surface-color-background-pressed',

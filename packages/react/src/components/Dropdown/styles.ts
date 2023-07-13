@@ -26,7 +26,8 @@ export const DropdownMenuContent = styled(DropdownMenuPrimitive.Content, {
   fontFamily: '$font-family-sans',
   background: '$surface-color-background-default',
   borderRadius: '$radii-sm',
-  boxShadow: '$elevation-high',
+  boxShadow:
+    '0px -7px 20px 0px #00000010, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026',
 
   w: '100%',
   minWidth: 200,

@@ -22,6 +22,7 @@ export type DropdownProps = {
   defaultOpen?: boolean;
   /** event handler called when the open state of the dropdown menu changes. */
   onOpenChange?: (open: boolean) => void;
+  align?: 'center' | 'end' | 'start';
   css?: CSS;
 };
 
@@ -60,6 +61,7 @@ const DropdownBase = ({
   open,
   defaultOpen,
   onOpenChange,
+  align = 'center',
   ...props
 }: DropdownProps) => (
   <Box
@@ -73,7 +75,7 @@ const DropdownBase = ({
           <div>{trigger}</div>
         </Trigger>
 
-        <DropdownMenuContent>{children}</DropdownMenuContent>
+        <DropdownMenuContent align={align}>{children}</DropdownMenuContent>
       </>
     </Root>
   </Box>

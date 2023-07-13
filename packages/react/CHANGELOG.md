@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.8
+
+### Patch Changes
+
+- Badge component added to the lib
+
 ## 2.0.7
 
 ### Patch Changes
