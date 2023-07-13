@@ -1,5 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { CalendarCard, CalendarCardProps, Stack } from '@compasso/scala';
+import {
+  CalendarCard,
+  CalendarCardProps,
+  Stack,
+  Dropdown,
+  Icon,
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
@@ -35,7 +41,67 @@ export default {
         title: 'Onboarding',
         color: 'pink',
       },
+      {
+        id: '1',
+        title: 'Tech',
+        color: 'green',
+      },
     ],
+    editMenuItems: (
+      <>
+        <Dropdown.Item
+          css={{
+            '& svg': {
+              ml: -4,
+            },
+          }}
+        >
+          <Icon name="edit" label="edit" size="sm" css={{ mr: '$spacing-2' }} />
+          Mark as draft
+        </Dropdown.Item>
+        <Dropdown.Item
+          css={{
+            '& svg': {
+              ml: -4,
+            },
+          }}
+        >
+          <Icon
+            name="copy"
+            label="duplicate"
+            size="sm"
+            css={{ mr: '$spacing-2' }}
+          />
+          Duplicate
+        </Dropdown.Item>
+        <Dropdown.Item
+          css={{
+            '& svg': {
+              ml: -4,
+            },
+          }}
+        >
+          <Icon name="move" label="move" size="sm" css={{ mr: '$spacing-2' }} />
+          Move
+        </Dropdown.Item>
+        <Dropdown.Item
+          css={{
+            '& svg': {
+              ml: -4,
+            },
+          }}
+        >
+          <Icon
+            name="trash"
+            label="delete"
+            size="sm"
+            css={{ mr: '$spacing-2' }}
+          />
+          Delete
+        </Dropdown.Item>
+      </>
+    ),
+    status: 'enabled',
   },
   decorators: [
     (Story) => {
@@ -59,3 +125,9 @@ export default {
 } as Meta<CalendarCardProps>;
 
 export const Default: StoryObj<CalendarCardProps> = {};
+export const Draft: StoryObj<CalendarCardProps> = {
+  args: {
+    status: 'draft',
+    draftText: 'Draft',
+  },
+};

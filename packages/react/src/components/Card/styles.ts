@@ -12,4 +12,9 @@ export const Container = styled('div', {
   radii: '$radii-sm',
   boxShadow: '0px 3px 2px 0px #00000007',
   border: 'none',
+
+  [`.dark-theme &`]: {
+    background: '#323d4370',
+    border: '1px solid $colors$$surface-color-background-enabled',
+  },
 });

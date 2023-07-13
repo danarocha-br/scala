@@ -1,9 +1,14 @@
+import { useState } from 'react';
+
 import { CSS } from '../../styles';
 import { Avatar } from '../Avatar';
+import { Box } from '../Box';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
+import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
 
 export type CalendarCardProps = {
   user?: string;
@@ -19,6 +24,10 @@ export type CalendarCardProps = {
     title: string;
     isChecked?: boolean;
   }[];
+  status?: 'enabled' | 'draft';
+  draftText?: string;
+  editMenuItems: React.ReactNode;
+  onClick?: () => void;
   css?: CSS;
 };
 
@@ -29,110 +38,189 @@ export const CalendarCard = ({
   tags,
   checklist,
   css,
+  draftText,
+  status = 'enabled',
+  editMenuItems,
+  onClick,
   ...props
-}: CalendarCardProps): JSX.Element => (
-  <Card
-    as="button"
-    css={{
-      background: '$surface-color-background-default',
-      pt: '$spacing-2',
-      pb: '$spacing-3',
-      px: '$spacing-3',
-      radii: '$radii-sm',
-      boxShadow: '0px 3px 2px 0px #00000007',
-      border: 'none',
-      cursor: 'pointer',
-      transition: '$slow',
-      outline: 'none',
-      outlineColor: 'transparent',
-
-      '&:hover': {
-        background: 'hsl(60, 10%, 98.3%)',
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          background: '$surface-color-background-subdued',
-        },
-      },
-
-      '&:focus': {
-        outline: '2px solid',
-        outlineOffset: '2px',
-        outlineColor: '$action-color-border-transparent-enabled',
-      },
-
-      css,
-    }}
-    {...props}
-  >
-    <Stack as="header" align="center" justify="between" fullWidth>
-      <Stack as="small" align="center" gap="2">
-        <Text
-          size="xs"
-          color="body-lighter"
-          css={{ textTransform: 'uppercase', lineHeight: '$line-height-1' }}
-        >
-          {dueDate}
-        </Text>
-      </Stack>
-      {user ? (
-        <Avatar username={user} size="sm" />
-      ) : (
-        <Icon label="Not assigned user" name="user" size="sm" color="caption" />
-      )}
-    </Stack>
-
-    <Text css={{ lineHeight: '$line-height-1' }}>{title}</Text>
-
-    <Stack
-      align="center"
-      gap="2"
+}: CalendarCardProps): JSX.Element => {
+  return (
+    <Card
+      onClick={onClick}
       css={{
-        p: '$spacing-1',
-        pr: '$spacing-2',
-        mt: '$spacing-2',
-        border: '1px solid $form-color-background-disabled',
+        background: '$surface-color-background-default',
         radii: '$radii-sm',
-        position: 'relative',
-      }}
-    >
-      <Icon name="checklist" size="xs" label="checklist" color="caption" />
-      <Text size="sm" color="caption">
-        {checklist.filter((item) => item.isChecked).length}/{checklist.length}
-      </Text>
-    </Stack>
+        boxShadow: '0px 3px 2px 0px #00000007',
+        border:
+          status === 'enabled'
+            ? 'none'
+            : '1px dashed $colors$action-color-border-danger-enabled',
+        cursor: 'pointer',
+        transition: '$slow',
+        outline: 'none',
+        outlineColor: 'transparent',
+        p: 0,
 
-    {Boolean(tags) && (
-      <Stack gap="2" fullWidth>
-        {tags?.map((tag) => (
+        '&:hover': {
+          background: 'hsl(60, 10%, 98.3%)',
+          [`.dark-theme &`]: {
+            color: '$text-color-on-dark',
+            background: '$surface-color-background-subdued',
+          },
+
+          '&.card__btn--edit': {
+            '&:hover': { transform: 'translateX(0px)' },
+          },
+        },
+
+        '&:focus': {
+          outline: '2px solid',
+          outlineOffset: '2px',
+          outlineColor: '$action-color-border-transparent-enabled',
+        },
+
+        css,
+      }}
+      {...props}
+    >
+      {Boolean(status === 'draft') && (
+        <Box
+          css={{
+            py: '0px',
+            background: '$action-color-background-danger-disabled',
+            w: '100%',
+          }}
+        >
+          <Text size="xs" color="danger" css={{ px: '$spacing-2' }}>
+            {draftText}
+          </Text>
+        </Box>
+      )}
+      <Stack
+        as="header"
+        align="center"
+        justify="between"
+        fullWidth
+        css={{
+          pt: '$spacing-2',
+          px: '$spacing-3',
+          height: '$spacing-5',
+        }}
+      >
+        <Stack as="small" align="center" gap="2">
           <Text
-            key={tag.id}
             size="xs"
             color="body-lighter"
-            css={{
-              p: '$spacing-1',
-              pl: '$spacing-3',
-              radii: '$radii-sm',
-              position: 'relative',
-
-              '&::before': {
-                content: "''",
-                display: 'block',
-                position: 'absolute',
-                left: 6,
-                top: 16,
-                width: '6px',
-                height: '6px',
-                borderRadius: '$radii-sm',
-                background: tag.color || '$brand-color-primary',
-              },
-            }}
+            css={{ textTransform: 'uppercase', lineHeight: '$line-height-1' }}
           >
-            {tag.title}
+            {dueDate}
           </Text>
-        ))}
+        </Stack>
+
+        <Dropdown.Menu
+          align="end"
+          trigger={
+            <Button
+              className="card__btn--edit"
+              label="edit"
+              icon="other"
+              variant="icon"
+              size="sm"
+              css={{
+                transform: 'translateX(6px)',
+                transition: '$base',
+                opacity: 0.3,
+              }}
+            />
+          }
+        >
+          {editMenuItems}
+        </Dropdown.Menu>
       </Stack>
-    )}
-  </Card>
-);
+
+      <Text
+        css={{
+          lineHeight: '$line-height-1',
+          px: '$spacing-3',
+        }}
+      >
+        {title}
+      </Text>
+
+      <Stack
+        align="center"
+        gap="2"
+        css={{
+          p: '$spacing-1',
+          pr: '$spacing-2',
+          mt: '$spacing-2',
+          ml: '$spacing-3',
+          border: '1px solid $form-color-background-disabled',
+          radii: '$radii-sm',
+          position: 'relative',
+          width: 'fit-content',
+        }}
+      >
+        <Icon name="checklist" size="xs" label="checklist" color="caption" />
+        <Text size="sm" color="caption">
+          {checklist.filter((item) => item.isChecked).length}/{checklist.length}
+        </Text>
+      </Stack>
+
+      <Stack
+        justify="between"
+        align="center"
+        css={{ pb: '$spacing-2', px: '$spacing-3' }}
+      >
+        {Boolean(tags) && (
+          <Stack gap="2" align="center">
+            {tags?.map((tag) => (
+              <Text
+                key={tag.id}
+                size="xs"
+                color="body-lighter"
+                css={{
+                  pr: '$spacing-1',
+                  pl: '$spacing-3',
+                  radii: '$radii-sm',
+                  position: 'relative',
+                  transition: '$base',
+
+                  '&::before': {
+                    content: "''",
+                    display: 'block',
+                    position: 'absolute',
+                    left: 6,
+                    top: 12,
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '$radii-sm',
+                    background: tag.color || '$brand-color-primary',
+                  },
+
+                  '&:hover': {
+                    background: '$action-color-background-transparent-hover',
+                  },
+                }}
+              >
+                {tag.title}
+              </Text>
+            ))}
+          </Stack>
+        )}
+        {user ? (
+          <Avatar username={user} size="sm" />
+        ) : (
+          <Icon
+            label="Not assigned user"
+            name="user"
+            size="sm"
+            color="caption"
+          />
+        )}
+      </Stack>
+    </Card>
+  );
+};
 
 CalendarCard.displayName = 'CalendarCard';
