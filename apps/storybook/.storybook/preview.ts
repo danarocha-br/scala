@@ -1,5 +1,5 @@
 import { themes } from '@storybook/theming';
-import { theme, darkTheme, globalStyles } from '../../../packages/react/src/styles';
+import { theme, darkTheme } from '../../../packages/react/src/styles';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -45,7 +45,7 @@ export const parameters = {
     prettier: {
       tabWidth: 4,
       useTabs: false,
-      htmlWhitespaceSensitivity: 'strict',
+      htmlWhitespaceSensitivity: "strict",
     },
   },
   multipleThemesStitches: {
@@ -61,12 +61,3 @@ export const parameters = {
     ],
   },
 };
-
-// export const decorators = [
-//   (Story) => (
-//     <>
-//       {/* {globalStyles()} */}
-//       <Story />
-//     </>
-//   ),
-// ];

@@ -4,7 +4,7 @@ import { transparentize } from 'polished';
 export const Container = styled('nav', {
   w: '100%',
   h: 53,
-  pl: '$spacing-5',
+  pl: '$spacing-4',
   pr: '$spacing-4',
 
   position: 'sticky',
