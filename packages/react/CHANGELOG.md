@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.9
+
+### Patch Changes
+
+- Breadcrumb component added to lib
+
 ## 2.0.8
 
 ### Patch Changes

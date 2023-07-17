@@ -59,7 +59,7 @@ export const CalendarCard = ({
         transition: '$slow',
         outline: 'none',
         outlineColor: 'transparent',
-        p: 0,
+        p: '0 !important',
 
         '&:hover': {
           background: 'hsl(60, 10%, 98.3%)',
@@ -175,36 +175,34 @@ export const CalendarCard = ({
         {Boolean(tags) && (
           <Stack gap="2" align="center">
             {tags?.map((tag) => (
-              <Text
+              <Stack
+                as="span"
+                align="center"
+                gap="1"
                 key={tag.id}
-                size="xs"
-                color="body-lighter"
                 css={{
-                  pr: '$spacing-1',
-                  pl: '$spacing-3',
+                  px: '$spacing-1',
                   radii: '$radii-sm',
-                  position: 'relative',
                   transition: '$base',
-
-                  '&::before': {
-                    content: "''",
-                    display: 'block',
-                    position: 'absolute',
-                    left: 6,
-                    top: 12,
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '$radii-sm',
-                    background: tag.color || '$brand-color-primary',
-                  },
 
                   '&:hover': {
                     background: '$action-color-background-transparent-hover',
                   },
                 }}
               >
-                {tag.title}
-              </Text>
+                <Box
+                  as="span"
+                  css={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '$radii-sm',
+                    background: tag.color || '$brand-color-primary',
+                  }}
+                />
+                <Text size="xs" color="body-lighter">
+                  {tag.title}
+                </Text>
+              </Stack>
             ))}
           </Stack>
         )}

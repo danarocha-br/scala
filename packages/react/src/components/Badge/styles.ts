@@ -2,9 +2,11 @@ import { styled } from '../../styles';
 
 export const Container = styled('span', {
   fontFamily: '$font-family-sans',
+  fontSize: '$font-size-sm',
   border: '1px solid transparent',
   px: '$spacing-2',
   pb: '1px',
+  whiteSpace: 'nowrap',
 
   variants: {
     variant: {

@@ -40,6 +40,7 @@ export const UserProfile = ({
         <Icon label="dropdown" name="chevronDown" size="sm" />
       </S.Trigger>
     }
+    align="start"
   >
     <Text
       size="sm"

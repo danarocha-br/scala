@@ -4,7 +4,7 @@ import * as S from './styles';
 
 export type BadgeProps = {
   css?: CSS;
-  label: string;
+  label: string | React.ReactNode | React.ReactElement;
   variant?: 'default' | 'pill';
   color?: 'secondary' | 'primary' | 'danger' | 'warning' | 'on-dark';
   outlined?: boolean;
