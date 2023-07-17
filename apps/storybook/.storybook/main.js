@@ -14,7 +14,6 @@ module.exports = {
     '@whitespace/storybook-addon-html',
     '@geometricpanda/storybook-addon-badges',
     'multiple-themes-stitches',
-    '@whitespace/storybook-addon-html'
   ],
   framework: '@storybook/react',
   core: {
