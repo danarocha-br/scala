@@ -11,7 +11,6 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
     'storybook-addon-designs',
-    '@whitespace/storybook-addon-html',
     '@geometricpanda/storybook-addon-badges',
     'multiple-themes-stitches',
   ],
