@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 1.0.4
+
+### Patch Changes
+
+- Fix CalendarCard styles
+
 ## 1.0.3
 
 ### Patch Changes

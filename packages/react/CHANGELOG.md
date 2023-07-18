@@ -1,5 +1,13 @@
 # @compasso/scala
 
+## 2.0.10
+
+### Patch Changes
+
+- Fix CalendarCard styles
+- Updated dependencies
+  - @compasso/design-tokens@1.0.4
+
 ## 2.0.9
 
 ### Patch Changes

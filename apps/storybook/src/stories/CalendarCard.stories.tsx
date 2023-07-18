@@ -27,12 +27,12 @@ export default {
       {
         id: '1',
         title: 'Setup account',
-        isChecked: false,
+        status: 'done',
       },
       {
         id: '2',
         title: 'Setup account',
-        isChecked: false,
+        status: 'todo',
       },
     ],
     tags: [

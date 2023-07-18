@@ -14,6 +14,9 @@ export type NavbarProps = {
   slot?: React.ReactNode;
   onThemeChange: () => void;
   css?: CSS;
+  optionsButtonLabel?: string;
+  themeButtonLabel?: string;
+  optionsButtonOnClick?: () => void;
 };
 
 export const Navbar = ({
@@ -21,6 +24,9 @@ export const Navbar = ({
   isDark,
   onThemeChange,
   slot,
+  optionsButtonLabel,
+  optionsButtonOnClick,
+  themeButtonLabel,
   css,
   ...props
 }: NavbarProps) => (
@@ -44,17 +50,23 @@ export const Navbar = ({
     )}
 
     <Stack align="center" gap={2}>
-      <Tooltip content="Mude o tema" slot={<Shortcut shortcut="⌘ T" />}>
+      <Tooltip
+        content={themeButtonLabel || 'Change theme'}
+        slot={<Shortcut shortcut="⌘ T" />}
+      >
         <ThemeToggle isDark={isDark} onThemeChange={onThemeChange} />
       </Tooltip>
 
-      <Button
-        type="button"
-        size="sm"
-        variant="icon"
-        label="View more"
-        icon="menu"
-      />
+      {Boolean(optionsButtonOnClick) && (
+        <Button
+          type="button"
+          size="sm"
+          variant="icon"
+          label={optionsButtonLabel || 'options'}
+          icon="menu"
+          onClick={optionsButtonOnClick}
+        />
+      )}
     </Stack>
   </S.Container>
 );

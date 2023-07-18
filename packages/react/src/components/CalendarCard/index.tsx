@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { CSS } from '../../styles';
 import { Avatar } from '../Avatar';
 import { Box } from '../Box';
@@ -22,9 +20,9 @@ export type CalendarCardProps = {
   checklist: {
     id: string;
     title: string;
-    isChecked?: boolean;
+    status: 'todo' | 'done';
   }[];
-  status?: 'enabled' | 'draft';
+  status?: 'published' | 'draft';
   draftText?: string;
   editMenuItems: React.ReactNode;
   onClick?: () => void;
@@ -39,7 +37,7 @@ export const CalendarCard = ({
   checklist,
   css,
   draftText,
-  status = 'enabled',
+  status = 'published',
   editMenuItems,
   onClick,
   ...props
@@ -52,7 +50,7 @@ export const CalendarCard = ({
         radii: '$radii-sm',
         boxShadow: '0px 3px 2px 0px #00000007',
         border:
-          status === 'enabled'
+          status === 'published'
             ? 'none'
             : '1px dashed $colors$action-color-border-danger-enabled',
         cursor: 'pointer',
@@ -161,9 +159,20 @@ export const CalendarCard = ({
           width: 'fit-content',
         }}
       >
-        <Icon name="checklist" size="xs" label="checklist" color="caption" />
+        <Icon
+          name="checklist"
+          size="xs"
+          label="checklist"
+          color={
+            checklist.filter((item) => item.status === 'done').length ===
+            checklist.length
+              ? 'success'
+              : 'caption'
+          }
+        />
         <Text size="sm" color="caption">
-          {checklist.filter((item) => item.isChecked).length}/{checklist.length}
+          {checklist.filter((item) => item.status === 'done').length}/
+          {checklist.length}
         </Text>
       </Stack>
 
