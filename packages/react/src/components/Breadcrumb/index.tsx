@@ -47,6 +47,8 @@ const Item = ({
   as,
   icon,
   css,
+  href,
+  onClick,
   isActive = false,
   ...props
 }: BreadcrumbItemProps): JSX.Element => {
@@ -55,7 +57,7 @@ const Item = ({
   return (
     <S.Container css={css} isActive={isActive} {...props}>
       <Stack gap="1" align="center">
-        <Component as={as} href={href}>
+        <Component as={as} href={href} onClick={onClick}>
           {label}
         </Component>
         {Boolean(icon) && (

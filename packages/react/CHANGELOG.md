@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.12
+
+### Patch Changes
+
+- Fix Breadcrumb item href and onClick prop
+
 ## 2.0.11
 
 ### Patch Changes
