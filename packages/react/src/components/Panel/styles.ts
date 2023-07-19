@@ -51,6 +51,7 @@ export const PanelOverlay = styled(Overlay, {
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
+  zIndex: '$max',
 });
 
 export const PanelContent = styled(Content, {
@@ -65,6 +66,7 @@ export const PanelContent = styled(Content, {
   w: '100%',
 
   boxShadow: 'hsl(206 22% 7% / 15%) 10px 0px 30px -20px',
+  zIndex: '$max',
 
   '@bp-md': {
     width: 384,

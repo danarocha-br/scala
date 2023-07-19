@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.14
+
+### Patch Changes
+
+- Dialog and Panel fix zIndex issues
+
 ## 2.0.13
 
 ### Patch Changes

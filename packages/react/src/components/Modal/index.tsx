@@ -94,7 +94,7 @@ export const Modal = forwardRef(
     }
 
     return (
-      <S.Modal open={isVisible} css={{ zIndex: '$max', position: 'relative' }}>
+      <S.Modal open={isVisible} css={{ position: 'relative' }}>
         <DialogContent>
           <Stack
             fullWidth
@@ -110,7 +110,10 @@ export const Modal = forwardRef(
               borderTopRightRadius: '$radii-md',
             }}
           >
-            <S.ModalTitle variant={variant}>
+            <S.ModalTitle
+              variant={variant}
+              hasCustomHeader={headerSlot ? true : false}
+            >
               {headerSlot ? headerSlot : title}
             </S.ModalTitle>
 

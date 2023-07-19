@@ -1,10 +1,14 @@
 import { Story, Meta } from '@storybook/react';
 import {
+  Avatar,
+  Box,
+  Breadcrumb,
   Button,
   Modal,
   ModalHandlesProps,
   ModalProps,
   ModalProvider,
+  Navbar,
   OverlayProvider,
   Stack,
 } from '@compasso/scala';
@@ -83,6 +87,7 @@ export default {
         <OverlayProvider>
           <ModalProvider>
             <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
+              <Navbar isDark={false} onThemeChange={() => ''} />
               {Story()}
             </Stack>
           </ModalProvider>
@@ -114,5 +119,21 @@ Passive.args = {
 
 export const WithCustomHeader = Transactional.bind({});
 WithCustomHeader.args = {
-  headerSlot: <p style={{ margin: 0 }}>Another header</p>,
+  headerSlot: (
+    <Stack gap="1" align="center" css={{ height: 'inherit', mt: 3 }}>
+      <Button variant="icon" label="Levels" icon="help" size="sm" />
+      <Box
+        css={{
+          background: '$action-color-border-transparent-enabled',
+          height: '$spacing-4',
+          width: '1px',
+          mx: '$spacing-2',
+        }}
+      />
+      <Avatar size="sm" username="Dana Rocha" />
+      <Breadcrumb.Root>
+        <Breadcrumb.Item label="Dana Rocha" as="a" href="/plan" isActive />
+      </Breadcrumb.Root>
+    </Stack>
+  ),
 };

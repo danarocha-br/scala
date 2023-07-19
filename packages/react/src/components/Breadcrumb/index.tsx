@@ -19,7 +19,8 @@ export type BreadcrumbItemProps = (
       target?: string;
     }
   | {
-      as: React.ElementType<unknown>;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      as: any;
       href: string;
       target?: string;
     }

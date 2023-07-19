@@ -92,7 +92,7 @@ export const Dialog = forwardRef(
     }
 
     return (
-      <S.Dialog open={isVisible} css={{ zIndex: '$max' }}>
+      <S.Dialog open={isVisible}>
         <DialogContent>
           <Stack
             fullWidth

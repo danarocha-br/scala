@@ -33,6 +33,7 @@ export const ModalOverlay = styled(Overlay, {
   position: 'fixed',
   inset: 0,
   left: 0,
+  zIndex: '$max',
 
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${overlayShow} 100ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
@@ -50,6 +51,7 @@ export const ModalContent = styled(Content, {
   transform: 'translate(-50%, -50%)',
   width: '100%',
   height: '100%',
+  zIndex: '$max',
 
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${contentShow} 150ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
@@ -73,7 +75,6 @@ export const ModalTitle = styled(Title, {
   color: '$text-color-body-lighter',
   fontSize: '$font-size-md',
   pt: '$spacing-2',
-  height: '$spacing-4',
 
   variants: {
     variant: {
@@ -82,6 +83,12 @@ export const ModalTitle = styled(Title, {
       },
       transactional: {},
       passive: {},
+    },
+    hasCustomHeader: {
+      true: {
+        height: '$spacing-6',
+        pt: '0',
+      },
     },
   },
 
