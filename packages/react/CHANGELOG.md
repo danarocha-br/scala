@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.11
+
+### Patch Changes
+
+- Breadcrump adding href prop
+
 ## 2.0.10
 
 ### Patch Changes

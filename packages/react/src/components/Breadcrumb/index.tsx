@@ -55,7 +55,9 @@ const Item = ({
   return (
     <S.Container css={css} isActive={isActive} {...props}>
       <Stack gap="1" align="center">
-        <Component as={as}>{label}</Component>
+        <Component as={as} href={href}>
+          {label}
+        </Component>
         {Boolean(icon) && (
           <Icon
             name={icon || 'settings'}
