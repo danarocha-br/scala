@@ -157,6 +157,11 @@ export const CalendarCard = ({
           radii: '$radii-sm',
           position: 'relative',
           width: 'fit-content',
+          background:
+            checklist.filter((item) => item.status === 'done').length ===
+            checklist.length
+              ? '$feedback-color-background-success-disabled'
+              : 'none',
         }}
       >
         <Icon

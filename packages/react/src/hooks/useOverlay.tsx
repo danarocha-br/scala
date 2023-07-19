@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-type OverlaType = 'dialog' | 'panel';
+type OverlaType = 'dialog' | 'panel' | 'modal';
 
 interface OverlayContextData {
   overlayType: OverlaType;

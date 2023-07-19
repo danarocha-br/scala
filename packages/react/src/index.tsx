@@ -20,6 +20,7 @@ export * from './components/Dropdown';
 export * from './components/Form';
 export * from './components/FormErrorMessage';
 export * from './components/Link';
+export * from './components/Modal';
 export * from './components/Navbar';
 export * from './components/Navigation';
 export * from './components/NumberInput';
@@ -43,6 +44,7 @@ export * from './components/Tooltip';
 export * from './components/UserProfile';
 
 export * from './hooks/useDialog';
+export * from './hooks/useModal';
 export * from './hooks/usePanel';
 export * from './hooks/useOverlay';
 export * from './hooks/useSidebarNavigation';

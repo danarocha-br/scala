@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.0.13
+
+### Patch Changes
+
+- Modal component added to lib
+
 ## 2.0.12
 
 ### Patch Changes

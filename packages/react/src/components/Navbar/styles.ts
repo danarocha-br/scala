@@ -9,7 +9,7 @@ export const Container = styled('nav', {
 
   position: 'sticky',
   top: 0,
-  zIndex: 99,
+  zIndex: '$100',
 
   d: 'flex',
   justifyContent: 'space-between',

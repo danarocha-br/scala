@@ -9,8 +9,12 @@ export const Container = styled('li', {
   transition: '$base',
   display: 'inline-flex',
 
-  '& button': {
+  '& button, & a': {
     all: 'unset',
+  },
+
+  '& a': {
+    textDecoration: 'none',
   },
 
   '&:hover': {

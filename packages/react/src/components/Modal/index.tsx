@@ -18,28 +18,29 @@ import * as S from './styles';
 import { useOverlay } from '../../hooks/useOverlay';
 import { Box } from '../Box';
 
-export type DialogHandlesProps = {
-  openDialog: () => void;
-  closeDialog: () => void;
+export type ModalHandlesProps = {
+  openModal: () => void;
+  closeModal: () => void;
   isOverlayVisible: boolean;
 };
 
-export type DialogProps = {
+export type ModalProps = {
   title: string;
   description?: string;
   children: React.ReactNode;
-  variant?: 'transactional' | 'passive' | 'danger';
+  variant?: 'transactional' | 'passive';
   buttonPrimaryLabel: string;
   buttonSecondaryLabel?: string;
   onButtonPrimaryClick: () => void;
   onButtonSecondaryClick?: () => void;
+  headerSlot?: React.ReactNode;
 } & PrimitiveDialogProps;
 
-export type DialogContentProps = {
+export type ModalContentProps = {
   children: React.ReactNode;
 };
 
-export const Dialog = forwardRef(
+export const Modal = forwardRef(
   (
     {
       title,
@@ -50,59 +51,57 @@ export const Dialog = forwardRef(
       onButtonPrimaryClick,
       buttonSecondaryLabel,
       onButtonSecondaryClick,
-    }: DialogProps,
+      headerSlot,
+    }: ModalProps,
     ref
   ) => {
     const { setOverlayType } = useOverlay();
 
     const [isVisible, setVisible] = useState(false);
 
-    const openDialog = useCallback(() => {
+    const openModal = useCallback(() => {
       setVisible(true);
     }, []);
 
-    const closeDialog = useCallback(() => {
+    const closeModal = useCallback(() => {
       setVisible(false);
     }, []);
 
     useImperativeHandle(ref, () => ({
-      openDialog,
-      closeDialog,
+      openModal,
+      closeModal,
       isOverlayVisible: isVisible,
     }));
 
     useEffect(() => {
-      setOverlayType('dialog');
+      setOverlayType('modal');
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function DialogContent({ children, ...props }: DialogContentProps) {
+    function DialogContent({ children, ...props }: ModalContentProps) {
       return (
         <DialogPortal>
-          <S.DialogOverlay />
-          <S.DialogContent
+          <S.ModalOverlay />
+          <S.ModalContent
             {...props}
-            onInteractOutside={closeDialog}
-            onEscapeKeyDown={closeDialog}
+            onInteractOutside={closeModal}
+            onEscapeKeyDown={closeModal}
           >
             {children}
-          </S.DialogContent>
+          </S.ModalContent>
         </DialogPortal>
       );
     }
 
     return (
-      <S.Dialog open={isVisible} css={{ zIndex: '$max' }}>
+      <S.Modal open={isVisible} css={{ zIndex: '$max', position: 'relative' }}>
         <DialogContent>
           <Stack
             fullWidth
             align="center"
             justify="between"
             css={{
-              background:
-                variant === 'danger'
-                  ? '$feedback-color-background-danger-disabled'
-                  : '$surface-color-background-subdued',
+              background: '$surface-color-background-subdued',
               borderBottom: '1px solid',
               borderColor: '$form-color-border-default',
               px: '$spacing-3',
@@ -111,15 +110,17 @@ export const Dialog = forwardRef(
               borderTopRightRadius: '$radii-md',
             }}
           >
-            <S.DialogTitle variant={variant}>{title}</S.DialogTitle>
+            <S.ModalTitle variant={variant}>
+              {headerSlot ? headerSlot : title}
+            </S.ModalTitle>
 
-            <S.DialogClose asChild>
+            <S.ModalClose asChild>
               <div>
                 <Button
                   label="Close"
                   variant="icon"
                   icon="close"
-                  onClick={closeDialog}
+                  onClick={closeModal}
                   size="sm"
                   type="button"
                   css={{
@@ -133,24 +134,24 @@ export const Dialog = forwardRef(
                   }}
                 />
               </div>
-            </S.DialogClose>
+            </S.ModalClose>
           </Stack>
 
           {Boolean(description) && (
-            <S.DialogDescription>{description}</S.DialogDescription>
+            <S.ModalDescription>{description}</S.ModalDescription>
           )}
 
           <Box css={{ px: '$spacing-3', color: '$text-color-body' }}>
             {children}
           </Box>
 
-          <S.DialogFooter>
+          <S.ModalFooter>
             {variant === 'transactional' ? (
               <>
                 <Button
                   label={buttonSecondaryLabel || 'Cancel'}
                   variant="transparent"
-                  onClick={onButtonSecondaryClick || closeDialog}
+                  onClick={onButtonSecondaryClick || closeModal}
                   size="sm"
                   type="button"
                 />
@@ -163,24 +164,6 @@ export const Dialog = forwardRef(
                   type="submit"
                 />
               </>
-            ) : variant === 'danger' ? (
-              <>
-                <Button
-                  label={buttonSecondaryLabel || 'Cancel'}
-                  variant="transparent"
-                  onClick={onButtonSecondaryClick || closeDialog}
-                  size="sm"
-                  type="button"
-                />
-
-                <Button
-                  label={buttonPrimaryLabel || 'Save'}
-                  color="danger"
-                  onClick={onButtonPrimaryClick}
-                  size="sm"
-                  type="submit"
-                />
-              </>
             ) : (
               <Button
                 label={buttonPrimaryLabel || 'Ok'}
@@ -188,11 +171,11 @@ export const Dialog = forwardRef(
                 size="sm"
               />
             )}
-          </S.DialogFooter>
+          </S.ModalFooter>
         </DialogContent>
-      </S.Dialog>
+      </S.Modal>
     );
   }
 );
 
-Dialog.displayName = 'Dialog';
+Modal.displayName = 'Modal';
