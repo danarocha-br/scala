@@ -7,7 +7,7 @@ export type ButtonProps = {
   label: string;
   variant?: 'primary' | 'transparent' | 'icon';
   color?: 'primary' | 'secondary' | 'danger';
-  size?: 'lg' | 'md' | 'sm';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
   icon?: keyof typeof iconPath;
   fullWidth?: boolean;
   disabled?: boolean;
@@ -50,7 +50,15 @@ export const Button = ({
           name={(Boolean(icon) && icon) || 'plus'}
           label={label}
           color="current"
-          size={size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'lg'}
+          size={
+            size === 'md'
+              ? 'md'
+              : size === 'sm'
+              ? 'sm'
+              : size === 'xs'
+              ? 'xs'
+              : 'lg'
+          }
           css={{ marginRight: `${variant !== 'icon' && '$spacing-4'}` }}
         />
       )}

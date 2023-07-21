@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.1.0
+
+### Minor Changes
+
+- Editor component added to the lib
+
 ## 2.0.14
 
 ### Patch Changes

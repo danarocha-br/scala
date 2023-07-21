@@ -118,7 +118,7 @@ export const Modal = forwardRef(
             </S.ModalTitle>
 
             <S.ModalClose asChild>
-              <div>
+              <div className="c-modal__close-btn">
                 <Button
                   label="Close"
                   variant="icon"

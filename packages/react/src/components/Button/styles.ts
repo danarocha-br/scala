@@ -143,6 +143,18 @@ export const Container = styled(AccessibleButton, {
           outlineColor: 'transparent',
         },
       },
+      xs: {
+        fontSize: '$font-size-xs',
+        padding: '$spacing-1 $spacing-2',
+        h: 30,
+        borderRadius: '$radii-sm',
+
+        '&:focus': {
+          outline: '2px solid',
+          outlineOffset: '0px',
+          outlineColor: 'transparent',
+        },
+      },
     },
 
     fullWidth: {
@@ -312,7 +324,17 @@ export const Container = styled(AccessibleButton, {
       css: {
         w: '28px',
         h: '28px',
-        p: '0 ',
+        p: '0',
+      },
+    },
+    {
+      variant: 'icon',
+      size: 'xs',
+
+      css: {
+        w: '22px',
+        h: '22px',
+        p: '0',
       },
     },
     {

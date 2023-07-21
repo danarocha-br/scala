@@ -8,7 +8,6 @@ import {
   ModalHandlesProps,
   ModalProps,
   ModalProvider,
-  Navbar,
   OverlayProvider,
   Stack,
 } from '@compasso/scala';
@@ -87,7 +86,6 @@ export default {
         <OverlayProvider>
           <ModalProvider>
             <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
-              <Navbar isDark={false} onThemeChange={() => ''} />
               {Story()}
             </Stack>
           </ModalProvider>

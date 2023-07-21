@@ -137,6 +137,7 @@ IconVariant.args = {
 
 export const Sizes: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" />
     <Button {...args} size="sm" />
     <Button {...args} size="md" />
     <Button {...args} size="lg" />
@@ -145,6 +146,7 @@ export const Sizes: Story<ButtonProps> = (args) => (
 
 export const StateDisabled: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" disabled />
     <Button {...args} size="sm" disabled />
     <Button {...args} size="md" disabled />
     <Button {...args} size="lg" disabled />
@@ -153,6 +155,7 @@ export const StateDisabled: Story<ButtonProps> = (args) => (
 
 export const StateLoading: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" loading />
     <Button {...args} size="sm" loading />
     <Button {...args} size="md" loading />
     <Button {...args} size="lg" loading />
@@ -161,6 +164,7 @@ export const StateLoading: Story<ButtonProps> = (args) => (
 
 export const ButtonIconSizes: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" variant="icon" icon="plus" />
     <Button {...args} size="sm" variant="icon" icon="plus" />
     <Button {...args} size="md" variant="icon" icon="plus" />
     <Button {...args} size="lg" variant="icon" icon="plus" />
@@ -169,6 +173,7 @@ export const ButtonIconSizes: Story<ButtonProps> = (args) => (
 
 export const PrimaryWithIcon: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" icon="plus" />
     <Button {...args} size="sm" icon="plus" />
     <Button {...args} size="md" icon="plus" />
     <Button {...args} size="lg" icon="plus" />
@@ -177,6 +182,7 @@ export const PrimaryWithIcon: Story<ButtonProps> = (args) => (
 
 export const TransparentWithIcon: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} size="xs" icon="plus" variant="transparent" />
     <Button {...args} size="sm" icon="plus" variant="transparent" />
     <Button {...args} size="md" icon="plus" variant="transparent" />
     <Button {...args} size="lg" icon="plus" variant="transparent" />
