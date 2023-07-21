@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.0.0
+
+### Major Changes
+
+- Editor: remove lowlight lib dependency for now
+
 ## 1.0.4
 
 ### Patch Changes

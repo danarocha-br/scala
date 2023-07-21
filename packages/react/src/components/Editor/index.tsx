@@ -1,10 +1,13 @@
 import { useEditor, Content } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { lowlight } from 'lowlight/lib/core';
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import Placeholder from '@tiptap/extension-placeholder';
+// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
+// import { lowlight } from 'lowlight/lib/core';
 
-import js from 'highlight.js/lib/languages/javascript';
+// import css from 'highlight.js/lib/languages/css';
+// import js from 'highlight.js/lib/languages/javascript';
+// import ts from 'highlight.js/lib/languages/typescript';
+// import html from 'highlight.js/lib/languages/xml';
 
 import 'highlight.js/styles/tokyo-night-dark.css';
 
@@ -21,7 +24,10 @@ export type EditorProps = {
   editable?: boolean;
 };
 
-lowlight.registerLanguage('js', js);
+// lowlight.registerLanguage('html', html);
+// lowlight.registerLanguage('css', css);
+// lowlight.registerLanguage('js', js);
+// lowlight.registerLanguage('ts', ts);
 
 export const Editor = ({
   css,
@@ -35,9 +41,11 @@ export const Editor = ({
   const editor = useEditor({
     extensions: [
       StarterKit,
-      CodeBlockLowlight.configure({
-        lowlight,
-      }),
+      // CodeBlockLowlight.extend({
+      //   addNodeView() {
+      //     return ReactNodeViewRenderer(CodeBlock);
+      //   },
+      // }).configure({ lowlight }),
       Placeholder.configure({
         placeholder: placeholder,
       }),

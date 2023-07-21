@@ -1,5 +1,16 @@
 # @compasso/scala
 
+## 2.1.1
+
+### Minor Changes
+
+- Editor: remove lowlight lib dependency for now
+
+### Patch Changes
+
+- Updated dependencies
+  - @compasso/design-tokens@2.0.0
+
 ## 2.1.0
 
 ### Minor Changes

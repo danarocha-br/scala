@@ -17,6 +17,16 @@ export const EditorContainer = styled(EditorContent, {
     '& h1, h2, h3, h4, h5, h6': {
       my: '$spacing-2',
     },
+
+    '&__code-block ': {
+      position: 'relative',
+
+      '& select': {
+        position: 'absolute',
+        right: '0.5rem',
+        top: '0.5rem',
+      },
+    },
   },
 
   '& .ProseMirror p.is-empty::before': {
