@@ -7,6 +7,7 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
+import { IconButton } from '../IconButton';
 
 export type CalendarCardProps = {
   user?: string;
@@ -118,11 +119,10 @@ export const CalendarCard = ({
         <Dropdown.Menu
           align="end"
           trigger={
-            <Button
+            <IconButton
               className="card__btn--edit"
               label="edit"
               icon="other"
-              variant="icon"
               size="sm"
               css={{
                 transform: 'translateX(6px)',

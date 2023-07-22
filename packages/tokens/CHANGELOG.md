@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.2.0
+
+### Minor Changes
+
+- Change Button icon prop on components to IconButton instead
+
 ## 2.1.0
 
 ### Minor Changes

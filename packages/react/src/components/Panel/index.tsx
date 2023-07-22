@@ -16,6 +16,7 @@ import { ScrollView } from '../ScrollView';
 import * as S from './styles';
 
 import { useOverlay } from '../../hooks/useOverlay';
+import { IconButton } from '../IconButton';
 
 export type PanelProps = {
   title: string;
@@ -115,9 +116,8 @@ export const Panel = forwardRef(
 
             <S.PanelClose asChild>
               <div>
-                <Button
+                <IconButton
                   label="Close"
-                  variant="icon"
                   icon="close"
                   onClick={closePanel}
                   type="button"

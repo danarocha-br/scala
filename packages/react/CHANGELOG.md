@@ -1,5 +1,16 @@
 # @compasso/scala
 
+## 2.3.0
+
+### Minor Changes
+
+- Change Button icon prop on components to IconButton instead
+
+### Patch Changes
+
+- Updated dependencies
+  - @compasso/design-tokens@2.2.0
+
 ## 2.2.0
 
 ### Minor Changes

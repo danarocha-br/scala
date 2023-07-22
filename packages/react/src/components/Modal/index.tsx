@@ -18,6 +18,7 @@ import * as S from './styles';
 import { useOverlay } from '../../hooks/useOverlay';
 import { Box } from '../Box';
 import { CSS } from '../../styles';
+import { IconButton } from '../IconButton';
 
 export type ModalHandlesProps = {
   openModal: () => void;
@@ -122,9 +123,8 @@ export const Modal = forwardRef(
 
             <S.ModalClose asChild>
               <div className="c-modal__close-btn">
-                <Button
+                <IconButton
                   label="Close"
-                  variant="icon"
                   icon="close"
                   onClick={closeModal}
                   size="sm"

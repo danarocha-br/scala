@@ -2,12 +2,12 @@ import { useCallback, useEffect } from 'react';
 import { useCycle } from 'framer-motion';
 
 import { Icon } from '../Icon';
-import { Button } from '../Button';
 import { Stack } from '../Stack';
 
 import { useToast } from '../../hooks/useToast';
 
 import * as S from './styles';
+import { IconButton } from '../IconButton';
 
 export type ToastMessageTypeProps =
   | 'info'
@@ -117,8 +117,7 @@ const ToastItem = ({
           {title}
         </Stack>
 
-        <Button
-          variant="icon"
+        <IconButton
           icon="close"
           size="sm"
           label="close notification"

@@ -17,6 +17,7 @@ import * as S from './styles';
 
 import { useOverlay } from '../../hooks/useOverlay';
 import { Box } from '../Box';
+import { IconButton } from '../IconButton';
 
 export type DialogHandlesProps = {
   openDialog: () => void;
@@ -115,9 +116,8 @@ export const Dialog = forwardRef(
 
             <S.DialogClose asChild>
               <div>
-                <Button
+                <IconButton
                   label="Close"
-                  variant="icon"
                   icon="close"
                   onClick={closeDialog}
                   size="sm"

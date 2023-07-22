@@ -1,5 +1,6 @@
 import { CSS } from '../../styles';
 import { Button } from '../Button';
+import { IconButton } from '../IconButton';
 import { Shortcut } from '../Shortcut';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
@@ -58,10 +59,9 @@ export const Navbar = ({
       </Tooltip>
 
       {Boolean(optionsButtonOnClick) && (
-        <Button
+        <IconButton
           type="button"
           size="sm"
-          variant="icon"
           label={optionsButtonLabel || 'options'}
           icon="menu"
           onClick={optionsButtonOnClick}
