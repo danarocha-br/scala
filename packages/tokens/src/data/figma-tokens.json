@@ -1088,7 +1088,7 @@
       },
       "background": {
         "default": {
-          "value": "{color.neutral.100}",
+          "value": "#F8FAF9",
           "type": "color"
         }
       },
