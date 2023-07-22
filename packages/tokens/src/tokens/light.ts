@@ -1,7 +1,7 @@
 export const light = {
   'gradient-color-background':
     'linear-gradient(89.99deg, #FBF8F6 13.34%, #F4F4ED 99.99%)',
-  'background-default': '#f6f6f4',
+  'background-default': '#F8FAF9',
   'feedback-color-background-success-default': '#0a8708',
   'feedback-color-background-success-subdued': '#37b135',
   'feedback-color-background-success-hover': '#0a8708',

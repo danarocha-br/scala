@@ -101,7 +101,7 @@ export default {
         </Dropdown.Item>
       </>
     ),
-    status: 'enabled',
+    status: 'published',
   },
   decorators: [
     (Story) => {

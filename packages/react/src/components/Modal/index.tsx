@@ -17,6 +17,7 @@ import * as S from './styles';
 
 import { useOverlay } from '../../hooks/useOverlay';
 import { Box } from '../Box';
+import { CSS } from '../../styles';
 
 export type ModalHandlesProps = {
   openModal: () => void;
@@ -34,6 +35,7 @@ export type ModalProps = {
   onButtonPrimaryClick: () => void;
   onButtonSecondaryClick?: () => void;
   headerSlot?: React.ReactNode;
+  css: CSS;
 } & PrimitiveDialogProps;
 
 export type ModalContentProps = {
@@ -52,6 +54,7 @@ export const Modal = forwardRef(
       buttonSecondaryLabel,
       onButtonSecondaryClick,
       headerSlot,
+      css,
     }: ModalProps,
     ref
   ) => {
@@ -94,7 +97,7 @@ export const Modal = forwardRef(
     }
 
     return (
-      <S.Modal open={isVisible} css={{ position: 'relative' }}>
+      <S.Modal open={isVisible} css={{ position: 'relative', css }}>
         <DialogContent>
           <Stack
             fullWidth

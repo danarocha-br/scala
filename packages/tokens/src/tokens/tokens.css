@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 21 Jul 2023 14:39:43 GMT
+ * Generated on Sat, 22 Jul 2023 13:09:53 GMT
  */
 
 :root {
@@ -203,7 +203,7 @@
   --light-feedback-color-background-success-hover: #0a8708;
   --light-feedback-color-background-success-subdued: #37b135;
   --light-feedback-color-background-success-default: #0a8708;
-  --light-background-default: #f6f6f4;
+  --light-background-default: #F8FAF9;
   --light-gradient-color-background: linear-gradient(89.99deg, #FBF8F6 13.34%, #F4F4ED 99.99%);
   --elevation-high: 0px -1px 2.5px 0px #00000014, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026;
   --elevation-medium: 0px 0px 5.8px 3px #00000008, 0px 24px 38px 0px #0000001a;

@@ -1,5 +1,5 @@
 import { styled } from '../../styles';
-import { EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/react';
+import { EditorContent, BubbleMenu } from '@tiptap/react';
 
 export const EditorContainer = styled(EditorContent, {
   width: '100%',
@@ -69,58 +69,58 @@ export const EditorMenu = styled(BubbleMenu, {
   borderRadius: '$radii-sm',
 });
 
-export const EditorFloatingMenu = styled(FloatingMenu, {
-  background: 'transparent',
-  display: 'flex',
-  gap: '$spacing-2',
-  borderRadius: '$radii-sm',
+// export const EditorFloatingMenu = styled(FloatingMenu, {
+//   background: 'transparent',
+//   display: 'flex',
+//   gap: '$spacing-2',
+//   borderRadius: '$radii-sm',
 
-  '& button': {
-    unset: 'all',
-  },
-});
+//   '& button': {
+//     unset: 'all',
+//   },
+// });
 
-export const CustomButton = styled('button', {
-  all: 'unset',
-  cursor: 'pointer',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  p: '2px',
-  borderRadius: '$radii-md',
-  transition: 'all',
+// export const CustomButton = styled('button', {
+//   all: 'unset',
+//   cursor: 'pointer',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   p: '2px',
+//   borderRadius: '$radii-md',
+//   transition: 'all',
 
-  '& svg': {
-    fill: '$text-color-caption',
-  },
+//   '& svg': {
+//     fill: '$text-color-caption',
+//   },
 
-  '&:hover': {
-    background: '$action-color-background-transparent-hover',
+//   '&:hover': {
+//     background: '$action-color-background-transparent-hover',
 
-    '& svg': {
-      fill: '$text-color-body',
-    },
-  },
+//     '& svg': {
+//       fill: '$text-color-body',
+//     },
+//   },
 
-  '&:focus': {
-    outline: '2px solid',
-    outlineOffset: '1px',
-    outlineColor: '$action-color-border-transparent-pressed',
-  },
+//   '&:focus': {
+//     outline: '2px solid',
+//     outlineOffset: '1px',
+//     outlineColor: '$action-color-border-transparent-pressed',
+//   },
 
-  variants: {
-    isActive: {
-      true: {
-        background: '$action-color-background-transparent-pressed',
+//   variants: {
+//     isActive: {
+//       true: {
+//         background: '$action-color-background-transparent-pressed',
 
-        '& svg': {
-          fill: '$text-color-body',
-        },
-      },
-    },
-  },
+//         '& svg': {
+//           fill: '$text-color-body',
+//         },
+//       },
+//     },
+//   },
 
-  defaultVariants: {
-    isActive: false,
-  },
-});
+//   defaultVariants: {
+//     isActive: false,
+//   },
+// });

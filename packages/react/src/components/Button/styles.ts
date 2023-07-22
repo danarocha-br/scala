@@ -491,6 +491,35 @@ export const Container = styled(AccessibleButton, {
         },
       },
     },
+
+    {
+      variant: 'transparent',
+      size: 'xs',
+      css: {
+        px: '$spacing-2',
+      },
+    },
+    {
+      variant: 'transparent',
+      size: 'sm',
+      css: {
+        px: '$spacing-2',
+      },
+    },
+    {
+      variant: 'transparent',
+      size: 'md',
+      css: {
+        px: '$spacing-3',
+      },
+    },
+    {
+      variant: 'transparent',
+      size: 'lg',
+      css: {
+        px: '$spacing-4',
+      },
+    },
   ],
 
   defaultVariants: {
