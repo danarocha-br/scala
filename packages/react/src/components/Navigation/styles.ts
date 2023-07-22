@@ -228,11 +228,11 @@ export const Header = styled('div', {
     isClosed: {
       true: {
         borderBottom: '1px solid',
-        borderColor: `${transparentize(0.5, '#D5DBDB')}`,
+        borderColor: `${transparentize(0.6, '#D5DBDB')}`,
         backgroundColor: '$surface-color-background-default',
 
         ['.dark-theme &']: {
-          borderColor: `${transparentize(0.7, '#252e30')}`,
+          borderColor: `${transparentize(0.6, '#252e30')}`,
           bg: '$surface-color-background-pressed',
         },
       },
@@ -245,7 +245,6 @@ export const Header = styled('div', {
 });
 
 export const Footer = styled('footer', {
-  px: '$spacing-2',
   py: '$spacing-2',
 
   d: 'flex',

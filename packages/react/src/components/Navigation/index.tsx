@@ -144,8 +144,14 @@ const Wrapper = ({
             {showNavigation && (
               <Stack
                 direction="column"
-                gap={3}
-                css={{ mt: '$spacing-5', mb: 'auto', width: '100%' }}
+                gap={2}
+                justify="between"
+                css={{
+                  mt: '$spacing-2',
+                  mb: '$spacing-3',
+                  width: '100%',
+                  height: '100%',
+                }}
               >
                 {children}
               </Stack>

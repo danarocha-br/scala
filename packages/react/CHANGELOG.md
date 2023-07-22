@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.2.0
+
+### Minor Changes
+
+- Buttons refactored and now icons are available under IconButton
+
 ## 2.1.2
 
 ### Patch Changes

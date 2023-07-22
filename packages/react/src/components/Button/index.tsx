@@ -5,7 +5,7 @@ import * as S from './styles';
 
 export type ButtonProps = {
   label: string;
-  variant?: 'primary' | 'transparent' | 'icon';
+  variant?: 'primary' | 'transparent';
   color?: 'primary' | 'secondary' | 'danger';
   size?: 'lg' | 'md' | 'sm' | 'xs';
   icon?: keyof typeof iconPath;
@@ -30,6 +30,17 @@ export const Button = ({
   icon,
   ...props
 }: ButtonProps): JSX.Element => {
+  const iconSize = size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'md';
+  const iconLeft =
+    size === 'lg'
+      ? '-14px'
+      : size === 'md'
+      ? '-8px'
+      : size === 'sm'
+      ? '-6px'
+      : '-2px';
+  const iconMarginRight = size === 'xs' ? '$spacing-1' : '0';
+
   return (
     <S.Container
       variant={variant}
@@ -47,23 +58,19 @@ export const Button = ({
     >
       {Boolean(icon) && (
         <Icon
-          name={(Boolean(icon) && icon) || 'plus'}
+          name={icon || 'plus'}
           label={label}
           color="current"
-          size={
-            size === 'md'
-              ? 'md'
-              : size === 'sm'
-              ? 'sm'
-              : size === 'xs'
-              ? 'xs'
-              : 'lg'
-          }
-          css={{ marginRight: `${variant !== 'icon' && '$spacing-4'}` }}
+          size={iconSize}
+          css={{
+            left: iconLeft,
+            position: 'relative',
+            mr: iconMarginRight,
+          }}
         />
       )}
 
-      {variant !== 'icon' && <span className="button__content">{label}</span>}
+      <span className="button__content">{label}</span>
 
       <span aria-hidden className="button__disco" />
     </S.Container>

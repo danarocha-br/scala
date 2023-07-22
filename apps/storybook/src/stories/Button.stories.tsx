@@ -123,18 +123,6 @@ TransparentVariant.args = {
   variant: 'transparent',
 };
 
-export const IconVariant: Story<ButtonProps> = (args) => (
-  <>
-    <Button {...args} color="primary" />
-    <Button {...args} color="secondary" />
-    <Button {...args} color="danger" />
-  </>
-);
-IconVariant.args = {
-  variant: 'icon',
-  icon: 'plus',
-};
-
 export const Sizes: Story<ButtonProps> = (args) => (
   <>
     <Button {...args} size="xs" />
@@ -159,15 +147,6 @@ export const StateLoading: Story<ButtonProps> = (args) => (
     <Button {...args} size="sm" loading />
     <Button {...args} size="md" loading />
     <Button {...args} size="lg" loading />
-  </>
-);
-
-export const ButtonIconSizes: Story<ButtonProps> = (args) => (
-  <>
-    <Button {...args} size="xs" variant="icon" icon="plus" />
-    <Button {...args} size="sm" variant="icon" icon="plus" />
-    <Button {...args} size="md" variant="icon" icon="plus" />
-    <Button {...args} size="lg" variant="icon" icon="plus" />
   </>
 );
 

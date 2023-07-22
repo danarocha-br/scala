@@ -16,7 +16,7 @@ const MoveScaleUpEnd = keyframes({
   },
 });
 
-const MoveLoadingGradientStart = keyframes({
+export const MoveLoadingGradientStart = keyframes({
   '0%': {
     clipPath:
       'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
@@ -65,7 +65,9 @@ export const Container = styled(AccessibleButton, {
   overflow: 'hidden',
   position: 'relative',
   outline: 'none',
+  outlineColor: 'transparent',
   transition: 'all 300ms ease, outline 1ms',
+  cursor: 'pointer',
 
   '&:focus': {
     outline: '2px solid',
@@ -93,28 +95,29 @@ export const Container = styled(AccessibleButton, {
       },
 
       transparent: {
+        fontWeight: '$font-weight-regular',
         color: '$action-color-text-transparent-enabled',
         background: '$action-color-background-transparent-enabled !important',
 
         '&:hover:not([disabled])': {
-          background: '$action-color-background-transparent-hover !important',
+          // background: '$action-color-background-transparent-hover !important',
         },
 
         '&:disabled': {
           background: '$action-color-background-transparent-hover !important',
         },
-      },
-
-      icon: {
-        color: '$action-color-text-transparent-enabled',
-        background: '$action-color-background-transparent-enabled !important',
 
         '& svg': {
-          fill: '$action-color-text-transparent-enabled',
+          backgroundColor: '$action-color-background-transparent-hover',
+          borderRadius: '$radii-md',
+          mr: '$spacing-2',
+          p: '$spacing-1',
         },
 
-        '&:hover:not([disabled])': {
-          background: '$action-color-background-transparent-hover !important',
+        '&:hover': {
+          '& svg': {
+            backgroundColor: '$action-color-background-transparent-pressed',
+          },
         },
       },
     },
@@ -122,18 +125,18 @@ export const Container = styled(AccessibleButton, {
     size: {
       lg: {
         fontSize: '$font-size-md',
-        padding: '$spacing-4 $spacing-6',
+        padding: '$spacing-4 $spacing-4',
         borderRadius: '$radii-md',
         height: 64,
       },
       md: {
         fontSize: '$font-size-md',
-        padding: '$spacing-3 $spacing-5',
+        padding: '$spacing-3 $spacing-4',
         borderRadius: '$radii-md',
       },
       sm: {
         fontSize: '$font-size-sm',
-        padding: '$spacing-1 $spacing-4',
+        padding: '$spacing-1 $spacing-3',
         h: 40,
         borderRadius: '$radii-sm',
 
@@ -298,54 +301,6 @@ export const Container = styled(AccessibleButton, {
   },
   compoundVariants: [
     {
-      variant: 'icon',
-      size: 'lg',
-
-      css: {
-        w: '$spacing-7',
-        h: '$spacing-7',
-        p: '0',
-      },
-    },
-    {
-      variant: 'icon',
-      size: 'md',
-
-      css: {
-        w: '$spacing-6 ',
-        h: '$spacing-6 ',
-        p: '0 ',
-      },
-    },
-    {
-      variant: 'icon',
-      size: 'sm',
-
-      css: {
-        w: '28px',
-        h: '28px',
-        p: '0',
-      },
-    },
-    {
-      variant: 'icon',
-      size: 'xs',
-
-      css: {
-        w: '22px',
-        h: '22px',
-        p: '0',
-      },
-    },
-    {
-      variant: 'icon',
-      fullWidth: true,
-
-      css: {
-        w: 'initial',
-      },
-    },
-    {
       variant: 'transparent',
       color: 'primary',
 
@@ -356,16 +311,7 @@ export const Container = styled(AccessibleButton, {
         },
       },
     },
-    {
-      variant: 'icon',
-      color: 'primary',
 
-      css: {
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed !important',
-        },
-      },
-    },
     {
       variant: 'transparent',
       color: 'secondary',
@@ -383,36 +329,6 @@ export const Container = styled(AccessibleButton, {
 
       css: {
         color: '$feedback-color-background-danger-default',
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
-      },
-    },
-    {
-      variant: 'icon',
-      color: 'secondary',
-
-      css: {
-        color: '$interactive-color-background-enabled',
-        '& svg': {
-          fill: '$interactive-color-background-enabled',
-        },
-
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
-      },
-    },
-    {
-      variant: 'icon',
-      color: 'danger',
-
-      css: {
-        color: '$feedback-color-background-danger-default',
-        '& svg': {
-          fill: '$feedback-color-background-danger-default',
-        },
-
         '&:focus': {
           outlineColor: '$action-color-border-transparent-pressed',
         },
@@ -474,29 +390,28 @@ export const Container = styled(AccessibleButton, {
         },
       },
     },
-    {
-      variant: 'icon',
-      animateOnHover: true,
+    // {
+    //   variant: 'icon',
+    //   animateOnHover: true,
 
-      css: {
-        '&::before': {
-          background: '$surface-color-background-subdued !important',
-          borderRadius: '50%',
-          paddingBottom: '150%',
-          top: '0%',
-          left: '-10%',
-        },
-        '&::after': {
-          background: '$surface-color-background-subdued !important',
-        },
-      },
-    },
-
+    //   css: {
+    //     '&::before': {
+    //       background: '$surface-color-background-subdued !important',
+    //       borderRadius: '50%',
+    //       paddingBottom: '150%',
+    //       top: '0%',
+    //       left: '-10%',
+    //     },
+    //     '&::after': {
+    //       background: '$surface-color-background-subdued !important',
+    //     },
+    //   },
+    // },
     {
       variant: 'transparent',
       size: 'xs',
       css: {
-        px: '$spacing-2',
+        px: '$spacing-1',
       },
     },
     {
@@ -511,6 +426,11 @@ export const Container = styled(AccessibleButton, {
       size: 'md',
       css: {
         px: '$spacing-3',
+        height: '50px',
+
+        '& svg': {
+          mr: '$spacing-1 !important',
+        },
       },
     },
     {
@@ -518,6 +438,11 @@ export const Container = styled(AccessibleButton, {
       size: 'lg',
       css: {
         px: '$spacing-4',
+        height: '64px',
+
+        '& svg': {
+          mr: '0 !important',
+        },
       },
     },
   ],

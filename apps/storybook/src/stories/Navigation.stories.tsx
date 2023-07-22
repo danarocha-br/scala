@@ -10,6 +10,7 @@ import {
   Shortcut,
   Text,
   Box,
+  SearchButton,
 } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
@@ -31,26 +32,48 @@ export default {
     user_imageURL: '',
     children: (
       <>
-        <Navigation.Item
-          label="Projects"
-          icon="project"
-          href="/projects"
-          shortcut="⌘ + P"
-        />
-        <Navigation.Item
-          label="Invoices"
-          icon="invoice"
-          href="/invoices"
-          shortcut="⌘ + I"
-          isActive
-        />
-        <Navigation.Item label="Clients" icon="user" href="/clients" />
-        <Navigation.Item
-          label="Special"
-          icon="development"
-          href="/special"
-          disabled
-        />
+        <Stack direction="column" gap="2" fullWidth>
+          <SearchButton
+            label="Search"
+            shortcut="⌘ + K"
+            css={{ mb: '$spacing-4' }}
+          />
+          <Navigation.Item
+            label="Projects"
+            icon="project"
+            href="/projects"
+            shortcut="⌘ + P"
+          />
+          <Navigation.Item
+            label="Invoices"
+            icon="invoice"
+            href="/invoices"
+            shortcut="⌘ + I"
+            isActive
+          />
+          <Navigation.Item label="Clients" icon="user" href="/clients" />
+          <Navigation.Item
+            label="Special"
+            icon="development"
+            href="/special"
+            disabled
+          />
+        </Stack>
+
+        <Stack direction="column" gap="2" fullWidth>
+          <Navigation.Item
+            label="Invite teammates"
+            icon="add-user"
+            href="/"
+            shortcut="⌘ + P"
+          />
+          <Navigation.Item
+            label="Upgrade"
+            icon="star"
+            href="/"
+            shortcut="⌘ + P"
+          />
+        </Stack>
       </>
     ),
     userMenu: (
