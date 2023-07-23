@@ -1,6 +1,8 @@
 import { Content, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
+import Link from '@tiptap/extension-link';
+
 // import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 // import { lowlight } from 'lowlight/lib/core';
 
@@ -48,6 +50,10 @@ export const Editor = ({
       // }).configure({ lowlight }),
       Placeholder.configure({
         placeholder: placeholder,
+      }),
+
+      Link.configure({
+        openOnClick: false,
       }),
     ],
     editable: editable,

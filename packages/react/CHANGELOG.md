@@ -1,14 +1,20 @@
 # @compasso/scala
 
-## 4.0.0
+## 2.3.3
 
-### Major Changes
+### Patch Changes
+
+- Editor component refactored
+
+## 2.3.2
+
+### Patch Changes
 
 - Fix Modal heights issue in css
 
-## 3.0.0
+## 2.3.1
 
-### Major Changes
+### Patch Changes
 
 - Change button css hierarchy to fix css cascading
 

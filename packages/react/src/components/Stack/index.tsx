@@ -124,7 +124,7 @@ export const Stack = styled('div', {
     align: 'start',
     justify: 'start',
     wrap: 'noWrap',
-    gap: 4,
+    gap: 2,
     fullWidth: false,
   },
 });

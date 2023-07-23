@@ -38,6 +38,17 @@ export default {
       const json = editor.editor.getJSON();
       console.log(json);
     },
+    argTypes: {
+      onUpdate: {
+        table: { type: 'Functions' },
+      },
+      content: {
+        table: { type: 'Modifiers' },
+      },
+      css: {
+        table: { type: 'Modifiers' },
+      },
+    },
   },
 } as Meta<EditorProps>;
 

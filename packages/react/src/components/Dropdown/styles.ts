@@ -2,22 +2,22 @@ import { styled, keyframes } from '../../styles';
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
-const slideUpAndFade = keyframes({
+export const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(15px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const slideRightAndFade = keyframes({
+export const slideRightAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateX(-15px)' },
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const slideDownAndFade = keyframes({
+export const slideDownAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-15px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const slideLeftAndFade = keyframes({
+export const slideLeftAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateX(15px)' },
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });

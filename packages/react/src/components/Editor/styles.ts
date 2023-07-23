@@ -1,5 +1,15 @@
 import { styled } from '../../styles';
 import { EditorContent, BubbleMenu } from '@tiptap/react';
+import {
+  Content as PopoverContent,
+  Arrow as PopoverArrow,
+} from '@radix-ui/react-popover';
+import {
+  slideDownAndFade,
+  slideLeftAndFade,
+  slideRightAndFade,
+  slideUpAndFade,
+} from '../Dropdown/styles';
 
 export const EditorContainer = styled(EditorContent, {
   width: '100%',
@@ -11,11 +21,11 @@ export const EditorContainer = styled(EditorContent, {
     outline: 'none',
 
     '& p': {
-      margin: '$spacing-1',
+      my: '$spacing-3',
     },
 
     '& h1, h2, h3, h4, h5, h6': {
-      my: '$spacing-2',
+      my: '$spacing-3',
     },
 
     '&__code-block ': {
@@ -30,7 +40,7 @@ export const EditorContainer = styled(EditorContent, {
   },
 
   '& .ProseMirror p.is-empty::before': {
-    color: '$text-color-caption',
+    color: '$text-color-body-lighter',
     content: 'attr(data-placeholder)',
     float: 'left',
     height: 0,
@@ -60,12 +70,12 @@ export const EditorMenu = styled(BubbleMenu, {
   background: '$surface-color-background-default',
   border: '1px solid',
   borderColor: '$action-color-border-transparent-enabled',
-  // boxShadow: '$elevation-medium',
-  boxShadow: '0 2px 10px $colors$action-color-border-transparent',
+  boxShadow: '0 2px 10px $colors$action-color-border-transparent-enabled',
   display: 'flex',
+  alignItems: 'center',
   gap: '$spacing-2',
   px: '$spacing-2',
-  py: '$spacing-2',
+  py: '$spacing-1',
   borderRadius: '$radii-sm',
 });
 
@@ -80,47 +90,99 @@ export const EditorMenu = styled(BubbleMenu, {
 //   },
 // });
 
-// export const CustomButton = styled('button', {
-//   all: 'unset',
-//   cursor: 'pointer',
-//   display: 'flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   p: '2px',
-//   borderRadius: '$radii-md',
-//   transition: 'all',
+export const CustomButton = styled('button', {
+  all: 'unset',
+  color: '$text-color-body-lighter',
+  fontFamily: '$font-family-sans',
+  fontWeight: '$font-weight-light',
+  fontSize: '18px',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  p: '2px',
+  borderRadius: '$radii-sm',
+  transition: '$base',
+  backgroundColor: '$action-color-text-transparent-hover',
+  outlineColor: 'transparent',
 
-//   '& svg': {
-//     fill: '$text-color-caption',
-//   },
+  w: '$spacing-4',
+  h: '$spacing-4',
 
-//   '&:hover': {
-//     background: '$action-color-background-transparent-hover',
+  '& svg': {
+    fill: '$text-color-body-lighter',
+  },
 
-//     '& svg': {
-//       fill: '$text-color-body',
-//     },
-//   },
+  '&:hover': {
+    background: '$action-color-background-transparent-hover',
 
-//   '&:focus': {
-//     outline: '2px solid',
-//     outlineOffset: '1px',
-//     outlineColor: '$action-color-border-transparent-pressed',
-//   },
+    '& svg': {
+      fill: '$text-color-body',
+    },
+  },
 
-//   variants: {
-//     isActive: {
-//       true: {
-//         background: '$action-color-background-transparent-pressed',
+  '&:focus': {
+    outline: '2px solid',
+    outlineOffset: '.5px',
+    outlineColor: '$action-color-border-secondary-pressed',
+  },
 
-//         '& svg': {
-//           fill: '$text-color-body',
-//         },
-//       },
-//     },
-//   },
+  variants: {
+    isActive: {
+      true: {
+        color: '$action-color-text-primary-enabled',
+        background: '$action-color-background-primary-enabled',
 
-//   defaultVariants: {
-//     isActive: false,
-//   },
-// });
+        '& svg': {
+          fill: '$action-color-text-primary-enabled',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    isActive: false,
+  },
+});
+
+export const CustomPopoverContent = styled(PopoverContent, {
+  backgroundColor: '$surface-color-background-default',
+  borderRadius: '$radii-md',
+  boxShadow: '$elevation-low',
+  p: '$spacing-2',
+});
+
+export const CustomInput = styled('input', {
+  all: 'unset',
+  color: '$text-color-body',
+  fontFamily: '$font-family-sans',
+  fontSize: '$font-size-md',
+  outline: 'none',
+  border: 'none',
+  outlineColor: 'transparent',
+  borderRadius: '$radii-sm',
+
+  '&::placeholder': {
+    color: '$text-color-caption',
+  },
+
+  '@media (prefers-reduced-motion: no-preference)': {
+    animationDuration: '500ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    willChange: 'transform, opacity',
+    '&[data-state="open"]': {
+      '&[data-side="top"]': { animationName: slideDownAndFade },
+      '&[data-side="right"]': { animationName: slideLeftAndFade },
+      '&[data-side="bottom"]': { animationName: slideUpAndFade },
+      '&[data-side="left"]': { animationName: slideRightAndFade },
+    },
+  },
+});
+
+export const CustomPopoverArrow = styled(PopoverArrow, {
+  fill: '$surface-color-background-default',
+  color: '$text-color-on-dark',
+  [`.dark-theme &`]: {
+    color: '$text-color-on-light',
+  },
+});

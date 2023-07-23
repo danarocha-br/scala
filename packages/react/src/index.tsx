@@ -14,6 +14,7 @@ export * from './components/Callout';
 export * from './components/CalendarCard';
 export * from './components/Card';
 export * from './components/Checkbox';
+export * from './components/CopyButton';
 export * from './components/DateInput';
 export * from './components/Dialog';
 export * from './components/Dropdown';
