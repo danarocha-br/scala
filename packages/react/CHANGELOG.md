@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 4.0.0
+
+### Major Changes
+
+- Fix Modal heights issue in css
+
 ## 3.0.0
 
 ### Major Changes

@@ -50,7 +50,7 @@ export const ModalContent = styled(Content, {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '100%',
-  height: '100% !important',
+  height: '100%',
   zIndex: '$max',
 
   '@media (prefers-reduced-motion: no-preference)': {
@@ -61,11 +61,12 @@ export const ModalContent = styled(Content, {
 
   '@bp-md': {
     width: '85vw',
-    height: '80%',
+    height: '80vh',
   },
 
   '@bp-xl': {
     width: '70vw',
+    height: '80vh',
   },
 });
 
