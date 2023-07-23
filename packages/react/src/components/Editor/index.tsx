@@ -1,4 +1,4 @@
-import { useEditor, Content } from '@tiptap/react';
+import { Content, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 // import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';

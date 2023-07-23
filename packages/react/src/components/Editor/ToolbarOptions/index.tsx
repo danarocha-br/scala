@@ -4,6 +4,7 @@ import { Button } from '../../Button';
 
 import * as S from '../styles';
 import { Editor } from '@tiptap/react';
+import { IconButton } from '../../IconButton';
 
 type ToolbarOptionsProps = {
   editor: Editor;
@@ -12,10 +13,9 @@ type ToolbarOptionsProps = {
 export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
   return (
     <S.EditorMenu editor={editor}>
-      <Button
+      <IconButton
         label="heading 1"
         icon="text-h1"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         data-active={editor.isActive('heading', { level: 1 })}
@@ -32,10 +32,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
           },
         }}
       />
-      <Button
+      <IconButton
         label="heading 2"
         icon="text-h2"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         css={{
@@ -51,10 +50,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
           },
         }}
       />
-      <Button
+      <IconButton
         label="heading 3"
         icon="text-h3"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         css={{
@@ -79,10 +77,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         }}
       />
 
-      <Button
+      <IconButton
         label="bold"
         icon="text-bold"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleBold().run()}
         css={{
@@ -98,10 +95,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
           },
         }}
       />
-      <Button
+      <IconButton
         label="italic"
         icon="text-italic"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleItalic().run()}
         css={{
@@ -118,10 +114,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         }}
       />
 
-      <Button
+      <IconButton
         label="strikethrough"
         icon="text-strikethrough"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleStrike().run()}
         css={{
@@ -138,10 +133,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         }}
       />
 
-      <Button
+      <IconButton
         label="bullet-list"
         icon="text-bullet-list"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         css={{
@@ -158,10 +152,9 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         }}
       />
 
-      <Button
+      <IconButton
         label="ordered-list"
         icon="text-ordered-list"
-        variant="icon"
         size="xs"
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         css={{

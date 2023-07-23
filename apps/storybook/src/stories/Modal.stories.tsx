@@ -4,6 +4,7 @@ import {
   Box,
   Breadcrumb,
   Button,
+  IconButton,
   Modal,
   ModalHandlesProps,
   ModalProps,
@@ -119,7 +120,7 @@ export const WithCustomHeader = Transactional.bind({});
 WithCustomHeader.args = {
   headerSlot: (
     <Stack gap="1" align="center" css={{ height: 'inherit', mt: 3 }}>
-      <Button variant="icon" label="Levels" icon="help" size="sm" />
+      <IconButton label="Levels" icon="help" size="sm" />
       <Box
         css={{
           background: '$action-color-border-transparent-enabled',

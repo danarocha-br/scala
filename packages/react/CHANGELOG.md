@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 3.0.0
+
+### Major Changes
+
+- Change button css hierarchy to fix css cascading
+
 ## 2.3.0
 
 ### Minor Changes
