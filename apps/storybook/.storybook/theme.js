@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { color } from '@compasso/design-tokens';
+import { color, fontFamily } from '@compasso/design-tokens';
 
 export default create({
   base: 'dark',
@@ -18,7 +18,7 @@ export default create({
   appBorderRadius: 2,
 
   // Typography
-  fontBase: '"Effra", "Open Sans", sans-serif',
+  fontBase: fontFamily['font-family-sans'],
   fontCode: 'monospace',
 
   // Text color

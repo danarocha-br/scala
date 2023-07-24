@@ -15,7 +15,6 @@ export default {
   },
   args: {
     content: 'Copy text sample',
-    copiedLabel: '',
   },
   argTypes: {
     content: {
@@ -26,20 +25,7 @@ export default {
         type: 'text',
       },
     },
-    copiedLabel: {
-      table: {
-        category: 'Modifier',
-      },
-      control: {
-        type: 'text',
-      },
-    },
   },
 } as Meta<CopyButtonProps>;
 
 export const Default: StoryObj<CopyButtonProps> = {};
-export const CustomLabel: StoryObj<CopyButtonProps> = {
-  args: {
-    copiedLabel: 'Copied!',
-  },
-};

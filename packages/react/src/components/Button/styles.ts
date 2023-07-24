@@ -48,7 +48,6 @@ export const MoveLoadingGradientStart = keyframes({
 //TODO: button disabled fix cursor
 
 export const Container = styled(AccessibleButton, {
-  all: 'unset',
   userSelect: 'none',
   boxSizing: 'border-box',
   '-webkit-appearance': 'none',
@@ -65,6 +64,7 @@ export const Container = styled(AccessibleButton, {
   overflow: 'hidden',
   position: 'relative',
   outline: 'none',
+  border: 'none',
   outlineColor: 'transparent',
   transition: 'all 300ms ease, outline 1ms',
   cursor: 'pointer',

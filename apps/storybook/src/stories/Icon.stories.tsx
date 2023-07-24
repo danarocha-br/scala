@@ -70,7 +70,7 @@ export default {
 export const IconSet: Story<IconProps> = (args) => (
   <Grid
     flow="row-dense"
-    cols="6"
+    cols="10"
     align="stretch"
     justify="between"
     gap="3"
@@ -84,7 +84,7 @@ export const IconSet: Story<IconProps> = (args) => (
         gap="2"
         css={{
           bg: '$surface-color-background-subdued',
-          p: '$spacing-2',
+          p: '$spacing-1',
           borderRadius: '$radii-sm',
         }}
       >

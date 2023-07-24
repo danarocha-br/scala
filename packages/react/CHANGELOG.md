@@ -1,5 +1,13 @@
 # @compasso/scala
 
+## 2.3.4
+
+### Patch Changes
+
+- Design tokens updates
+- Updated dependencies
+  - @compasso/design-tokens@2.3.0
+
 ## 2.3.3
 
 ### Patch Changes

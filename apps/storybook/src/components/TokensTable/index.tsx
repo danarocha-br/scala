@@ -64,10 +64,10 @@ export function TokensTable({
                     size="sm"
                     color="danger"
                     css={{
-                      bg: '$color-neutral-200',
+                      bg: '$color-neutral-100',
                       borderRadius: '$radii-sm',
                       w: 'fit-content',
-                      px: '$3',
+                      px: '$spacing-1',
                     }}
                   >
                     ${key}

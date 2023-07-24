@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.3.0
+
+### Minor Changes
+
+- Design tokens updates
+
 ## 2.2.0
 
 ### Minor Changes

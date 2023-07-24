@@ -2,12 +2,13 @@ import { styled } from '../../styles';
 import { MoveLoadingGradientStart } from '../Button/styles';
 
 export const Container = styled('button', {
-  all: 'unset',
   color: '$action-color-text-transparent-enabled',
   background: '$action-color-background-transparent-enabled',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  outline: 'none',
+  border: 'none',
   outlineColor: 'transparent',
   transition: '$base',
 

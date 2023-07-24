@@ -55,7 +55,22 @@ export const EditorContainer = styled(EditorContent, {
         '& .c-editor': {
           border: '1px solid $colors$form-color-border-default',
           borderRadius: '$radii-md',
-          p: '$spacing-3',
+          px: '$spacing-3',
+          py: '$spacing-1',
+          overflow: 'scroll',
+          borderTopRightRadius: '$radii-md',
+          borderBottomRightRadius: '$radii-md',
+
+          '&::-webkit-scrollbar': {
+            width: '$spacing-2',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '$form-color-background-pressed',
+            borderRadius: '$radii-pill',
+          },
         },
       },
     },
@@ -70,7 +85,7 @@ export const EditorMenu = styled(BubbleMenu, {
   background: '$surface-color-background-default',
   border: '1px solid',
   borderColor: '$action-color-border-transparent-enabled',
-  boxShadow: '0 2px 10px $colors$action-color-border-transparent-enabled',
+  // boxShadow: '0 2px 10px $colors$action-color-border-transparent-enabled',
   display: 'flex',
   alignItems: 'center',
   gap: '$spacing-2',
@@ -91,17 +106,17 @@ export const EditorMenu = styled(BubbleMenu, {
 // });
 
 export const CustomButton = styled('button', {
-  all: 'unset',
   color: '$text-color-body-lighter',
   fontFamily: '$font-family-sans',
   fontWeight: '$font-weight-light',
-  fontSize: '18px',
+  fontSize: '$font-size-md',
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   p: '2px',
   borderRadius: '$radii-sm',
+  border: 'none',
   transition: '$base',
   backgroundColor: '$action-color-text-transparent-hover',
   outlineColor: 'transparent',
