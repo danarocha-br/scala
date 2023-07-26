@@ -16,7 +16,7 @@ export type CheckboxFieldsetProps = {
 export type CheckboxProps = {
   name?: string;
   label?: string;
-  variant: 'regular' | 'task';
+  variant?: 'regular' | 'task';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
   disabled?: boolean;

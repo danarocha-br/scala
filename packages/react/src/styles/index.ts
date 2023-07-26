@@ -229,9 +229,8 @@ export const globalStyles = globalCss({
   },
 
   'body, button': {
-    color: '$text-on-interactive',
-    fontFamily: '$sans',
-    fontSize: '$md',
+    fontFamily: '$font-family-sans',
+    fontSize: '$font-size-md',
   },
 
   '[disabled]': {
@@ -253,13 +252,13 @@ export const globalStyles = globalCss({
   },
 
   'button, input, textarea': {
-    fontFamily: '$sans',
+    fontFamily: '$font-family-sans',
     fontDisplay: 'swap',
   },
 
   svg: { display: 'block' },
 
-  'pre, code': { margin: 0, fontFamily: '$mono' },
+  'pre, code': { margin: 0, fontFamily: '$font-family-mono' },
 
   '::selection': {
     backgroundColor: '$brand-primary',

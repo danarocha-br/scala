@@ -14,8 +14,8 @@ export const Indicator = styled(CheckboxPrimitiveIndicator, { all: 'unset' });
 
 export const CheckboxWrapper = styled('div', {
   mr: '$spacing-2',
-  w: '$spacing-3',
-  h: '$spacing-3',
+  width: '$spacing-3 !important',
+  height: '$spacing-3 !important',
 
   border: '2px solid',
   borderColor: '$form-color-border-default',

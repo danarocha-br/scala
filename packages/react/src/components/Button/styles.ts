@@ -289,19 +289,19 @@ export const Container = styled(AccessibleButton, {
       },
     },
 
-    // {
-    //   variant: 'transparent',
-    //   animateOnHover: true,
+    {
+      variant: 'transparent',
+      animateOnHover: true,
 
-    //   css: {
-    //     '&::before': {
-    //       background: '$surface-color-background-subdued ',
-    //     },
-    //     '&::after': {
-    //       background: '$surface-color-background-subdued ',
-    //     },
-    //   },
-    // },
+      css: {
+        '&::before': {
+          background: '$surface-color-background-subdued ',
+        },
+        '&::after': {
+          background: '$surface-color-background-subdued ',
+        },
+      },
+    },
     {
       variant: 'primary',
       color: 'primary',

@@ -56,8 +56,8 @@ export const Container = styled('button', {
       primary: {},
       secondary: {
         // boxShadow: '$elevation-low',
-        border: '2px solid',
-        borderColor: '$action-color-border-transparent-pressed',
+        border: '2px solid !important',
+        borderColor: '$action-color-border-transparent-pressed !important',
       },
     },
 

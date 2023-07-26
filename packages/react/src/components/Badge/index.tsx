@@ -6,7 +6,7 @@ export type BadgeProps = {
   css?: CSS;
   label: string | React.ReactNode | React.ReactElement;
   variant?: 'default' | 'pill';
-  color?: 'secondary' | 'primary' | 'danger' | 'warning' | 'on-dark';
+  color?: 'info' | 'primary' | 'danger' | 'warning' | 'on-dark';
   outlined?: boolean;
 };
 

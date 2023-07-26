@@ -10,7 +10,7 @@ export default {
     badges: [BADGE.STABLE],
     design: {
       type: 'figma',
-      url: '',
+      url: 'https://www.figma.com/file/nGRJSZ90AzGrFe23Shmkzf/Scala?type=design&node-id=638%3A160318&mode=design&t=6xBLjdHeoRhcrzFa-1',
     },
   },
   args: {
@@ -48,7 +48,7 @@ export default {
       table: {
         category: 'Modifiers',
       },
-      options: ['primary', 'secondary', 'danger', 'warning', 'on-dark'],
+      options: ['primary', 'info', 'danger', 'warning', 'on-dark'],
       control: {
         type: 'inline-radio',
       },
@@ -80,7 +80,7 @@ export default {
 export const Default: Story<BadgeProps> = (args) => (
   <>
     <Badge {...args} color="primary" />
-    <Badge {...args} color="secondary" />
+    <Badge {...args} color="info" />
     <Badge {...args} color="warning" />
     <Badge {...args} color="danger" />
     <Badge {...args} color="on-dark" />
@@ -90,7 +90,7 @@ export const Default: Story<BadgeProps> = (args) => (
 export const Pill: Story<BadgeProps> = (args) => (
   <>
     <Badge {...args} color="primary" variant="pill" />
-    <Badge {...args} color="secondary" variant="pill" />
+    <Badge {...args} color="info" variant="pill" />
     <Badge {...args} color="warning" variant="pill" />
     <Badge {...args} color="danger" variant="pill" />
     <Badge {...args} color="on-dark" variant="pill" />
@@ -100,7 +100,7 @@ export const Pill: Story<BadgeProps> = (args) => (
 export const Outlined: Story<BadgeProps> = (args) => (
   <>
     <Badge {...args} color="primary" outlined />
-    <Badge {...args} color="secondary" outlined />
+    <Badge {...args} color="info" outlined />
     <Badge {...args} color="warning" outlined />
     <Badge {...args} color="danger" outlined />
     <Badge {...args} color="on-dark" outlined />

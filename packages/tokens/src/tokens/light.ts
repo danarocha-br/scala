@@ -1,7 +1,7 @@
 export const light = {
   'gradient-color-background':
     'linear-gradient(89.99deg, #FBF8F6 13.34%, #F4F4ED 99.99%)',
-  'background-default': '#F8FAF9',
+  'background-default': '#FAFAF9',
   'feedback-color-background-success-default': '#0a8708',
   'feedback-color-background-success-subdued': '#37b135',
   'feedback-color-background-success-hover': '#0a8708',
@@ -58,7 +58,7 @@ export const light = {
   'action-color-border-secondary-pressed': '#405fed59',
   'action-color-border-danger-enabled': '#f79792',
   'action-color-border-danger-pressed': '#efdcdc',
-  'action-color-border-transparent-enabled': '#e0e1e0',
+  'action-color-border-transparent-enabled': '#e0e1e073',
   'action-color-border-transparent-pressed': '#e0e1e04d',
   'action-color-text-primary-enabled': '#ffffff',
   'action-color-text-primary-disabled': '#4c575d',

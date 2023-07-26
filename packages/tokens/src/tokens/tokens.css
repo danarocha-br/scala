@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 24 Jul 2023 12:20:32 GMT
+ * Generated on Wed, 26 Jul 2023 14:40:02 GMT
  */
 
 :root {
@@ -32,7 +32,7 @@
   --dark-interactive-color-text-enabled: #d2e7fe;
   --dark-interactive-color-border-pressed: #81a1da2e;
   --dark-interactive-color-border-enabled: #405fed;
-  --dark-interactive-color-background-disabled: #b4cffd4d;
+  --dark-interactive-color-background-disabled: #738af21f;
   --dark-interactive-color-background-pressed: #271ed2;
   --dark-interactive-color-background-hover: #3b41e8;
   --dark-interactive-color-background-subdued: #799ff6;
@@ -61,7 +61,7 @@
   --dark-action-color-background-danger-pressed: #c33218;
   --dark-action-color-background-danger-hover: #d63d29;
   --dark-action-color-background-danger-enabled: #f55c56;
-  --dark-action-color-background-secondary-disabled: #b5cffd;
+  --dark-action-color-background-secondary-disabled: #738af21f;
   --dark-action-color-background-secondary-pressed: #271ed2;
   --dark-action-color-background-secondary-hover: #3b41e8;
   --dark-action-color-background-secondary-enabled: #405fed;
@@ -103,7 +103,7 @@
   --dark-feedback-color-background-success-hover: #0a8708;
   --dark-feedback-color-background-success-subdued: #6ec95e;
   --dark-feedback-color-background-success-default: #37b135;
-  --dark-background-default: #151c1e;
+  --dark-background-default: #171F21;
   --dark-gradient-background: linear-gradient(89.99deg, #303030 13.34%, #4A4A4A 99.99%);
   --light-brand-color-primary: #f1786f;
   --light-overlay-color-background-subdued: #202a2d;
@@ -146,7 +146,7 @@
   --light-action-color-text-primary-disabled: #4c575d;
   --light-action-color-text-primary-enabled: #ffffff;
   --light-action-color-border-transparent-pressed: #e0e1e04d;
-  --light-action-color-border-transparent-enabled: #e0e1e0;
+  --light-action-color-border-transparent-enabled: #e0e1e073;
   --light-action-color-border-danger-pressed: #efdcdc;
   --light-action-color-border-danger-enabled: #f79792;
   --light-action-color-border-secondary-pressed: #405fed59;
@@ -203,7 +203,7 @@
   --light-feedback-color-background-success-hover: #0a8708;
   --light-feedback-color-background-success-subdued: #37b135;
   --light-feedback-color-background-success-default: #0a8708;
-  --light-background-default: #F8FAF9;
+  --light-background-default: #FAFAF9;
   --light-gradient-color-background: linear-gradient(89.99deg, #FBF8F6 13.34%, #F4F4ED 99.99%);
   --elevation-high: 0px -1px 2.5px 0px #00000014, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026;
   --elevation-medium: 0px 0px 5.8px 3px #00000008, 0px 24px 38px 0px #0000001a;

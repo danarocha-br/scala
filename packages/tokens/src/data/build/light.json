@@ -10,7 +10,7 @@
     },
     "background": {
       "default": {
-        "value": "#F8FAF9",
+        "value": "#FAFAF9",
         "type": "color"
       }
     },
@@ -297,7 +297,7 @@
           },
           "transparent": {
             "enabled": {
-              "value": "#e0e1e0",
+              "value": "#e0e1e073",
               "type": "color"
             },
             "pressed": {

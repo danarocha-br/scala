@@ -25,7 +25,7 @@ export const Header = styled('header', {
   variants: {
     variant: {
       info: {
-        color: '$interactive-color-text-enabled',
+        color: '$interactive-color-background-enabled',
         background: '#d2e7feb3',
 
         [`.dark-theme &`]: {

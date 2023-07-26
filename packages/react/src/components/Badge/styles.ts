@@ -24,7 +24,7 @@ export const Container = styled('span', {
         borderColor: '$action-color-background-primary-enabled',
         backgroundColor: '$action-color-background-primary-enabled',
       },
-      secondary: {
+      info: {
         color: '$action-color-text-secondary-enabled',
         borderColor: '$action-color-background-secondary-enabled',
         backgroundColor: '$action-color-background-secondary-enabled',

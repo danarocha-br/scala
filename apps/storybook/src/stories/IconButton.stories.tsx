@@ -10,7 +10,7 @@ export default {
     badges: [BADGE.STABLE],
     design: {
       type: 'figma',
-      url: '',
+      url: 'https://www.figma.com/file/nGRJSZ90AzGrFe23Shmkzf/Scala?type=design&node-id=643%3A172274&mode=design&t=QcKO9NKDxvGimjvK-1',
     },
   },
   args: {

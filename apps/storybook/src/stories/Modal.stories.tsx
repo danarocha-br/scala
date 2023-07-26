@@ -23,13 +23,29 @@ export default {
     badges: [BADGE.STABLE],
     design: {
       type: 'figma',
-      url: '',
+      url: 'https://www.figma.com/file/nGRJSZ90AzGrFe23Shmkzf/Scala?type=design&node-id=644%3A196579&mode=design&t=QcKO9NKDxvGimjvK-1',
     },
   },
   args: {
     title: 'Modal Title',
     description: 'Modal description goes here',
-    children: 'This is a transactional modal.',
+    children: (
+      <>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+        <p>This is a transactional modal.</p>
+      </>
+    ),
     variant: 'transactional',
     buttonPrimaryLabel: 'Save',
     buttonSecondaryLabel: 'Cancel',
@@ -86,7 +102,7 @@ export default {
       return (
         <OverlayProvider>
           <ModalProvider>
-            <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
+            <Stack align="center" justify="center" css={{ h: '100vh', w: 600 }}>
               {Story()}
             </Stack>
           </ModalProvider>

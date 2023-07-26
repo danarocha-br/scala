@@ -5,7 +5,6 @@ import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
-import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { IconButton } from '../IconButton';
 
@@ -49,10 +48,10 @@ export const CalendarCard = ({
       css={{
         background: '$surface-color-background-default',
         radii: '$radii-sm',
-        boxShadow: '0px 3px 2px 0px #00000007',
+        boxShadow: 'none',
         border:
           status === 'published'
-            ? 'none'
+            ? '1px solid $colors$action-color-border-transparent-enabled'
             : '1px dashed $colors$action-color-border-danger-enabled',
         cursor: 'pointer',
         transition: '$slow',

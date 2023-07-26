@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.3.1
+
+### Patch Changes
+
+- Fix styles issues in different components
+
 ## 2.3.0
 
 ### Minor Changes

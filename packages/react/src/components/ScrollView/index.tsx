@@ -13,7 +13,7 @@ export const ScrollView = ({
   css,
   ...props
 }: ScrollViewProps): JSX.Element => (
-  <S.ScrollArea css={css} {...props}>
+  <S.ScrollArea css={css} {...props} className="c-scrollarea">
     <S.ScrollViewport>{children}</S.ScrollViewport>
 
     <S.ScrollBar orientation="vertical">

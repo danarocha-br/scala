@@ -8,7 +8,7 @@
     },
     "background": {
       "default": {
-        "value": "#151c1e",
+        "value": "#171F21",
         "type": "color"
       }
     },
@@ -221,7 +221,7 @@
               "type": "color"
             },
             "disabled": {
-              "value": "#b5cffd",
+              "value": "#738af21f",
               "type": "color"
             }
           },
@@ -368,7 +368,7 @@
             "type": "color"
           },
           "disabled": {
-            "value": "#b4cffd4d",
+            "value": "#738af21f",
             "type": "color"
           }
         },

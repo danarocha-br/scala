@@ -1,7 +1,7 @@
 export const dark = {
   'gradient-background':
     'linear-gradient(89.99deg, #303030 13.34%, #4A4A4A 99.99%)',
-  'background-default': '#151c1e',
+  'background-default': '#171F21',
   'feedback-color-background-success-default': '#37b135',
   'feedback-color-background-success-subdued': '#6ec95e',
   'feedback-color-background-success-hover': '#0a8708',
@@ -43,7 +43,7 @@ export const dark = {
   'action-color-background-secondary-enabled': '#405fed',
   'action-color-background-secondary-hover': '#3b41e8',
   'action-color-background-secondary-pressed': '#271ed2',
-  'action-color-background-secondary-disabled': '#b5cffd',
+  'action-color-background-secondary-disabled': '#738af21f',
   'action-color-background-danger-enabled': '#f55c56',
   'action-color-background-danger-hover': '#d63d29',
   'action-color-background-danger-pressed': '#c33218',
@@ -72,7 +72,7 @@ export const dark = {
   'interactive-color-background-subdued': '#799ff6',
   'interactive-color-background-hover': '#3b41e8',
   'interactive-color-background-pressed': '#271ed2',
-  'interactive-color-background-disabled': '#b4cffd4d',
+  'interactive-color-background-disabled': '#738af21f',
   'interactive-color-border-enabled': '#405fed',
   'interactive-color-border-pressed': '#81a1da2e',
   'interactive-color-text-enabled': '#d2e7fe',

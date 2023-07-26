@@ -12,13 +12,12 @@ import {
 
 import { Button } from '../Button';
 import { Stack } from '../Stack';
+import { useOverlay } from '../../hooks/useOverlay';
+import { IconButton } from '../IconButton';
+import { ScrollView } from '../ScrollView';
+import { CSS } from '../../styles';
 
 import * as S from './styles';
-
-import { useOverlay } from '../../hooks/useOverlay';
-import { Box } from '../Box';
-import { CSS } from '../../styles';
-import { IconButton } from '../IconButton';
 
 export type ModalHandlesProps = {
   openModal: () => void;
@@ -132,7 +131,7 @@ export const Modal = forwardRef(
                   css={{
                     mt: '$spacing-2',
                     position: 'relative',
-                    right: -3,
+                    right: 0,
 
                     '& svg': {
                       fill: '$text-color-caption',
@@ -147,9 +146,27 @@ export const Modal = forwardRef(
             <S.ModalDescription>{description}</S.ModalDescription>
           )}
 
-          <Box css={{ px: '$spacing-3', color: '$text-color-body' }}>
+          <ScrollView
+            css={{
+              px: '$spacing-3',
+              color: '$text-color-body',
+              borderRadius: 0,
+              width: '100%',
+              height: '80vh',
+
+              '@bp-md': {
+                width: '97%',
+                height: '55vh',
+              },
+
+              '@bp-xl': {
+                width: '97%',
+                height: '55vh',
+              },
+            }}
+          >
             {children}
-          </Box>
+          </ScrollView>
 
           <S.ModalFooter>
             {variant === 'transactional' ? (
@@ -160,6 +177,7 @@ export const Modal = forwardRef(
                   onClick={onButtonSecondaryClick || closeModal}
                   size="sm"
                   type="button"
+                  animateOnHover
                 />
 
                 <Button
@@ -168,6 +186,7 @@ export const Modal = forwardRef(
                   onClick={onButtonPrimaryClick}
                   size="sm"
                   type="submit"
+                  animateOnHover
                 />
               </>
             ) : (

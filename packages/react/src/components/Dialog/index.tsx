@@ -153,6 +153,7 @@ export const Dialog = forwardRef(
                   onClick={onButtonSecondaryClick || closeDialog}
                   size="sm"
                   type="button"
+                  animateOnHover
                 />
 
                 <Button
@@ -161,6 +162,7 @@ export const Dialog = forwardRef(
                   onClick={onButtonPrimaryClick}
                   size="sm"
                   type="submit"
+                  animateOnHover
                 />
               </>
             ) : variant === 'danger' ? (
@@ -171,6 +173,7 @@ export const Dialog = forwardRef(
                   onClick={onButtonSecondaryClick || closeDialog}
                   size="sm"
                   type="button"
+                  animateOnHover
                 />
 
                 <Button
@@ -179,6 +182,7 @@ export const Dialog = forwardRef(
                   onClick={onButtonPrimaryClick}
                   size="sm"
                   type="submit"
+                  animateOnHover
                 />
               </>
             ) : (
@@ -186,6 +190,7 @@ export const Dialog = forwardRef(
                 label={buttonPrimaryLabel || 'Ok'}
                 onClick={onButtonPrimaryClick}
                 size="sm"
+                animateOnHover
               />
             )}
           </S.DialogFooter>
