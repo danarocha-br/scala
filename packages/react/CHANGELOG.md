@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.3.6
+
+### Patch Changes
+
+- Fix Checkbox component styling
+
 ## 2.3.5
 
 ### Patch Changes

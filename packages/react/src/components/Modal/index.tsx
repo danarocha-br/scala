@@ -155,12 +155,10 @@ export const Modal = forwardRef(
               height: '80vh',
 
               '@bp-md': {
-                width: '97%',
                 height: '55vh',
               },
 
               '@bp-xl': {
-                width: '97%',
                 height: '55vh',
               },
             }}
