@@ -1,7 +1,8 @@
 import { styled } from '../../styles';
 import { MoveLoadingGradientStart } from '../Button/styles';
+import { Button as AccessibleButton } from '@ariakit/react';
 
-export const Container = styled('button', {
+export const Container = styled(AccessibleButton, {
   color: '$action-color-text-transparent-enabled',
   background: '$action-color-background-transparent-enabled',
   display: 'flex',
@@ -26,7 +27,7 @@ export const Container = styled('button', {
     outlineColor: 'transparent',
   },
 
-  '&:disabled': {
+  '&[aria-disabled="true"]': {
     opacity: '0.65',
     cursor: 'not-allowed',
   },

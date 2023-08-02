@@ -72,7 +72,7 @@ export const light = {
   'interactive-color-background-subdued': '#3b41e8',
   'interactive-color-background-hover': '#1f18aa',
   'interactive-color-background-pressed': '#182586',
-  'interactive-color-background-disabled': '#b5cffd',
+  'interactive-color-background-disabled': '#f0f7ff',
   'interactive-color-border-enabled': '#3b41e8',
   'interactive-color-border-pressed': '#b5cffd',
   'interactive-color-text-enabled': '#f0f7ff',

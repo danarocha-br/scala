@@ -1,5 +1,13 @@
 # @compasso/scala
 
+## 2.3.7
+
+### Patch Changes
+
+- Combobox, Command and Popover added to lib
+- Updated dependencies
+  - @compasso/design-tokens@2.3.2
+
 ## 2.3.6
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 26 Jul 2023 14:40:02 GMT
+ * Generated on Wed, 02 Aug 2023 13:50:38 GMT
  */
 
 :root {
@@ -132,7 +132,7 @@
   --light-interactive-color-text-enabled: #f0f7ff;
   --light-interactive-color-border-pressed: #b5cffd;
   --light-interactive-color-border-enabled: #3b41e8;
-  --light-interactive-color-background-disabled: #b5cffd;
+  --light-interactive-color-background-disabled: #f0f7ff;
   --light-interactive-color-background-pressed: #182586;
   --light-interactive-color-background-hover: #1f18aa;
   --light-interactive-color-background-subdued: #3b41e8;

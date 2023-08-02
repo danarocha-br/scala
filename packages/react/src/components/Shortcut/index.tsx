@@ -9,6 +9,7 @@ export const Shortcut = ({
   ...props
 }: ShortcutProps): JSX.Element => (
   <Text
+    className="c-shortcut"
     size="xs"
     weight="medium"
     css={{

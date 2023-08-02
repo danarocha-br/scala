@@ -78,6 +78,9 @@ export const Text = styled('span', {
       'on-light': {
         color: '$text-color-on-light',
       },
+      current: {
+        color: 'inherit',
+      },
     },
 
     weight: {

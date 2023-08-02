@@ -1,5 +1,5 @@
 import { styled, keyframes } from '../../styles';
-import { Button as AccessibleButton } from 'reakit/Button';
+import { Button as AccessibleButton } from '@ariakit/react';
 
 const MoveScaleUpInitial = keyframes({
   to: { transform: 'translate3d(0,-100%,0) scale3d(1,1.1,1)', opacity: 0 },
@@ -69,13 +69,13 @@ export const Container = styled(AccessibleButton, {
   transition: 'all 300ms ease, outline 1ms',
   cursor: 'pointer',
 
-  '&:focus': {
+  '&:focus, &[data-focus-visible]': {
     outline: '2px solid',
     outlineOffset: '2px',
     outlineColor: 'transparent',
   },
 
-  '&:disabled': {
+  '&[aria-disabled="true"]': {
     opacity: '0.65',
     cursor: 'not-allowed',
   },
@@ -106,7 +106,7 @@ export const Container = styled(AccessibleButton, {
           background: '$action-color-background-transparent-hover !important',
         },
 
-        '&:disabled': {
+        '&[aria-disabled="true"]': {
           background: '$action-color-background-transparent-hover  !important',
         },
 
@@ -143,7 +143,7 @@ export const Container = styled(AccessibleButton, {
         h: 40,
         borderRadius: '$radii-sm',
 
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outline: '2px solid',
           outlineOffset: '0px',
           outlineColor: 'transparent',
@@ -155,7 +155,7 @@ export const Container = styled(AccessibleButton, {
         h: 30,
         borderRadius: '$radii-sm',
 
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outline: '2px solid',
           outlineOffset: '0px',
           outlineColor: 'transparent',
@@ -316,10 +316,10 @@ export const Container = styled(AccessibleButton, {
             zIndex: '$1',
           },
         },
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$action-color-border-primary-pressed',
         },
-        '&:disabled': {
+        '&[aria-disabled="true"]': {
           color: '$action-color-text-primary-disabled ',
           background: '$action-color-background-primary-disabled',
         },
@@ -338,11 +338,11 @@ export const Container = styled(AccessibleButton, {
             zIndex: '$1',
           },
         },
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$action-color-border-secondary-pressed',
           background: '$action-color-background-secondary-hover',
         },
-        '&:disabled': {
+        '&[aria-disabled="true"]': {
           color: '$action-color-text-secondary-disabled ',
           background: '$action-color-background-secondary-disabled',
         },
@@ -358,10 +358,10 @@ export const Container = styled(AccessibleButton, {
         '&:hover:not([disabled])': {
           background: '$feedback-color-background-danger-hover',
         },
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$feedback-color-border-danger-pressed',
         },
-        '&:disabled': {
+        '&[aria-disabled="true"]': {
           color: '$feedback-color-text-danger-disabled ',
           background: '$feedback-color-background-danger-disabled',
         },
@@ -373,7 +373,7 @@ export const Container = styled(AccessibleButton, {
 
       css: {
         color: '$text-color-body',
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$action-color-border-transparent-pressed',
         },
       },
@@ -385,7 +385,7 @@ export const Container = styled(AccessibleButton, {
 
       css: {
         color: '$interactive-color-background-enabled',
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$action-color-border-transparent-pressed ',
         },
       },
@@ -396,7 +396,7 @@ export const Container = styled(AccessibleButton, {
 
       css: {
         color: '$feedback-color-background-danger-default',
-        '&:focus': {
+        '&:focus, &[data-focus-visible]': {
           outlineColor: '$action-color-border-transparent-pressed',
         },
       },

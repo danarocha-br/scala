@@ -1,4 +1,4 @@
-import { Button } from 'reakit';
+import { Button } from '@ariakit/react';
 import { styled } from '../../styles';
 
 export const Addon = styled('span', {

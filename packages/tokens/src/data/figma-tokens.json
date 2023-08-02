@@ -1448,7 +1448,7 @@
               "type": "color"
             },
             "disabled": {
-              "value": "{color.royal.200}",
+              "value": "{color.royal.50}",
               "type": "color"
             }
           },

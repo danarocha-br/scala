@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.3.2
+
+### Patch Changes
+
+- Combobox, Command and Popover added to lib
+
 ## 2.3.1
 
 ### Patch Changes

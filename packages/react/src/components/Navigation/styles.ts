@@ -5,7 +5,7 @@ import { styled, keyframes } from '../../styles';
 const open = keyframes({
   from: { width: 0, opacity: 1 },
   to: { width: 0, opacity: 1 },
-  // to: { width: 260, opacity: 1 },
+  // to: { width: 240, opacity: 1 },
 });
 
 const close = keyframes({
@@ -194,7 +194,7 @@ export const CollapsibleRoot = styled(Root, {
     bg: '$surface-color-background-default',
     borderRight: '1px solid',
     borderColor: `${transparentize(0.7, '#D5DBDB')}`,
-    minWidth: 260,
+    minWidth: 240,
 
     [`.dark-theme &`]: {
       bg: '$surface-color-background-pressed',
@@ -258,7 +258,8 @@ export const ToogleButton = styled('button', {
   w: 'auto',
 
   p: '$spacing-2',
-  pb: '2px',
+  pb: '$spacing-1',
+  mb: '$spacing-1',
   borderRadius: '$radii-md',
   transition: '$base',
   border: '1px solid transparent',

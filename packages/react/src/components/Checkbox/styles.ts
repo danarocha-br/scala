@@ -14,12 +14,18 @@ export const Indicator = styled(CheckboxPrimitiveIndicator, { all: 'unset' });
 
 export const CheckboxWrapper = styled('div', {
   mr: '$spacing-2',
-  width: '16px',
-  height: '16px',
+  width: '20px',
+  height: '20px',
 
   border: '2px solid',
   borderColor: '$form-color-border-default',
   borderRadius: '$radii-sm',
+
+  '&:focus': {
+    outline: '2px solid',
+    outlineOffset: '2px',
+    outlineColor: 'red',
+  },
 
   variants: {
     hasError: {
@@ -37,8 +43,8 @@ export const CheckboxWrapper = styled('div', {
 export const CheckboxWrapperTask = styled('div', {
   position: 'relative',
   d: 'inline-block',
-  w: '16px',
-  h: '16px',
+  w: '20px',
+  h: '20px',
   mr: '$spacing-2',
 
   border: '2px solid',
