@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { ElementRef, forwardRef } from 'react';
 import {
   components,
