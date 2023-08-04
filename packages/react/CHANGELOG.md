@@ -1,5 +1,13 @@
 # @compasso/scala
 
+## 2.3.8
+
+### Patch Changes
+
+- New components ui updates
+- Updated dependencies
+  - @compasso/design-tokens@2.3.3
+
 ## 2.3.7
 
 ### Patch Changes

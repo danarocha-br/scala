@@ -41,4 +41,5 @@ export const ContainerContent = styled(Content, {
     '&[data-side="bottom"]': { animationName: slideUpAndFade },
     '&[data-side="left"]': { animationName: slideRightAndFade },
   },
+  zIndex: '$max',
 });

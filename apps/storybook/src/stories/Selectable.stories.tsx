@@ -3,7 +3,7 @@ import { Selectable, SelectableProps } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
-  title: 'Components/Selectable',
+  title: 'Form/Selectable',
   component: Selectable,
   parameters: {
     layout: 'centered',

@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.3.3
+
+### Patch Changes
+
+- New components ui updates
+
 ## 2.3.2
 
 ### Patch Changes

@@ -18,8 +18,8 @@ export const Container = styled(AccessibleButton, {
   transition: '$base',
 
   '&:hover': {
-    color: '$interactive-color-background-enabled',
-    // backgroundColor: '$action-color-background-transparent-pressed',
+    color: '$text-color-body',
+    backgroundColor: '$interactive-color-background-disabled',
   },
 
   '&:focus, &[data-focus-visible]': {

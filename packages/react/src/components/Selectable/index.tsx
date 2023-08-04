@@ -1,10 +1,3 @@
-import {
-  useComboboxStore,
-  Combobox,
-  ComboboxPopover,
-  ComboboxItem,
-} from '@ariakit/react';
-
 import { CSS } from '../../styles';
 import { Icon, iconPath } from '../Icon';
 import { Text } from '../Text';
@@ -27,7 +20,7 @@ export const Selectable = ({
   isActive,
   ...props
 }: SelectableProps): JSX.Element => (
-  <S.Container css={css} {...props} isActive={isActive}>
+  <S.Container css={css} {...props} isActive={isActive} role="combobox">
     {!!icon && <Icon name={icon} size="sm" label="icon" color="current" />}
     {!!label && (
       <Text size="sm" color="current">

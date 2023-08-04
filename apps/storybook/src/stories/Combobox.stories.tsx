@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
   Button,
@@ -9,7 +10,6 @@ import {
   Stack,
 } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
-import { useState } from 'react';
 
 export default {
   title: 'Form/Combobox',
