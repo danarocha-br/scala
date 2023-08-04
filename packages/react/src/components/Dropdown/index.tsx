@@ -66,7 +66,7 @@ const DropdownBase = ({
 }: DropdownProps) => (
   <Box
     className="dropdown"
-    css={{ position: 'relative', w: 'max-content', css }}
+    css={{ position: 'relative', w: 'max-content', zIndex: '$max', css }}
     {...props}
   >
     <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>

@@ -13,7 +13,6 @@ import {
 
 export const EditorContainer = styled(EditorContent, {
   width: '100%',
-  padding: '$spacing-2',
 
   '& .c-editor': {
     color: '$text-color-body',

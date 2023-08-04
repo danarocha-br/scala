@@ -12,7 +12,7 @@ import {
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
-  '100%': { opacity: 0.8 },
+  '100%': { opacity: 0.6 },
 });
 
 const contentShow = keyframes({
@@ -65,7 +65,7 @@ export const ModalContent = styled(Content, {
   },
 
   '@bp-xl': {
-    width: '70vw',
+    width: '60vw',
     height: '80vh',
   },
 });

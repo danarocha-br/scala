@@ -53,7 +53,7 @@ export const Default: Story<ComboboxProps> = () => {
   return (
     <Combobox
       css={{ width: '180px' }}
-      trigger={<Selectable label="Select a language" icon="globe" />}
+      trigger={<Selectable.Button label="Select a language" icon="globe" />}
       emptyMessage="No language found"
       inputPlaceholder="Select a language"
     >

@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 2.3.9
+
+### Patch Changes
+
+- Selectable component added to lib
+
 ## 2.3.8
 
 ### Patch Changes

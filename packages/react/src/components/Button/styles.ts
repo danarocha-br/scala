@@ -303,6 +303,34 @@ export const Container = styled(AccessibleButton, {
       },
     },
     {
+      variant: 'transparent',
+      color: 'secondary',
+      animateOnHover: true,
+
+      css: {
+        '&::before': {
+          background: '$action-color-background-secondary-disabled',
+        },
+        '&::after': {
+          background: '$action-color-background-secondary-disabled',
+        },
+      },
+    },
+    {
+      variant: 'transparent',
+      color: 'danger',
+      animateOnHover: true,
+
+      css: {
+        '&::before': {
+          background: '$feedback-color-background-danger-disabled',
+        },
+        '&::after': {
+          background: '$feedback-color-background-danger-disabled',
+        },
+      },
+    },
+    {
       variant: 'primary',
       color: 'primary',
       css: {

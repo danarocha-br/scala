@@ -159,7 +159,7 @@ export const Modal = forwardRef(
               },
 
               '@bp-xl': {
-                height: '55vh',
+                height: '67vh',
               },
             }}
           >
