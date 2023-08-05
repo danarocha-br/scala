@@ -15,11 +15,7 @@ export default {
   },
   args: {
     children: <Text>This is a box.</Text>,
-    css: {
-      color: '$color-text-body',
-      background: '$surface-color-background-pressed',
-      p: '$spacing-10',
-    },
+    className: 'p-6 bg-neutral-400',
   },
   argTypes: {
     as: {
@@ -41,14 +37,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack
-          align="center"
-          justify="center"
-          css={{
-            h: '100vh',
-            px: 200,
-          }}
-        >
+        <Stack align="center" justify="center" className="h-screen px-[200px]">
           {Story()}
         </Stack>
       );

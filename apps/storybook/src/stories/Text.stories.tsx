@@ -96,7 +96,7 @@ export default {
 } as Meta<TextProps>;
 
 const Template: Story<TextProps> = (args) => (
-  <Grid cols="2" rows="9" align="center" css={{ maxWidth: 600, py: '$6' }}>
+  <Grid cols="2" rows="9" align="center" className="max-w-[600px] py-6">
     <Text size="sm" color="caption">
       4xl
     </Text>

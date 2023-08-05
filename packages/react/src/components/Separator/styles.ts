@@ -1,10 +1,13 @@
-import { styled } from '../../styles';
-import { Root } from '@radix-ui/react-separator';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled(Root, {
-  backgroundColor: '$surface-color-background-subdued',
-  my: '$spacing-2',
+export const separator = cva(
+  [
+    'bg-surface-color-background-subdued',
+    'my-2',
+    '[&[data-orientation=horizontal]]:h-4',
+    '[&[data-orientation=horizontal]]:w-full',
+    '[&[data-orientation=vertical]]:h-full',
+    '[&[data-orientation=vertical]]:w-1',
+  ],
 
-  '&[data-orientation=horizontal]': { height: 4, width: '100%' },
-  '&[data-orientation=vertical]': { height: '100%', width: 4 },
-});
+);
