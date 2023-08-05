@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-froly-900: 9deg 88% 33%;
+    --color-froly-800: 9deg 78% 43%;
+    --color-froly-700: 7deg 68% 50%;
+    --color-froly-600: 2deg 89% 65%;
+    --color-froly-500: 4deg 82% 69%;
+    --color-froly-400: 3deg 86% 77%;
+    --color-froly-300: 4deg 87% 85%;
+    --color-froly-200: 0deg 57% 88%;
+    --color-froly-100: 0deg 37% 90%;
+    --color-froly-50: 340deg 37% 97%;
+
+    --color-macaroni-900: 36deg 99% 45%;
+    --color-macaroni-800: 33deg 96% 58%;
+    --color-macaroni-700: 32deg 96% 64%;
+    --color-macaroni-600: 32deg 96% 69%;
+    --color-macaroni-500: 32deg 95% 77%;
+    --color-macaroni-400: 32deg 84% 81%;
+    --color-macaroni-300: 32deg 94% 86%;
+    --color-macaroni-200: 33deg 100% 91%;
+    --color-macaroni-100: 30deg 100% 96%;
+    --color-macaroni-50: 30deg 60% 98%;
+
+    --color-forest-900: 145deg 100% 7%;
+    --color-forest-800: 119deg 79% 13%;
+    --color-forest-700: 119deg 64% 21%;
+    --color-forest-600: 119deg 74% 26%;
+    --color-forest-500: 119deg 89% 28%;
+    --color-forest-400: 119deg 54% 45%;
+    --color-forest-300: 111deg 50% 58%;
+    --color-forest-200: 103deg 55% 75%;
+    --color-forest-100: 104deg 52% 87%;
+    --color-forest-50: 98deg 52% 96%;
+
+    --color-royal-900: 230deg 69% 19%;
+    --color-royal-800: 233deg 70% 31%;
+    --color-royal-700: 243deg 75% 38%;
+    --color-royal-600: 243deg 75% 47%;
+    --color-royal-500: 238deg 79% 57%;
+    --color-royal-400: 229deg 83% 59%;
+    --color-royal-300: 222deg 87% 72%;
+    --color-royal-200: 218deg 95% 85%;
+    --color-royal-100: 211deg 96% 91%;
+    --color-royal-50: 212deg 100% 97%;
+
+    --color-white: 0deg 0% 100%;
+    --color-neutral-900: 193deg 18% 10%;
+    --color-neutral-800: 194deg 17% 15%;
+    --color-neutral-700: 201deg 15% 23%;
+    --color-neutral-600: 201deg 10% 33%;
+    --color-neutral-500: 201deg 9% 44%;
+    --color-neutral-400: 201deg 8% 58%;
+    --color-neutral-300: 207deg 8% 77%;
+    --color-neutral-200: 120deg 2% 88%;
+    --color-neutral-100: 60deg 10% 96%;
+
+    --brand-color-primary: var(--color-froly-500);
+
+    --overlay-color-background-default: var(--color-neutral-800);
+    --overlay-color-background-subdued: var(--color-neutral-800);
+
+    --loading-color-background-default: var(--color-neutral-200);
+    --loading-color-background-subdued: var(--color-neutral-300);
+
+    --form-color-border-default: var(--color-neutral-200);
+    --form-color-border-hover: var(--color-royal-500);
+    --form-color-border-focus: var(--color-royal-500);
+    --form-color-border-error: var(--color-froly-700);
+    --form-color-border-disabled: var(--color-neutral-100);
+
+    --form-color-background-default: var(--color-white);
+    --form-color-background-subdued: var(--color-white);
+    --form-color-background-hover: var(--color-royal-500);
+    --form-color-background-focus: var(--color-royal-500);
+    --form-color-background-error: var(--color-froly-700);
+    --form-color-background-disabled: var(--color-neutral-100);
+
+    --text-color-body: var(--color-neutral-800);
+    --text-color-body-lighter: var(--color-neutral-600);
+    --text-color-caption: var(--color-neutral-400);
+    --text-color-success: var(--color-forest-500);
+    --text-color-warning: var(--color-macaroni-800);
+    --text-color-danger: var(--color-froly-600);
+    --text-color-on-light: var(--color-neutral-800);
+    --text-color-on-dark: var(--color-white);
+    --text-color-inverted: var(--color-white);
+
+    --interactive-color-text-enabled: var(--color-royal-50);
+    --interactive-color-text-disabled: var(--color-white);
+    --interactive-color-border-enabled: var(--color-royal-500);
+    --interactive-color-border-pressed: var(--color-royal-200);
+    --interactive-color-background-enabled: var(--color-royal-600);
+    --interactive-color-background-subdued: var(--color-royal-500);
+    --interactive-color-background-hover: var(--color-royal-700);
+    --interactive-color-background-pressed: var(--color-royal-800);
+    --interactive-color-background-disabled: var(--color-royal-50);
+
+    --action-color-text-transparent-enabled: var(--color-neutral-400);
+    --action-color-text-transparent-disabled: var(--color-neutral-800);
+    --action-color-border-transparent-enabled: var(--color-neutral-200);
+    --action-color-border-transparent-pressed: 120deg 2% 88% 50%;
+    --action-color-background-transparent-enabled: transparent;
+    --action-color-background-transparent-hover: 120deg 2% 88% 50%;
+    --action-color-background-transparent-pressed: var(--color-neutral-200);
+    --action-color-background-transparent-disabled: 120deg 2% 88% 30%;
+
+    --action-color-text-primary-enabled: var(--color-white);
+    --action-color-text-primary-disabled: var(--color-neutral-600);
+    --action-color-border-primary-enabled: var(--color-neutral-400);
+    --action-color-border-primary-pressed: var(--color-neutral-300);
+    --action-color-background-primary-enabled: var(--color-neutral-700);
+    --action-color-background-primary-hover: var(--color-neutral-800);
+    --action-color-background-primary-pressed: var(--color-neutral-900);
+    --action-color-background-primary-disabled: var(--color-neutral-300);
+
+    --action-color-text-secondary-enabled: var(--color-royal-50);
+    --action-color-text-secondary-disabled: var(--color-royal-400);
+    --action-color-border-secondary-enabled: var(--color-royal-400);
+    --action-color-border-secondary-pressed: 229deg 83% 59% 35%;
+    --action-color-background-secondary-enabled: var(--color-royal-600);
+    --action-color-background-secondary-hover: var(--color-royal-700);
+    --action-color-background-secondary-pressed: var(--color-royal-800);
+    --action-color-background-secondary-disabled: var(--color-royal-200);
+
+    --action-color-text-danger-enabled: var(--color-froly-50);
+    --action-color-text-danger-disabled: var(--color-froly-400);
+    --action-color-border-danger-enabled: var(--color-froly-400);
+    --action-color-border-danger-pressed: var(--color-froly-100);
+    --action-color-background-danger-enabled: var(--color-froly-700);
+    --action-color-background-danger-hover: var(--color-froly-800);
+    --action-color-background-danger-pressed: var(--color-froly-900);
+    --action-color-background-danger-disabled: var(--color-froly-100);
+
+    --surface-color-text-default: var(--color-neutral-900);
+    --surface-color-border-default: var(--color-neutral-300);
+    --surface-color-background-default: var(--color-white);
+    --surface-color-background-subdued: var(--color-neutral-100);
+    --surface-color-background-hover: var(--color-neutral-200);
+    --surface-color-background-pressed: var(--color-neutral-300);
+    --surface-color-background-disabled: var(--color-neutral-100);
+
+    --feedback-color-text-danger-enabled: var(--color-froly-50);
+    --feedback-color-text-danger-disabled: var(--color-froly-600);
+    --feedback-color-border-danger-enabled: var(--color-froly-500);
+    --feedback-color-border-danger-pressed: var(--color-froly-100);
+    --feedback-color-background-danger-enabled: var(--color-froly-700);
+    --feedback-color-background-danger-subdued: var(--color-froly-600);
+    --feedback-color-background-danger-hover: var(--color-froly-800);
+    --feedback-color-background-danger-pressed: var(--color-froly-900);
+    --feedback-color-background-danger-disabled: 0deg 37% 90% 60%;
+
+    --feedback-color-text-warning-enabled: var(--color-neutral-900);
+    --feedback-color-text-warning-disabled: var(--color-neutral-400);
+    --feedback-color-border-warning-enabled: var(--color-macaroni-400);
+    --feedback-color-border-warning-pressed: var(--color-macaroni-100);
+    --feedback-color-background-warning-enabled: var(--color-macaroni-700);
+    --feedback-color-background-warning-subdued: var(--color-macaroni-600);
+    --feedback-color-background-warning-hover: var(--color-macaroni-800);
+    --feedback-color-background-warning-pressed: var(--color-macaroni-900);
+    --feedback-color-background-warning-disabled: var(--color-macaroni-100);
+
+    --feedback-color-text-success-enabled: var(--color-forest-50);
+    --feedback-color-text-success-disabled: var(--color-forest-300);
+    --feedback-color-border-success-enabled: var(--color-forest-400);
+    --feedback-color-border-success-pressed: var(--color-forest-100);
+    --feedback-color-background-success-enabled: var(--color-forest-500);
+    --feedback-color-background-success-subdued: var(--color-forest-400);
+    --feedback-color-background-success-hover: var(--color-forest-500);
+    --feedback-color-background-success-pressed: var(--color-forest-600);
+    --feedback-color-background-success-disabled: var(--color-forest-100);
+
+    --feedback-color-text-info-enabled: var(--color-royal-900);
+    --feedback-color-text-info-disabled: var(--color-royal-500);
+    --feedback-color-border-info-enabled: var(--color-royal-400);
+    --feedback-color-border-info-pressed: var(--color-royal-200);
+    --feedback-color-background-info-enabled: var(--color-royal-500);
+    --feedback-color-background-info-subdued: var(--color-royal-400);
+    --feedback-color-background-info-hover: var(--color-royal-700);
+    --feedback-color-background-info-pressed: var(--color-royal-700);
+    --feedback-color-background-info-disabled: var(--color-royal-50);
+
+    --background-color-default: 60deg 9% 98%;
+    --background-color-gradient: linear-gradient(
+      89.99deg #fbf8f6 13.34%,
+      #f4f4ed 99.99%
+    );
+  }
+
+  [data-theme='dark'] {
+    --brand-color-primary: var(--color-froly-500);
+
+    --overlay-color-background-subdued: var(--color-neutral-900);
+    --overlay-color-background-default: var(--color-neutral-800);
+
+    --loading-color-background-subdued: var(--color-neutral-300);
+    --loading-color-background-default: var(--color-neutral-200);
+
+    --form-color-border-default: var(--color-neutral-200);
+    --form-color-border-hover: var(--color-royal-500);
+    --form-color-border-focus: var(--color-royal-500);
+    --form-color-border-error: var(--color-froly-700);
+    --form-color-border-disabled: var(--color-neutral-100);
+
+    --form-color-background-default: var(--color-neutral-800);
+    --form-color-background-subdued: var(--color-neutral-700);
+    --form-color-background-hover: var(--color-royal-500);
+    --form-color-background-focus: var(--color-royal-500);
+    --form-color-background-error: var(--color-froly-700);
+    --form-color-background-disabled: var(--color-neutral-500);
+
+    --text-color-body: var(--color-white);
+    --text-color-body-lighter: var(--color-neutral-300);
+    --text-color-caption: var(--color-neutral-400);
+    --text-color-success: var(--color-forest-400);
+    --text-color-warning: var(--color-macaroni-600);
+    --text-color-danger: var(--color-froly-600);
+    --text-color-on-light: var(--color-white);
+    --text-color-on-dark: var(--color-white);
+    --text-color-inverted: var(--color-neutral-800);
+
+    --interactive-color-text-enabled: var(--color-royal-100);
+    --interactive-color-text-disabled: var(--color-royal-400);
+    --interactive-color-border-enabled: var(--color-royal-400);
+    --interactive-color-border-pressed: 208deg 55% 68% 18%;
+    --interactive-color-background-enabled: var(--color-royal-400);
+    --interactive-color-background-subdued: var(--color-royal-300);
+    --interactive-color-background-hover: var(--color-royal-500);
+    --interactive-color-background-pressed: var(--color-royal-600);
+    --interactive-color-background-disabled: 229deg 83% 70% 12%;
+
+    --action-color-text-transparent-disabled: var(--color-white);
+    --action-color-text-transparent-enabled: var(--color-neutral-300);
+    --action-color-border-transparent-enabled: var(--color-neutral-700);
+    --action-color-border-transparent-pressed: 120deg 2% 88% 4%;
+    --action-color-background-transparent-enabled: transparent;
+    --action-color-background-transparent-hover: 120deg 2% 88% 6%;
+    --action-color-background-transparent-pressed: var(--color-neutral-600);
+    --action-color-background-transparent-disabled: 120deg 2% 88% 4%;
+
+    --action-color-text-primary-enabled: var(--color-neutral-900);
+    --action-color-text-primary-disabled: var(--color-neutral-300);
+    --action-color-border-primary-enabled: var(--color-neutral-600);
+    --action-color-border-primary-pressed: var(--color-neutral-700);
+    --action-color-background-primary-enabled: var(--color-neutral-100);
+    --action-color-background-primary-hover: var(--color-neutral-200);
+    --action-color-background-primary-pressed: var(--color-neutral-300);
+    --action-color-background-primary-disabled: var(--color-neutral-700);
+
+    --action-color-text-secondary-enabled: var(--color-white);
+    --action-color-text-secondary-disabled: var(--color-royal-400);
+    --action-color-border-secondary-enabled: var(--color-royal-600);
+    --action-color-border-secondary-pressed: 218deg 55% 68% 18%;
+    --action-color-background-secondary-enabled: var(--color-royal-400);
+    --action-color-background-secondary-hover: var(--color-royal-500);
+    --action-color-background-secondary-pressed: var(--color-royal-600);
+    --action-color-background-secondary-disabled: 229deg 83% 70% 12%;
+
+    --action-color-text-danger-enabled: var(--color-neutral-900);
+    --action-color-text-danger-disabled: var(--color-neutral-900);
+    --action-color-border-danger-enabled: var(--color-froly-600);
+    --action-color-border-danger-pressed: var(--color-froly-800);
+    --action-color-background-danger-enabled: var(--color-froly-600);
+    --action-color-background-danger-hover: var(--color-froly-700);
+    --action-color-background-danger-pressed: var(--color-froly-800);
+    --action-color-background-danger-disabled: 4deg 87% 85% 70%;
+
+    --surface-color-text-default: var(--color-white);
+    --surface-color-border-default: var(--color-neutral-700);
+    --surface-color-background-default: var(--color-neutral-900);
+    --surface-color-background-subdued: var(--color-neutral-800);
+    --surface-color-background-hover: var(--color-neutral-900);
+    --surface-color-background-pressed: var(--color-neutral-900);
+    --surface-color-background-disabled: var(--color-neutral-700);
+
+    --feedback-color-text-danger-enabled: var(--color-neutral-900);
+    --feedback-color-text-danger-disabled: var(--color-white);
+    --feedback-color-border-danger-enabled: var(--color-froly-600);
+    --feedback-color-border-danger-pressed: 3deg 100% 66% 35%;
+    --feedback-color-background-danger-enabled: var(--color-froly-600);
+    --feedback-color-background-danger-subdued: var(--color-froly-500);
+    --feedback-color-background-danger-hover: var(--color-froly-700);
+    --feedback-color-background-danger-pressed: var(--color-froly-800);
+    --feedback-color-background-danger-disabled: 4deg 82% 69% 17%;
+
+    --feedback-color-text-warning-enabled: var(--color-neutral-900);
+    --feedback-color-text-warning-disabled: var(--color-neutral-500);
+    --feedback-color-border-warning-enabled: var(--color-macaroni-400);
+    --feedback-color-border-warning-pressed: var(--color-macaroni-200);
+    --feedback-color-background-warning-enabled: var(--color-macaroni-700);
+    --feedback-color-background-warning-subdued: var(--color-macaroni-600);
+    --feedback-color-background-warning-hover: var(--color-macaroni-800);
+    --feedback-color-background-warning-pressed: var(--color-macaroni-900);
+    --feedback-color-background-warning-disabled: 32deg 94% 58% 60%;
+
+    --feedback-color-text-success-enabled: var(--color-forest-900);
+    --feedback-color-text-success-disabled: var(--color-forest-500);
+    --feedback-color-border-success-enabled: var(--color-forest-400);
+    --feedback-color-border-success-pressed: var(--color-forest-200);
+    --feedback-color-background-success-enabled: var(--color-forest-400);
+    --feedback-color-background-success-subdued: var(--color-forest-300);
+    --feedback-color-background-success-hover: var(--color-forest-500);
+    --feedback-color-background-success-pressed: var(--color-forest-600);
+    --feedback-color-background-success-disabled: 119deg 54% 45% 10.2%;
+
+    --feedback-color-text-info-enabled: var(--color-royal-900);
+    --feedback-color-text-info-disabled: var(--color-royal-500);
+    --feedback-color-border-info-enabled: var(--color-royal-400);
+    --feedback-color-border-info-pressed: var(--color-royal-200);
+    --feedback-color-background-info-enabled: var(--color-royal-400);
+    --feedback-color-background-info-subdued: var(--color-royal-300);
+    --feedback-color-background-info-hover: var(--color-royal-500);
+    --feedback-color-background-info-pressed: var(--color-royal-600);
+    --feedback-color-background-info-disabled: 229deg 83% 70% 12%;
+
+    --background-color-default: 192deg 18% 11%;
+    --background-color-gradient: linear-gradient(
+      89.99deg #fbf8f6 13.34%,
+      #f4f4ed 99.99%
+    );
+  }
+
+  @media (prefers-color-scheme: dark) {
+  }
+}

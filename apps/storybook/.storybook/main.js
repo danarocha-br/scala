@@ -12,7 +12,7 @@ module.exports = {
     '@storybook/addon-a11y',
     'storybook-addon-designs',
     '@geometricpanda/storybook-addon-badges',
-    'multiple-themes-stitches',
+    // "storybook-addon-data-theme-switcher",
   ],
   framework: '@storybook/react',
   core: {
