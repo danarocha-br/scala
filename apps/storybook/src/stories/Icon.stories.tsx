@@ -74,7 +74,7 @@ export const IconSet: Story<IconProps> = (args) => (
     align="stretch"
     justify="between"
     gap="3"
-    css={{ w: '100%', p: '$spacing-4' }}
+    className="w-full p-4"
   >
     {icons.map((icon) => (
       <Stack
@@ -82,22 +82,14 @@ export const IconSet: Story<IconProps> = (args) => (
         direction="column"
         align="center"
         gap="2"
-        css={{
-          bg: '$surface-color-background-subdued',
-          p: '$spacing-1',
-          borderRadius: '$radii-sm',
-        }}
+        className="bg-surface-color-background-subdued p-1 rounded-sm"
       >
         <Icon {...args} name={icon} />
         <Text
           as="p"
           size="xs"
           color="caption"
-          css={{
-            bg: '$surface-color-background-default',
-            w: '100%',
-            textAlign: 'center',
-          }}
+          className="bg-surface-color-background-default w-full text-center"
         >
           {icon}
         </Text>

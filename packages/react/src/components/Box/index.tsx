@@ -1,13 +1,33 @@
-import React from 'react';
-import { CSS, styled } from '../../styles';
+import React, { forwardRef } from 'react';
+import { VariantProps, cva } from 'class-variance-authority';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-export type BoxProps = {
-  as?: React.ElementType;
-  css?: CSS;
-} & React.ComponentProps<typeof Box>;
+export type BoxProps = Polymorphic.ForwardRefComponent<
+  'div',
+  { children: React.ReactNode; className?: string } & VariantProps<typeof box>
+>;
 
-export const Box = styled('div', {
-  boxSizing: 'border-box',
-});
+export const box = cva(['box-border']);
 
-Box.displayName = 'Box';
+export const Stack = forwardRef(
+  (
+    {
+      as: Component = 'div',
+      children,
+      className,
+
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <Component
+      {...props}
+      ref={forwardedRef}
+      className={box({
+        className,
+      })}
+    >
+      {children}
+    </Component>
+  )
+) as BoxProps;

@@ -1,83 +1,53 @@
-import { styled } from '../../styles';
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled(AvatarPrimitive.Root, {
-  fontFamily: '$font-family-sans',
-  textTransform: 'uppercase',
-
-  d: 'inline-flex',
-  align: 'center',
-  justify: 'center',
-  verticalAlign: 'middle',
-
-  overflow: 'hidden',
-  userSelect: 'none',
-
-  variants: {
-    variant: {
-      circle: {
-        borderRadius: '$radii-circle',
-      },
-      square: {
-        borderRadius: '$radii-sm',
-      },
-    },
-
-    size: {
-      sm: {
-        fontSize: '$font-size-xs',
-        w: '$spacing-4',
-        h: '$spacing-4',
+export const container = cva(
+  [
+    'font-sans',
+    'uppercase',
+    'inline-flex',
+    'items-center',
+    'align-middle',
+    'overflow-hidden',
+    'select-none',
+  ],
+  {
+    variants: {
+      variant: {
+        circle: ['rounded-circle'],
+        square: ['rounded-sm'],
       },
 
-      md: {
-        fontSize: '$font-size-sm',
-        w: '$spacing-5',
-        h: '$spacing-5',
-      },
-
-      lg: {
-        fontSize: '$font-size-md',
-        width: '$spacing-6',
-        h: '$spacing-6',
+      size: {
+        sm: ['text-xxs', 'w-[20px]', 'h-[20px]'],
+        md: ['text-xs', 'w-4', 'h-4'],
+        lg: ['text-md', 'w-6', 'h-6'],
       },
     },
-  },
 
-  defaultVariants: {
-    variant: 'circle',
-    size: 'md',
-  },
-});
+    defaultVariants: {
+      variant: 'circle',
+      size: 'md',
+    },
+  }
+);
 
-export const Image = styled(AvatarPrimitive.Image, {
-  w: '100%',
-  h: '100%',
+export const image = cva([
+  'w-full',
+  'h-full',
+  'object-cover',
+  'rounded-[inherit]',
+]);
 
-  objectFit: 'cover',
-  borderRadius: 'inherit',
-});
-
-export const Fallback = styled(AvatarPrimitive.Fallback, {
-  fontSize: 'inherit',
-  fontWeight: '$font-weight-medium',
-
-  w: '100%',
-  h: '100%',
-  d: 'flex',
-  align: 'center',
-  justify: 'center',
-
-  variants: {
-    loading: {
-      true: {
-        color: '$text-color-body',
-        background: '$loading-color-background-subdued',
+export const fallback = cva(
+  ['font-medium', 'h-full', 'w-full', 'flex', 'items-center', 'justify-center'],
+  {
+    variants: {
+      loading: {
+        true: ['!text-text-color-body', '!bg-loading-color-background-subdued'],
       },
     },
-  },
-
-  defaultVariants: {
-    loading: false,
-  },
-});
+    defaultVariants: {
+      loading: false,
+    },
+  }
+);

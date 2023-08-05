@@ -6,8 +6,8 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch",
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.tsx --dts --format esm,cjs --external react --watch",
+    "build": "tsup src/index.tsx --dts --format esm,cjs --external react",
     "lint": "npx eslint src/**/*.ts* --fix",
     "commit": "npx cz",
     "clean": "turbo run clean && rm -rf node_modules"
