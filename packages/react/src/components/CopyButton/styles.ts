@@ -1,43 +1,33 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Button = styled('button', {
-  color: '$action-color-text-transparent-enabled',
-  background: '$action-color-background-transparent-enabled',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  outline: 'none',
-  border: 'none',
-  outlineColor: 'transparent',
-  transition: '$base',
-  w: '28px',
-  h: '28px',
-  p: '0',
-  borderRadius: '$radii-sm',
+export const button = cva([
+  'text-action-color-text-transparent-enabled',
+  'bg-action-color-background-transparent-enabled',
+  'flex',
+  'justify-center',
+  'items-center',
+  'outline-none',
+  'outline-transparent',
+  'border-none',
+  'transition-all',
+  'w-[28px]',
+  'h-[28px]',
+  'p-0',
+  'rounded-sm',
 
-  '&:hover:not([disabled])': {
-    background: '$action-color-background-transparent-hover',
-  },
+  'hover:bg-action-color-background-transparent-hover',
+  'focus:outline-2',
+  'focus:outline-offset-2',
+  'focus:transparent',
 
-  '&:focus': {
-    outline: '2px solid',
-    outlineOffset: '2px',
-    outlineColor: 'transparent',
-  },
+  'disabled:opacity-60',
+  'disabled:cursor-not-allowed',
 
-  '&:disabled': {
-    opacity: '0.65',
-    cursor: 'not-allowed',
-  },
+  'active:scale-95',
+]);
 
-  '&:active': {
-    transform: 'scale(0.94)',
-  },
-});
+export const iconClipboard = cva([
+  'fill-action-color-background-primary-enabled',
+]);
 
-export const IconClipboard = styled('path', {
-  fill: '$action-color-background-primary-enabled',
-});
-export const IconCheck = styled('path', {
-  fill: '$feedback-color-background-success-subdued',
-});
+export const iconCheck = cva('fill-feedback-color-background-success-subdued');

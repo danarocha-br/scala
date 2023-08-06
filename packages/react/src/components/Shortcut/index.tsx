@@ -9,17 +9,9 @@ export const Shortcut = ({
   ...props
 }: ShortcutProps): JSX.Element => (
   <Text
-    className="c-shortcut"
     size="xs"
     weight="medium"
-    css={{
-      px: '$spacing-1',
-      pb: 1,
-      bg: '$surface-color-background-hover',
-      borderRadius: '$radii-sm',
-      lineHeight: '$line-height-2',
-      h: 'auto',
-    }}
+    className="c-shortcut leading-2 h-auto rounded-sm bg-surface-color-background-hover px-1 pb-[1px]"
     aria-label={shortcut}
     {...props}
   >

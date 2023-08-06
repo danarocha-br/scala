@@ -1,68 +1,50 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('li', {
-  fontFamily: '$font-family-sans',
-  fontSize: '$font-size-md',
-  fontWeight: '$font-weight-regular',
-  listStyle: 'none',
-  cursor: 'pointer',
-  transition: '$base',
-  display: 'inline-flex',
+export const bredcrumItem = cva(
+  [
+    'group',
+    'font-sans',
+    'text-md',
+    'list-none',
+    'cursor-pointer',
+    'transition-all',
+    'inline-flex',
 
-  '& button, & a': {
-    all: 'unset',
-  },
+    '[&_button]:text-text-color-caption',
+    '[&_button]:outline-none',
+    '[&_button]:rounded-sm',
+    '[&_button]:py-1',
+    '[&_button]:px-2',
+    '[&_button]:whitespace-nowrap',
+    '[&_button]:hover:bg-action-color-background-transparent-hover',
+    '[&_button]:focus:outline-2',
+    '[&_button]:focus:outline-offset-2',
+    '[&_button]:focus:action-color-border-transparent-pressed',
 
-  '& a': {
-    textDecoration: 'none',
-  },
+    '[&_a]:text-text-color-caption',
+    '[&_a]:outline-none',
+    '[&_a]:no-underline',
+    '[&_a]:py-1',
+    '[&_a]:px-2',
+    '[&_a]:whitespace-nowrap',
+    '[&_a]:hover:bg-action-color-background-transparent-hover',
+    '[&_a]:focus:outline-2',
+    '[&_a]:focus:outline-offset-2',
+    '[&_a]:focus:action-color-border-transparent-pressed',
 
-  '&:hover': {
-    '& .breadcrumb__item--icon': {
-      opacity: 1,
-      transform: 'translateX(4px)',
-    },
-  },
-
-  '& a, & button': {
-    color: '$text-color-caption',
-    borderRadius: '$radii-sm',
-    padding: '$spacing-1 $spacing-2',
-    whiteSpace: 'nowrap',
-
-    '&:hover': {
-      backgroundColor: '$action-color-background-transparent-hover',
-    },
-
-    '&:focus': {
-      outline: '2px solid',
-      outlineOffset: '2px',
-      outlineColor: '$action-color-border-transparent-pressed !important',
-    },
-  },
-
-  '& .breadcrumb__item--icon': {
-    opacity: 0,
-    transform: 'translateX(-2px)',
-    transition: 'opacity, transform 0.3s ease-in-out',
-  },
-
-  '&:not(:last-child):after': {
-    content: '/',
-    color: '$text-color-caption',
-    opacity: 0.5,
-    mt: '$spacing-1',
-    ml: '$spacing-2',
-    mr: '$spacing-1',
-  },
-
-  variants: {
-    isActive: {
-      true: {
-        '& a, & button': {
-          color: '$text-color-body',
-        },
+    '[&:not(:last-child):after]:content-[""]',
+    '[&:not(:last-child):after]:text-text-color-caption',
+    '[&:not(:last-child):after]:text-text-color-caption',
+    '[&:not(:last-child):after]:opacity-50',
+    '[&:not(:last-child):after]:mt-1',
+    '[&:not(:last-child):after]:ml-2',
+    '[&:not(:last-child):after]:mr-1',
+  ],
+  {
+    variants: {
+      isActive: {
+        true: ['[&_a]:text-text-color-body', '[&_button]:text-text-color-body'],
       },
     },
-  },
-});
+  }
+);

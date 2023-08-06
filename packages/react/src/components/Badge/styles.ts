@@ -1,99 +1,97 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('span', {
-  fontFamily: '$font-family-sans',
-  fontSize: '$font-size-sm',
-  border: '1px solid transparent',
-  px: '$spacing-2',
-  pb: '1px',
-  whiteSpace: 'nowrap',
-
-  variants: {
-    variant: {
-      default: {
-        borderRadius: '$radii-sm',
-      },
-      pill: {
-        borderRadius: '$radii-pill',
-      },
-    },
-
-    color: {
-      primary: {
-        color: '$action-color-text-primary-enabled',
-        borderColor: '$action-color-background-primary-enabled',
-        backgroundColor: '$action-color-background-primary-enabled',
-      },
-      info: {
-        color: '$action-color-text-secondary-enabled',
-        borderColor: '$action-color-background-secondary-enabled',
-        backgroundColor: '$action-color-background-secondary-enabled',
-      },
-      warning: {
-        color: '$feedback-color-text-warning-default',
-        borderColor: '$feedback-color-background-warning-default',
-        backgroundColor: '$feedback-color-background-warning-default',
-      },
-      danger: {
-        color: '$feedback-color-text-danger-default',
-        borderColor: '$feedback-color-background-danger-default',
-        backgroundColor: '$feedback-color-background-danger-default',
-      },
-      'on-dark': {
-        color: 'inherit',
-        borderColor: '$text-color-on-dark',
-        backgroundColor: '$text-color-on-dark',
-      },
-    },
-
-    outlined: {
-      true: {
-        backgroundColor: 'transparent !important',
-      },
-    },
-  },
-
-  compoundVariants: [
-    {
-      color: 'primary',
-      outlined: true,
-      css: {
-        color: '$action-color-background-primary-enabled',
-      },
-    },
-    {
-      color: 'secondary',
-      outlined: true,
-      css: {
-        color: '$action-color-background-secondary-enabled',
-      },
-    },
-    {
-      color: 'warning',
-      outlined: true,
-      css: {
-        color: '$feedback-color-background-warning-pressed',
-      },
-    },
-    {
-      color: 'danger',
-      outlined: true,
-      css: {
-        color: '$action-color-background-danger-enabled',
-      },
-    },
-    {
-      color: 'on-dark',
-      outlined: true,
-      css: {
-        color: '$text-color-on-dark',
-      },
-    },
+export const badge = cva(
+  [
+    'font-sans',
+    'text-sm',
+    'border-1',
+    'border-transparent',
+    'px-2',
+    'pb-[1px]',
+    'white-space-nowrap',
   ],
+  {
+    variants: {
+      variant: {
+        default: 'rounded-sm',
+        pill: 'rounded-pill',
+      },
 
-  defaultVariants: {
-    variant: 'default',
-    color: 'primary',
-    outlined: false,
-  },
-});
+      color: {
+        primary: [
+          'text-action-color-text-primary-enabled',
+          'border-action-color-background-primary-enabled',
+          'bg-action-color-background-primary-enabled',
+        ],
+        info: [
+          'text-feedback-color-text-info-enabled',
+          'bg-feedback-color-background-info-enabled',
+          'bg-feedback-color-background-info-enabled',
+        ],
+        warning: [
+          'text-feedback-color-text-warning-enabled',
+          'bg-feedback-color-background-warning-enabled',
+          'bg-feedback-color-background-warning-enabled',
+        ],
+        danger: [
+          'text-feedback-color-text-danger-enabled',
+          'bg-feedback-color-background-danger-enabled',
+          'bg-feedback-color-background-danger-enabled',
+        ],
+        success: [
+          'text-feedback-color-text-success-enabled',
+          'bg-feedback-color-background-success-enabled',
+          'bg-feedback-color-background-success-enabled',
+        ],
+        'on-dark': [
+          'text-[inherit]',
+          'border-text-color-on-dark',
+          'bg-text-color-on-dark',
+        ],
+      },
+
+      outlined: {
+        true: ['bg-transparent'],
+      },
+    },
+
+    compoundVariants: [
+      {
+        color: 'primary',
+        outlined: true,
+        class: ['text-action-color-background-primary-enabled'],
+      },
+      {
+        color: 'info',
+        outlined: true,
+        class: ['text-feedback-color-text-info-enabled'],
+      },
+      {
+        color: 'warning',
+        outlined: true,
+        class: ['text-feedback-color-background-warning-pressed'],
+      },
+      {
+        color: 'danger',
+        outlined: true,
+        class: ['text-action-color-background-danger-enabled'],
+      },
+      {
+        color: 'on-dark',
+        outlined: true,
+        class: ['text-text-color-on-dark'],
+      },
+      {
+        color: 'success',
+        outlined: true,
+        class: ['text-text-color-success'],
+      },
+    ],
+
+    defaultVariants: {
+      variant: 'default',
+      color: 'primary',
+      outlined: false,
+    },
+  }
+);

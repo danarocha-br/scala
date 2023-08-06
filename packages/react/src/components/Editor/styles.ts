@@ -1,3 +1,4 @@
+//TODO: refactor to tailwind
 import { styled } from '../../styles';
 import { EditorContent, BubbleMenu } from '@tiptap/react';
 import {

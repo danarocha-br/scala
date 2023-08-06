@@ -1,125 +1,87 @@
-import { styled } from '../../styles';
-import { MoveLoadingGradientStart } from '../Button/styles';
-import { Button as AccessibleButton } from '@ariakit/react';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled(AccessibleButton, {
-  color: '$action-color-text-transparent-enabled',
-  background: '$action-color-background-transparent-enabled',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  outline: 'none',
-  border: 'none',
-  outlineColor: 'transparent',
-  transition: '$base',
+export const button = cva(
+  [
+    'text-action-color-text-transparent-enabled',
+    'bg-action-color-background-transparent-enabled',
+    'flex',
+    'items-center',
+    'justify-center',
+    'outline-none',
+    'border-none',
+    'outline-transparent',
+    'cursor-pointer',
+    'transition-all',
 
-  '& svg': {
-    fill: '$action-color-text-transparent-enabled',
-  },
+    'hover:not([disabled]):bg-action-color-background-transparent-hover',
 
-  '&:hover:not([disabled])': {
-    background: '$action-color-background-transparent-hover',
-  },
+    'focus:outline-2',
+    'focus:outline-offset-2',
+    'focus:outline-transparent',
 
-  '&:focus': {
-    outline: '2px solid',
-    outlineOffset: '2px',
-    outlineColor: 'transparent',
-  },
+    'aria-disabled:opacity-60',
+    'aria-disabled:cursor-not-allowed',
 
-  '&[aria-disabled="true"]': {
-    opacity: '0.65',
-    cursor: 'not-allowed',
-  },
+    'active:scale-95',
 
-  '&:active': {
-    transform: 'scale(0.94)',
-  },
-
-  variants: {
-    size: {
-      xs: { w: '22px', h: '22px', p: '0', borderRadius: '$radii-sm' },
-      sm: {
-        w: '28px',
-        h: '28px',
-        p: '0',
-        borderRadius: '$radii-sm',
+    '[&_svg]:fill-action-color-text-transparent-enabled',
+  ],
+  {
+    variants: {
+      size: {
+        xs: ['w-[22px]', 'h-[22px]', 'p-0', 'rounded-sm'],
+        sm: ['w-[28px]', 'h-[28px]', 'p-0', 'rounded-sm'],
+        md: ['w-6', 'h-6', 'p-0', 'rounded-md'],
       },
-      md: {
-        w: '$spacing-6 ',
-        h: '$spacing-6 ',
-        p: '0 ',
-        borderRadius: '$radii-md',
-      },
-    },
 
-    variant: {
-      primary: {},
-      secondary: {
-        // boxShadow: '$elevation-low',
-        border: '2px solid !important',
-        borderColor: '$action-color-border-transparent-pressed !important',
+      variant: {
+        primary: [],
+        secondary: [
+          'shadow-low',
+          'border-2',
+          'border-action-color-border-transparent-pressed',
+        ],
       },
-    },
 
-    color: {
-      primary: {
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
+      color: {
+        primary: ['focus:outline-action-color-border-transparent-pressed'],
+        secondary: [
+          'text-interactive-color-background-enabled',
+          '[&_svg]:fill-interactive-color-background-enabled',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
+        danger: [
+          'text-feedback-color-background-danger-enabled',
+          '[&_svg]:fill-interactive-color-background-danger-enabled',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
       },
-      secondary: {
-        color: '$interactive-color-background-enabled',
-        '& svg': {
-          fill: '$interactive-color-background-enabled',
-        },
 
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
-      },
-      danger: {
-        color: '$feedback-color-background-danger-default',
-        '& svg': {
-          fill: '$feedback-color-background-danger-default',
-        },
+      loading: {
+        true: [
+          'bg-action-color-background-transparent-hover',
+          'border-0',
+          'relative',
 
-        '&:focus': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
+          'after:content-[""]',
+          'after:absolute',
+          'after:top-0',
+          'after:bottom-0',
+          'after:left-0',
+          'after:right-0',
+          'after:rounded-md',
+          'after:bg-[var(--button-loading-gradient)]',
+          'after:bg-100',
+          'after:clip-path-[var(--button-loading-clip-path)]',
+          'after:animation-[--button-loading-animation]',
+        ],
       },
     },
 
-    loading: {
-      true: {
-        borderWidth: 0,
-        $$borderWidth: '2.4px',
-        $$gradient:
-          'linear-gradient(99deg, $colors$color-neutral-200, $colors$color-royal-300, $colors$color-froly-300)',
-        position: 'relative',
-        background: '$action-color-background-transparent-hover !important',
-
-        '&::after': {
-          content: '',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          borderRadius: '$radii-md',
-          background: '$$gradient',
-          backgroundSize: '100% 100%',
-          clipPath:
-            'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
-          animation: `${MoveLoadingGradientStart} 2s ease-in-out alternate infinite`,
-        },
-      },
+    defaultVariants: {
+      variant: 'primary',
+      color: 'primary',
+      size: 'sm',
     },
-  },
-
-  defaultVariants: {
-    size: 'sm',
-    variant: 'primary',
-    color: 'primary',
-  },
-});
+  }
+);

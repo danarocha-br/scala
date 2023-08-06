@@ -2,6 +2,8 @@ import { styled, keyframes } from '../../styles';
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
+//TODO: refactor to tailwind
+
 export const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(15px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },

@@ -1,5 +1,4 @@
 import { Root, Trigger, Provider } from '@radix-ui/react-tooltip';
-import { CSS } from '../../styles';
 
 import * as S from './styles';
 
@@ -9,7 +8,6 @@ export type TooltipProps = {
   content: string | React.ReactNode;
   /** preferred side of the trigger to render against when open */
   direction?: 'top' | 'right' | 'bottom' | 'left';
-  css?: CSS;
 };
 
 export const Tooltip = ({
@@ -20,7 +18,7 @@ export const Tooltip = ({
   ...props
 }: TooltipProps): JSX.Element => (
   <Provider>
-    <Root delayDuration={300}>
+    <Root delayDuration={300} >
       <Trigger asChild>
         <div>{children}</div>
       </Trigger>

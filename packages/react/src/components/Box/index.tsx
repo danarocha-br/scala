@@ -4,18 +4,17 @@ import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 export type BoxProps = Polymorphic.ForwardRefComponent<
   'div',
-  { children: React.ReactNode; className?: string } & VariantProps<typeof box>
+  { children?: React.ReactNode; className?: string } & VariantProps<typeof box>
 >;
 
 export const box = cva(['box-border']);
 
-export const Stack = forwardRef(
+export const Box = forwardRef(
   (
     {
       as: Component = 'div',
       children,
       className,
-
       ...props
     },
     forwardedRef

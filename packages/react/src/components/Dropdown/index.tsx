@@ -6,9 +6,7 @@ import {
   Portal,
 } from '@radix-ui/react-dropdown-menu';
 
-import { CSS } from '../../styles';
 import { Box } from '../Box';
-
 import * as S from './styles';
 
 export type DropdownProps = {
@@ -23,7 +21,7 @@ export type DropdownProps = {
   /** event handler called when the open state of the dropdown menu changes. */
   onOpenChange?: (open: boolean) => void;
   align?: 'center' | 'end' | 'start';
-  css?: CSS;
+  className?: string;
 };
 
 const DropdownItem = S.DropdownItem;
@@ -55,7 +53,7 @@ function DropdownMenuContent({
 }
 
 const DropdownBase = ({
-  css,
+  className,
   children,
   trigger,
   open,
@@ -65,8 +63,7 @@ const DropdownBase = ({
   ...props
 }: DropdownProps) => (
   <Box
-    className="dropdown"
-    css={{ position: 'relative', w: 'max-content', zIndex: '$max', css }}
+    className={`dropdown relative max-w-max z-max ${className}`}
     {...props}
   >
     <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>

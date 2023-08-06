@@ -1,109 +1,65 @@
-import { styled, keyframes } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-import {
-  Root,
-  Trigger,
-  Overlay,
-  Content,
-  Close,
-  Title,
-  Description,
-} from '@radix-ui/react-dialog';
+export const dialogOverlay = cva([
+  'bg-color-neutral-800',
+  'fixed',
+  'inset-0',
+  'left-0',
+  'z-max',
+  'motion-safe:animate-[animate-overlay_100ms_cubic-bezier(0.16, 1, 0.3, 1)_forwards]',
+]);
 
-const overlayShow = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 0.8 },
-});
+export const dialogContent = cva([
+  'font-sans',
+  'bg-surface-color-background-default',
+  'roundex-md',
+  'shadow-high',
+  'fixed',
+  'top-1/2',
+  'left-1/2',
+  'translate-[-50%, -50%]',
+  'w-90vw',
+  'max-w-[650px]',
+  'min-h-[85vh]',
+  'z-max',
+  'focus:outline-none',
 
-const contentShow = keyframes({
-  '0%': {
-    opacity: 0,
-    transformOrigin: 'bottom left',
-    transform: 'translate(-50%, -48%) scale(.96)',
-  },
+  'motion-safe:animate-[animate-show-content_150ms_cubic-bezier(0.390, 0.575, 0.565, 1.000)_both]',
+  'delay-[10ms]',
+]);
 
-  '100%': {
-    opacity: 1,
-    transform: 'translate(-50%, -50%) scale(1)',
-  },
-});
-
-export const DialogOverlay = styled(Overlay, {
-  backgroundColor: '$color-neutral-800',
-  position: 'fixed',
-  inset: 0,
-  left: 0,
-  zIndex: '$max',
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 100ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
-  },
-});
-
-export const DialogContent = styled(Content, {
-  fontFamily: '$font-family-sans',
-  backgroundColor: '$surface-color-background-default',
-  borderRadius: '$radii-md',
-  boxShadow: '$elevation-high',
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '90vw',
-  maxWidth: '650px',
-  maxHeight: '85vh',
-  zIndex: '$max',
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${contentShow} 150ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
-    animationDelay: '10ms',
-  },
-  '&:focus': { outline: 'none' },
-});
-
-export const DialogTitle = styled(Title, {
-  margin: 0,
-  fontWeight: '$font-weight-medium',
-  color: '$text-color-body-lighter',
-  fontSize: '$font-size-md',
-  pt: '$spacing-2',
-
-  variants: {
-    variant: {
-      danger: {
-        color: '$feedback-danger-color-background-default',
+export const dialogTitle = cva(
+  ['text-text-color-body-lighter', 'font-medium', 'text-md', 'm-0', 'pt-2'],
+  {
+    variants: {
+      variant: {
+        danger: ['text-feedback-danger-color-background-default'],
+        transactional: [],
+        passive: [],
       },
-      transactional: {},
-      passive: {},
     },
-  },
 
-  defaultVariants: {
-    variant: 'transactional',
-  },
-});
+    defaultVariants: {
+      variant: 'transactional',
+    },
+  }
+);
 
-export const DialogDescription = styled(Description, {
-  margin: '10px 0 20px',
-  color: '$text-color-caption',
-  fontSize: 15,
-  lineHeight: 1.5,
-  px: '$spacing-3',
-});
+export const dialogDescription = cva([
+  'text-text-color-caption',
+  'text-[15px]',
+  'leading-[1.5]',
+  'm-[10px 0 20px]',
+  'px-3',
+]);
 
-export const DialogClose = styled(Close, {
-  position: 'relative',
-  right: -8,
-});
+export const dialogClose = cva(['relative', 'right-[-8px]']);
 
-export const DialogFooter = styled('footer', {
-  d: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
-  gap: '$spacing-3',
-  px: '$spacing-2',
-  py: '$spacing-2',
-});
-
-export const Dialog = styled(Root, {});
-export const DialogTrigger = Trigger;
+export const dialogFooter = cva([
+  'flex',
+  'justify-end',
+  'items-center',
+  'gap-3',
+  'px-2',
+  'py-2',
+]);

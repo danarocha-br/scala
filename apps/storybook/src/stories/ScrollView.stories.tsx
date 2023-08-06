@@ -25,7 +25,7 @@ export default {
     )),
   },
   argTypes: {
-    css: {
+    className: {
       table: {
         category: 'Modifiers',
       },

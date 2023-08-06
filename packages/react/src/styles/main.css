@@ -189,6 +189,31 @@
       89.99deg #fbf8f6 13.34%,
       #f4f4ed 99.99%
     );
+
+    --button-loading-border-width: 2.4px;
+    --button-loading-gradient: linear-gradient(
+      99deg,
+      var(--color-neutral-200),
+      var(--color-royal-300),
+      var(--color-froly-300)
+    );
+    --button-loading-clip-path: polygon(
+        0% 100%,
+        var(--button-loading-border-width) 100%,
+        var(--button-loading-border-width) var(--button-loading-border-width),
+        calc(100% - var(--button-loading-border-width))
+          var(--button-loading-border-width),
+        calc(100% - var(--button-loading-border-width))
+          calc(100% - var(--button-loading-border-width)),
+        var(--button-loading-border-width)
+          calc(100% - var(--button-loading-border-width)),
+        var(--button-loading-border-width) 100%,
+        100% 100%,
+        100% 0%,
+        0% 0%
+      );
+      --button-loading-animation: move-loading-gradient-start 2s ease-in-out
+      alternate infinite;
   }
 
   [data-theme='dark'] {

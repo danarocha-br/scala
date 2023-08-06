@@ -1,25 +1,24 @@
-import { CSS } from '../../styles';
 
 import * as S from './styles';
 
 export type StepperHorizontalProps = {
   count: number;
   currentStep?: number;
-  css?: CSS;
+  className?: string;
 };
 
 export const StepperHorizontal = ({
   count,
   currentStep = 1,
-  css,
+  className,
   ...props
 }: StepperHorizontalProps): JSX.Element => (
-  <S.Container css={css} {...props}>
+  <S.Container className={className} {...props}>
     <S.Label>
       {currentStep} / {count}{' '}
     </S.Label>
 
-    <S.Steps css={{ '--steps-count': count }}>
+    <S.Steps >
       {Array.from({ length: count }, (_, i) => i + 1).map((step) => {
         return <S.Step key={step} isActive={currentStep >= step} />;
       })}

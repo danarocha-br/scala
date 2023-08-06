@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import { Portal as PanelPortal, DialogProps } from '@radix-ui/react-dialog';
-import { transparentize } from 'polished';
 
 import { Button } from '../Button';
 import { Stack } from '../Stack';
@@ -100,17 +99,7 @@ export const Panel = forwardRef(
             as="header"
             align="center"
             justify="between"
-            css={{
-              bg: '',
-              p: '$spacing-2 $spacing-4',
-              position: 'relative',
-              border: '1px solid',
-              borderColor: `${transparentize(0.5, '#D5DBDB')}`,
-
-              ['.dark-theme &']: {
-                borderColor: `${transparentize(0.7, '#252e30')}`,
-              },
-            }}
+            className="border-[#D5DBD]/50 [dark-mode=dark]:border-[#252e30]/70 border px-4 py-2"
           >
             <S.PanelTitle>{title}</S.PanelTitle>
 
@@ -122,22 +111,14 @@ export const Panel = forwardRef(
                   onClick={closePanel}
                   type="button"
                   size="sm"
-                  css={{
-                    position: 'absolute',
-                    right: -16,
-                    top: -14,
-
-                    '& svg': {
-                      fill: '$text-color-caption',
-                    },
-                  }}
+                  className="[&_svg]:fill-text-text-color-caption absolute right-[-16px] top-[-14px]"
                 />
               </div>
             </S.PanelClose>
           </Stack>
 
           <ScrollView>
-            <Box css={{ p: '$spacing-4', h: '100%', pb: '13rem' }}>
+            <Box className="h-full p-4 pb-[13rem]">
               {Boolean(description) && (
                 <S.PanelDescription>{description}</S.PanelDescription>
               )}
@@ -146,7 +127,7 @@ export const Panel = forwardRef(
             </Box>
           </ScrollView>
 
-          <Box css={{ position: 'relative' }}>
+          <Box className="relative">
             <S.PanelFooter>
               <Button
                 label={buttonSecondaryLabel || 'Cancel'}

@@ -1,5 +1,4 @@
 import { ElementRef, forwardRef, useCallback, useState } from 'react';
-import { CSS } from '../../styles';
 import { NumericFormatProps, NumericFormat } from 'react-number-format';
 
 import * as StyledInput from '../TextInput/styles';
@@ -35,7 +34,7 @@ export type NumberInputProps = {
   decimalScale?: number;
   allowNegative?: boolean;
   type?: 'text' | 'tel' | 'password';
-  css?: CSS;
+  className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> &
   NumericFormatProps;
 
@@ -62,8 +61,8 @@ export const NumberInput = forwardRef<
     allowNegative = false,
     decimalSeparator = ',',
     type = 'text',
-    css,
     errors,
+    className,
     ...props
   }: NumberInputProps): JSX.Element => {
     /**
@@ -84,7 +83,7 @@ export const NumberInput = forwardRef<
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', css }}>
+      <Box className={`w-full ${className}`}>
         <StyledInput.Container
           isFocused={isFocused}
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
@@ -130,8 +129,7 @@ export const NumberInput = forwardRef<
               {loading && (
                 <Box
                   as="span"
-                  className="input__icon--loading"
-                  css={{ position: 'absolute', right: '$spacing-2' }}
+                  className="input__icon--loading absolute right-2"
                 >
                   <Spinner size="xs" />
                 </Box>
@@ -139,12 +137,11 @@ export const NumberInput = forwardRef<
 
               {Boolean(errors) && !areErrorsEmpty ? (
                 <Icon
-                  className="input__icon--error"
+                  className="input__icon--error mr-[-8px]"
                   label="error"
                   name="alert"
                   size="xs"
                   color="danger"
-                  css={{ mr: -8 }}
                 />
               ) : null}
             </StyledInput.Label>

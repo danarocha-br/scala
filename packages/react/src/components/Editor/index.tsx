@@ -13,12 +13,11 @@ import Link from '@tiptap/extension-link';
 
 import 'highlight.js/styles/tokyo-night-dark.css';
 
-import { CSS } from '../../styles';
 import * as S from './styles';
 import { ToolbarOptions } from './ToolbarOptions';
 
 export type EditorProps = {
-  css?: CSS;
+  className?: string;
   content?: Content;
   placeholder?: string;
   variant?: 'ghost' | 'form';
@@ -32,7 +31,7 @@ export type EditorProps = {
 // lowlight.registerLanguage('ts', ts);
 
 export const Editor = ({
-  css,
+  className,
   content,
   placeholder,
   variant = 'ghost',
@@ -71,7 +70,7 @@ export const Editor = ({
       <S.EditorContainer
         editor={editor}
         variant={variant}
-        css={css}
+        className={className}
         {...props}
       />
       {/*

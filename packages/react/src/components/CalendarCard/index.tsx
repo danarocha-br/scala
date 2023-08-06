@@ -1,4 +1,3 @@
-import { CSS } from '../../styles';
 import { Avatar } from '../Avatar';
 import { Box } from '../Box';
 import { Card } from '../Card';
@@ -26,7 +25,7 @@ export type CalendarCardProps = {
   draftText?: string;
   editMenuItems: React.ReactNode;
   onClick?: () => void;
-  css?: CSS;
+  className?: string;
 };
 
 export const CalendarCard = ({
@@ -35,7 +34,7 @@ export const CalendarCard = ({
   title,
   tags,
   checklist,
-  css,
+  className,
   draftText,
   status = 'published',
   editMenuItems,
@@ -45,51 +44,16 @@ export const CalendarCard = ({
   return (
     <Card
       onClick={onClick}
-      css={{
-        background: '$surface-color-background-default',
-        radii: '$radii-sm',
-        boxShadow: 'none',
-        border:
-          status === 'published'
-            ? '1px solid $colors$action-color-border-transparent-enabled'
-            : '1px dashed $colors$action-color-border-danger-enabled',
-        cursor: 'pointer',
-        transition: '$slow',
-        outline: 'none',
-        outlineColor: 'transparent',
-        p: '0 !important',
-
-        '&:hover': {
-          background: 'hsl(60, 10%, 98.3%)',
-          [`.dark-theme &`]: {
-            color: '$text-color-on-dark',
-            background: '$surface-color-background-subdued',
-          },
-
-          '&.card__btn--edit': {
-            '&:hover': { transform: 'translateX(0px)' },
-          },
-        },
-
-        '&:focus': {
-          outline: '2px solid',
-          outlineOffset: '2px',
-          outlineColor: '$action-color-border-transparent-enabled',
-        },
-
-        css,
-      }}
+      className={`c-calendar-card group cursor-pointer rounded-sm bg-surface-color-background-default p-0 shadow-none outline-none outline-transparent transition-all ${
+        status === 'published'
+          ? 'border border-action-color-border-transparent-enabled'
+          : 'border border-action-color-border-danger-enabled'
+      } hover:bg-[hsl(60, 10%, 98.3%)] hover:[data-mode=dark]:text-text-color-on-dark hover:[data-mode=dark]:bg-surface-color-background-subdued focus: focus-outline-offset-2 focus:outline-2 focus:outline-action-color-border-transparent-enabled ${className}`}
       {...props}
     >
       {Boolean(status === 'draft') && (
-        <Box
-          css={{
-            py: '0px',
-            background: '$action-color-background-danger-disabled',
-            w: '100%',
-          }}
-        >
-          <Text size="xs" color="danger" css={{ px: '$spacing-2' }}>
+        <Box className="w-full bg-action-color-background-danger-disabled py-0">
+          <Text size="xs" color="danger" className="px-2">
             {draftText}
           </Text>
         </Box>
@@ -99,18 +63,10 @@ export const CalendarCard = ({
         align="center"
         justify="between"
         fullWidth
-        css={{
-          pt: '$spacing-2',
-          px: '$spacing-3',
-          height: '$spacing-5',
-        }}
+        className="h-5 px-3 pt-2"
       >
         <Stack as="small" align="center" gap="2">
-          <Text
-            size="xs"
-            color="body-lighter"
-            css={{ textTransform: 'uppercase', lineHeight: '$line-height-1' }}
-          >
+          <Text size="xs" color="body-lighter" className="leading-1 uppercase">
             {dueDate}
           </Text>
         </Stack>
@@ -119,15 +75,10 @@ export const CalendarCard = ({
           align="end"
           trigger={
             <IconButton
-              className="card__btn--edit"
               label="edit"
               icon="other"
               size="sm"
-              css={{
-                transform: 'translateX(6px)',
-                transition: '$base',
-                opacity: 0.3,
-              }}
+              className="card__btn--edit translate-[6px] opacity-30 transition-opacity transition-transform"
             />
           }
         >
@@ -135,33 +86,17 @@ export const CalendarCard = ({
         </Dropdown.Menu>
       </Stack>
 
-      <Text
-        css={{
-          lineHeight: '$line-height-1',
-          px: '$spacing-3',
-        }}
-      >
-        {title}
-      </Text>
+      <Text className="leading-1 px-3">{title}</Text>
 
       <Stack
         align="center"
         gap="2"
-        css={{
-          p: '$spacing-1',
-          pr: '$spacing-2',
-          mt: '$spacing-2',
-          ml: '$spacing-3',
-          border: '1px solid $form-color-background-disabled',
-          radii: '$radii-sm',
-          position: 'relative',
-          width: 'fit-content',
-          background:
-            checklist.filter((item) => item.status === 'done').length ===
-            checklist.length
-              ? '$feedback-color-background-success-disabled'
-              : 'none',
-        }}
+        className={`border-1 relative ml-3 mt-2 w-fit rounded-sm border-form-color-background-disabled p-1 pr-2 ${
+          checklist.filter((item) => item.status === 'done').length ===
+          checklist.length
+            ? 'bg-feedback-color-background-success-disabled'
+            : 'bg-transparent'
+        }`}
       >
         <Icon
           name="checklist"
@@ -180,11 +115,7 @@ export const CalendarCard = ({
         </Text>
       </Stack>
 
-      <Stack
-        justify="between"
-        align="center"
-        css={{ pb: '$spacing-2', px: '$spacing-3' }}
-      >
+      <Stack justify="between" align="center" className="px-3 pb-2">
         {Boolean(tags) && (
           <Stack gap="2" align="center">
             {tags?.map((tag) => (
@@ -193,24 +124,13 @@ export const CalendarCard = ({
                 align="center"
                 gap="1"
                 key={tag.id}
-                css={{
-                  px: '$spacing-1',
-                  radii: '$radii-sm',
-                  transition: '$base',
-
-                  '&:hover': {
-                    background: '$action-color-background-transparent-hover',
-                  },
-                }}
+                className="rounded-sm px-1 transition-all hover:bg-action-color-background-transparent-hover"
               >
                 <Box
                   as="span"
-                  css={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '$radii-sm',
-                    background: tag.color || '$brand-color-primary',
-                  }}
+                  className={`h-6 w-6 rounded-sm ${
+                    tag.color || 'bg-brand-color-primary'
+                  }`}
                 />
                 <Text size="xs" color="body-lighter">
                   {tag.title}

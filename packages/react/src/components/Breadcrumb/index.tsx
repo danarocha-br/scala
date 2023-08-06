@@ -1,15 +1,15 @@
-//@ts-nocheck
+//@ts-noCheck
 import React from 'react';
 
-import { CSS } from '../../styles';
 import { Icon, iconPath } from '../Icon';
 import { Stack } from '../Stack';
+import { Box } from '../Box';
 
 import * as S from './styles';
 
 export type BreadcrumbProps = {
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
 };
 
 export type BreadcrumbItemProps = (
@@ -30,13 +30,23 @@ export type BreadcrumbItemProps = (
     }
 ) & {
   label: string;
-  css?: CSS;
+  className?: string;
   icon?: keyof typeof iconPath;
   isActive?: boolean;
 };
 
-const Root = ({ css, children, ...props }: BreadcrumbProps): JSX.Element => (
-  <Stack as="ul" gap="1" align="center" css={{ padding: 0, css }} {...props}>
+const Root = ({
+  className,
+  children,
+  ...props
+}: BreadcrumbProps): JSX.Element => (
+  <Stack
+    as="ul"
+    gap="1"
+    align="center"
+    className={`p-0 ${className}`}
+    {...props}
+  >
     {children}
   </Stack>
 );
@@ -45,9 +55,9 @@ Root.displayName = 'Root';
 
 const Item = ({
   label,
-  as,
+  as='a',
   icon,
-  css,
+  className,
   href,
   onClick,
   isActive = false,
@@ -56,7 +66,12 @@ const Item = ({
   const Component = as || React.Fragment;
 
   return (
-    <S.Container css={css} isActive={isActive} {...props}>
+    <Box
+      as="li"
+      className={S.bredcrumItem({ isActive, className })}
+      isActive={isActive}
+      {...props}
+    >
       <Stack gap="1" align="center">
         <Component as={as} href={href} onClick={onClick}>
           {label}
@@ -66,11 +81,11 @@ const Item = ({
             name={icon || 'settings'}
             size="xs"
             label="icon"
-            className="breadcrumb__item--icon"
+            className="group-hover:opacity-1 translate-x-[-2px] opacity-0 transition-opacity transition-transform duration-[0.3s] ease-in-out group-hover:translate-x-[4px]"
           />
         )}
       </Stack>
-    </S.Container>
+    </Box>
   );
 };
 

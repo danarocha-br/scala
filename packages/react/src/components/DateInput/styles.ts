@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { BaseInputStyles, Container } from '../TextInput/styles';
 
+//TODO: refactor to tailwind
 export const DateContainer = styled(Container, {
   '& .react-datepicker': {
     fontFamily: '$font-family-sans',

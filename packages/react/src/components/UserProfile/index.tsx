@@ -1,5 +1,4 @@
 import React from 'react';
-import { CSS } from '../../styles';
 import { Avatar } from '../Avatar';
 import { Dropdown } from '../Dropdown';
 import { Icon } from '../Icon';
@@ -13,7 +12,7 @@ export type UserProfileProps = {
   user_imageURL?: string;
   loading?: boolean;
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
 };
 
 export const UserProfile = ({
@@ -22,11 +21,11 @@ export const UserProfile = ({
   user_imageURL,
   children,
   loading = false,
-  css,
+  className,
   ...props
 }: UserProfileProps): JSX.Element => (
   <Dropdown.Menu
-    css={css}
+    className={className}
     {...props}
     trigger={
       <S.Trigger aria-label="User profile">
@@ -45,18 +44,12 @@ export const UserProfile = ({
     <Text
       size="sm"
       color="caption"
-      css={{
-        py: '$spacing-2',
-        px: '$spacing-3',
-        mb: -8,
-        backgroundColor: '$surface-color-background-disabled',
-        borderTopLeftRadius: '$radii-sm',
-        borderTopRightRadius: '$radii-sm',
-      }}
+      className='bg-surface-color-background-disabled rounded-tl-sm rounded-tr-sm py-2 px-3 mg-[-8px]'
+
     >
       {user_email && user_email}
     </Text>
-    <Dropdown.Separator css={{ mb: '$spacing-2' }} />
+    <Dropdown.Separator className='mb-2' />
     {children}
   </Dropdown.Menu>
 );

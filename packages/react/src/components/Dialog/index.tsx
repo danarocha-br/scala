@@ -1,3 +1,5 @@
+//@ts-noCheck
+
 import React, {
   forwardRef,
   useCallback,
@@ -8,6 +10,12 @@ import React, {
 import {
   Portal as DialogPortal,
   DialogProps as PrimitiveDialogProps,
+  Root,
+  Overlay,
+  Content,
+  Close,
+  Title,
+  Description,
 } from '@radix-ui/react-dialog';
 
 import { Button } from '../Button';
@@ -80,41 +88,35 @@ export const Dialog = forwardRef(
     function DialogContent({ children, ...props }: DialogContentProps) {
       return (
         <DialogPortal>
-          <S.DialogOverlay />
-          <S.DialogContent
+          <Overlay className={S.dialogOverlay()} />
+          <Content
+            className={S.dialogContent()}
             {...props}
             onInteractOutside={closeDialog}
             onEscapeKeyDown={closeDialog}
           >
             {children}
-          </S.DialogContent>
+          </Content>
         </DialogPortal>
       );
     }
 
     return (
-      <S.Dialog open={isVisible}>
+      <Root open={isVisible}>
         <DialogContent>
           <Stack
             fullWidth
             align="center"
             justify="between"
-            css={{
-              background:
-                variant === 'danger'
-                  ? '$feedback-color-background-danger-disabled'
-                  : '$surface-color-background-subdued',
-              borderBottom: '1px solid',
-              borderColor: '$form-color-border-default',
-              px: '$spacing-3',
-              pb: '$spacing-2',
-              borderTopLeftRadius: '$radii-md',
-              borderTopRightRadius: '$radii-md',
-            }}
+            className={`${
+              variant === 'danger'
+                ? 'bg-feedback-color-background-danger-disabled'
+                : 'bg-surface-color-background-subdued'
+            } border-tl-md border-tr-md border-b border-form-color-border-default px-3 pb-2`}
           >
-            <S.DialogTitle variant={variant}>{title}</S.DialogTitle>
+            <Title className={S.dialogTitle({ variant })}>{title}</Title>
 
-            <S.DialogClose asChild>
+            <Close className={S.dialogClose()} asChild>
               <div>
                 <IconButton
                   label="Close"
@@ -122,29 +124,21 @@ export const Dialog = forwardRef(
                   onClick={closeDialog}
                   size="sm"
                   type="button"
-                  css={{
-                    mt: '$spacing-2',
-                    position: 'relative',
-                    right: -3,
-
-                    '& svg': {
-                      fill: '$text-color-caption',
-                    },
-                  }}
+                  className="right=[-3px] relative mt-2 [&_svg]:fill-text-color-caption"
                 />
               </div>
-            </S.DialogClose>
+            </Close>
           </Stack>
 
           {Boolean(description) && (
-            <S.DialogDescription>{description}</S.DialogDescription>
+            <Description className={S.dialogDescription()}>
+              {description}
+            </Description>
           )}
 
-          <Box css={{ px: '$spacing-3', color: '$text-color-body' }}>
-            {children}
-          </Box>
+          <Box className="px-3 text-text-color-body">{children}</Box>
 
-          <S.DialogFooter>
+          <Box as='footer' className={S.dialogFooter()}>
             {variant === 'transactional' ? (
               <>
                 <Button
@@ -193,9 +187,9 @@ export const Dialog = forwardRef(
                 animateOnHover
               />
             )}
-          </S.DialogFooter>
+          </Box>
         </DialogContent>
-      </S.Dialog>
+      </Root>
     );
   }
 );

@@ -1,25 +1,23 @@
 import * as React from 'react';
+import { Command as CommandPrimitive } from 'cmdk';
 import {
   DialogProps,
   Root as DialogRoot,
   Content as DialogContent,
 } from '@radix-ui/react-dialog';
-import { Command as CommandPrimitive } from 'cmdk';
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
-
 import * as S from './styles';
-import { CSS } from '../../styles';
 
 type CommandRootProps = {
-  css?: CSS;
+  className?: string;
 } & React.ComponentPropsWithoutRef<typeof CommandPrimitive>;
 
 const CommandRoot = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   CommandRootProps
->(({ css, ...props }, ref) => (
-  <S.CommandContainer css={css}>
+>(({ className, ...props }, ref) => (
+  <S.CommandContainer className={className}>
     <CommandPrimitive ref={ref} {...props} />
   </S.CommandContainer>
 ));
@@ -38,22 +36,17 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 };
 
 type CommandInputProps = {
-  css?: CSS;
+  className?: string;
 } & React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>;
 
 const CommandInput = React.forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Input & { css?: CSS }>,
+  React.ElementRef<typeof CommandPrimitive.Input & { className?: string }>,
   CommandInputProps
->(({ css, ...props }, ref) => (
+>(({ className, ...props }, ref) => (
   <Stack
     align="center"
     gap="2"
-    css={{
-      borderBottom: '1px solid',
-      borderColor: '$action-color-border-transparent-pressed',
-      px: '$spacing-2',
-      css,
-    }}
+    className={`border-b border-action-color-border-transparent-pressed px-2 ${className}`}
     cmdk-input-wrapper=""
   >
     <Icon name="search" label="search" size="xs" color="caption" />
@@ -91,14 +84,14 @@ const CommandSeparator = React.forwardRef<
 CommandSeparator.displayName = 'Separator';
 
 type CommandItemProps = {
-  css?: CSS;
+  className?: string;
 } & React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>;
 
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   CommandItemProps
->(({ css, ...props }, ref) => (
-  <S.CommmandItem css={css} ref={ref} {...props} />
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Item className={className} ref={ref} {...props} />
 ));
 
 CommandItem.displayName = 'Item';

@@ -33,13 +33,7 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         editor.isActive('heading', { level: 3 })
       )}
 
-      <Box
-        css={{
-          background: '$action-color-border-transparent-enabled',
-          width: '1px',
-          height: '$spacing-4',
-        }}
-      />
+      <Box className="h-4 w-[1px] bg-action-color-border-transparent-enabled" />
 
       {renderButton(
         <Icon name="text-bold" label="Bold" size="xs" />,

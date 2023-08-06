@@ -4,8 +4,6 @@ import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Icon, iconPath } from '../Icon';
 import { TextInput, TextInputProps } from '../TextInput';
-import { CSS } from '../../styles';
-
 import * as S from './styles';
 
 export type PasswordInputProps = {
@@ -14,7 +12,7 @@ export type PasswordInputProps = {
   placeholder?: string;
   icon?: keyof typeof iconPath;
   value?: string;
-  css?: CSS;
+  className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> &
   TextInputProps;
 
@@ -28,8 +26,8 @@ export const PasswordInput = forwardRef<
       label,
       placeholder,
       icon,
-      css,
       value,
+      className,
       ...props
     }: PasswordInputProps,
     ref
@@ -54,11 +52,11 @@ export const PasswordInput = forwardRef<
         align="center"
         justify="end"
         fullWidth
-        css={{ position: 'relative', css }}
+        className={`relative ${className}`}
         {...props}
       >
         <Box
-          css={{ position: 'relative', w: '100%' }}
+          className="relative w-full"
           onMouseEnter={handleHover}
           onMouseLeave={handleUnhover}
         >

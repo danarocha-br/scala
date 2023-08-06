@@ -1,15 +1,13 @@
 import { ElementRef, forwardRef, useCallback, useState } from 'react';
-import { CSS } from '../../styles';
 import { ReactDatePickerProps } from 'react-datepicker';
 
 import { Box } from '../Box';
 import { Icon, iconPath } from '../Icon';
 import { FormErrorMessage } from '../FormErrorMessage';
 import * as StyledInput from '../TextInput/styles';
-
-import * as S from './styles';
 import { Stack } from '../Stack';
 import { Spinner } from '../Spinner';
+import * as S from './styles';
 
 export type DateInputProps = {
   name?: string;
@@ -29,7 +27,7 @@ export type DateInputProps = {
   errors?: any | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control?: any;
-  css?: CSS;
+  className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'> &
   ReactDatePickerProps;
 
@@ -52,7 +50,7 @@ export const DateInput = forwardRef<
       isClearable = true,
       selected,
       errors,
-      css,
+      className,
       ...props
     }: DateInputProps,
     ref
@@ -75,7 +73,7 @@ export const DateInput = forwardRef<
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', zIndex: '$1 !important', css }}>
+      <Box className='w-full !z-[1]'>
         <S.DateContainer
           isFocused={isFocused}
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
@@ -103,8 +101,7 @@ export const DateInput = forwardRef<
               {loading && (
                 <Box
                   as="span"
-                  className="input__icon--loading"
-                  css={{ position: 'absolute', right: '$spacing-2' }}
+                  className="input__icon--loading absolute right-2"
                 >
                   <Spinner size="xs" />
                 </Box>
@@ -112,12 +109,11 @@ export const DateInput = forwardRef<
 
               {Boolean(errors) && !areErrorsEmpty ? (
                 <Icon
-                  className="input__icon--error"
+                  className="input__icon--error mr-[-8px]"
                   label="error"
                   name="alert"
                   size="xs"
                   color="danger"
-                  css={{ mr: -8 }}
                 />
               ) : null}
             </StyledInput.Label>

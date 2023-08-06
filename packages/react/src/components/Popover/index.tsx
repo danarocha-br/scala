@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { CSS } from '../../styles';
 
 import * as S from './styles';
 
 export type PopoverProps = {
-  css?: CSS;
+  className?: string;
   trigger: React.ReactNode;
 } & React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root>;
 
@@ -21,19 +20,19 @@ const Root = ({ children, trigger, ...props }: PopoverProps) => {
 };
 
 export type PopoverContentProps = {
-  css?: CSS;
+  className?: string;
 } & React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>;
 
 const Content = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(({ css, align = 'center', sideOffset = 4, ...props }, ref) => (
+>(({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
   <PopoverPrimitive.Portal>
     <S.ContainerContent
       ref={ref}
       align={align}
       sideOffset={sideOffset}
-      css={css}
+      className={className}
       {...props}
     />
   </PopoverPrimitive.Portal>

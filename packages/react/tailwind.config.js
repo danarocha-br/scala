@@ -467,6 +467,75 @@ module.exports = {
         11: spacing['spacing-11'],
         12: spacing['spacing-12'],
       },
+
+      backgroundSize: {
+        100: '100% 100%',
+      },
+
+      animation: {
+        'move-scale-up-start': {
+          to: {
+            transform: 'translate3d(0,-100%,0) scale3d(1,1.1,1)',
+            opacity: 0,
+          },
+        },
+
+        'move-scale-up-end': {
+          from: {
+            transform: 'translate3d(0,50%,0) scale3d(1,1.1,1)',
+            opacity: 0,
+          },
+          to: {
+            transform: 'translate3d(0,0,0)',
+            opacity: 1,
+          },
+        },
+
+        'move-loading-gradient-start': {
+          '0%': {
+            clipPath:
+              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
+          },
+          '25%': {
+            clipPath:
+              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) 100%, 100% 100%, 100% 0%, 0% 0%)',
+          },
+          '50%': {
+            clipPath:
+              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, 100% 0%, 0% 0%)',
+          },
+          '75%': {
+            '-webkit-clip-path':
+              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth 0%, 0% 0%)',
+          },
+          '100%': {
+            '-webkit-clip-path':
+              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, 0% 100%)',
+          },
+        },
+
+        'animate-overlay': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 0.8 },
+        },
+
+        'animate-show-content': {
+          '0%': {
+            opacity: 0,
+            transformOrigin: 'bottom left',
+            transform: 'translate(-50%, -48%) scale(.96)',
+          },
+
+          '100%': {
+            opacity: 1,
+            transform: 'translate(-50%, -50%) scale(1)',
+          },
+        },
+      },
+
+      zIndex: {
+        max: '999',
+      },
     },
   },
   plugins: [],

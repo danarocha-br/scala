@@ -23,7 +23,7 @@ export default {
         category: 'Modifiers',
       },
     },
-    css: {
+    className: {
       table: {
         category: 'Modifiers',
       },

@@ -11,16 +11,14 @@ import {
   SingleValueProps,
 } from 'react-select';
 
-import { CSS } from '../../styles';
 import { Icon, iconPath } from '../Icon';
 import { Text } from '../Text';
 import { Box } from '../Box';
-
-import * as S from './styles';
 import { Stack } from '../Stack';
+import * as S from './styles';
 
 export type SelectableButtonProps = {
-  css?: CSS;
+  className?: string;
   children?: React.ReactNode;
   icon?: keyof typeof iconPath;
   label?: string;
@@ -28,14 +26,14 @@ export type SelectableButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const SelectableButton = ({
-  css,
+  className,
   children,
   icon,
   label,
   isActive,
   ...props
 }: SelectableButtonProps): JSX.Element => (
-  <S.ButtonContainer css={css} {...props} isActive={isActive} role="combobox">
+  <S.ButtonContainer className={className} {...props} isActive={isActive} role="combobox">
     {!!icon && <Icon name={icon} size="sm" label="icon" color="current" />}
     {!!label && (
       <Text size="sm" color="current">
@@ -71,7 +69,7 @@ export type SelectableMenuProps = {
   options?: OptionsOrGroups<unknown, GroupBase<unknown>> | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setFieldValue?: (field: string, value: any, shouldValidate?: boolean) => void;
-  css?: CSS;
+  className?: string;
 };
 
 export const SelectableMenu = forwardRef<
@@ -89,7 +87,7 @@ export const SelectableMenu = forwardRef<
       options,
       isMulti,
       noOptionMessage = 'No options found.',
-      css,
+      className,
       value,
       ...props
     }: SelectableMenuProps,
@@ -114,7 +112,7 @@ export const SelectableMenu = forwardRef<
                 label="checked"
                 size="sm"
                 color="caption"
-                css={{ ml: '$spacing-2' }}
+                className='ml-2'
               />
             </Stack>
           )}
@@ -148,7 +146,7 @@ export const SelectableMenu = forwardRef<
             as="p"
             color="body-lighter"
             align="center"
-            css={{ py: '$spacing-2' }}
+            className='py-2'
           >
             {noOptionMessage}
           </Text>
@@ -161,7 +159,7 @@ export const SelectableMenu = forwardRef<
     };
 
     return (
-      <Box css={{ w: '100%', css }}>
+      <Box className={{ w: '100%', className }}>
         <S.Container isDisabled={disabled}>
           <S.CustomSelect
             id={name}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { CSS } from '../../styles';
 import { Box } from '../Box';
 
 import * as S from './styles';
@@ -11,7 +10,7 @@ export type LinkProps = {
   href: string;
   target?: string;
   color?: 'primary' | 'secondary' | 'caption';
-  css?: CSS;
+  className?: string;
   children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
@@ -21,14 +20,14 @@ export const Link = ({
   target,
   color,
   children,
-  css,
+  className,
   ...props
 }: LinkProps): JSX.Element => {
   const Component = as || React.Fragment;
 
   return (
     <Component href={href} target={target} role="navigation">
-      <S.Anchor color={color} css={css} {...props}>
+      <S.Anchor color={color} className={className} {...props}>
         <Box as="span">{children}</Box>
       </S.Anchor>
     </Component>

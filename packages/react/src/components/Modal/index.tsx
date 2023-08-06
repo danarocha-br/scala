@@ -1,3 +1,4 @@
+//@ts-noCheck
 import React, {
   forwardRef,
   useCallback,
@@ -8,6 +9,12 @@ import React, {
 import {
   Portal as DialogPortal,
   DialogProps as PrimitiveDialogProps,
+  Root,
+  Overlay,
+  Content,
+  Close,
+  Title,
+  Description,
 } from '@radix-ui/react-dialog';
 
 import { Button } from '../Button';
@@ -15,9 +22,9 @@ import { Stack } from '../Stack';
 import { useOverlay } from '../../hooks/useOverlay';
 import { IconButton } from '../IconButton';
 import { ScrollView } from '../ScrollView';
-import { CSS } from '../../styles';
 
 import * as S from './styles';
+import { Box } from '../Box';
 
 export type ModalHandlesProps = {
   openModal: () => void;
@@ -35,7 +42,7 @@ export type ModalProps = {
   onButtonPrimaryClick: () => void;
   onButtonSecondaryClick?: () => void;
   headerSlot?: React.ReactNode;
-  css: CSS;
+  className: string;
 } & PrimitiveDialogProps;
 
 export type ModalContentProps = {
@@ -54,7 +61,7 @@ export const Modal = forwardRef(
       buttonSecondaryLabel,
       onButtonSecondaryClick,
       headerSlot,
-      css,
+      className,
     }: ModalProps,
     ref
   ) => {
@@ -84,89 +91,62 @@ export const Modal = forwardRef(
     function DialogContent({ children, ...props }: ModalContentProps) {
       return (
         <DialogPortal>
-          <S.ModalOverlay />
-          <S.ModalContent
+          <Overlay className={S.modalOverlay()} />
+          <Content
             {...props}
+            className={S.modalContent()}
             onInteractOutside={closeModal}
             onEscapeKeyDown={closeModal}
           >
             {children}
-          </S.ModalContent>
+          </Content>
         </DialogPortal>
       );
     }
 
     return (
-      <S.Modal open={isVisible} css={{ position: 'relative', css }}>
+      <Root open={isVisible}>
         <DialogContent>
           <Stack
             fullWidth
             align="center"
             justify="between"
-            css={{
-              background: '$surface-color-background-subdued',
-              borderBottom: '1px solid',
-              borderColor: '$form-color-border-default',
-              px: '$spacing-3',
-              pb: '$spacing-2',
-              borderTopLeftRadius: '$radii-md',
-              borderTopRightRadius: '$radii-md',
-            }}
+            className="border-tl-md border-tr-md border-b border-form-color-border-default bg-surface-color-background-subdued px-3 pb-2"
           >
-            <S.ModalTitle
-              variant={variant}
-              hasCustomHeader={headerSlot ? true : false}
+            <Title
+            // className={S.modalTitle({
+            //   variant,
+            //   hasCustomHeader: !!headerSlot ? true : false,
+            // })}
             >
-              {headerSlot ? headerSlot : title}
-            </S.ModalTitle>
+              <>{headerSlot ? headerSlot : title}</>
+            </Title>
 
-            <S.ModalClose asChild>
-              <div className="c-modal__close-btn">
+            <Close asChild>
+              <div className={`c-modal__close-btn ${S.modalClose()}`}>
                 <IconButton
                   label="Close"
                   icon="close"
                   onClick={closeModal}
                   size="sm"
                   type="button"
-                  css={{
-                    mt: '$spacing-2',
-                    position: 'relative',
-                    right: 0,
-
-                    '& svg': {
-                      fill: '$text-color-caption',
-                    },
-                  }}
+                  className="relative right-0 mt-2 [&_svg]:fill-text-color-caption"
                 />
               </div>
-            </S.ModalClose>
+            </Close>
           </Stack>
 
           {Boolean(description) && (
-            <S.ModalDescription>{description}</S.ModalDescription>
+            <Description className={S.modalDescription()}>
+              {description}
+            </Description>
           )}
 
-          <ScrollView
-            css={{
-              px: '$spacing-3',
-              color: '$text-color-body',
-              borderRadius: 0,
-              width: '100%',
-              height: '80vh',
-
-              '@bp-md': {
-                height: '55vh',
-              },
-
-              '@bp-xl': {
-                height: '67vh',
-              },
-            }}
-          >
+          <ScrollView className="text-color-body h-[80vh] w-full rounded-none px-3 md:h-[55vh] xl:h-[67vh]">
             {children}
           </ScrollView>
 
-          <S.ModalFooter>
+          <Box className={S.modalFooter()}>
             {variant === 'transactional' ? (
               <>
                 <Button
@@ -194,9 +174,9 @@ export const Modal = forwardRef(
                 size="sm"
               />
             )}
-          </S.ModalFooter>
+          </Box>
         </DialogContent>
-      </S.Modal>
+      </Root>
     );
   }
 );

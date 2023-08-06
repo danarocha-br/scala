@@ -1,6 +1,5 @@
 import { styled } from '../../styles';
-import { Command as CommandPrimitive } from 'cmdk';
-
+//TODO: refactor to tailwind
 export const CommandContainer = styled('div', {
   '& [cmdk-root]': {
     color: '$text-color-body',
@@ -126,4 +125,4 @@ export const CommandContainer = styled('div', {
   },
 });
 
-export const CommmandItem = styled(CommandPrimitive.Item, {});
+export const CommmandItem = styled('div', {});
