@@ -103,16 +103,16 @@
     --action-color-text-transparent-enabled: var(--color-neutral-400);
     --action-color-text-transparent-disabled: var(--color-neutral-800);
     --action-color-border-transparent-enabled: var(--color-neutral-200);
-    --action-color-border-transparent-pressed: 120deg 2% 88% 50%;
+    --action-color-border-transparent-pressed: 120deg 3% 93%;
     --action-color-background-transparent-enabled: transparent;
-    --action-color-background-transparent-hover: 120deg 2% 88% 50%;
+    --action-color-background-transparent-hover: 120deg 3% 93%;
     --action-color-background-transparent-pressed: var(--color-neutral-200);
-    --action-color-background-transparent-disabled: 120deg 2% 88% 30%;
+    --action-color-background-transparent-disabled: 120deg 4% 95%;
 
     --action-color-text-primary-enabled: var(--color-white);
     --action-color-text-primary-disabled: var(--color-neutral-600);
     --action-color-border-primary-enabled: var(--color-neutral-400);
-    --action-color-border-primary-pressed: var(--color-neutral-300);
+    --action-color-border-primary-pressed: var(--color-neutral-200);
     --action-color-background-primary-enabled: var(--color-neutral-700);
     --action-color-background-primary-hover: var(--color-neutral-800);
     --action-color-background-primary-pressed: var(--color-neutral-900);
@@ -121,7 +121,7 @@
     --action-color-text-secondary-enabled: var(--color-royal-50);
     --action-color-text-secondary-disabled: var(--color-royal-400);
     --action-color-border-secondary-enabled: var(--color-royal-400);
-    --action-color-border-secondary-pressed: 229deg 83% 59% 35%;
+    --action-color-border-secondary-pressed: 229deg 75% 88%;
     --action-color-background-secondary-enabled: var(--color-royal-600);
     --action-color-background-secondary-hover: var(--color-royal-700);
     --action-color-background-secondary-pressed: var(--color-royal-800);
@@ -152,7 +152,7 @@
     --feedback-color-background-danger-subdued: var(--color-froly-600);
     --feedback-color-background-danger-hover: var(--color-froly-800);
     --feedback-color-background-danger-pressed: var(--color-froly-900);
-    --feedback-color-background-danger-disabled: 0deg 37% 90% 60%;
+    --feedback-color-background-danger-disabled: 0deg 31% 93%;
 
     --feedback-color-text-warning-enabled: var(--color-neutral-900);
     --feedback-color-text-warning-disabled: var(--color-neutral-400);
@@ -174,7 +174,7 @@
     --feedback-color-background-success-pressed: var(--color-forest-600);
     --feedback-color-background-success-disabled: var(--color-forest-100);
 
-    --feedback-color-text-info-enabled: var(--color-royal-900);
+    --feedback-color-text-info-enabled: var(--color-white);
     --feedback-color-text-info-disabled: var(--color-royal-500);
     --feedback-color-border-info-enabled: var(--color-royal-400);
     --feedback-color-border-info-pressed: var(--color-royal-200);
@@ -191,29 +191,21 @@
     );
 
     --button-loading-border-width: 2.4px;
-    --button-loading-gradient: linear-gradient(
-      99deg,
-      var(--color-neutral-200),
-      var(--color-royal-300),
-      var(--color-froly-300)
-    );
     --button-loading-clip-path: polygon(
-        0% 100%,
-        var(--button-loading-border-width) 100%,
-        var(--button-loading-border-width) var(--button-loading-border-width),
-        calc(100% - var(--button-loading-border-width))
-          var(--button-loading-border-width),
-        calc(100% - var(--button-loading-border-width))
-          calc(100% - var(--button-loading-border-width)),
-        var(--button-loading-border-width)
-          calc(100% - var(--button-loading-border-width)),
-        var(--button-loading-border-width) 100%,
-        100% 100%,
-        100% 0%,
-        0% 0%
-      );
-      --button-loading-animation: move-loading-gradient-start 2s ease-in-out
-      alternate infinite;
+      0% 100%,
+      var(--button-loading-border-width) 100%,
+      var(--button-loading-border-width) var(--button-loading-border-width),
+      calc(100% - var(--button-loading-border-width))
+        var(--button-loading-border-width),
+      calc(100% - var(--button-loading-border-width))
+        calc(100% - var(--button-loading-border-width)),
+      var(--button-loading-border-width)
+        calc(100% - var(--button-loading-border-width)),
+      var(--button-loading-border-width) 100%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
   }
 
   [data-theme='dark'] {
@@ -251,21 +243,21 @@
     --interactive-color-text-enabled: var(--color-royal-100);
     --interactive-color-text-disabled: var(--color-royal-400);
     --interactive-color-border-enabled: var(--color-royal-400);
-    --interactive-color-border-pressed: 208deg 55% 68% 18%;
+    --interactive-color-border-pressed: 208deg 55% 68%;
     --interactive-color-background-enabled: var(--color-royal-400);
     --interactive-color-background-subdued: var(--color-royal-300);
     --interactive-color-background-hover: var(--color-royal-500);
     --interactive-color-background-pressed: var(--color-royal-600);
-    --interactive-color-background-disabled: 229deg 83% 70% 12%;
+    --interactive-color-background-disabled: 229deg 83% 70%;
 
     --action-color-text-transparent-disabled: var(--color-white);
     --action-color-text-transparent-enabled: var(--color-neutral-300);
     --action-color-border-transparent-enabled: var(--color-neutral-700);
-    --action-color-border-transparent-pressed: 120deg 2% 88% 4%;
+    --action-color-border-transparent-pressed: 120deg 2% 88%;
     --action-color-background-transparent-enabled: transparent;
-    --action-color-background-transparent-hover: 120deg 2% 88% 6%;
+    --action-color-background-transparent-hover: 120deg 2% 88%;
     --action-color-background-transparent-pressed: var(--color-neutral-600);
-    --action-color-background-transparent-disabled: 120deg 2% 88% 4%;
+    --action-color-background-transparent-disabled: 120deg 2% 88%;
 
     --action-color-text-primary-enabled: var(--color-neutral-900);
     --action-color-text-primary-disabled: var(--color-neutral-300);
@@ -279,11 +271,11 @@
     --action-color-text-secondary-enabled: var(--color-white);
     --action-color-text-secondary-disabled: var(--color-royal-400);
     --action-color-border-secondary-enabled: var(--color-royal-600);
-    --action-color-border-secondary-pressed: 218deg 55% 68% 18%;
+    --action-color-border-secondary-pressed: 218deg 55% 68%;
     --action-color-background-secondary-enabled: var(--color-royal-400);
     --action-color-background-secondary-hover: var(--color-royal-500);
     --action-color-background-secondary-pressed: var(--color-royal-600);
-    --action-color-background-secondary-disabled: 229deg 83% 70% 12%;
+    --action-color-background-secondary-disabled: 229deg 83% 70%;
 
     --action-color-text-danger-enabled: var(--color-neutral-900);
     --action-color-text-danger-disabled: var(--color-neutral-900);
@@ -292,7 +284,7 @@
     --action-color-background-danger-enabled: var(--color-froly-600);
     --action-color-background-danger-hover: var(--color-froly-700);
     --action-color-background-danger-pressed: var(--color-froly-800);
-    --action-color-background-danger-disabled: 4deg 87% 85% 70%;
+    --action-color-background-danger-disabled: 4deg 87% 85%;
 
     --surface-color-text-default: var(--color-white);
     --surface-color-border-default: var(--color-neutral-700);
@@ -305,12 +297,12 @@
     --feedback-color-text-danger-enabled: var(--color-neutral-900);
     --feedback-color-text-danger-disabled: var(--color-white);
     --feedback-color-border-danger-enabled: var(--color-froly-600);
-    --feedback-color-border-danger-pressed: 3deg 100% 66% 35%;
+    --feedback-color-border-danger-pressed: 3deg 100% 66%;
     --feedback-color-background-danger-enabled: var(--color-froly-600);
     --feedback-color-background-danger-subdued: var(--color-froly-500);
     --feedback-color-background-danger-hover: var(--color-froly-700);
     --feedback-color-background-danger-pressed: var(--color-froly-800);
-    --feedback-color-background-danger-disabled: 4deg 82% 69% 17%;
+    --feedback-color-background-danger-disabled: 4deg 82% 69%;
 
     --feedback-color-text-warning-enabled: var(--color-neutral-900);
     --feedback-color-text-warning-disabled: var(--color-neutral-500);
@@ -320,7 +312,7 @@
     --feedback-color-background-warning-subdued: var(--color-macaroni-600);
     --feedback-color-background-warning-hover: var(--color-macaroni-800);
     --feedback-color-background-warning-pressed: var(--color-macaroni-900);
-    --feedback-color-background-warning-disabled: 32deg 94% 58% 60%;
+    --feedback-color-background-warning-disabled: 32deg 94% 58%;
 
     --feedback-color-text-success-enabled: var(--color-forest-900);
     --feedback-color-text-success-disabled: var(--color-forest-500);
@@ -330,7 +322,7 @@
     --feedback-color-background-success-subdued: var(--color-forest-300);
     --feedback-color-background-success-hover: var(--color-forest-500);
     --feedback-color-background-success-pressed: var(--color-forest-600);
-    --feedback-color-background-success-disabled: 119deg 54% 45% 10.2%;
+    --feedback-color-background-success-disabled: 119deg 54% 45%;
 
     --feedback-color-text-info-enabled: var(--color-royal-900);
     --feedback-color-text-info-disabled: var(--color-royal-500);
@@ -340,7 +332,7 @@
     --feedback-color-background-info-subdued: var(--color-royal-300);
     --feedback-color-background-info-hover: var(--color-royal-500);
     --feedback-color-background-info-pressed: var(--color-royal-600);
-    --feedback-color-background-info-disabled: 229deg 83% 70% 12%;
+    --feedback-color-background-info-disabled: 229deg 83% 70%;
 
     --background-color-default: 192deg 18% 11%;
     --background-color-gradient: linear-gradient(

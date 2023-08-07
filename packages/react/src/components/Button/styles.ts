@@ -17,17 +17,16 @@ export const button = cva(
     'overflow-hidden',
     'relative',
     'outline-none',
-    'border-none',
     'outline-transparent',
+    'border-none',
     'cursor-pointer',
     'transition-all',
 
     'focus:outline-2',
     'focus:outline-offset-2',
-    'focus:outline-transparent',
-    'data-[focus-visible]:outline-2',
-    'data-[focus-visible]:offset-2',
-    'data-[focus-visible]:outline-transparent',
+    'focus-visible:outline-2',
+    'focus-visible:offset-2',
+    'focus-visible:outline-transparent',
 
     'aria-disabled:opacity-50',
     'aria-disabled:cursor-not-allowed',
@@ -63,11 +62,11 @@ export const button = cva(
       },
 
       size: {
-        lg: ['text-md', 'p-4', 'rounded-md', 'h-[64px]'],
-        md: ['text-md', 'py-3', 'px-4', 'rounded-md'],
+        lg: ['text-md', 'rounded-md', 'h-[64px]', 'px-4'],
+        md: ['text-md', 'h-[54px]', 'px-4', 'rounded-md'],
         sm: [
           'text-sm',
-          'py-1',
+          'h-[40px]',
           'px-3',
           'rounded-sm',
           'focus:outline-2',
@@ -76,7 +75,7 @@ export const button = cva(
         ],
         xs: [
           'text-xs',
-          'py-1',
+          'h-[28px]',
           'px-2',
           'rounded-sm',
           'h-[30px]',
@@ -92,19 +91,22 @@ export const button = cva(
 
       animateOnHover: {
         true: [
-          'hover:before:translate-[translate3d(0,0,0)]',
-          'hover:before:scale-[scale3d(1,1,1)]',
-          'hover:before:transition-[transform 0.4s cubic-bezier(0.1, 0, 0.3, 1)]',
+          'hover:before:translate-0',
+          'hover:before:scale-150',
+          'hover:before:transition-transform',
+          'hover:before:duration-[0.4s]',
+          'hover:before:ease-[cubic-bezier(0.1, 0, 0.3, 1)]',
 
-          'hover:after:transform-[translate3d(0,0,0)]',
-          'hover:after:transition-all',
+          'hover:after:transform-0',
           'hover:after:duration-[0.05s]',
           'hover:after:delay-[0.4s]',
           'hover:after:ease-linear',
 
-          '[&_span]:block',
+          '[&_span]:inline-flex',
+          '[&_span]:items-center',
+          '[&_span]:justify-center',
           '[&_span]:relative',
-          '[&_span]:z-[1]',
+          '[&_span]:h-full',
 
           'before:content-[""]',
           'before:w-[120%]',
@@ -114,8 +116,8 @@ export const button = cva(
           'before:top-[-110%]',
           'before:left-[-10%]',
           'before:rounded-[50%]',
-          'before:translate-[translate3d(0,68%,0)]',
-          'before:scale-[scale(0,0,0)]',
+          'before:translate-y[68%]',
+          'before:scale-0',
 
           'after:content-[""]',
           'after:w-full',
@@ -124,19 +126,8 @@ export const button = cva(
           'after:top-0',
           'after:left-0',
           'after:rounded-[50%]',
-          'after:translate-[translate3d(0,-100%,0)]',
-          'after:transition-transform',
-          'after:ease-in-[cubic-bezier(0.1, 0, 0.3, 1)]',
-          'after:duration-[0.4s]',
-
-          // '[&_span]:move-scale-up-start',
-          // '[&_span]:duration-[0.3s]',
-
-          {
-            '& span': {
-              animation: `move-scale-up-start 0.3s forwards, move-scale-up-end 0.3s forwards 0.3s`,
-            },
-          },
+          'after:translate-y-[-100%]',
+          'after:motion-safe:animate-[transform_0.4s_cubic-bezier(0.1, 0, 0.3, 1)]',
         ],
       },
 
@@ -146,8 +137,6 @@ export const button = cva(
 
       loading: {
         true: [
-          '--borderWidth: 2.4px',
-          '--gradient: linear-gradient(99deg, var(--color-neutral-200), var(--color-royal-300), var(--color-froly-300)',
           'relative',
           'bg-action-color-background-transparent-hover',
 
@@ -158,12 +147,12 @@ export const button = cva(
           'after:bottom-0',
           'after:left-0',
           'after:rounded-md',
-          'after:border-[var(--button-loading-border-width)]',
-          'after:border-neutral-200',
-          'after:bg-[var(--button-loading-gradient)]',
+          'after:bg-loading-gradient',
+          '!after:border-[2.4px]',
+          '!after:border-neutral-200',
           'after:bg-100',
           'after:clip-path-[var(--button-loading-clip-path)]',
-          'after:animation-[--button-loading-animation]'
+          'after:animate-button-loading',
         ],
       },
     },
@@ -183,8 +172,8 @@ export const button = cva(
         animateOnHover: true,
 
         class: [
-          'before:bg-interactive-color-background-hover',
-          'after:bg-interactive-color-background-hover',
+          'before:bg-interactive-color-background-pressed',
+          'after:bg-interactive-color-background-pressed',
         ],
       },
 
@@ -193,8 +182,8 @@ export const button = cva(
         animateOnHover: true,
 
         class: [
-          'before:bg-feedback-color-background-danger-hover',
-          'after:bg-feedback-color-background-danger-hover',
+          'before:bg-feedback-color-background-danger-pressed',
+          'after:bg-feedback-color-background-danger-pressed',
         ],
       },
 
@@ -234,7 +223,6 @@ export const button = cva(
           'text-action-color-text-primary-enabled',
           'bg-action-color-background-primary-enabled',
           'hover:bg-action-color-background-primary-hover',
-          'hover:[&_span]:z-[1]',
           'focus:outline-action-color-border-primary-pressed',
           'aria-disabled:text-action-color-text-primary-disabled',
           'aria-disabled:bg-action-color-background-primary-disabled',
@@ -247,7 +235,6 @@ export const button = cva(
           'text-action-color-text-secondary-enabled',
           'bg-action-color-background-secondary-enabled',
           'hover:bg-action-color-background-secondary-hover',
-          'hover:[&_span]:z-[1]',
           'focus:outline-action-color-border-secondary-pressed',
           'aria-disabled:text-action-color-text-secondary-disabled',
           'aria-disabled:bg-action-color-background-secondary-disabled',
@@ -260,7 +247,6 @@ export const button = cva(
           'text-action-color-text-danger-enabled',
           'bg-action-color-background-danger-enabled',
           'hover:bg-action-color-background-danger-hover',
-          'hover:[&_span]:z-[1]',
           'focus:outline-action-color-border-danger-pressed',
           'aria-disabled:text-action-color-text-danger-disabled',
           'aria-disabled:bg-action-color-background-danger-disabled',
@@ -326,16 +312,31 @@ export const button = cva(
   }
 );
 
-export const icon = cva(
-  ['group-hover:bg-action-color-background-transparent-hover relative'],
-  {
-    variants: {
-      size: {
-        lg: ['left-[-14px]'],
-        md: ['left-[-8px]'],
-        sm: ['left-[-6px]'],
-        xs: ['left-[-2px], mr-1'],
-      },
+export const icon = cva(['relative'], {
+  variants: {
+    variant: {
+      primary: [],
+      transparent: [
+        'group-hover:bg-action-color-background-transparent-hover relative',
+      ],
     },
-  }
-);
+    size: {
+      lg: ['left-[-12px]'],
+      md: ['left-[-12px]'],
+      sm: ['left-[-6px]'],
+      xs: ['left-[-2px], mr-1'],
+    },
+  },
+  compoundVariants: [
+    {
+      variant: 'transparent',
+      size: 'md',
+      class: ['!mr-0']
+    },
+    {
+      variant: 'transparent',
+      size: 'lg',
+      class: ['!mr-0']
+    }
+  ]
+});

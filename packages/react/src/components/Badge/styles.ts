@@ -5,7 +5,6 @@ export const badge = cva(
     'font-sans',
     'text-sm',
     'border-1',
-    'border-transparent',
     'px-2',
     'pb-[1px]',
     'white-space-nowrap',
@@ -19,39 +18,30 @@ export const badge = cva(
 
       color: {
         primary: [
-          'text-action-color-text-primary-enabled',
-          'border-action-color-background-primary-enabled',
           'bg-action-color-background-primary-enabled',
+          'border-action-color-background-primary-enabled',
         ],
         info: [
-          'text-feedback-color-text-info-enabled',
           'bg-feedback-color-background-info-enabled',
-          'bg-feedback-color-background-info-enabled',
+          'border-feedback-color-background-info-enabled',
         ],
         warning: [
-          'text-feedback-color-text-warning-enabled',
           'bg-feedback-color-background-warning-enabled',
-          'bg-feedback-color-background-warning-enabled',
+          'border-feedback-color-background-warning-enabled',
         ],
         danger: [
-          'text-feedback-color-text-danger-enabled',
           'bg-feedback-color-background-danger-enabled',
-          'bg-feedback-color-background-danger-enabled',
+          'border-feedback-color-background-danger-enabled',
         ],
         success: [
-          'text-feedback-color-text-success-enabled',
           'bg-feedback-color-background-success-enabled',
-          'bg-feedback-color-background-success-enabled',
+          'border-feedback-color-background-success-enabled',
         ],
-        'on-dark': [
-          'text-[inherit]',
-          'border-text-color-on-dark',
-          'bg-text-color-on-dark',
-        ],
+        'on-dark': ['bg-text-color-on-dark', 'border-text-color-on-dark'],
       },
 
       outlined: {
-        true: ['bg-transparent'],
+        true: ['bg-transparent', 'border'],
       },
     },
 
@@ -62,8 +52,18 @@ export const badge = cva(
         class: ['text-action-color-background-primary-enabled'],
       },
       {
+        color: 'primary',
+        outlined: false,
+        class: ['text-action-color-text-primary-enabled'],
+      },
+      {
         color: 'info',
         outlined: true,
+        class: ['text-feedback-color-background-info-enabled'],
+      },
+      {
+        color: 'info',
+        outlined: false,
         class: ['text-feedback-color-text-info-enabled'],
       },
       {
@@ -72,9 +72,19 @@ export const badge = cva(
         class: ['text-feedback-color-background-warning-pressed'],
       },
       {
+        color: 'warning',
+        outlined: false,
+        class: ['text-feedback-color-text-warning-enabled'],
+      },
+      {
         color: 'danger',
         outlined: true,
-        class: ['text-action-color-background-danger-enabled'],
+        class: ['!text-feedback-color-background-danger-enabled'],
+      },
+      {
+        color: 'danger',
+        outlined: false,
+        class: ['text-feedback-color-text-danger-enabled'],
       },
       {
         color: 'on-dark',
@@ -82,9 +92,19 @@ export const badge = cva(
         class: ['text-text-color-on-dark'],
       },
       {
+        color: 'on-dark',
+        outlined: false,
+        class: ['text-[inherit]'],
+      },
+      {
         color: 'success',
         outlined: true,
-        class: ['text-text-color-success'],
+        class: ['!text-feedback-color-background-success-enabled'],
+      },
+      {
+        color: 'success',
+        outlined: false,
+        class: ['text-feedback-color-text-success-enabled'],
       },
     ],
 

@@ -15,7 +15,7 @@ export default {
   },
   args: {
     children: <Text>This is a box.</Text>,
-    className: 'p-6 bg-neutral-400',
+    className: 'p-6 bg-neutral-300',
   },
   argTypes: {
     as: {

@@ -18,9 +18,9 @@ export const container = cva(
       },
 
       size: {
-        sm: ['text-xxs', 'w-[20px]', 'h-[20px]'],
-        md: ['text-xs', 'w-4', 'h-4'],
-        lg: ['text-md', 'w-6', 'h-6'],
+        sm: ['text-xxs', 'w-[20px]', 'min-w-[20px]', 'h-[20px]'],
+        md: ['text-xs', 'w-4', 'min-w-4', 'h-4'],
+        lg: ['text-md', 'w-6', 'min-w-6', 'h-6'],
       },
     },
 

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 import {
   fontFamily,
   fontSize,
@@ -472,7 +473,7 @@ module.exports = {
         100: '100% 100%',
       },
 
-      animation: {
+      keyframes: {
         'move-scale-up-start': {
           to: {
             transform: 'translate3d(0,-100%,0) scale3d(1,1.1,1)',
@@ -491,26 +492,26 @@ module.exports = {
           },
         },
 
-        'move-loading-gradient-start': {
+        'button-loading-gradient': {
           '0%': {
             clipPath:
-              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
+              'polygon(0% 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) calc(100% - var(--button-loading-border-width)), var(--button-loading-border-width) calc(100% - var(--button-loading-border-width)), var(--button-loading-border-width) 100%, 100% 100%, 100% 0%, 0% 0%)',
           },
           '25%': {
             clipPath:
-              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) 100%, 100% 100%, 100% 0%, 0% 0%)',
+              'polygon(0% 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) calc(100% - var(--button-loading-border-width)), calc(100% - var(--button-loading-border-width)) calc(100% - var(--button-loading-border-width)), calc(100% - var(--button-loading-border-width)) 100%, 100% 100%, 100% 0%, 0% 0%)',
           },
           '50%': {
             clipPath:
-              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, 100% 0%, 0% 0%)',
+              'polygon(0% 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), calc(100% - var(--button-loading-border-width)) var(--button-loading-border-width), 100% 0%, 0% 0%)',
           },
           '75%': {
             '-webkit-clip-path':
-              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth 0%, 0% 0%)',
+              'polygon(0% 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) var(--button-loading-border-width), var(--button-loading-border-width) 0%, 0% 0%)',
           },
           '100%': {
             '-webkit-clip-path':
-              'polygon(0% 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, 0% 100%)',
+              'polygon(0% 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, var(--button-loading-border-width) 100%, 0% 100%)',
           },
         },
 
@@ -533,8 +534,20 @@ module.exports = {
         },
       },
 
+      animation: {
+        'button-on-hover':
+          'move-scale-up-start 0.5s forwards, move-scale-up-end 0.5s forwards 0.3s',
+        'button-loading':
+          'button-loading-gradient 2s ease-in-out alternate infinite',
+      },
+
       zIndex: {
         max: '999',
+      },
+
+      backgroundImage: {
+        'loading-gradient':
+          'linear-gradient(99deg, hsl(var(--color-neutral-300)), hsl(var(--color-royal-400)), hsl(var(--color-froly-300)))',
       },
     },
   },

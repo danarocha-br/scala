@@ -1,4 +1,3 @@
-//@ts-noCheck
 import React from 'react';
 
 import { Icon, iconPath } from '../Icon';
@@ -55,10 +54,12 @@ Root.displayName = 'Root';
 
 const Item = ({
   label,
-  as='a',
+  as = 'a',
   icon,
   className,
+  //@ts-ignore
   href,
+  //@ts-ignore
   onClick,
   isActive = false,
   ...props
@@ -66,25 +67,18 @@ const Item = ({
   const Component = as || React.Fragment;
 
   return (
-    <Box
-      as="li"
-      className={S.bredcrumItem({ isActive, className })}
-      isActive={isActive}
-      {...props}
-    >
-      <Stack gap="1" align="center">
-        <Component as={as} href={href} onClick={onClick}>
-          {label}
-        </Component>
-        {Boolean(icon) && (
-          <Icon
-            name={icon || 'settings'}
-            size="xs"
-            label="icon"
-            className="group-hover:opacity-1 translate-x-[-2px] opacity-0 transition-opacity transition-transform duration-[0.3s] ease-in-out group-hover:translate-x-[4px]"
-          />
-        )}
-      </Stack>
+    <Box as="li" className={S.bredcrumItem({ isActive, className })} {...props}>
+      <Component as={as} href={href} onClick={onClick} className={S.button()}>
+        {label}
+      </Component>
+      {Boolean(icon) && (
+        <Icon
+          name={icon || 'settings'}
+          size="xs"
+          label="icon"
+          className="translate-x-[-4px] opacity-0 group-hover:translate-x-[0px] group-hover:opacity-100 transition-opacity transition-transform duration-[0.3s] ease-in-out"
+        />
+      )}
     </Box>
   );
 };

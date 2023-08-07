@@ -10,7 +10,7 @@ export const card = cva([
   'pb-3',
   'px-3',
   'rounded-sm',
-  'shadow-[0px 3px 2px 0px #00000007]',
+  'shadow-[0px_3px_2px_0px_#00000007]',
   'border-none',
 
   '[data-mode=dark]:bg-[#323d4370]',

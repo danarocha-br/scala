@@ -11,7 +11,8 @@ export type ButtonProps = {
   disabled?: boolean;
   loading?: boolean;
   className?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof S.button>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof S.button>;
 
 export const Button = ({
   variant = 'primary',
@@ -27,8 +28,8 @@ export const Button = ({
   icon,
   ...props
 }: ButtonProps): JSX.Element => {
-  const iconSize = size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'md';
-
+  const iconSize =
+    size === 'md' ? 'md' : size === 'sm' ? 'sm' : size == 'xs' ? 'xs' : 'md';
 
   return (
     <AccessibleButton
@@ -37,7 +38,14 @@ export const Button = ({
       aria-label={label}
       type={type}
       {...props}
-      className={S.button({size, color, variant, loading, fullWidth, animateOnHover})}
+      className={S.button({
+        size,
+        color,
+        variant,
+        loading,
+        fullWidth,
+        animateOnHover,
+      })}
     >
       {Boolean(icon) && (
         <Icon
@@ -45,12 +53,17 @@ export const Button = ({
           label={label}
           color="current"
           size={iconSize}
-          className={S.icon({size})}
-
+          className={S.icon({ size, variant })}
         />
       )}
 
-      <span className="button__content">{label}</span>
+      <span
+        className={`button__content z-[1] ${
+          !loading && animateOnHover && 'group-hover:animate-button-on-hover'
+        }`}
+      >
+        {label}
+      </span>
 
       <span aria-hidden className="button__disco" />
     </AccessibleButton>

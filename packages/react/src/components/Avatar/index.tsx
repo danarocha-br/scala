@@ -98,6 +98,7 @@ export const Avatar = ({
     {showUsername && !loading && (
       <Text
         weight="medium"
+        leading='1'
         className="avatar__username transition-all scale-95"
       >
         {username}
