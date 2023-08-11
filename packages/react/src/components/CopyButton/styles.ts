@@ -27,7 +27,7 @@ export const button = cva([
 ]);
 
 export const iconClipboard = cva([
-  'fill-action-color-background-primary-enabled',
+  'fill-action-color-text-transparent-enabled',
 ]);
 
 export const iconCheck = cva('fill-feedback-color-background-success-subdued');

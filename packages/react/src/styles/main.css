@@ -100,7 +100,7 @@
     --interactive-color-background-pressed: var(--color-royal-800);
     --interactive-color-background-disabled: var(--color-royal-50);
 
-    --action-color-text-transparent-enabled: var(--color-neutral-400);
+    --action-color-text-transparent-enabled: var(--color-neutral-600);
     --action-color-text-transparent-disabled: var(--color-neutral-800);
     --action-color-border-transparent-enabled: var(--color-neutral-200);
     --action-color-border-transparent-pressed: 120deg 3% 93%;

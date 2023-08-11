@@ -13,11 +13,11 @@ export const button = cva(
     'cursor-pointer',
     'transition-all',
 
-    'hover:not([disabled]):bg-action-color-background-transparent-hover',
+    'hover:bg-action-color-background-transparent-hover',
 
     'focus:outline-2',
     'focus:outline-offset-2',
-    'focus:outline-transparent',
+    'focus:outline-action-color-background-transparent-hover',
 
     'aria-disabled:opacity-60',
     'aria-disabled:cursor-not-allowed',
@@ -51,29 +51,30 @@ export const button = cva(
           'focus:outline-action-color-border-transparent-pressed',
         ],
         danger: [
-          'text-feedback-color-background-danger-enabled',
-          '[&_svg]:fill-interactive-color-background-danger-enabled',
+          'text-action-color-background-danger-enabled',
+          '[&_svg]:fill-action-color-background-danger-enabled',
           'focus:outline-action-color-border-transparent-pressed',
         ],
       },
 
       loading: {
         true: [
-          'bg-action-color-background-transparent-hover',
-          'border-0',
           'relative',
+          'bg-action-color-background-transparent-hover',
 
           'after:content-[""]',
           'after:absolute',
           'after:top-0',
+          'after:right-0',
           'after:bottom-0',
           'after:left-0',
-          'after:right-0',
           'after:rounded-md',
-          'after:bg-[var(--button-loading-gradient)]',
+          'after:bg-loading-gradient',
+          '!after:border-[2.4px]',
+          '!after:border-neutral-200',
           'after:bg-100',
           'after:clip-path-[var(--button-loading-clip-path)]',
-          'after:animation-[--button-loading-animation]',
+          'after:animate-button-loading',
         ],
       },
     },

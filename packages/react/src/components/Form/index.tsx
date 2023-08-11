@@ -1,4 +1,3 @@
-import { CSS } from '../../styles';
 import { Stack } from '../Stack';
 
 export type FormProps = {

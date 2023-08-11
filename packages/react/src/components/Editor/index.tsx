@@ -30,6 +30,16 @@ export type EditorProps = {
 // lowlight.registerLanguage('js', js);
 // lowlight.registerLanguage('ts', ts);
 
+/**
+ * Render the Editor component.
+ *
+ * @param {string} content - The content of the editor.
+ * @param {string} placeholder - The placeholder text for the editor.
+ * @param {string} variant - The variant of the editor.
+ * @param {boolean} onUpdate - A function to handle updates to the editor content.
+ * @param {boolean} editable - Whether the editor is editable or not.
+ * @return {JSX.Element} - The rendered Editor component.
+ */
 export const Editor = ({
   className,
   content,

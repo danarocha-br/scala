@@ -9,6 +9,14 @@ export type FormErrorMessageProps = {
   className?: string;
 };
 
+/**
+ * React component that renders a form error message.
+ *
+ * @param {string} className - The class name of the component.
+ * @param {string} variant - The variant of the component.
+ * @param {React.ReactNode} children - The children of the component.
+ * @return {React.ReactNode} The rendered form error message.
+ */
 export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({
   className,
   variant,

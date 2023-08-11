@@ -1,29 +1,28 @@
 import { cva } from 'class-variance-authority';
-import { styled } from '../../styles';
 
 export const editorContainer = cva(
   [
     'w-full',
-    '[.c-editor]:text-text-color-body',
-    '[.c-editor]:font-sans',
-    '[.c-editor]:outline-none',
-    '[.c-editor_p]:my-3',
-    '[.c-editor_h1]:my-3',
-    '[.c-editor_h2]:my-3',
-    '[.c-editor_h3]:my-3',
-    '[.c-editor_h4]:my-3',
-    '[.c-editor_h5]:my-3',
-    '[.c-editor_h6]:my-3',
-    '[.c-editor_.c-editor__code-block]:relative',
-    '[.c-editor_.c-editor__code-block_select]:absolute',
-    '[.c-editor_.c-editor__code-block_select]:right-[0.5rem]',
-    '[.c-editor_.c-editor__code-block_select]:top-[0.5rem]',
+    '[&_.c-editor]:text-text-color-body',
+    '[&_.c-editor]:font-sans',
+    '[&_.c-editor]:outline-none',
+    '[&_.c-editor_p]:my-3',
+    '[&_.c-editor_h1]:my-3',
+    '[&_.c-editor_h2]:my-3',
+    '[&_.c-editor_h3]:my-3',
+    '[&_.c-editor_h4]:my-3',
+    '[&_.c-editor_h5]:my-3',
+    '[&_.c-editor_h6]:my-3',
+    // '[.c-editor_.c-editor__code-block]:relative',
+    // '[.c-editor_.c-editor__code-block_select]:absolute',
+    // '[.c-editor_.c-editor__code-block_select]:right-[0.5rem]',
+    // '[.c-editor_.c-editor__code-block_select]:top-[0.5rem]',
 
-    '[.ProseMirror_p.is-empty]:before:color-text-color-body-lighter',
-    '[.ProseMirror_p.is-empty]:before:content-[attr(data-placeholder)]',
-    '[.ProseMirror_p.is-empty]:before:float-left',
-    '[.ProseMirror_p.is-empty]:before:h-0',
-    '[.ProseMirror_p.is-empty]:before:pointer-events-none',
+    '[&_.ProseMirror_p.is-empty]:before:color-text-color-body-lighter',
+    '[&_.ProseMirror_p.is-empty]:before:content-[attr(data-placeholder)]',
+    '[&_.ProseMirror_p.is-empty]:before:float-left',
+    '[&_.ProseMirror_p.is-empty]:before:h-0',
+    '[&_.ProseMirror_p.is-empty]:before:pointer-events-none',
   ],
 
   {
@@ -32,18 +31,18 @@ export const editorContainer = cva(
         ghost: [],
 
         form: [
-          '[.c-editor]:border',
-          '[.c-editor]:border-form-color-border-default',
-          '[.c-editor]:rounded-md',
-          '[.c-editor]:px-3',
-          '[.c-editor]:py-1',
-          '[.c-editor]:overflow-scroll',
-          '[.c-editor]:rounded-tr-md',
-          '[.c-editor]:rounded-br-md',
-          '[.c-editor::-webkit-scrollbar]:w-2',
-          '[.c-editor::-webkit-scrollbar-track]:bg-transparent',
-          '[.c-editor::-webkit-scrollbar-thumb]:bg-form-color-background-pressed',
-          '[.c-editor::-webkit-scrollbar-thumb]:rounded-pill',
+          '[&_.c-editor]:border',
+          '[&_.c-editor]:border-form-color-border-default',
+          '[&_.c-editor]:rounded-md',
+          '[&_.c-editor]:px-3',
+          '[&_.c-editor]:py-1',
+          '[&_.c-editor]:overflow-scroll',
+          '[&_.c-editor]:rounded-tr-md',
+          '[&_.c-editor]:rounded-br-md',
+          '[&_.c-editor::-webkit-scrollbar]:w-2',
+          '[&_.c-editor::-webkit-scrollbar-track]:bg-transparent',
+          '[&_.c-editor::-webkit-scrollbar-thumb]:bg-form-color-background-pressed',
+          '[&_.c-editor::-webkit-scrollbar-thumb]:rounded-pill',
         ],
       },
     },
@@ -87,7 +86,6 @@ export const customButton = cva(
     'flex',
     'items-center',
     'justify-center',
-    'p-2',
     'rounded-sm',
     'border-none',
     'transition-all',
@@ -97,12 +95,9 @@ export const customButton = cva(
 
     '[&_svg]:fill-text-color-body-lighter',
 
-    'hover:bg-action-color-background-transparent-hover',
-    'hover:[&_svg]:fill-text-color-body',
-
     'focus:outline-2',
     'focus:outline-offset-[.5px]',
-    'focus:outline-action-color-border-secondary-pressed',
+    'focus:outline-action-color-border-transparent-pressed',
   ],
   {
     variants: {
@@ -110,7 +105,13 @@ export const customButton = cva(
         true: [
           'text-action-color-text-primary-enabled',
           'bg-action-color-background-primary-enabled',
-          '[&_svg]:fill-action-color-text-primary-enabled',
+          '[&_svg]:fill-text-color-on-dark',
+
+          'hover:bg-action-color-background-primary-hover',
+        ],
+        false: [
+          'hover:bg-action-color-background-transparent-hover',
+          'hover:[&_svg]:fill-text-color-body',
         ],
       },
     },

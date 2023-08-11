@@ -32,6 +32,12 @@ export type DropdownProps = {
 
 export type DropdownItemProps = DropdownMenuItemProps &
   React.RefAttributes<HTMLDivElement>;
+/**
+ * Render a dropdown item component.
+ *
+ * @param {React.ReactNode} children - The content to be rendered inside the item.
+ * @return {React.ReactElement} The rendered dropdown item component.
+ */
 const DropdownItem = ({ children, ...props }: DropdownItemProps) => (
   <Item className={S.dropdownItem()} {...props}>
     {children}
@@ -43,6 +49,12 @@ export type DropdownRightSlotProps = {
   children: React.ReactNode;
 };
 
+/**
+ * Renders the right slot component of the Dropdown.
+ *
+ * @param {DropdownRightSlotProps} children - The content to be rendered inside the right slot.
+ * @return {JSX.Element} The rendered right slot component.
+ */
 const DropdownRightSlot = ({ children }: DropdownRightSlotProps) => (
   <Box className={S.rightSlot()}>{children}</Box>
 );
@@ -56,6 +68,13 @@ const DropdownSeparator = ({ ...props }: DropdownMenuSeparatorProps) => (
 );
 DropdownItem.displayName = 'Separator';
 
+/**
+ * Renders the content of a dropdown menu.
+ *
+ * @param {ReactNode} children - The children elements to be rendered inside the dropdown menu content.
+ * @param {...any} props - Additional props to be spread on the dropdown menu content.
+ * @returns {JSX.Element} - The rendered dropdown menu content.
+ */
 function DropdownMenuContent({
   children,
   ...props
@@ -70,6 +89,17 @@ function DropdownMenuContent({
   );
 }
 
+/**
+ * Render a base dropdown component.
+ *
+ * @param {ReactNode} children - The content of the dropdown component.
+ * @param {ReactNode} trigger - The trigger element for the dropdown component.
+ * @param {boolean} open - Whether the dropdown is open or not.
+ * @param {boolean} defaultOpen - Whether the dropdown is open by default or not.
+ * @param {function} onOpenChange - The callback function when the dropdown open state changes.
+ * @param {string} align - The alignment of the dropdown component.
+ * @return {ReactElement} The rendered dropdown component.
+ */
 const DropdownBase = ({
   className,
   children,
