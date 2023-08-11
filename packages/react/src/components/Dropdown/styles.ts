@@ -1,130 +1,77 @@
-import { styled, keyframes } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+export const dropdownMenuContent = cva([
+  'font-sans',
+  'bg-surface-color-background-default',
+  'rounded-sm',
+  'shadow-[0px -7px 20px 0px #00000010, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026]',
+  'w-full',
+  'min-w-[200px]',
+  'p-1',
 
-//TODO: refactor to tailwind
+  'motion-safe:duration-500',
+  'motion-safe:ease-[cubic-bezier(0.16, 1, 0.3, 1)]',
+  'motion-safe:will-change-[transform, opacity]',
+  'motion-safe:data-[state=open]:data-[side=top]:animate-[slide-up-and-fade]',
+  'motion-safe:data-[state=open]:data-[side=right]:animate-[slide-right-and-fade]',
+  'motion-safe:data-[state=open]:data-[side=left]:animate-[slide-left-and-fade]',
+  'motion-safe:data-[state=open]:data-[side=down]:animate-[slide-down-and-fade]',
+]);
 
-export const slideUpAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(15px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
+export const dropdownMenuArrow = cva([
+  'fill-current',
+  'fill-text-color-on-dark',
+  'data-[mode=dark]:data-[mode=dark]:fill-text-color-on-light',
+]);
 
-export const slideRightAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(-15px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
-});
+const itemStyles = [
+  'text-text-color-body-lighter',
+  'font-normal',
+  'text-sm',
+  'text-left',
+  'rounded-sm',
+  'border',
+  'border-dashed',
+  'border-transparent',
+  'h-5',
+  'px-3',
+  'flex',
+  'items-center',
+  'cursor-pointer',
+  'transition-all',
+  'outline-none',
+  'select-none',
 
-export const slideDownAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-15px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
+  'hover:text-text-color-body',
+  'hover:bg-interactive-color-background-enabled',
+  'hover:data-[mode=dark]:bg-royal-500',
 
-export const slideLeftAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(15px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
-});
+  'focus:text-text-color-body',
+  'focus:bg-interactive-color-text-enabled',
+  'focus:border-interactive-color-background-disabled',
+  'focus:outline-none',
 
-export const DropdownMenuContent = styled(DropdownMenuPrimitive.Content, {
-  fontFamily: '$font-family-sans',
-  background: '$surface-color-background-default',
-  borderRadius: '$radii-sm',
-  boxShadow:
-    '0px -7px 20px 0px #00000010, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026',
+  'data-[disabled]:text-text-color-caption',
+  'data-[disabled]:cursor-not-allowed',
+  'data-[disabled]:pointer-events-none',
 
-  w: '100%',
-  minWidth: 200,
-  p: '$spacing-1',
+  '[&_>_a]:flex',
+  '[&_>_a]:justify-between',
+  '[&_>_a]:w-full',
+];
 
-  '@media (prefers-reduced-motion: no-preference)': {
-    animationDuration: '500ms',
-    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    willChange: 'transform, opacity',
-    '&[data-state="open"]': {
-      '&[data-side="top"]': { animationName: slideDownAndFade },
-      '&[data-side="right"]': { animationName: slideLeftAndFade },
-      '&[data-side="bottom"]': { animationName: slideUpAndFade },
-      '&[data-side="left"]': { animationName: slideRightAndFade },
-    },
-  },
-});
+export const dropdownItem = cva(itemStyles);
 
-export const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: 'currentColor',
-  color: '$text-color-on-dark',
-  [`.dark-theme &`]: {
-    color: '$text-color-on-light',
-  },
-});
+export const rightSlot = cva([
+  'text-text-color-caption',
+  'text-sm',
+  'focus:text-text-color-body',
+  'data-[disabled]:text-action-color-background-transparent-hover',
+]);
 
-const itemStyles = {
-  all: 'unset',
-  color: '$text-color-body-lighter',
-  fontSize: '$font-size-sm',
-  fontWeight: '$font-weight-regular',
-  textAlign: 'left',
-  borderRadius: '$radii-sm',
-  border: '1px dashed transparent',
-
-  height: '$spacing-5',
-  px: '$spacing-3',
-  d: 'flex',
-  align: 'center',
-
-  cursor: 'pointer',
-  transition: '$fast',
-  outline: 'none',
-  userSelect: 'none',
-
-  '&:hover': {
-    color: '$text-color-body !important',
-    background: '$interactive-color-background-default !important',
-    border: '1px dashed transparent !important',
-
-    [`.dark-theme &`]: {
-      background: '$color-royal-500 !important',
-    },
-  },
-
-  '&[data-disabled]': {
-    color: '$text-color-caption',
-    cursor: 'not-allowed !important',
-    pointerEvents: 'none',
-  },
-
-  '&:focus': {
-    color: '$text-color-body !important',
-    background: '$interactive-color-text-enabled !important',
-    border: '1px dashed $interactive-color-background-disabled',
-    outline: 'none',
-  },
-
-  '& > a': {
-    all: 'unset',
-    d: 'flex',
-    w: '100%',
-    justify: 'space-between',
-  },
-};
-
-export const DropdownItem = styled(DropdownMenuPrimitive.Item, {
-  ...itemStyles,
-});
-
-export const RightSlot = styled('div', {
-  color: '$text-color-caption',
-  fontSize: '$font-size-sm',
-
-  ':focus > &': {
-    color: '$text-color-body',
-  },
-  '[data-disabled] &': {
-    color: '$action-color-background-transparent-hover',
-  },
-});
-
-export const DropdownSeparator = styled(DropdownMenuPrimitive.Separator, {
-  bg: '$surface-color-background-hover',
-  h: 1,
-  my: '$spacing-2',
-  position: 'relative',
-});
+export const dropdownSeparator = cva([
+  'bg-surface-color-background-hover',
+  'h-[1px]',
+  'my-2',
+  'relative',
+]);

@@ -37,7 +37,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', px: 200 }}>
+        <Stack align="center" justify="center" className="h-full px-[200px]">
           {Story()}
         </Stack>
       );
@@ -69,13 +69,13 @@ export const WithIcons: StoryObj<DropdownProps> = {
     children: (
       <>
         <Dropdown.Item>
-          <Icon name="settings" label="settings" css={{ mr: '$spacing-2' }} />
+          <Icon name="settings" label="settings" className="mr-2" />
           <a href="/">
             Settings <Dropdown.RightSlot>⌘ S</Dropdown.RightSlot>
           </a>
         </Dropdown.Item>
         <Dropdown.Item>
-          <Icon name="user" label="profile" css={{ mr: '$spacing-2' }} />
+          <Icon name="user" label="profile" className="mr-2" />
           <a href="/">
             Profile <Dropdown.RightSlot>⌘ P</Dropdown.RightSlot>
           </a>

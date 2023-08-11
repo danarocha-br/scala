@@ -4,6 +4,12 @@ import {
   Trigger,
   MenuContentProps,
   Portal,
+  Content,
+  Item,
+  DropdownMenuItemProps,
+  Separator,
+  DropdownMenuSeparatorProps,
+  Arrow,
 } from '@radix-ui/react-dropdown-menu';
 
 import { Box } from '../Box';
@@ -24,13 +30,30 @@ export type DropdownProps = {
   className?: string;
 };
 
-const DropdownItem = S.DropdownItem;
+export type DropdownItemProps = DropdownMenuItemProps &
+  React.RefAttributes<HTMLDivElement>;
+const DropdownItem = ({ children, ...props }: DropdownItemProps) => (
+  <Item className={S.dropdownItem()} {...props}>
+    {children}
+  </Item>
+);
 DropdownItem.displayName = 'Item';
 
-const DropdownRightSlot = S.RightSlot;
+export type DropdownRightSlotProps = {
+  children: React.ReactNode;
+};
+
+const DropdownRightSlot = ({ children }: DropdownRightSlotProps) => (
+  <Box className={S.rightSlot()}>{children}</Box>
+);
 DropdownItem.displayName = 'RightSlot';
 
-const DropdownSeparator = S.DropdownSeparator;
+export type DropdownSeparatorProps = DropdownMenuSeparatorProps &
+  React.RefAttributes<HTMLDivElement>;
+
+const DropdownSeparator = ({ ...props }: DropdownMenuSeparatorProps) => (
+  <Separator className={S.dropdownSeparator()} {...props} />
+);
 DropdownItem.displayName = 'Separator';
 
 function DropdownMenuContent({
@@ -39,15 +62,10 @@ function DropdownMenuContent({
 }: MenuContentProps): JSX.Element {
   return (
     <Portal>
-      <S.DropdownMenuContent
-        sideOffset={8}
-        alignOffset={5}
-        arrowPadding={8}
-        {...props}
-      >
+      <Content sideOffset={8} alignOffset={5} arrowPadding={8} {...props}>
         {children}
-        <S.DropdownMenuArrow />
-      </S.DropdownMenuContent>
+        <Arrow className={S.dropdownMenuArrow()} />
+      </Content>
     </Portal>
   );
 }
@@ -62,10 +80,7 @@ const DropdownBase = ({
   align = 'center',
   ...props
 }: DropdownProps) => (
-  <Box
-    className={`dropdown relative max-w-max z-max ${className}`}
-    {...props}
-  >
+  <Box className={`dropdown relative z-max max-w-max ${className}`} {...props}>
     <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       <>
         <Trigger asChild className="dropdown__trigger">
