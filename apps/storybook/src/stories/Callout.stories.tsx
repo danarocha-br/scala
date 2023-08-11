@@ -34,8 +34,12 @@ export default {
       table: {
         category: 'Modifiers',
       },
+      options: ['info', 'success', 'warning', 'danger'],
+      control: {
+        type: 'inline-radio',
+      },
     },
-    css: {
+    className: {
       table: {
         category: 'Modifiers',
       },

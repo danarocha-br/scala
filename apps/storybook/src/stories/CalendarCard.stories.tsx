@@ -39,12 +39,12 @@ export default {
       {
         id: '1',
         title: 'Onboarding',
-        color: 'pink',
+        color: 'bg-[pink]',
       },
       {
-        id: '1',
+        id: '2',
         title: 'Tech',
-        color: 'green',
+        color: 'bg-[green]',
       },
     ],
     editMenuItems: (

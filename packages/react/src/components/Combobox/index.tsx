@@ -18,9 +18,7 @@ export const Combobox = ({
 }: ComboboxProps) => {
   return (
     <Popover.Root trigger={trigger}>
-      <Popover.Content
-      className='bg-transparent shadow-none flex flex-col justify-center'
-      >
+      <Popover.Content unstyled className="flex flex-col justify-center">
         <Command.Root className={className}>
           <Command.Input placeholder={inputPlaceholder} />
 

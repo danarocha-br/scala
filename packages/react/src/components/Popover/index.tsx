@@ -21,22 +21,28 @@ const Root = ({ children, trigger, ...props }: PopoverProps) => {
 
 export type PopoverContentProps = {
   className?: string;
+  unstyled?: boolean;
 } & React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>;
 
 const Content = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
-  <PopoverPrimitive.Portal>
-    <S.ContainerContent
-      ref={ref}
-      align={align}
-      sideOffset={sideOffset}
-      className={className}
-      {...props}
-    />
-  </PopoverPrimitive.Portal>
-));
+>(
+  (
+    { className, align = 'center', sideOffset = 4, unstyled = false, ...props },
+    ref
+  ) => (
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content
+        ref={ref}
+        align={align}
+        sideOffset={sideOffset}
+        className={S.ContainerContent({ className, unstyled })}
+        {...props}
+      />
+    </PopoverPrimitive.Portal>
+  )
+);
 
 Content.displayName = 'Content';
 

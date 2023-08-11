@@ -17,9 +17,11 @@ const CommandRoot = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   CommandRootProps
 >(({ className, ...props }, ref) => (
-  <S.CommandContainer className={className}>
-    <CommandPrimitive ref={ref} {...props} />
-  </S.CommandContainer>
+  <CommandPrimitive
+    ref={ref}
+    className={S.commandContainer({ className })}
+    {...props}
+  />
 ));
 CommandRoot.displayName = 'Root';
 
@@ -28,7 +30,7 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <DialogRoot {...props}>
-      <DialogContent className="cmdk-dialog">
+      <DialogContent className={S.commandDialog()}>
         <CommandRoot>{children}</CommandRoot>
       </DialogContent>
     </DialogRoot>
@@ -46,11 +48,11 @@ const CommandInput = React.forwardRef<
   <Stack
     align="center"
     gap="2"
-    className={`border-b border-action-color-border-transparent-pressed px-2 ${className}`}
+    className={`border-b border-action-color-border-transparent-pressed p-2 ${className}`}
     cmdk-input-wrapper=""
   >
     <Icon name="search" label="search" size="xs" color="caption" />
-    <CommandPrimitive.Input ref={ref} className="command__input" {...props} />
+    <CommandPrimitive.Input ref={ref} className={S.commandInput()} {...props} />
   </Stack>
 ));
 
@@ -59,28 +61,40 @@ CommandInput.displayName = 'Input';
 const CommandList = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
->(({ ...props }, ref) => <CommandPrimitive.List ref={ref} {...props} />);
+>(({ ...props }, ref) => (
+  <CommandPrimitive.List className={S.commandList()} ref={ref} {...props} />
+));
 
 CommandList.displayName = 'List';
 
 const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
->((props, ref) => <CommandPrimitive.Empty ref={ref} {...props} />);
+>((props, ref) => (
+  <CommandPrimitive.Empty ref={ref} className={S.commandEmpty()} {...props} />
+));
 
 CommandEmpty.displayName = 'Empty';
 
 const CommandGroup = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Group>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
->(({ ...props }, ref) => <CommandPrimitive.Group ref={ref} {...props} />);
+>(({ ...props }, ref) => (
+  <CommandPrimitive.Group ref={ref} className={S.commandGroup()} {...props} />
+));
 
 CommandGroup.displayName = 'Group';
 
 const CommandSeparator = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
->(({ ...props }, ref) => <CommandPrimitive.Separator ref={ref} {...props} />);
+>(({ ...props }, ref) => (
+  <CommandPrimitive.Separator
+    ref={ref}
+    className={S.commandSeparator()}
+    {...props}
+  />
+));
 CommandSeparator.displayName = 'Separator';
 
 type CommandItemProps = {
@@ -91,7 +105,11 @@ const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   CommandItemProps
 >(({ className, ...props }, ref) => (
-  <CommandPrimitive.Item className={className} ref={ref} {...props} />
+  <CommandPrimitive.Item
+    className={S.commandItem({ className })}
+    ref={ref}
+    {...props}
+  />
 ));
 
 CommandItem.displayName = 'Item';

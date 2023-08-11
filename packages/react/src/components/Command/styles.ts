@@ -1,128 +1,100 @@
-import { styled } from '../../styles';
-//TODO: refactor to tailwind
-export const CommandContainer = styled('div', {
-  '& [cmdk-root]': {
-    color: '$text-color-body',
-    backgroundColor: '$surface-color-background-default',
-    fontFamily: '$font-family-sans',
-    fontSize: '$font-size-sm',
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    width: '100%',
-    minWidth: '120px',
-    overflow: 'hidden',
-    borderRadius: '$radii-sm',
-    border: '1px solid',
-    borderColor: '$action-color-border-transparent-enabled',
-    boxShadow: '$elevation-high',
-  },
+import { cva } from 'class-variance-authority';
 
-  '& .cmdk-dialog': {
-    overflow: 'hidden',
-    p: 0,
-  },
+export const commandContainer = cva([
+  'text-text-color-body',
+  'bg-surface-color-background-default',
+  'font-sans',
+  'text-sm',
+  'flex',
+  'flex-col',
+  'h-full',
+  'w-full',
+  'min-w-[120px]',
+  'overflow-hidden',
+  'rounded-sm',
+  'border',
+  'border-action-color-border-transparent-pressed',
+  'shadow-medium',
+]);
 
-  '& [cmdk-group-heading]': {
-    fontSize: '$font-size-xs',
-    color: '$text-color-caption',
-    fontWeight: '$font-weight-medium',
-    px: '$spacing-1',
-    py: '$spacing-2',
-  },
+export const commandDialog = cva(['overflow-hidden', 'p-0']);
 
-  '& [cmdk-group]': {
-    px: '$spacing-1',
-    overflow: 'hidden',
+export const commandGroupHeading = cva([
+  'font-xs',
+  'text-text-color-caption',
+  'font-medium',
+  'px-1',
+  'py-2',
+]);
 
-    '&:not([hidden]) ~[cmdk-group]': {
-      pt: 0,
-    },
-  },
+export const commandGroup = cva([
+  'px-1',
+  'overflow-hidden',
+  '[&:not(hidden)]_~[cmdk-group]:pt-1',
+  '![&_[cmdk-group-heading]]:font-xs',
+  '[&_[cmdk-group-heading]]:text-text-color-caption',
+  '[&_[cmdk-group-heading]]:px-2',
+  '[&_[cmdk-group-heading]]:py-1',
+  '[&_[cmdk-group-heading]]:mb-1',
+]);
 
-  '& [cmdk-input]': {
-    fontSize: '$font-size-sm',
-    bg: 'transparent',
-    borderRadius: '$radii-sm',
-    display: 'flex',
-    width: '100%',
-    height: '$spacing-4',
-    py: '$spacing-2',
-    border: 'none',
-    outline: 'none',
-    transition: '$base',
+export const commandInput = cva([
+  'font-sm',
+  'bg-transparent',
+  'rounded-sm',
+  'flex',
+  'w-full',
+  'h-4',
+  'py-2',
+  'border-none',
+  'outline-none',
+  'transition-all',
 
-    '&::placeholder': {
-      color: '$text-color-caption',
-    },
+  'placeholder:text-text-color-caption',
+  'disabled:cursor-not-allowed',
+  'disabled:opacity-50',
+]);
 
-    '&:disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.5,
-    },
-  },
+export const commandItem = cva([
+  'p-2',
+  'relative',
+  'cursor-default',
+  'select-none',
+  'outline-none',
+  'flex',
+  'items-center',
+  'gap-1',
+  'rounded-sm',
+  'transition-colors',
 
-  '& [cmdk-item]': {
-    px: '$spacing-2',
-    py: '$spacing-2',
-    position: 'relative',
-    cursor: 'default',
-    select: 'none',
-    outline: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '$spacing-1',
-    borderRadius: '$radii-sm',
-    transition: '$base',
+  '[&_svg]:text-text-color-body-lighter',
+  '[&_svg]:w-[18px]',
+  '[&_svg]:h-[18px]',
+  '[&_svg]:relative',
+  '[&_svg]:-left-1',
 
-    '& svg': {
-      color: '$text-color-body-lighter',
-      width: '18px',
-      height: '18px',
-      position: 'relative',
-      left: '-4px !important',
-    },
+  'hover:bg-action-color-background-transparent-hover/60',
+  'aria-disabled:opacity-50',
+  'aria-disabled:pointer-events-none',
+]);
 
-    '& .c-shortcut': {
-      ml: 'auto',
-    },
+export const commandList = cva([
+  'max-h-[300px]',
+  'overflow-y-auto',
+  'overflow-x-hidden',
+  'px-2',
+  'py-2',
+]);
 
-    '&:hover': {
-      backgroundColor: '$action-color-background-transparent-hover',
-    },
+export const commandEmpty = cva([
+  'text-text-color-body-lighter',
+  'text-sm',
+  'text=center',
+  'py-2',
+]);
 
-    '& [aria-selected=“true”]': {
-      backgroundColor: 'red !important',
-    },
-
-    '&[aria-disabled=“true”]': {
-      PointerEvents: 'none',
-      opacity: 0.5,
-    },
-  },
-
-  '& [cmdk-item][data-selected=“true”]': {},
-
-  '& [cmdk-list]': {
-    maxHeight: '300px',
-    overflowY: 'auto',
-    overflowX: 'hidden',
-    px: '$spacing-2',
-    py: '$spacing-2',
-  },
-
-  '& [cmdk-empty]': {
-    color: '$text-color-body-lighter',
-    fontSize: '$font-size-sm',
-    textAlign: 'center',
-    py: '$spacing-2',
-  },
-
-  '& [cmdk-separator]': {
-    height: '2px',
-    background: '$action-color-border-transparent-pressed',
-    my: '$spacing-2',
-  },
-});
-
-export const CommmandItem = styled('div', {});
+export const commandSeparator = cva([
+  'h-[2px]',
+  'bg-action-color-border-transparent-pressed',
+  'my-2',
+]);

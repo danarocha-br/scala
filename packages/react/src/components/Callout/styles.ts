@@ -9,40 +9,38 @@ export const header = cva(
     'items-center',
     'gap-2',
     'w-full',
-    'h-4',
-    'py-1',
+    'h-5',
+
     'relative',
 
     '[data-mode=dark]:text-text-color-on-light',
-
-    '[&_h5]:px-4',
   ],
   {
     variants: {
       variant: {
         info: [
           'text-feedback-color-background-info-enabled',
-          'bg-[#d2e7feb3]',
+          'bg-feedback-color-background-info-disabled',
 
           '[data-mode=dark]:bg-[#405fed1c]',
           '[data-mode=dark]:text-text-color-on-dark',
         ],
         success: [
           'text-feedback-color-background-success-enabled',
-          'bg-color-forest-100',
+          'bg-feedback-color-background-success-disabled/60',
 
           '[data-mode=dark]:text-text-color-on-dark',
           '[data-mode=dark]:bg-[#37b1351a]',
         ],
         danger: [
           'text-feedback-color-background-danger-enabled',
-          'bg-color-froly-100',
+          'bg-feedback-color-background-danger-disabled/60',
           '[data-mode=dark]:text-text-color-on-dark',
           '[data-mode=dark]:bg-[#f1786f17]',
         ],
         warning: [
           'text-feedback-color-background-warning-enabled',
-          'bg-[#fddeba60]',
+          'bg-feedback-color-background-warning-disabled',
           '[data-mode=dark]:text-text-color-on-dark',
           '[data-mode=dark]:bg-[#fcc88d1f]',
         ],

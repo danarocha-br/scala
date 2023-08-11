@@ -81,8 +81,8 @@ export const CopyButton = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         initial="hidden"
+        className='scale-[0.8]'
         animate={isCopied ? 'visible' : 'hidden'}
-        style={{ transform: 'scale(0.8)' }}
       >
         <motion.path
           className={S.iconCheck()}

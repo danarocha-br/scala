@@ -26,7 +26,6 @@ export type CheckboxProps = {
   className?: string;
 } & Omit<PrimitiveButtonProps, 'name'>;
 
-
 const CheckboxFieldset = ({
   legend,
   children,
@@ -80,6 +79,7 @@ const CheckboxItem = forwardRef<
           {variant === 'regular' && (
             <Box
               className={S.checkboxWrapper({
+                variant,
                 hasError: Boolean(errors) && !areErrorsEmpty ? true : false,
               })}
             >
@@ -91,15 +91,21 @@ const CheckboxItem = forwardRef<
                 className={S.svg()}
               >
                 <path
+                  className="fill-none stroke-interactive-color-background-enabled stroke-2 transition-all duration-[0.6s] [stroke-dasharray:71px] [stroke-dashoffset:0] group-hover:[stroke-dashoffset:0] group-data-[disabled]:fill-form-color-border-default group-data-[state=checked]:fill-interactive-color-border-enabled"
                   style={{
                     strokeLinecap: 'round',
                     strokeLinejoin: 'round',
-                    strokeDasharray: '71px',
-                    strokeDashoffset: '71px',
                   }}
                   d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
                 ></path>
-                <polyline points="4 12 8 15 16 6"></polyline>
+                <polyline
+                  points="4 12 8 15 16 6"
+                  className="ml-1 translate-x-[2px] translate-y-[1px] scale-[.85] fill-none stroke-white stroke-2 transition-all duration-300 [stroke-dasharray:18px] [stroke-dashoffeset:18px] group-data-[state=checked]:[stroke-dashoffset:0]"
+                  style={{
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                  }}
+                ></polyline>
               </Box>
             </Box>
           )}
@@ -114,13 +120,16 @@ const CheckboxItem = forwardRef<
                 className={S.svgTask()}
                 style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }}
               >
-                <polyline points="1 7.6 5 11 13 1"></polyline>
+                <polyline
+                  className="stroke-feedback-color-background-success-enabled stroke-2"
+                  points="1 7.6 5 11 13 1"
+                ></polyline>
               </Box>
             </Box>
           )}
 
           {Boolean(label) && (
-            <Text as="label" htmlFor={name}>
+            <Text as="label" htmlFor={name} className={S.label({ variant })}>
               {label}
             </Text>
           )}

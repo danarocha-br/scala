@@ -2,6 +2,35 @@ import { cva } from 'class-variance-authority';
 
 export const container = cva(['flex', 'flex-col', 'gap-2']);
 
+export const root = cva(
+  [
+    'group',
+    'flex',
+    'items-center',
+    'gap-2',
+    'relative',
+    'outline-none',
+    'data-[disabled=true]:cursor-not-allowed',
+    'data-[disabled=true]:opacity-60',
+  ],
+  {
+    variants: {
+      variant: {
+        regular: [],
+        task: ['transition-all', 'translate-0'],
+      },
+
+      hasError: {
+        true: [],
+      },
+    },
+    defaultVariants: {
+      variant: 'regular',
+      hasError: false,
+    },
+  }
+);
+
 export const checkboxWrapper = cva(
   [
     'mr-2',
@@ -14,9 +43,17 @@ export const checkboxWrapper = cva(
     'focus:outline-2',
     'focus:outline-offset-2',
     'focus:outline-action-color-border-transparent-pressed',
+    'group-data-[disabled]:cursor-not-allowed',
   ],
   {
     variants: {
+      variant: {
+        regular: [
+          'group-data-[disabled]:border-form-color-border-default',
+          'group-data-[state=checked]:border-interactive-color-border-enabled',
+        ],
+        task: ['transition-all', '[transform:translateZ(0)]'],
+      },
       hasError: {
         true: ['border-form-color-border-error'],
       },
@@ -56,167 +93,68 @@ export const checkboxWrapperTask = cva([
   'after:w-[3px]',
   'after:h-[2px]',
   'after:rounded-[3px]',
-  'after:shadow-[0 -18px 0 var(--feedback-color-background-success-default), 12px -12px 0 var(--feedback-color-background-success-default), 18px 0 0 var(--feedback-color-background-success-default), 12px 12px 0 var(--feedback-color-background-success-default), 0 18px 0 var(--feedback-color-background-success-default), -12px 12px 0 var(--feedback-color-background-success-default), -18px 0 0 var(--feedback-color-background-success-default), -12px -12px 0 var(--feedback-color-background-success-default)]',
+  'after:[box-shadow:0 0 -18px 0 red, 12px -12px 0 red, 18px 0 0 red, 12px 12px 0 red, 0 18px 0 red, -12px 12px 0 red, -18px 0 0 red, -12px -12px 0 red]',
   'after:scale-0',
+
+  'group-hover:border-feedback-color-background-success-enabled',
+  'group-data-[state=checked]:border-transparent',
+
+  'group-data-[state=checked]:before:scale-[1.1]',
+  'group-data-[state=checked]:before:opacity-0',
+  'group-data-[state=checked]:before:transition-all',
+
+  'group-data-[state=checked]:after:scale-[1.5]',
+  'group-data-[state=checked]:after:opacity-0',
+  'group-data-[state=checked]:transition-all',
+  'group-data-[state=checked]:duration-[0.6s]',
 ]);
 
-export const root = cva(
-  [
-    'group',
-    'flex',
-    'items-center',
-    'gap-2',
-    'relative',
-    '[data-disabled=true]:cursor-not-allowed',
-    '[data-disabled=true]:opacity-60',
-  ],
-  {
-    variants: {
-      variant: {
-        regular: [
-          '[&_>_label]:pointer-events-none',
-          '[&_>_label]:align-middle',
-        ],
-        task: [
-          'transition-all',
-          'translate-0',
-          '[&_>_label]:relative',
-          '[&_>_label]:transition-color',
-          '[&_>_label]:duration-[.3s]',
-          '[&_>_label:after]:content-[""]',
-          '[&_>_label:after]:absolute',
-          '[&_>_label:after]:top-[54%]',
-          '[&_>_label:after]:left-0',
-          '[&_>_label:after]:w-0',
-          '[&_>_label:after]:h-1',
-          '[&_>_label:after]:bg-text-color-body-lighter',
-        ],
-      },
+export const label = cva([], {
+  variants: {
+    variant: {
+      regular: ['pointer-events-none', 'align-middle'],
+      task: [
+        'text-text-color-body-lighter',
+        'relative',
+        'transition-color',
+        'duration-[.3s]',
+        'after:content-[""]',
+        'after:bg-text-color-body-lighter',
+        'after:absolute',
+        'after:top-[54%]',
+        'after:left-0',
+        'after:w-0',
+        'after:h-[1px]',
+        'after:transition-all',
 
-      hasError: {
-        true: [],
-      },
-      // variants: {
-      //   variant: {
-      //     regular: {
-      //       '&:hover:not([disabled])': {
-      //         [`& ${CheckboxWrapper}`]: {
-      //           '& svg': {
-      //             '& path': {
-      //               strokeDashoffset: 0,
-      //             },
-      //           },
-      //         },
-      //       },
-
-      //       '&[data-disabled]': {
-      //         [`& ${CheckboxWrapper}`]: {
-      //           borderColor: '$form-color-border-default',
-      //           '& svg': {
-      //             '& path': {
-      //               fill: '$form-color-border-default',
-      //             },
-      //           },
-      //         },
-      //       },
-
-      //       '&[data-state="checked"]': {
-      //         [`& ${CheckboxWrapper}`]: {
-      //           borderColor: '$interactive-color-border-enabled',
-
-      //           '& svg': {
-      //             '& path': {
-      //               fill: '$interactive-color-border-enabled',
-      //             },
-      //             '& polyline': {
-      //               strokeDashoffset: 0,
-      //             },
-      //           },
-      //         },
-      //       },
-      //     },
-
-      //     task: {
-      //
-
-      //       '&:hover:not([disabled]):not([data-state="checked"])': {
-      //         [`& ${CheckboxWrapperTask}`]: {
-      //           borderColor: '$feedback-color-background-success-default',
-      //         },
-      //       },
-
-      //       '&[data-state="checked"]': {
-      //         [`& ${CheckboxWrapperTask}`]: {
-      //           borderColor: 'transparent',
-
-      //           '& svg': {
-      //             transform: 'scale(1.1)',
-      //             transition: 'all .4s ease',
-      //             transitionDelay: '.1s',
-      //           },
-
-      //           '&::before': {
-      //             transform: 'scale(1.1)',
-      //             opacity: 0,
-      //             transition: 'all .3s ease',
-      //           },
-
-      //           '&::after': {
-      //             transform: 'scale(1.5)',
-      //             opacity: 0,
-      //             transition: 'all .6s ease',
-      //           },
-      //         },
-      //         '& label': {
-      //           color: '$text-color-body-lighter',
-
-      //           '&::after': {
-      //             w: '100%',
-      //             transition: 'all .4s ease',
-      //           },
-      //         },
-      //       },
-      //     },
-      //   },
+        'after:group-data-[state=checked]:text-text-color-body-lighter',
+        'after:group-data-[state=checked]:w-full',
+        'after:group-data-[state=checked]:transition-all',
+      ],
     },
-    defaultVariants: {
-      variant: 'regular',
-      hasError: false,
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: 'regular',
+  },
+});
 
 export const svg = cva([
   'absolute',
   'top-[4.2px]',
   'left-[-0.1px]',
-  '[&_path]:fill-none',
-  '[&_path]:stroke-interactive-color-background-enabled',
-  '[&_path]:stroke-2',
   'transition-all',
   'duration-[.6s]',
   'ease',
 ]);
 
-// '& polyline': {
-//   fill: 'none',
-//   stroke: '#FFF',
-//   strokeWidth: 2,
-//   strokeLinecap: 'round',
-//   strokeLinejoin: 'round',
-//   strokeDasharray: '18px',
-//   strokeDashoffset: '18px',
-//   transition: 'all, .3s ease',
-//   transform: 'scale(.85) translateX(2px) translateY(1px)',
-//   ml: '$spacing-1',
-// },
-
 export const svgTask = cva([
   'relative',
   'scale-0',
   'fill-none',
-  '[&_polyline]:stroke-2',
-  '[&_polyline]:stroke-feedback-color-background-success-default',
+
+  'group-data-[state=checked]:scale(1.1)',
+  'group-data-[state=checked]:transition-all',
+  'group-data-[state=checked]:delay-[.1s]',
 ]);
 
 export const fieldset = cva(
@@ -233,10 +171,3 @@ export const fieldset = cva(
     },
   }
 );
-
-// '&:focus-visible': {
-//   '&[aria-activedescendant]': {
-//     boxShadow: '0 0 0 3px var(--form-color-background-disabled',)
-//     borderRadius: '$radii-md',
-//   },
-// },

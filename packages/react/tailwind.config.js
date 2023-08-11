@@ -515,22 +515,38 @@ module.exports = {
           },
         },
 
-        'animate-overlay': {
+        'show-overlay': {
           '0%': { opacity: 0 },
-          '100%': { opacity: 0.8 },
+          '100%': { opacity: 0.7 },
         },
 
-        'animate-show-content': {
+        'show-content': {
           '0%': {
             opacity: 0,
-            transformOrigin: 'bottom left',
-            transform: 'translate(-50%, -48%) scale(.96)',
+            transformOrigin: 'bottom',
+            transform: 'translate(-50%, -40%) scale(.98)',
           },
 
           '100%': {
             opacity: 1,
             transform: 'translate(-50%, -50%) scale(1)',
           },
+        },
+        'slide-up-and-fade': {
+          '0%': { opacity: 0, transform: 'translateY(6px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        'slide-right-and-fade': {
+          '0%': { opacity: 0, transform: 'translateX(-6px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        'slide-down-and-fade': {
+          '0%': { opacity: 0, transform: 'translateY(-6px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        'slide-left-and-fade': {
+          '0%': { opacity: 0, transform: 'translateX(6px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
         },
       },
 
@@ -539,6 +555,8 @@ module.exports = {
           'move-scale-up-start 0.5s forwards, move-scale-up-end 0.5s forwards 0.3s',
         'button-loading':
           'button-loading-gradient 2s ease-in-out alternate infinite',
+        overlay: 'show-overlay 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'show-overlay-content': 'show-content 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
       },
 
       zIndex: {

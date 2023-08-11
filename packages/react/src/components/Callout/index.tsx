@@ -29,13 +29,16 @@ export const Callout = ({
               label={(Boolean(title) && title) || 'icon'}
               name={icon}
               color="current"
-              className='left-3 mr-[-8px] relative'
+              size="sm"
+              className="relative left-3 mr-[-8px]"
             />
           )}
-          <h5>{title}</h5>
+          <h5 className="px-4 py-2">{title}</h5>
         </Box>
       )}
-      <Box as='span' className="callout__content">{children}</Box>
+      <Box as="span" className="callout__content pb-2 pl-5">
+        {children}
+      </Box>
     </Stack>
   </Box>
 );

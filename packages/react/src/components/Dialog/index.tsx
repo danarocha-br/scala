@@ -1,5 +1,3 @@
-//@ts-noCheck
-
 import React, {
   forwardRef,
   useCallback,
@@ -112,7 +110,7 @@ export const Dialog = forwardRef(
               variant === 'danger'
                 ? 'bg-feedback-color-background-danger-disabled'
                 : 'bg-surface-color-background-subdued'
-            } border-tl-md border-tr-md border-b border-form-color-border-default px-3 pb-2`}
+            } rounded-tl-md rounded-tr-md border-b border-form-color-border-default px-3 pb-2`}
           >
             <Title className={S.dialogTitle({ variant })}>{title}</Title>
 
@@ -124,7 +122,7 @@ export const Dialog = forwardRef(
                   onClick={closeDialog}
                   size="sm"
                   type="button"
-                  className="right=[-3px] relative mt-2 [&_svg]:fill-text-color-caption"
+                  className="relative right-[-3px] mt-2 [&_svg]:fill-text-color-caption"
                 />
               </div>
             </Close>
@@ -138,7 +136,7 @@ export const Dialog = forwardRef(
 
           <Box className="px-3 text-text-color-body">{children}</Box>
 
-          <Box as='footer' className={S.dialogFooter()}>
+          <Box as="footer" className={S.dialogFooter()}>
             {variant === 'transactional' ? (
               <>
                 <Button
@@ -147,7 +145,6 @@ export const Dialog = forwardRef(
                   onClick={onButtonSecondaryClick || closeDialog}
                   size="sm"
                   type="button"
-                  animateOnHover
                 />
 
                 <Button
@@ -167,11 +164,10 @@ export const Dialog = forwardRef(
                   onClick={onButtonSecondaryClick || closeDialog}
                   size="sm"
                   type="button"
-                  animateOnHover
                 />
 
                 <Button
-                  label={buttonPrimaryLabel || 'Save'}
+                  label={buttonPrimaryLabel || 'Delete'}
                   color="danger"
                   onClick={onButtonPrimaryClick}
                   size="sm"
@@ -182,7 +178,7 @@ export const Dialog = forwardRef(
             ) : (
               <Button
                 label={buttonPrimaryLabel || 'Ok'}
-                onClick={onButtonPrimaryClick}
+                onClick={onButtonPrimaryClick || closeDialog}
                 size="sm"
                 animateOnHover
               />

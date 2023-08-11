@@ -1,11 +1,14 @@
+import { VariantProps } from 'class-variance-authority';
+import { Button as AccessibleButton } from '@ariakit/react';
+
 import { Avatar } from '../Avatar';
 import { Box } from '../Box';
-import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
 import { Dropdown } from '../Dropdown';
 import { IconButton } from '../IconButton';
+import * as S from './styles';
 
 export type CalendarCardProps = {
   user?: string;
@@ -26,7 +29,8 @@ export type CalendarCardProps = {
   editMenuItems: React.ReactNode;
   onClick?: () => void;
   className?: string;
-};
+} & VariantProps<typeof S.card> &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const CalendarCard = ({
   user,
@@ -42,28 +46,24 @@ export const CalendarCard = ({
   ...props
 }: CalendarCardProps): JSX.Element => {
   return (
-    <Card
-      onClick={onClick}
-      className={`c-calendar-card group cursor-pointer rounded-sm bg-surface-color-background-default p-0 shadow-none outline-none outline-transparent transition-all ${
-        status === 'published'
-          ? 'border border-action-color-border-transparent-enabled'
-          : 'border border-action-color-border-danger-enabled'
-      } hover:bg-[hsl(60, 10%, 98.3%)] hover:[data-mode=dark]:text-text-color-on-dark hover:[data-mode=dark]:bg-surface-color-background-subdued focus: focus-outline-offset-2 focus:outline-2 focus:outline-action-color-border-transparent-enabled ${className}`}
+    <AccessibleButton
+      className={`c-calendar-card ${S.card({ status, className })}`}
       {...props}
     >
       {Boolean(status === 'draft') && (
-        <Box className="w-full bg-action-color-background-danger-disabled py-0">
+        <Box className="w-full rounded-tl-sm rounded-tr-sm bg-action-color-background-danger-disabled/50 py-0">
           <Text size="xs" color="danger" className="px-2">
             {draftText}
           </Text>
         </Box>
       )}
+
       <Stack
         as="header"
         align="center"
         justify="between"
         fullWidth
-        className="h-5 px-3 pt-2"
+        className="h-5 pl-3 pr-1 pt-2"
       >
         <Stack as="small" align="center" gap="2">
           <Text size="xs" color="body-lighter" className="leading-1 uppercase">
@@ -78,7 +78,7 @@ export const CalendarCard = ({
               label="edit"
               icon="other"
               size="sm"
-              className="card__btn--edit translate-[6px] opacity-30 transition-opacity transition-transform"
+              className="fill-text-color-caption"
             />
           }
         >
@@ -91,10 +91,10 @@ export const CalendarCard = ({
       <Stack
         align="center"
         gap="2"
-        className={`border-1 relative ml-3 mt-2 w-fit rounded-sm border-form-color-background-disabled p-1 pr-2 ${
+        className={`relative ml-3 mt-2 w-fit rounded-sm border border-form-color-background-disabled p-1 pr-2 ${
           checklist.filter((item) => item.status === 'done').length ===
           checklist.length
-            ? 'bg-feedback-color-background-success-disabled'
+            ? 'bg-feedback-color-background-success-disabled/60'
             : 'bg-transparent'
         }`}
       >
@@ -115,7 +115,7 @@ export const CalendarCard = ({
         </Text>
       </Stack>
 
-      <Stack justify="between" align="center" className="px-3 pb-2">
+      <Stack justify="between" align="center" className="mt-2 px-3 pb-2">
         {Boolean(tags) && (
           <Stack gap="2" align="center">
             {tags?.map((tag) => (
@@ -124,12 +124,12 @@ export const CalendarCard = ({
                 align="center"
                 gap="1"
                 key={tag.id}
-                className="rounded-sm px-1 transition-all hover:bg-action-color-background-transparent-hover"
+                className="rounded-sm px-1 transition-all hover:bg-action-color-background-transparent-hover/70"
               >
                 <Box
                   as="span"
-                  className={`h-6 w-6 rounded-sm ${
-                    tag.color || 'bg-brand-color-primary'
+                  className={`h-[6px] w-[6px] rounded-sm  ${
+                    tag.color ? tag.color : 'bg-brand-color-primary'
                   }`}
                 />
                 <Text size="xs" color="body-lighter">
@@ -150,7 +150,7 @@ export const CalendarCard = ({
           />
         )}
       </Stack>
-    </Card>
+    </AccessibleButton>
   );
 };
 
