@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.7
+
+### Patch Changes
+
+- Docs package initial configuration
+
 ## 0.0.6
 
 ### Patch Changes

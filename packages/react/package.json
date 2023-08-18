@@ -1,6 +1,6 @@
 {
   "name": "@compasso/scala",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Scala components package for react",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
