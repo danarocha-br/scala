@@ -42,7 +42,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', px: 200 }}>
+        <Stack align="center" justify="center" className="h-screen px-[200px]">
           {Story()}
         </Stack>
       );
@@ -66,14 +66,7 @@ const CustomSelectItem = ({
   <SelectMenu.Item value={value} disabled={disabled}>
     <SelectMenu.ItemText>
       <Stack align="center">
-        <Box
-          css={{
-            w: '$spacing-3',
-            h: '$spacing-3',
-            borderRadius: '$radii-sm',
-            bg: color,
-          }}
-        />
+        <Box className={`w-3 h-3 rounded-sm ${color}`} />
         {label}
       </Stack>
     </SelectMenu.ItemText>
@@ -83,7 +76,7 @@ const CustomSelectItem = ({
         name="check"
         size="sm"
         color="current"
-        css={{ transform: 'scale(0.8)' }}
+        className="transition-transform scale-[0.8]"
       />
     </SelectMenu.Indicator>
   </SelectMenu.Item>
@@ -96,23 +89,23 @@ export const Default: Story<SelectMenuProps> = (args) => {
         <CustomSelectItem
           value="draft"
           label="Rascunho"
-          color="$feedback-color-background-warning-hover"
+          color="bg-feedback-color-background-warning-hover"
         />
         <CustomSelectItem
           value="invoiced"
           label="Enviado"
-          color="$interactive-color-background-pressed"
+          color="bg-interactive-color-background-pressed"
         />
 
         <CustomSelectItem
           value="paid"
           label="Pago"
-          color="$action-color-background-secondary-enabled"
+          color="bg-action-color-background-secondary-enabled"
         />
         <CustomSelectItem
           value="disabled"
           label="Disabled"
-          color="$action-color-background-primary-disabled"
+          color="bg-action-color-background-primary-disabled"
           disabled
         />
       </SelectMenu.Group>

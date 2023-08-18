@@ -1,4 +1,6 @@
 import React, { forwardRef, useCallback, useState, ElementRef } from 'react';
+import { Button } from '@ariakit/react';
+import { VariantProps } from 'class-variance-authority';
 
 import { Icon, iconPath } from '../Icon';
 import { Box } from '../Box';
@@ -31,9 +33,10 @@ export type TextInputProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
   className?: string;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> &
+  VariantProps<typeof S.baseInputStyle>;
 
-export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
+export const TextInput = forwardRef<ElementRef<'input'>, TextInputProps>(
   (
     {
       name,
@@ -51,7 +54,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
       onAction,
       actionLabel = 'Settings',
       actionIcon = 'settings',
-      className,
+      className = '',
       errors,
       ...props
     }: TextInputProps,
@@ -75,22 +78,24 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box className={`w-full relative ${className}`}>
-        <S.Container
-          isFocused={isFocused}
-          hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
-          isDisabled={disabled || loading}
-          isReadOnly={readOnly}
-          hasIcon={Boolean(icon)}
-          isLoading={loading}
-          variant={variant}
+      <Box className={`relative w-full ${className}`}>
+        <Box
+          className={S.container({
+            variant,
+            isFocused,
+            hasError: Boolean(errors) && !areErrorsEmpty ? true : false,
+            isDisabled: disabled || loading,
+            isReadOnly: readOnly,
+            hasIcon: Boolean(icon),
+            isLoading: loading,
+          })}
         >
           {hasAction && (
-            <S.SettingsButton
+            <Button
               aria-label={actionLabel}
               onClick={onAction}
               type="button"
-              className="input__action"
+              className={`input__action ${S.settingsButton()}`}
               disabled={disabled || readOnly || loading}
             >
               {actionLabel}{' '}
@@ -100,18 +105,25 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
                 size="xs"
                 color="current"
               />
-            </S.SettingsButton>
+            </Button>
           )}
 
           {variant !== 'table' && (
-            <S.Label htmlFor={name} isReadOnly={readOnly}>
-              <Stack gap="1">
+            <Box
+              as="label"
+              className={S.label({
+                isReadOnly: readOnly,
+                isDisabled: disabled || loading,
+              })}
+              htmlFor={name}
+            >
+              <Stack gap="2" align="center">
                 {Boolean(icon) && (
                   <Icon
                     label="input icon"
                     name={icon || 'user'}
                     size="xs"
-                    className="input__icon"
+                    className={S.icon({ isFocused })}
                   />
                 )}
 
@@ -121,7 +133,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
               {loading && (
                 <Box
                   as="span"
-                  className="input__icon--loading abssolute right-2"
+                  className="input__icon--loading absolute right-2"
                 >
                   <Spinner size="xs" />
                 </Box>
@@ -136,23 +148,33 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
                   color="danger"
                 />
               ) : null}
-            </S.Label>
+            </Box>
           )}
 
           {Boolean(addon) && (
-            <S.Addon
-              isFocused={isFocused}
-              isTable={variant === 'table'}
-              isReadOnly={readOnly}
-              isDisabled={disabled}
+            <Box
+              as="span"
+              className={`input__addon ${S.addon({
+                isFocused,
+                isTable: variant === 'table',
+                isReadOnly: readOnly,
+                isDisabled: disabled || loading,
+              })}`}
             >
               {addon}
-            </S.Addon>
+            </Box>
           )}
 
-          <S.Input
+          <input
             id={name}
             ref={ref}
+            className={S.baseInputStyle({
+              variant,
+              isFocused,
+              isDisabled: disabled || loading,
+              isReadOnly: readOnly,
+              hasAddon: Boolean(addon),
+            })}
             {...props}
             aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
             aria-label={label}
@@ -160,14 +182,11 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
             type={type}
             disabled={disabled || loading}
             readOnly={readOnly}
-            hasAddon={Boolean(addon)}
-            variant={variant}
-            isFocused={isFocused}
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
             // tabIndex={readOnly && -1}
           />
-        </S.Container>
+        </Box>
 
         {Boolean(errors) && !areErrorsEmpty ? (
           <FormErrorMessage>{errors.message}</FormErrorMessage>

@@ -49,37 +49,19 @@ export default {
     ],
     editMenuItems: (
       <>
-        <Dropdown.Item className="[&_svg]:-ml-1">
+        <Dropdown.Item>
           <Icon name="edit" label="edit" size="sm" className="mr-2" />
           Mark as draft
         </Dropdown.Item>
-        <Dropdown.Item
-          css={{
-            '& svg': {
-              ml: -4,
-            },
-          }}
-        >
+        <Dropdown.Item>
           <Icon name="copy" label="duplicate" size="sm" className="mr-2" />
           Duplicate
         </Dropdown.Item>
-        <Dropdown.Item
-          css={{
-            '& svg': {
-              ml: -4,
-            },
-          }}
-        >
+        <Dropdown.Item>
           <Icon name="move" label="move" size="sm" className="mr-2" />
           Move
         </Dropdown.Item>
-        <Dropdown.Item
-          css={{
-            '& svg': {
-              ml: -4,
-            },
-          }}
-        >
+        <Dropdown.Item>
           <Icon name="trash" label="delete" size="sm" className="mr-2" />
           Delete
         </Dropdown.Item>

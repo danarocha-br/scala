@@ -1,93 +1,80 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Anchor = styled('span', {
-  fontFamily: '$font-family-sans',
-  fontWeight: '$font-weight-medium',
+export const container = cva([
+    'rounded-sm',
+    'outline-none',
+    'focus-visible:outline-2',
+    'focus-visible:offset-2',
+    'focus-visible:outline-interactive-color-background-disabled',
+])
 
-  textDecoration: 'none',
-  outline: 'none',
-  cursor: 'pointer',
-  position: 'relative',
-  whiteSpace: 'nowrap',
-  px: '$spacing-1',
+export const anchor = cva(
+  [
+    'font-sans',
+    'font-medium',
+    'no-underline',
+    'outline-none',
+    'cursor-pointer',
+    'relative',
+    'whitespace-nowrap',
+    'px-1',
+    'rounded-sm',
+    'group',
 
-  '&:hover': {
-    outline: 'none',
+    'hover:outline-none',
 
-    '&::before': {
-      transform: 'translate3d(0, 2px, 0) scale3d(1.05, 2, 1)',
-      clipPath:
-        'polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%)',
-    },
+    'hover:before:[transform:translate3d(0,_2px,_0)]',
+    'hover:before:[transform:scale3d(1.05,_2,_1)]',
+    'hover:before:[clip-path:polygon(0%_0%,_0%_100%,_50%_100%,_50%_0,_50%_0,_50%_100%,_50%_100%,_0_100%,_100%_100%,_100%_0%)]',
 
-    '& span': {
-      transform: 'translate3d(0, -2px, 0)',
-    },
-  },
+    'before:content-[""]',
+    'before:absolute',
+    'before:w-full',
+    'before:h-[2px]',
+    'before:bg-current',
+    'before:top-[100%]',
+    'before:left-0',
+    'before:pointer-events-none',
+    'before:origin-[50%_100%]',
+    'before:[clip-path:polygon(0%_0%,_0%_100%,_0_100%,_0_0,_100%_0,_100%_100%,_0_100%,_0_100%,_100%_100%,_100%_0%)]',
+    'before:transition-all',
+    'before:duration-300',
+    'before:ease-[cubic-bezier(0.2,1,0.8,1)]',
+    'after:absolute',
+    'after:w-full',
+    'after:bg-current',
+    'after:top-[100%]',
+    'after:left-0',
+    'after:pointer-events-none',
+  ],
+  {
+    variants: {
+      color: {
+        primary: [
+          'text-text-color-body',
+          'active:text-action-color-background-primary-pressed',
+        ],
 
-  '&:focus': {
-    outline: 'none',
-    background: 'transparent',
-    paddingBottom: 1,
-    borderBottom: '2px solid',
-    borderColor: '$interactive-color-background-disabled',
-  },
+        secondary: [
+          'text-interactive-color-background-enabled',
+          'active:text-interactive-color-background-pressed',
+        ],
 
-  '&::before': {
-    content: '',
-    position: 'absolute',
-    width: '100%',
-    height: '1px',
-    background: 'currentColor',
-    top: '100%',
-    left: '0',
-    pointerEvents: 'none',
-
-    transformOrigin: '50% 100%',
-    transition: 'clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1)',
-    clipPath:
-      'polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%)',
-  },
-
-  '&::after': {
-    position: 'absolute',
-    width: '100%',
-    height: '1px',
-    background: 'currentColor',
-    top: '100%',
-    left: '0',
-    pointerEvents: 'none',
-  },
-
-  '& span': {
-    d: 'inline-block',
-    transition: 'transform 0.3s cubic-bezier(0.2, 1, 0.8, 1)',
-  },
-
-  variants: {
-    color: {
-      primary: {
-        color: '$text-color-body',
-        '&:active': {
-          color: '$action-color-background-primary-pressed',
-        },
-      },
-      secondary: {
-        color: '$interactive-color-background-enabled',
-        '&:active': {
-          color: '$interactive-color-background-pressed',
-        },
-      },
-      caption: {
-        color: '$text-color-body-lighter',
-        '&:active': {
-          color: '$text-color-body',
-        },
+        caption: [
+          'text-text-color-body-lighter',
+          'active:text-text-color-body',
+        ],
       },
     },
-  },
+    defaultVariants: {
+      color: 'primary',
+    },
+  }
+);
 
-  defaultVariants: {
-    color: 'primary',
-  },
-});
+export const label = cva([
+  'group-hover:[transform:translate3d(0,_-2px,_0)]',
+  'inline-block',
+  'transition-transform',
+  'animate-[transform_0.3s_cubic-bezier(0.2,_1,_0.8,_1)]',
+]);

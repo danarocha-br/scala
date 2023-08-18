@@ -532,21 +532,60 @@ module.exports = {
             transform: 'translate(-50%, -50%) scale(1)',
           },
         },
+
+        'show-panel-overlay': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 0.1 },
+        },
+
         'slide-up-and-fade': {
-          '0%': { opacity: 0, transform: 'translateY(6px)' },
+          '0%': { opacity: 0, transform: 'translateY(8px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         'slide-right-and-fade': {
-          '0%': { opacity: 0, transform: 'translateX(-6px)' },
+          '0%': { opacity: 0, transform: 'translateX(-8px)' },
           '100%': { opacity: 1, transform: 'translateX(0)' },
         },
         'slide-down-and-fade': {
-          '0%': { opacity: 0, transform: 'translateY(-6px)' },
+          '0%': { opacity: 0, transform: 'translateY(-8px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         'slide-left-and-fade': {
-          '0%': { opacity: 0, transform: 'translateX(6px)' },
+          '0%': { opacity: 0, transform: 'translateX(8px)' },
           '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        'navigation-open': {
+          from: { width: 0, opacity: 1 },
+          to: { width: 0, opacity: 1 },
+        },
+        'navigation-close': {
+          from: { width: 0, opacity: 1 },
+          to: { width: 0, opacity: 1 },
+        },
+        'spinner-dash': {
+          '0%': {
+            'stroke-dasharray': '0, 150',
+            'stroke-dashoffset': 0,
+          },
+          '50%': {
+            'stroke-dasharray': '100, 150',
+            'stroke-dashoffset': -24,
+          },
+          '100%': {
+            'stroke-dasharray': '0, 150',
+            'stroke-dashoffset': -124,
+          },
+        },
+        'spinner-colors': {
+          '0%, 100%': {
+            stroke: 'hsl(var(--interactive-color-background-enabled) / 1)',
+          },
+          '35%': {
+            stroke: 'hsl(var(--feedback-color-background-success-enabled) / 1)',
+          },
+          '75%': {
+            stroke: 'hsl(var(--feedback-color-background-danger-enabled) / 1)',
+          },
         },
       },
 
@@ -556,9 +595,21 @@ module.exports = {
         'button-loading':
           'button-loading-gradient 2s ease-in-out alternate infinite',
         overlay: 'show-overlay 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'show-overlay-content': 'show-content 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'show-overlay-content':
+          'show-content 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'panel-overlay':
+          'show-panel-overlay 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        spinner:
+          'spinner-dash 1.4s ease-in-out infinite, spinner-colors 2.5s ease-in-out 0.75s infinite',
+        'slide-up':
+          'slide-up-and-fade 500ms cubic-bezier(0.16, 1, 0.3, 1) both',
+        'slide-down':
+          'slide-down-and-fade 500ms cubic-bezier(0.16, 1, 0.3, 1) both',
+        'slide-left':
+          'slide-left-and-fade 500ms cubic-bezier(0.16, 1, 0.3, 1) both',
+        'slide-right':
+          'slide-right-and-fade 500ms cubic-bezier(0.16, 1, 0.3, 1) both',
       },
-
       zIndex: {
         max: '999',
       },
@@ -566,6 +617,13 @@ module.exports = {
       backgroundImage: {
         'loading-gradient':
           'linear-gradient(99deg, hsl(var(--color-neutral-300)), hsl(var(--color-royal-400)), hsl(var(--color-froly-300)))',
+      },
+    },
+    variants: {
+      extend: {
+        backgroundColor: ['disabled'],
+        textColor: ['disabled'],
+        borderColor: ['disabled'],
       },
     },
   },

@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { SearchButton, SearchButtonProps } from '@compasso/scala';
+import { SearchButton, SearchButtonProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
@@ -30,6 +30,15 @@ export default {
       },
     },
   },
+  decorators: [
+    (Story) => {
+      return (
+        <Stack align="center" justify="center" className="h-screen w-[400px]">
+          {Story()}
+        </Stack>
+      );
+    },
+  ],
 } as Meta<SearchButtonProps>;
 
 export const Default: StoryObj<SearchButtonProps> = {};

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box } from '../Box';
+import { VariantProps } from 'class-variance-authority';
 
+import { Box } from '../Box';
 import * as S from './styles';
 
 export type LinkProps = {
@@ -9,27 +10,44 @@ export type LinkProps = {
   as?: React.ElementType<unknown> | any;
   href: string;
   target?: string;
-  color?: 'primary' | 'secondary' | 'caption';
   className?: string;
   children: React.ReactNode;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  VariantProps<typeof S.anchor>;
 
+/**
+ * Renders a link element with customizable properties.
+ *
+ * @param {string} props.as - The HTML element to render as the link (default: 'a').
+ * @param {string} props.href - The URL for the link.
+ * @param {string} props.target - The target attribute for the link.
+ * @param {string} props.color - The color of the link (default: 'primary').
+ * @param {ReactNode} props.children - The content of the link.
+ * @return {JSX.Element} The rendered link element.
+ */
 export const Link = ({
   as,
   href,
   target,
-  color,
+  color = 'primary',
   children,
-  className,
+  className = '',
   ...props
 }: LinkProps): JSX.Element => {
-  const Component = as || React.Fragment;
+  const Component = as || 'a';
 
   return (
-    <Component href={href} target={target} role="navigation">
-      <S.Anchor color={color} className={className} {...props}>
-        <Box as="span">{children}</Box>
-      </S.Anchor>
+    <Component
+      href={href}
+      target={target}
+      role="navigation"
+      className={S.container()}
+    >
+      <Box as="span" className={S.anchor({ color, className })} {...props}>
+        <Box as="span" className={S.label()}>
+          {children}
+        </Box>
+      </Box>
     </Component>
   );
 };

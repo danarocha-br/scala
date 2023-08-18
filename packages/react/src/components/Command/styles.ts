@@ -56,16 +56,16 @@ export const commandInput = cva([
 ]);
 
 export const commandItem = cva([
+  'font-sm',
   'p-2',
   'relative',
   'cursor-default',
-  'select-none',
-  'outline-none',
   'flex',
   'items-center',
   'gap-1',
   'rounded-sm',
   'transition-colors',
+  'outline-none',
 
   '[&_svg]:text-text-color-body-lighter',
   '[&_svg]:w-[18px]',
@@ -74,8 +74,21 @@ export const commandItem = cva([
   '[&_svg]:-left-1',
 
   'hover:bg-action-color-background-transparent-hover/60',
+
+  'focus:bg-action-color-background-transparent-hover/60',
+  'focus:outline-2',
+  'focus:outline-offset-2',
+  'focus:outline-offset-action-color-background-transparent-hover',
+
+  'focus-within:bg-action-color-background-transparent-hover/60',
+  'focus-within:outline-2',
+  'focus-within:outline-offset-2',
+  'focus-within:outline-offset-action-color-background-transparent-hover',
+
   'aria-disabled:opacity-50',
   'aria-disabled:pointer-events-none',
+
+  'aria-selected:bg-action-color-background-transparent-hover/60',
 ]);
 
 export const commandList = cva([
@@ -95,6 +108,6 @@ export const commandEmpty = cva([
 
 export const commandSeparator = cva([
   'h-[2px]',
-  'bg-action-color-border-transparent-pressed',
+  'bg-action-color-border-transparent-pressed/60',
   'my-2',
 ]);

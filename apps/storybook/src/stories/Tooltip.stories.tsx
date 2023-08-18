@@ -3,7 +3,7 @@ import {
   Tooltip,
   TooltipProps,
   Stack,
-  Button,
+  IconButton,
   Shortcut,
 } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
@@ -19,7 +19,7 @@ export default {
     },
   },
   args: {
-    children: <Button label="help" variant="icon" icon="help" />,
+    children: <IconButton label="help" icon="help" />,
     content: (
       <>
         The <b>Evil Rabbit</b> Jumped over the Fence.
@@ -55,7 +55,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <Stack gap="8" align="center" justify="center" css={{ h: '100vh' }}>
+      <Stack gap="8" align="center" justify="center" className="h-screen">
         {Story()}
       </Stack>
     ),

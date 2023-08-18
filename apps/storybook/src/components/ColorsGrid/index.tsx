@@ -7,31 +7,23 @@ type ColorsGridProps = {
 
 export function ColorsGrid({ tokens }: ColorsGridProps) {
   return (
-    <Grid cols="5" gap="4" css={{ marginTop: '$spacing-6' }}>
+    <Grid cols="5" gap="4" className="mt-6">
       {Object.entries(tokens).map(([key, color]) => {
+        const textColor =
+          getContrast(String(color), '#FFF') < 3.5 ? '#000' : '#fff';
+        const bgColor =
+          getContrast(String(color), '#FFF') < 3.5 ? '#00000010' : '#00000030';
+
         return (
           <Stack
             direction="column"
             justify="end"
             key={key}
-            css={{
-              backgroundColor: '$color-neutral-white',
-              border: '1px solid #00000010',
-              p: '$spacing-2',
-              radii: '$radii-sm',
-              boxShadow: '$elevation-low',
-              w: '100%',
-            }}
+            className="bg-white border border-[#00000010] p-2 rounded-sm shadow-low w-full "
           >
             <Box
               as="strong"
-              css={{
-                fontSize: '$font-size-xs',
-                fontFamily: 'monospace',
-                color: '$color-froly-600',
-                radii: '$radii-sm',
-                w: '100%',
-              }}
+              className="text-xxs font-mono text-froly-600 rounded-sm w-full"
             >
               ${key}
             </Box>
@@ -39,32 +31,15 @@ export function ColorsGrid({ tokens }: ColorsGridProps) {
               direction="column"
               justify="end"
               key={key}
-              css={{
-                backgroundColor: color,
-                border: '1px solid',
-                borderColor:
-                  getContrast(String(color), '#FFF') < 3.5
-                    ? '#00000010'
-                    : '#00000030',
-                p: '$spacing-2',
-                mt: '$spacing-2',
-                h: '$spacing-7',
-                w: '100%',
-                radii: '2px',
-              }}
+              className={`border px-2 mt-2 h-7 w-full rounded-xs`}
+              style={{ background: color, borderColor: bgColor }}
             >
               <Stack
                 direction="column"
-                css={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  fontFamily: 'monospace',
-                  w: '100%',
-                  color:
-                    getContrast(String(color), '#FFF') < 3.5 ? '#000' : '#fff',
-                }}
+                className={`flex justify-between font-mono w-full`}
+                style={{ color: textColor }}
               >
-                <Box as="span" css={{ fontSize: '$font-size-xxs' }}>
+                <Box as="span" className="text-xxs">
                   {color}
                 </Box>
               </Stack>

@@ -35,6 +35,7 @@ export type DialogProps = {
   title: string;
   description?: string;
   children: React.ReactNode;
+  className?: string;
   variant?: 'transactional' | 'passive' | 'danger';
   buttonPrimaryLabel: string;
   buttonSecondaryLabel?: string;
@@ -57,6 +58,7 @@ export const Dialog = forwardRef(
       onButtonPrimaryClick,
       buttonSecondaryLabel,
       onButtonSecondaryClick,
+      className = '',
     }: DialogProps,
     ref
   ) => {
@@ -86,9 +88,11 @@ export const Dialog = forwardRef(
     function DialogContent({ children, ...props }: DialogContentProps) {
       return (
         <DialogPortal>
-          <Overlay className={S.dialogOverlay()} />
+          <div className={S.dialogOverlay()}>
+            <Overlay />
+          </div>
           <Content
-            className={S.dialogContent()}
+            className={S.dialogContent({ className })}
             {...props}
             onInteractOutside={closeDialog}
             onEscapeKeyDown={closeDialog}

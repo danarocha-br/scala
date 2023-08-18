@@ -1,140 +1,87 @@
-import { styled, keyframes } from '../../styles';
-import {
-  Root,
-  Trigger,
-  Overlay,
-  Content,
-  Close,
-  Title,
-  Description,
-} from '@radix-ui/react-dialog';
+import { cva } from 'class-variance-authority';
 
-const overlayShow = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 0.1 },
-});
-
-// const contentShow = keyframes({
-//   '0%': {
-//     opacity: 0,
-//     zIndex: -1,
-//     transformOrigin: 'bottom left',
-//     transform: 'translate(-100%, 0) scaleX(0) rotateY(100deg)',
-//   },
-
-//   '80%': {
-//     zIndex: -1,
-//   },
-
-//   '100%': {
-//     opacity: 1,
-//     transform: 'translate(0, 0) scale(1) rotateY(0deg)',
-//     zIndex: 1,
-//   },
-// });
-
-export const PanelOverlay = styled(Overlay, {
-  backgroundColor: '$action-color-background-primary-enabled',
-  position: 'fixed',
-  inset: 0,
-
-  variants: {
-    isNavigationOpen: {
-      true: {
-        left: 280,
-      },
-      false: {
-        left: 0,
+export const panelOverlay = cva(
+  [
+    'bg-action-color-background-primary-enabled',
+    'fixed',
+    'inset-0',
+    'left-0',
+    'z-max',
+    'motion-safe:animate-panel-overlay',
+  ],
+  {
+    variants: {
+      isNavigationOpen: {
+        true: ['left-[240px]'],
+        false: ['left-0'],
       },
     },
-  },
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
-  },
-  zIndex: '$max',
-});
+  }
+);
 
-export const PanelContent = styled(Content, {
-  fontFamily: '$font-family-sans',
-  backgroundColor: '$surface-color-background-subdued',
-  borderTopRightRadius: '$radii-md',
-  borderBottomRightRadius: '$radii-md',
+export const panelContent = cva(
+  [
+    'bg-surface-color-background-subdued',
+    'rounded-tr-md',
+    'rounded-br-md',
+    'shadow-high',
+    'sticky',
+    'top-0',
+    'bottom-0',
+    'shadow-[hsl(206_22%_7%_/_15%)_10px_0px_30px_-20px]',
+    'w-full',
+    'h-screen',
+    'z-max',
 
-  position: 'fixed',
-  top: 0,
-  h: '100vh',
-  w: '100%',
+    'focus:outline-none',
 
-  boxShadow: 'hsl(206 22% 7% / 15%) 10px 0px 30px -20px',
-  zIndex: '$max',
+    // 'motion-safe:animate-show-overlay-content',
+    // 'delay-[10ms]',
 
-  '@bp-md': {
-    width: 384,
-  },
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    // animation: `${contentShow} 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
-  },
-  '&:focus': { outline: 'none' },
-
-  variants: {
-    isNavigationOpen: {
-      true: {
-        '@bp-lg': {
-          left: 280,
-        },
-      },
-      false: {
-        left: 0,
+    'md:w-[384px]',
+  ],
+  {
+    variants: {
+      isNavigationOpen: {
+        true: ['left-0', 'lg:left-[240px]'],
+        false: ['left-0'],
       },
     },
-  },
-});
+  }
+);
 
-export const PanelTitle = styled(Title, {
-  margin: 0,
-  fontWeight: '$font-weight-medium',
-  color: '$text-color-body-lighter',
-  fontSize: '$font-size-lg',
-});
+export const panelTitle = cva([
+  'm-0',
+  'font-medium',
+  'text-text-color-body-lighter',
+  'text-lg',
+]);
 
-export const PanelDescription = styled(Description, {
-  margin: '10px 0 20px',
-  color: '$text-color-caption',
-  fontSize: '$font-size-sm',
-});
+export const panelDescription = cva([
+  'text-text-color-caption',
+  'text-[15px]',
+  'leading-[1.5]',
+  'm-[10px_0_20px]',
+  'px-3',
+]);
 
-export const PanelClose = styled(Close, {
-  position: 'relative',
-});
+export const panelClose = cva(['relative']);
 
-export const PanelFooter = styled('footer', {
-  py: '$spacing-3',
-  px: '$spacing-3',
-  bg: '$surface-color-background-subdued',
-
-  d: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
-  gap: '$spacing-3',
-
-  position: 'fixed',
-  bottom: 0,
-  zIndex: 9,
-
-  boxShadow: '$elevation-medium',
-
-  w: '93.333%',
-
-  '@bp-sm': {
-    w: '95.333%',
-  },
-
-  '@bp-md': {
-    width: 352,
-    maxWidth: 352,
-  },
-});
-
-export const Panel = Root;
-export const PanelTrigger = Trigger;
+export const panelFooter = cva([
+  'bg-surface-color-background-subdued',
+  'flex',
+  'justify-end',
+  'items-center',
+  'gap-3',
+  'px-3',
+  'py-3',
+  'bottom-0',
+  'right-1',
+  'fixed',
+  'z-[9]',
+  'shadow-medium',
+  'w-[93.333%]',
+  'sm:w-[95.333%]',
+  'md:w-[352px]',
+  'md:w-max-[352px]',
+]);

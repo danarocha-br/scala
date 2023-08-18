@@ -13,30 +13,13 @@ export function TokensTable({
   type = 'general',
 }: TokensTableProps) {
   return (
-    <Box
-      css={{
-        my: '$spacing-6',
-        border: '1px solid',
-        borderColor: '$color-neutral-400',
-        borderRadius: '$radii-md !important',
-      }}
-    >
-      <Box as="table" className="tokens-table" css={{}}>
-        <Box as="thead" css={{}}>
-          <Box
-            as="tr"
-            css={{
-              '& th': {
-                color: '$color-neutral-500',
-                opacity: 0.8,
-                fontSize: '$font-size-xs',
-                letterSpacing: '1.3px',
-                textTransform: 'uppercase',
-                borderBottom: '2px solid $color-neutral-200',
-              },
-            }}
-          >
-            <th>Name</th>
+    <Box className="my-6 border border-action-color-text-transparent-disabled rounded-md">
+      <Box as="table" className="tokens-table">
+        <Box as="thead">
+          <Box as="tr">
+            <th className="text-neutral-500 opacity-80 text-xs leading-relaxed uppercase border-b-2 border-neutral-200">
+              Name
+            </th>
             {type === 'spacing' && <th />}
             {type === 'radii' && <th />}
             <th>{unity !== 'none' ? 'Pixel' : 'Value'}</th>
@@ -50,25 +33,13 @@ export function TokensTable({
               <Box
                 as="tr"
                 key={key}
-                css={{
-                  color: '$color-neutral-600',
-                  borderBottom: '1px solid',
-                  borderColor: '$color-neutral-200',
-                  '&:nth-child(even) td': {
-                    // backgroundColor: '$color-neutral-100',
-                  },
-                }}
+                className="text-neutral-600 border border-neutral-200"
               >
                 <Box as="td">
                   <Text
                     size="sm"
                     color="danger"
-                    css={{
-                      bg: '$color-neutral-100',
-                      borderRadius: '$radii-sm',
-                      w: 'fit-content',
-                      px: '$spacing-1',
-                    }}
+                    className="bg-neutral-100 rounded-sm w-fit px-1"
                   >
                     ${key}
                   </Text>
@@ -77,11 +48,8 @@ export function TokensTable({
                 {type === 'spacing' && (
                   <td>
                     <Box
-                      css={{
-                        bg: '$color-neutral-200',
-                        height: '$spacing-5',
-                        width: value,
-                      }}
+                      className="bg-neutral-200 h-5"
+                      style={{ width: value }}
                     />
                   </td>
                 )}
@@ -102,10 +70,9 @@ export function TokensTable({
                 {type === 'radii' && (
                   <td>
                     <Box
-                      css={{
-                        bg: '$color-neutral-200',
-                        height: '$spacing-5',
-                        width: key !== 'circle' ? 64 : 32,
+                      className={`bg-neutral-200 h-5`}
+                      style={{
+                        width: key !== 'radii-circle' ? '64px' : '32px',
                         borderRadius: value,
                       }}
                     />

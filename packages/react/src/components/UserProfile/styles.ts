@@ -1,36 +1,26 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Trigger = styled('button', {
-  // all: 'unset',
-  bg: 'transparent',
-  cursor: 'pointer',
-  pl: '$spacing-2',
-  pr: '$spacing-3',
-  py: '$spacing-2',
-  border: '1px solid transparent',
-  borderRadius: '$radii-sm',
-  transition: '$base',
-  transform: 'translateX(0)',
+export const trigger = cva([
+  'font-sans',
+  'bg-transparent',
+  'cursor-pointer',
+  'pl-2',
+  'pr-3',
+  'py-2',
+  'border',
+  'border-dashed',
+  'border-transparent',
+  'rounded-sm',
+  'flex',
+  'items-center',
+  'gap-3',
+  'outline-none',
+  'group',
 
-  d: 'flex',
-  align: 'center',
-  gap: '$spacing-3',
-  outline: 'none',
+  'hover:bg-surface-color-background-disabled',
 
-  '&:hover': {
-    background: '$surface-color-background-disabled',
+  'focus:bg-action-color-background-transparent-hover',
+  'focus:border-surface-color-background-hover',
 
-    '& .avatar__username': {
-      transform: 'translateX(3px) scale(0.95)',
-    },
-  },
-
-  '&:focus': {
-    border: '1px dashed $surface-color-background-hover !important',
-    background: '$action-color-background-transparent-hover',
-
-    '& .avatar__username': {
-      transform: 'translateX(3px) scale(0.95)',
-    },
-  },
-});
+  'active:border-surface-color-background-hover',
+]);

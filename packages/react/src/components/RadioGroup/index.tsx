@@ -1,4 +1,5 @@
 import React, { ElementRef, forwardRef } from 'react';
+import * as PrimitiveRadioGroup from '@radix-ui/react-radio-group';
 
 import { Icon, iconPath } from '../Icon';
 import { Text } from '../Text';
@@ -29,7 +30,7 @@ export type RadioGroupProps = {
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
 
 export const RadioGroup = forwardRef<
-  ElementRef<typeof S.Root>,
+  ElementRef<typeof PrimitiveRadioGroup.Root>,
   RadioGroupProps
 >(
   (
@@ -44,14 +45,14 @@ export const RadioGroup = forwardRef<
       defaultValue,
       options,
       onChange,
-      className,
+      className = '',
     }: RadioGroupProps,
     ref
   ): JSX.Element => {
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <S.Root
+      <PrimitiveRadioGroup.Root
         ref={ref}
         defaultValue={defaultValue}
         aria-label={legend}
@@ -59,54 +60,57 @@ export const RadioGroup = forwardRef<
         disabled={disabled}
         value={value}
         onValueChange={onChange}
-        className={className}
-        fullWidth={fullWidth}
+        className={S.root({ fullWidth, className })}
       >
         <Text
           as="legend"
           size="sm"
           color="body-lighter"
           weight="regular"
-          className='mb-2'
+          className="mb-2"
         >
           {legend}
         </Text>
 
-        <S.Fieldset
+        <fieldset
+          className={S.fieldset({ variant, fullWidth })}
           tabIndex={0}
           role="radiogroup"
           aria-labelledby={legend}
-          variant={variant}
-          fullWidth={fullWidth}
         >
           {React.Children.toArray(
             options.map((option) => (
-              <S.Item
+              <PrimitiveRadioGroup.Item
                 value={option.value}
                 id={option.value}
-                variant={variant}
-                hasError={Boolean(errors)}
-                isDisabled={disabled}
-                hasIcon={!!option.icon}
-                fullWidth={fullWidth}
+                className={S.item({
+                  fullWidth,
+                  variant,
+                  isDisabled: disabled,
+                  hasError: !!errors,
+                  hasIcon: !!option.icon,
+                })}
               >
-                <S.Svg
+                <svg
+                  className={S.svg({
+                    variant,
+                    hasError: !!errors,
+                    isDisabled: disabled,
+                  })}
                   width="20px"
                   height="20px"
                   viewBox="0 0 20 20"
-                  hasError={Boolean(errors)}
-                  isDisabled={disabled}
                 >
                   <circle cx="10" cy="10" r="9"></circle>
                   <path
                     d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
-                    className="inner"
+                    className={S.svgInner()}
                   ></path>
                   <path
                     d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
-                    className="outer"
+                    className={S.svgOuter({variant})}
                   ></path>
-                </S.Svg>
+                </svg>
 
                 {Boolean(option.icon) && (
                   <Icon
@@ -114,7 +118,7 @@ export const RadioGroup = forwardRef<
                     name={option.icon || 'design'}
                     size="md"
                     color="body"
-                    className="radio__icon"
+                    className={S.radioIcon({ variant, isDisabled: disabled })}
                   />
                 )}
 
@@ -125,17 +129,17 @@ export const RadioGroup = forwardRef<
                 >
                   {option.label}
                 </Text>
-              </S.Item>
+              </PrimitiveRadioGroup.Item>
             ))
           )}
-        </S.Fieldset>
+        </fieldset>
 
         {Boolean(errors) && !areErrorsEmpty ? (
           <FormErrorMessage variant="outside">
             {errors.message}
           </FormErrorMessage>
         ) : null}
-      </S.Root>
+      </PrimitiveRadioGroup.Root>
     );
   }
 );

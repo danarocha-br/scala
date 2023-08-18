@@ -18,7 +18,7 @@ export type CopyButtonProps = {
  * @returns {JSX.Element} The CopyButton component.
  */
 export const CopyButton = ({
-  className,
+  className='',
   content,
 }: CopyButtonProps): JSX.Element => {
   const [isCopied, setIsCopied] = useState(false);

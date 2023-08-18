@@ -27,13 +27,13 @@ export const Navbar = ({
   optionsButtonLabel,
   optionsButtonOnClick,
   themeButtonLabel,
-  className,
+  className = '',
   ...props
 }: NavbarProps) => (
   //TODO - make navbar mobile friendly
-  <Box className={S.nav({className})} {...props}>
+  <Box className={S.nav({ className })} {...props}>
     {Boolean(pageTitle) && (
-      <Text size="lg" color="body-lighter" className='whitespace-nowrap'>
+      <Text size="lg" color="body-lighter" className="whitespace-nowrap">
         {pageTitle}
       </Text>
     )}
@@ -41,15 +41,15 @@ export const Navbar = ({
     {slot && (
       <Stack
         align="center"
-        gap='4'
+        gap="4"
         justify="end"
-        className={`flex-2 ${!pageTitle ? '' : 'px=12'}`}
+        className={`flex-2 ${!pageTitle ? '' : 'px-12'}`}
       >
         {slot}
       </Stack>
     )}
 
-    <Stack align="center" gap='2'>
+    <Stack align="center" gap="2">
       <Tooltip
         content={themeButtonLabel || 'Change theme'}
         slot={<Shortcut shortcut="⌘ T" />}

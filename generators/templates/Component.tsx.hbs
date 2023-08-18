@@ -1,15 +1,14 @@
-import { CSS } from '../../styles';
-
+import { Box } from '../Box';
 import * as S from './styles';
 
 export type {{pascalCase name}}Props = {
-  css?: CSS;
+  className?: string;
 }
 
-export const {{pascalCase name}} = ({ css, ...props }: {{pascalCase name}}Props): JSX.Element => (
-  <S.Container css={css} {...props}>
+export const {{pascalCase name}} = ({ className, ...props }: {{pascalCase name}}Props): JSX.Element => (
+  <Box className={S.container({ className })} {...props}>
     <h1>{{pascalCase name}}</h1>
-  </S.Container>
+  </Box>
 );
 
 {{pascalCase name}}.displayName = '{{pascalCase name}}';

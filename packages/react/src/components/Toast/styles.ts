@@ -1,76 +1,93 @@
-import { styled } from '../../styles';
-import { motion } from 'framer-motion';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled(motion.div, {
-  fontFamily: '$font-family-sans',
-  position: 'fixed',
-
-  userSelect: 'none',
-  w: 'inherit',
-  h: 'auto',
-  d: 'flex',
-  flexDirection: 'column',
-  gap: '$spacing-2',
-
-  zIndex: '100',
-
-  variants: {
-    directionY: {
-      top: {
-        top: '$spacing-4',
+export const container = cva(
+  [
+    'font-sans',
+    'fixed',
+    'select-none',
+    'w-[inherit]',
+    'h-auto',
+    'flex',
+    'flex-col',
+    'gap-2',
+    'z-[100]',
+  ],
+  {
+    variants: {
+      directionY: {
+        top: ['top-4'],
+        bottom: ['bottom-4'],
       },
-      bottom: {
-        bottom: '$spacing-4',
+
+      directionX: {
+        left: ['left-4'],
+        right: ['right-4'],
+      },
+    },
+
+    defaultVariants: {
+      directionX: 'right',
+      directionY: 'top',
+    },
+  }
+);
+
+export const toast = cva([
+  'bg-surface-color-background-subdued',
+  'rounded-sm',
+  'border',
+  'border-action-color-background-transparent-pressed',
+  'relative',
+  'pb-2',
+
+  'md:w-[400px]',
+]);
+
+export const marker = cva(
+  ['bg-red', 'w-full', 'h-1', 'rounded-tl-md', 'rounded-tr-md'],
+  {
+    variants: {
+      variant: {
+        info: ['bg-interactive-color-background-subdued'],
+        success: ['bg-feedback-color-background-success-enabled'],
+        danger: ['bg-feedback-color-background-danger-subdued'],
+        warning: ['bg-feedback-color-background-warning-enabled'],
+        neutral: ['bg-surface-color-background-pressed'],
       },
     },
 
-    directionX: {
-      left: {
-        left: '$spacing-4',
-      },
-      right: {
-        right: '$spacing-4',
-      },
+    defaultVariants: {
+      variant: 'info',
     },
-  },
+  }
+);
 
-  defaultVariants: {
-    directionX: 'right',
-    directionY: 'top',
-  },
-});
+export const title = cva([
+  'text-text-color-body',
+  'font-medium',
+  'flex',
+  'justify-between',
+  'gap-2',
+  'pt-2',
+  'pb-1',
+  'px-2',
+  'relative',
+]);
 
-export const Toast = styled(motion.div, {
-  position: 'relative',
-  pb: '$spacing-2',
-
-  borderRadius: '$radii-md',
-  boxShadow: '$elevation-low',
-  border: '1px solid',
-  borderColor: '$action-color-background-transparent-pressed',
-  background: '$surface-color-background-subdued',
-  // w: '100%',
-
-  '@bp-md': {
-    w: 400,
-  },
-});
-
-export const Marker = styled('div', {
-  w: '100%',
-  h: '$spacing-1',
-
-  bg: 'red',
-  borderTopLeftRadius: '$radii-md',
-  borderTopRightRadius: '$radii-md',
-
+export const icon = cva([], {
   variants: {
     variant: {
-      info: { bg: '$interactive-color-background-subdued' },
-      success: { bg: '$feedback-color-background-success-default' },
-      danger: { bg: '$feedback-color-background-danger-subdued' },
-      warning: { bg: '$feedback-color-background-warning-default' },
-      neutral: { bg: '$surface-color-background-pressed' },
+      info: ['fill-interactive-color-background-subdued'],
+      success: [
+        'fill-feedback-color-background-success-enabled',
+      ],
+      danger: [
+        'fill-feedback-color-background-danger-enabled',
+      ],
+      warning: [
+        'fill-feedback-color-background-warning-enabled',
+      ],
+      neutral: ['fill-text-color-caption'],
     },
   },
 
@@ -79,57 +96,9 @@ export const Marker = styled('div', {
   },
 });
 
-export const Title = styled('div', {
-  color: '$text-color-body',
-  fontWeight: '$font-weight-medium',
-  d: 'flex',
-  gap: '$spacing-2',
-  justifyContent: 'space-between',
-
-  pt: '$spacing-2',
-  pb: '$spacing-1',
-  px: '$spacing-2',
-  position: 'relative',
-
-  variants: {
-    variant: {
-      info: {
-        '& svg': {
-          color: '$interactive-color-background-subdued',
-        },
-      },
-      success: {
-        '& svg': {
-          color: '$feedback-color-background-success-default',
-        },
-      },
-      danger: {
-        '& svg': {
-          color: '$feedback-color-background-danger-default',
-        },
-      },
-      warning: {
-        '& svg': {
-          color: '$feedback-color-background-warning-default',
-        },
-      },
-      neutral: {
-        '& svg': {
-          color: '$text-color-caption',
-        },
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: 'info',
-  },
-});
-
-export const Message = styled('div', {
-  color: '$text-color-body-lighter',
-
-  px: '$spacing-3',
-  pt: '$spacing-2',
-  pb: '$spacing-1',
-});
+export const message = cva([
+  'text-text-color-body-lighter',
+  'px-3',
+  'pt-2',
+  'pb-1',
+]);

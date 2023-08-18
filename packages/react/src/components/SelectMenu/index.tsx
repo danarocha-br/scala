@@ -1,3 +1,4 @@
+import * as PrimitiveSelect from '@radix-ui/react-select';
 import { Box } from '../Box';
 import { Icon } from '../Icon';
 
@@ -10,16 +11,27 @@ export type SelectMenuProps = {
   className?: string;
 };
 
-const SelectGroup = S.SelectGroup;
+const SelectGroup = PrimitiveSelect.Group;
 SelectGroup.displayName = 'Group';
 
-const SelectItem = S.SelectItem;
+const SelectItem = ({ ...props }: PrimitiveSelect.SelectItemProps) => (
+  <PrimitiveSelect.Item className={S.selectItem()} {...props} />
+);
 SelectItem.displayName = 'Item';
 
-const SelectItemText = S.SelectItemText;
+const SelectItemText = ({ ...props }: PrimitiveSelect.SelectItemTextProps) => (
+  <PrimitiveSelect.ItemText className={S.selectItemText()} {...props} />
+);
 SelectItemText.displayName = 'ItemText';
 
-const SelectItemIndicator = S.SelectItemIndicator;
+const SelectItemIndicator = ({
+  ...props
+}: PrimitiveSelect.SelectItemIndicatorProps) => (
+  <PrimitiveSelect.SelectItemIndicator
+    className={S.selectItemIndicator()}
+    {...props}
+  />
+);
 SelectItemIndicator.displayName = 'ItemIndicator';
 
 const SelectMenuBase = ({
@@ -30,33 +42,38 @@ const SelectMenuBase = ({
   ...props
 }: SelectMenuProps): JSX.Element => (
   <Box className={className} {...props}>
-    <S.SelectRoot defaultValue={defaultValue}>
-      <S.SelectBox aria-label={label}>
-        <S.SelectValue defaultValue={defaultValue || label} />
-        <S.SelectIcon>
+    <PrimitiveSelect.Root defaultValue={defaultValue}>
+      <PrimitiveSelect.SelectTrigger
+        className={S.selectBox()}
+        aria-label={label}
+      >
+        <PrimitiveSelect.Value defaultValue={defaultValue || label} />
+        <PrimitiveSelect.Icon>
           <Icon
             label="open menu"
             name="chevronDown"
             size="sm"
-            className='relative right-0'
+            className="relative right-0"
           />
-        </S.SelectIcon>
-      </S.SelectBox>
+        </PrimitiveSelect.Icon>
+      </PrimitiveSelect.SelectTrigger>
 
-      <S.SelectPortal>
-        <S.SelectContent>
-          <S.SelectScrollUpButton>
+      <PrimitiveSelect.Portal>
+        <PrimitiveSelect.Content className={S.selectContent()}>
+          <PrimitiveSelect.ScrollUpButton className={S.selectScrollUpButton()}>
             <Icon label="open menu" name="chevronUp" />
-          </S.SelectScrollUpButton>
+          </PrimitiveSelect.ScrollUpButton>
 
-          <S.SelectViewport>{children}</S.SelectViewport>
+          <PrimitiveSelect.Viewport className={S.selectViewport()}>
+            {children}
+          </PrimitiveSelect.Viewport>
 
-          <S.SelectScrollDownButton>
+          <PrimitiveSelect.ScrollUpButton className={S.selectScrollUpButton()}>
             <Icon label="open menu" name="chevronDown" />
-          </S.SelectScrollDownButton>
-        </S.SelectContent>
-      </S.SelectPortal>
-    </S.SelectRoot>
+          </PrimitiveSelect.ScrollUpButton>
+        </PrimitiveSelect.Content>
+      </PrimitiveSelect.Portal>
+    </PrimitiveSelect.Root>
   </Box>
 );
 

@@ -73,7 +73,9 @@ export const PasswordInput = forwardRef<
           />
         </Box>
 
-        <S.Button
+        <Box
+          as="button"
+          className={S.button()}
           aria-label="view password"
           type="button"
           onClick={handleTooglePasswordMask}
@@ -85,7 +87,7 @@ export const PasswordInput = forwardRef<
             color={`${isHovered ? 'on-dark' : 'body'}`}
             className="input__icon--password"
           />
-        </S.Button>
+        </Box>
       </Stack>
     );
   }

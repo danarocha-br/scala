@@ -12,6 +12,7 @@ export const container = cva(
     'pt-2',
     'px-3',
     'z-[-1]',
+    'w-full',
     'pointer-events-none',
 
     'data-[mode=dark]:text-color-neutral-200',

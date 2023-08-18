@@ -100,7 +100,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 350 }}>
+        <Stack align="center" justify="center" className="h-screen w-[350px]">
           {Story()}
         </Stack>
       );
@@ -155,10 +155,11 @@ export const OverviewDefaultVariant: Story<TextInputProps> = (args) => {
 };
 
 export const OverviewTableVariant: Story<TextInputProps> = (args) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue1, setInputValue1] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setInputValue(e.target.value);
+    return setInputValue1(e.target.value);
   };
 
   return (
@@ -166,7 +167,7 @@ export const OverviewTableVariant: Story<TextInputProps> = (args) => {
       <TextInput
         {...args}
         placeholder="Your email"
-        value={inputValue}
+        value={inputValue1}
         onChange={(e) => handleChange(e)}
         variant="table"
       />
@@ -175,8 +176,8 @@ export const OverviewTableVariant: Story<TextInputProps> = (args) => {
         {...args}
         placeholder="Your email"
         addon="Addon"
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
+        value={inputValue2}
+        onChange={(e) => setInputValue2(e.target.value)}
         variant="table"
       />
     </Stack>
@@ -184,10 +185,12 @@ export const OverviewTableVariant: Story<TextInputProps> = (args) => {
 };
 
 const States: Story<TextInputProps> = (args) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue1, setInputValue1] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
+  const [inputValue3, setInputValue3] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setInputValue(e.target.value);
+    return setInputValue1(e.target.value);
   };
 
   return (
@@ -196,22 +199,22 @@ const States: Story<TextInputProps> = (args) => {
         {...args}
         placeholder="Your email"
         icon="mail"
-        value={inputValue}
+        value={inputValue1}
         onChange={(e) => handleChange(e)}
       />
       <TextInput
         {...args}
         placeholder="Your email"
         addon="Addon"
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
+        value={inputValue2}
+        onChange={(e) => setInputValue2(e.target.value)}
       />
       <TextInput
         {...args}
         placeholder="Your email"
         hasAction
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
+        value={inputValue3}
+        onChange={(e) => setInputValue3(e.target.value)}
         onAction={() => alert('E-mail settings')}
       />
     </Stack>

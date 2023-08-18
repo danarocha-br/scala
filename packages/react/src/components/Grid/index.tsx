@@ -93,7 +93,7 @@ export const Grid = forwardRef(
     {
       as: Component = 'div',
       children,
-      className,
+      className='',
       align,
       justify,
       gap,

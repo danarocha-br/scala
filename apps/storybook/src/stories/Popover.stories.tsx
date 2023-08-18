@@ -22,6 +22,24 @@ export default {
         </Popover.Content>
       </>
     ),
+    unstyled: false,
+  },
+  argTypes: {
+    children: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
+    trigger: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
+    unstyled: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
   },
 } as Meta;
 

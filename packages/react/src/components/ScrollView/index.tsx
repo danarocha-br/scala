@@ -16,7 +16,7 @@ export type ScrollViewProps = {
 
 export const ScrollView = ({
   children,
-  className,
+  className = '',
   ...props
 }: ScrollViewProps): JSX.Element => (
   <Root {...props} className={`c-scrollarea ${S.scrollArea({ className })}`}>

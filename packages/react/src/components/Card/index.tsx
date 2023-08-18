@@ -21,7 +21,7 @@ export type CardProps = {
  */
 export const Card = ({
   children,
-  className,
+  className='',
   ...props
 }: CardProps): JSX.Element => (
   <Box className={S.card({ className })} {...props}>

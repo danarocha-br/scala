@@ -5,17 +5,25 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react';
-import { Portal as PanelPortal, DialogProps } from '@radix-ui/react-dialog';
+import {
+  Portal as PanelPortal,
+  DialogProps,
+  Overlay,
+  Content,
+  Title,
+  Description,
+  Close,
+  Root,
+} from '@radix-ui/react-dialog';
 
 import { Button } from '../Button';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { ScrollView } from '../ScrollView';
-
+import { IconButton } from '../IconButton';
 import * as S from './styles';
 
 import { useOverlay } from '../../hooks/useOverlay';
-import { IconButton } from '../IconButton';
 
 export type PanelProps = {
   title: string;
@@ -27,6 +35,7 @@ export type PanelProps = {
   onButtonSecondaryClick?: () => void;
   isButtonDisabled?: boolean;
   isNavigationOpen?: boolean;
+  className?: string;
 } & DialogProps;
 
 export type PanelHandlesProps = {
@@ -51,6 +60,7 @@ export const Panel = forwardRef(
       isButtonDisabled = false,
       children,
       isNavigationOpen,
+      className = '',
     }: PanelProps,
     ref
   ) => {
@@ -79,21 +89,21 @@ export const Panel = forwardRef(
 
     function PanelContent({ children, ...props }: PanelContentProps) {
       return (
-        <PanelPortal>
-          <S.PanelOverlay isNavigationOpen={isNavigationOpen} />
-          <S.PanelContent
+        <PanelPortal className="relative">
+          <Overlay className={S.panelOverlay({ isNavigationOpen })} />
+          <Content
+            className={S.panelContent({ isNavigationOpen, className })}
             {...props}
-            isNavigationOpen={isNavigationOpen}
             onEscapeKeyDown={closePanel}
           >
             {children}
-          </S.PanelContent>
+          </Content>
         </PanelPortal>
       );
     }
 
     return (
-      <S.Panel open={isVisible} modal={isNavigationOpen ? false : true}>
+      <Root open={isVisible} modal={isNavigationOpen ? false : true}>
         <PanelContent>
           <Stack
             as="header"
@@ -101,9 +111,9 @@ export const Panel = forwardRef(
             justify="between"
             className="border-[#D5DBD]/50 [dark-mode=dark]:border-[#252e30]/70 border px-4 py-2"
           >
-            <S.PanelTitle>{title}</S.PanelTitle>
+            <Title className={S.panelTitle()}>{title}</Title>
 
-            <S.PanelClose asChild>
+            <Close className={S.panelClose()} asChild>
               <div>
                 <IconButton
                   label="Close"
@@ -114,13 +124,15 @@ export const Panel = forwardRef(
                   className="[&_svg]:fill-text-text-color-caption absolute right-[-16px] top-[-14px]"
                 />
               </div>
-            </S.PanelClose>
+            </Close>
           </Stack>
 
           <ScrollView>
             <Box className="h-full p-4 pb-[13rem]">
               {Boolean(description) && (
-                <S.PanelDescription>{description}</S.PanelDescription>
+                <Description className={S.panelDescription()}>
+                  {description}
+                </Description>
               )}
 
               {children}
@@ -128,7 +140,7 @@ export const Panel = forwardRef(
           </ScrollView>
 
           <Box className="relative">
-            <S.PanelFooter>
+            <footer className={S.panelFooter()}>
               <Button
                 label={buttonSecondaryLabel || 'Cancel'}
                 variant="transparent"
@@ -147,10 +159,10 @@ export const Panel = forwardRef(
                 type="submit"
                 fullWidth
               />
-            </S.PanelFooter>
+            </footer>
           </Box>
         </PanelContent>
-      </S.Panel>
+      </Root>
     );
   }
 );

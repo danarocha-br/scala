@@ -16,7 +16,7 @@ type CommandRootProps = {
 const CommandRoot = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   CommandRootProps
->(({ className, ...props }, ref) => (
+>(({ className = '', ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
     className={S.commandContainer({ className })}
@@ -44,7 +44,7 @@ type CommandInputProps = {
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input & { className?: string }>,
   CommandInputProps
->(({ className, ...props }, ref) => (
+>(({ className = '', ...props }, ref) => (
   <Stack
     align="center"
     gap="2"
@@ -86,12 +86,12 @@ const CommandGroup = React.forwardRef<
 CommandGroup.displayName = 'Group';
 
 const CommandSeparator = React.forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Separator>,
+  React.ElementRef<typeof CommandPrimitive.Separator & { className?: string }>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
->(({ ...props }, ref) => (
+>(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
-    className={S.commandSeparator()}
+    className={S.commandSeparator({ className })}
     {...props}
   />
 ));
@@ -104,7 +104,7 @@ type CommandItemProps = {
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   CommandItemProps
->(({ className, ...props }, ref) => (
+>(({ className = '', ...props }, ref) => (
   <CommandPrimitive.Item
     className={S.commandItem({ className })}
     ref={ref}

@@ -1,16 +1,12 @@
+//@ts-noCheck
 import { Story, Meta } from '@storybook/react';
-import {
-  Form,
-  SelectCreatable,
-  SelectCreatableProps,
-  Stack,
-} from '@compasso/scala';
+import { Form, SelectMulti, SelectMultiProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
 
 export default {
-  title: 'Form/SelectCreatable',
-  component: SelectCreatable,
+  title: 'Form/SelectMulti',
+  component: SelectMulti,
   parameters: {
     layout: 'centered',
     badges: [BADGE.STABLE],
@@ -26,11 +22,11 @@ export default {
     isMulti: false,
     disabled: false,
     loading: false,
-    isSearchable: true,
-    isClearable: true,
-    noOptionMessage: 'No options found',
+    emptyMessage: 'No options found',
+    onCreateOptionLabel: 'Create new',
+    onCreateOption: () => '',
     placeholder: 'Select one option',
-    loadOptions: [
+    options: [
       { label: 'Option 1', value: 'Option 1' },
       { label: 'Option 2', value: 'Option 2' },
     ],
@@ -80,27 +76,17 @@ export default {
         category: 'Modifiers',
       },
     },
-    isSearchable: {
+    emptyMessage: {
       table: {
         category: 'Modifiers',
       },
     },
-    isClearable: {
-      table: {
-        category: 'Modifiers',
-      },
-    },
-    noOptionMessage: {
-      table: {
-        category: 'Modifiers',
-      },
-    },
-    loadOptions: {
+    onCreateOptionLabel: {
       table: {
         category: 'Text',
       },
     },
-    cacheOptions: {
+    onCreateOption: {
       table: {
         category: 'Modifiers',
       },
@@ -109,18 +95,13 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 350 }}>
+        <Stack align="center" justify="center" className="h-screen w-[350px]">
           {Story()}
         </Stack>
       );
     },
   ],
-} as Meta<SelectCreatableProps>;
-
-interface Option {
-  readonly label: string;
-  readonly value: string;
-}
+} as Meta<SelectMultiProps>;
 
 const createOption = (label: string) => ({
   label,
@@ -131,45 +112,31 @@ const defaultOptions = [
   createOption('One'),
   createOption('Two'),
   createOption('Three'),
+  createOption('Four'),
 ];
 
-export const Default: Story<SelectCreatableProps> = (args) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState(defaultOptions);
-  const [value, setValue] = useState<Option | null>();
-
-  const handleCreate = (inputValue: string) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      const newOption = createOption(inputValue);
-      setIsLoading(false);
-      setOptions((prev) => [...prev, newOption]);
-      setValue(newOption);
-    }, 1000);
-  };
+export const Default: Story<SelectMultiProps> = (args) => {
+  const [options] = useState([
+    { label: 'Option 1', value: 'Option 1' },
+    { label: 'Option 2', value: 'Option 2' },
+  ]);
 
   return (
     <Form>
-      <SelectCreatable {...args} disabled={isLoading} loading={isLoading} />
-      <SelectCreatable
-        {...args}
-        icon="business"
-        disabled={isLoading}
-        loading={isLoading}
-        onChange={(newValue: Option) => setValue(newValue)}
-        onCreateOption={handleCreate}
-        value={value}
-        cacheOptions
-        // defaultOptions
-        loadOptions={options}
-      />
+      <SelectMulti {...args} />
+      <SelectMulti {...args} icon="business" options={options} />
     </Form>
   );
 };
 
-export const isMulti = Default.bind({});
-isMulti.args = {
-  isMulti: true,
+export const WithDefaultOptions = Default.bind({});
+WithDefaultOptions.args = {
+  defaultOptions: [
+    {
+      label: 'Option 2',
+      value: 'Option 2',
+    },
+  ],
 };
 
 export const TableVariant = Default.bind({});
@@ -192,4 +159,41 @@ HasError.args = {
   errors: {
     message: 'I am an error message.',
   },
+};
+
+export const CreateOption: Story<SelectMultiProps> = (args) => {
+  const [isLoading] = useState(false);
+  const [options] = useState(defaultOptions);
+
+  // const handleCreate = (inputValue: string) => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     const newOption = createOption(inputValue);
+  //     setIsLoading(false);
+  //     setOptions((prev) => [...prev, newOption]);
+  //     setValue(newOption);
+  //   }, 1000);
+  // };
+
+  return (
+    <Form>
+      <SelectMulti
+        {...args}
+        // onChange={(newValue: Option) => setValue(newValue)}
+        // onCreateOption={handleCreate}
+        // value={value}
+        options={options}
+        loading={isLoading}
+      />
+      <SelectMulti
+        {...args}
+        icon="business"
+        // onChange={(newValue: Option) => setValue(newValue)}
+        // onCreateOption={handleCreate}
+        // value={value}
+        options={options}
+        loading={isLoading}
+      />
+    </Form>
+  );
 };

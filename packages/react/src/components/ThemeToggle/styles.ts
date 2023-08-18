@@ -1,58 +1,59 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Button = styled('button', {
-  all: 'unset',
+export const button = cva([
+  'rounded-sm',
+  'cursor-pointer',
+  'relative',
+  'scale-[0.8]',
+  'p-2',
+  'transition-all',
+  'outline-none',
 
-  position: 'relative',
-  cursor: 'pointer',
-  borderRadius: '$radii-sm',
-  transform: 'scale(0.8)',
-  p: 2,
-  transition: 'background .3s linear',
+  'hover:bg-action-color-background-transparent-hover',
 
-  '&:hover': {
-    bg: '$action-color-background-transparent-hover',
-  },
+  'focus:outline-2',
+  'focus:outline-action-color-background-transparent-disabled',
+  'focus:outline-offset-2',
+]);
 
-  '&:focus': {
-    outline: '2px solid',
-    outlineColor: '$action-color-background-transparent-disabled',
-    outlineOffset: '2px',
-  },
+export const svg = cva(
+  [
+    'my-0',
+    'mx-auto',
+    'fill-none',
+    'transition-all',
 
-  '& svg': {
-    transition: 'all .3s linear',
-    margin: '0 auto',
-    fill: 'none',
-
-    '& path': {
-      stroke: '$text-color-body-lighter',
-      strokeWidth: 2,
-      strokeLinecap: 'round',
-      transition: 'all .2s linear',
-
-      '&.light': {
-        stroke: '$text-color-body-lighter',
-        strokeDasharray: '3px',
-        strokeDashoffset: 0,
+    '[&_path]:stroke-text-color-body-lighter',
+    '[&_path]:stroke-2',
+    '[&_path]:[stroke-line-cap:round]',
+    '[&_path]:transition-all',
+  ],
+  {
+    variants: {
+      isDark: {
+        true: ['translate-y-[-3px]'],
       },
     },
-  },
 
-  variants: {
-    isDark: {
-      true: {
-        '& svg': {
-          transform: 'translateY(-3px)',
-        },
+    defaultVariants: {
+      isDark: false,
+    },
+  }
+);
 
-        '& path': {
-          '&.light': {
-            strokeDashoffset: '3px !important',
-            opacity: 0,
-          },
-        },
+export const light = cva(
+  [
+    '[stroke-dasharray:3px]',
+    '[stroke-dashoffset:0px]',
+  ],
+  {
+    variants: {
+      isDark: {
+        true: ['[stroke-dashoffset:3px]', 'opacity-0'],
       },
     },
-  },
-});
+    defaultVariants: {
+      isDark: false,
+    },
+  }
+);

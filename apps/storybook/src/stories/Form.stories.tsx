@@ -24,7 +24,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 400 }}>
+        <Stack align="center" justify="center" className="h-screen w-[400px]">
           {Story()}
         </Stack>
       );

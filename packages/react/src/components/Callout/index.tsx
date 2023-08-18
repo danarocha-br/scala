@@ -18,8 +18,9 @@ export const Callout = ({
   children,
   icon,
   variant = 'info',
+  className = '',
 }: CalloutProps): JSX.Element => (
-  <Box className={S.container()}>
+  <Box className={S.container({ className })}>
     <Box className={S.marker({ variant })} />
     <Stack gap="2" direction="column" fullWidth>
       {Boolean(title) && (
@@ -36,7 +37,7 @@ export const Callout = ({
           <h5 className="px-4 py-2">{title}</h5>
         </Box>
       )}
-      <Box as="span" className="callout__content pb-2 pl-5">
+      <Box as="span" className="callout__content pb-2 pl-4">
         {children}
       </Box>
     </Stack>

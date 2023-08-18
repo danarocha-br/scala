@@ -68,26 +68,22 @@ const DropdownSeparator = ({ ...props }: DropdownMenuSeparatorProps) => (
 );
 DropdownItem.displayName = 'Separator';
 
-/**
- * Renders the content of a dropdown menu.
- *
- * @param {ReactNode} children - The children elements to be rendered inside the dropdown menu content.
- * @param {...any} props - Additional props to be spread on the dropdown menu content.
- * @returns {JSX.Element} - The rendered dropdown menu content.
- */
-function DropdownMenuContent({
-  children,
-  ...props
-}: MenuContentProps): JSX.Element {
-  return (
-    <Portal>
-      <Content sideOffset={8} alignOffset={5} arrowPadding={8} {...props}>
-        {children}
-        <Arrow className={S.dropdownMenuArrow()} />
-      </Content>
-    </Portal>
-  );
-}
+const DropdownMenuContent = React.forwardRef<
+  React.ElementRef<typeof Content>,
+  React.ComponentPropsWithoutRef<typeof Content>
+>(({ align, ...props }, ref) => (
+  <Portal>
+    <Content
+      ref={ref}
+      sideOffset={8}
+      alignOffset={5}
+      arrowPadding={8}
+      align={align}
+      className={S.dropdownMenuContent()}
+      {...props}
+    />
+  </Portal>
+));
 
 /**
  * Render a base dropdown component.
@@ -101,7 +97,7 @@ function DropdownMenuContent({
  * @return {ReactElement} The rendered dropdown component.
  */
 const DropdownBase = ({
-  className,
+  className = '',
   children,
   trigger,
   open,

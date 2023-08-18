@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from 'react';
-import { useCycle } from 'framer-motion';
+import { useCycle, motion } from 'framer-motion';
 
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
+import { IconButton } from '../IconButton';
+import { Box } from '../Box';
+import * as S from './styles';
 
 import { useToast } from '../../hooks/useToast';
-
-import * as S from './styles';
-import { IconButton } from '../IconButton';
 
 export type ToastMessageTypeProps =
   | 'info'
@@ -17,7 +17,7 @@ export type ToastMessageTypeProps =
   | 'neutral';
 
 export type ToastMessagesProps = {
-  id?: string;
+  id: string;
   title: string;
   description?: string;
   variant?: ToastMessageTypeProps;
@@ -28,6 +28,14 @@ export type ToastProps = {
   messages: ToastMessagesProps[];
   directionY?: 'top' | 'bottom';
   directionX?: 'left' | 'right';
+  allowRemoveToast?: boolean;
+};
+
+type ToastItemProps = {
+  id: string;
+  title: string;
+  description?: string;
+  variant?: ToastMessageTypeProps;
   allowRemoveToast?: boolean;
 };
 
@@ -49,20 +57,31 @@ const motionVariants = {
   },
 };
 
+/**
+ * Renders a toast item component.
+ *
+ * @param {ToastItemProps} props - The props object containing the following properties:
+ *   - id: The ID of the toast item.
+ *   - title: The title of the toast item.
+ *   - description: The description of the toast item.
+ *   - variant (optional): The variant of the toast item. Defaults to 'info'.
+ *   - allowRemoveToast (optional): Whether to allow removing the toast item. Defaults to true.
+ * @return {JSX.Element} The rendered toast item component.
+ */
 const ToastItem = ({
   id,
   title,
   description,
   variant = 'info',
   allowRemoveToast = true,
-}: ToastMessagesProps) => {
+}: ToastItemProps) => {
   const { removeToast } = useToast();
   const [isShown, toogleShow] = useCycle(true, false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (allowRemoveToast) {
-        return removeToast(id ? id : 'id');
+        return removeToast(id || 'id');
       }
       return undefined;
     }, 4000);
@@ -80,7 +99,7 @@ const ToastItem = ({
     [removeToast, toogleShow]
   );
 
-  const handleIconDisplay = (variant: ToastMessageTypeProps) => {
+  const handleIconDisplay = (variant: ToastItemProps['variant']) => {
     switch (variant) {
       case 'info':
         return 'info';
@@ -89,8 +108,6 @@ const ToastItem = ({
         return 'success';
 
       case 'danger':
-        return 'alert';
-
       case 'warning':
         return 'alert';
 
@@ -100,19 +117,21 @@ const ToastItem = ({
   };
 
   return (
-    <S.Toast
+    <motion.div
+      className={S.toast()}
       id={id}
       aria-label={title}
       variants={motionVariants}
       animate={isShown ? 'shown' : 'hidden'}
     >
-      <S.Marker variant={variant} />
-      <S.Title variant={variant}>
+      <Box className={S.marker({ variant })} />
+      <Box className={S.title()}>
         <Stack align="center" gap="2">
           <Icon
             label={title}
             name={handleIconDisplay(variant)}
             color="current"
+            className={S.icon({ variant })}
           />
           {title}
         </Stack>
@@ -121,42 +140,56 @@ const ToastItem = ({
           icon="close"
           size="sm"
           label="close notification"
-          onClick={() => handleRemoveToast(id ? id : 'id')}
+          onClick={() => handleRemoveToast(id || 'id')}
         />
-      </S.Title>
+      </Box>
 
-      {Boolean(description) && <S.Message>{description}</S.Message>}
-    </S.Toast>
+      {Boolean(description) && <Box className={S.message()}>{description}</Box>}
+    </motion.div>
   );
 };
 ToastItem.displayName = 'Item';
 
+/**
+ * Renders the root component for displaying toast messages.
+ *
+ * @param {ToastProps} messages - An array of toast messages to be displayed.
+ * @param {string} directionX - The horizontal direction of the toast messages. Defaults to 'right'.
+ * @param {string} directionY - The vertical direction of the toast messages. Defaults to 'bottom'.
+ * @param {boolean} allowRemoveToast - Determines if toast messages can be removed. Defaults to true.
+ * @return {JSX.Element} The root component for displaying toast messages.
+ */
 const ToastRoot = ({
   messages,
   directionX = 'right',
   directionY = 'bottom',
   allowRemoveToast = true,
 }: ToastProps) => {
+  const renderToastItems = () => {
+    if (!messages) {
+      return null;
+    }
+    return messages.map((message) => (
+      <ToastItem
+        key={message.id}
+        id={message.id}
+        title={message.title}
+        description={message.description}
+        variant={message.variant}
+        allowRemoveToast={allowRemoveToast}
+      />
+    ));
+  };
+
   return (
-    <S.Container
+    <motion.div
+      className={S.container({ directionX, directionY })}
       aria-live="assertive"
       variants={motionVariants}
       initial={false}
-      directionX={directionX}
-      directionY={directionY}
     >
-      {Boolean(messages) &&
-        messages.map((message) => (
-          <ToastItem
-            key={message.id}
-            id={message.id}
-            title={message.title}
-            description={message.description}
-            variant={message.variant}
-            allowRemoveToast={allowRemoveToast}
-          />
-        ))}
-    </S.Container>
+      {renderToastItems()}
+    </motion.div>
   );
 };
 ToastRoot.displayName = 'Root';

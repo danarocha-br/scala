@@ -38,7 +38,7 @@ export * from './components/SearchButton';
 export * from './components/ScrollView';
 export * from './components/Select';
 export * from './components/Selectable';
-export * from './components/SelectCreatable';
+export * from './components/SelectMulti';
 export * from './components/SelectMenu';
 export * from './components/Separator';
 export * from './components/Shortcut';
@@ -59,5 +59,3 @@ export * from './hooks/useOverlay';
 export * from './hooks/useSidebarNavigation';
 export * from './hooks/useToast';
 export * from './hooks/useToggle';
-
-export * from './styles';

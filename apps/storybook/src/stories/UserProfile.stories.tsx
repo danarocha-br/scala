@@ -26,13 +26,13 @@ export default {
     children: (
       <>
         <Dropdown.Item textValue="Configurações">
-          <Icon name="settings" label="settings" css={{ mr: '$spacing-2' }} />
+          <Icon name="settings" label="settings" className="mr-2" />
           <a href="/">
             Configurações <Dropdown.RightSlot>⌘ C</Dropdown.RightSlot>
           </a>
         </Dropdown.Item>
         <Dropdown.Item textValue="Preferências">
-          <Icon name="settings" label="settings" css={{ mr: '$spacing-2' }} />
+          <Icon name="settings" label="settings" className="mr-2" />
           <a href="/">
             Preferências <Dropdown.RightSlot>⌘ P</Dropdown.RightSlot>
           </a>
@@ -69,7 +69,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', px: 200 }}>
+        <Stack align="center" justify="center" className="h-screen px-[200px]">
           {Story()}
         </Stack>
       );

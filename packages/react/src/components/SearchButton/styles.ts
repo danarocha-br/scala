@@ -23,5 +23,5 @@ export const container = cva([
   'focus:outline-offset-2',
   'focus:outline-action-color-background-transparent-hover',
 
-  '[data-mode=dark]:border-[#252e30]/50',
+  'data-[mode=dark]:border-[#252e30]/50',
 ]);

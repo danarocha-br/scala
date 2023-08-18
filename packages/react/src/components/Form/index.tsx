@@ -8,7 +8,7 @@ export type FormProps = {
 };
 
 export const Form = ({
-  className,
+  className='',
   children,
   onSubmit,
   ...props

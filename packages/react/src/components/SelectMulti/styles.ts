@@ -14,8 +14,6 @@ export const container = cva(
     'transition-all',
     'duration-300',
     'overflow-visible',
-
-    'peer-focus/input:border-form-color-border-focus',
   ],
   {
     variants: {
@@ -94,47 +92,47 @@ export const icon = cva([
   'data-[mode=dark]:peer-focus:fill-form-color-background-subdued',
 ]);
 
-export const placeholder = cva([], {
-  variants: {
-    isDisabled: {
-      true: ['opacity-70'],
-      false: [
-        'text-text-color-caption',
-        'group-hover:text-text-color-on-dark',
-        'group-focus/input:text-text-color-on-dark',
-      ],
-    },
-    isFocused: {
-      true: ['text-text-color-on-dark'],
-      false: ['text-text-color-caption'],
-    },
-  },
+export const input = cva([
+  'bg-transparent',
+  'min-h-[40px]',
+  'h-auto',
+  'w-full',
+  'flex-1',
+  'outline-none',
+  'transition-all',
+  'duration-300',
+  'peer',
 
-  defaultVariants: {
-    isDisabled: false,
-    isFocused: false,
+  'placeholder:text-text-color-caption',
+
+  'group-hover:placeholder:text-text-color-on-dark',
+
+  'disabled:cursor-not-allowed',
+  'disabled:pointer-events-none',
+  'disabled:group-hover:placeholder:text-text-color-caption',
+
+  {
+    variants: {
+      isFocused: {
+        true: ['placeholder:text-text-color-on-dark'],
+      },
+    },
+    defaultVariants: {
+      isFocused: false,
+    },
   },
-});
+]);
 
 export const inputWrapper = cva(
   [
     'bg-form-color-background-default',
     'flex',
-    'justify-between',
-    'items-center',
+    'flex-wrap',
     'gap-1',
     'pl-3',
     'pr-2',
-    'w-full',
     'transition-all',
     'duration-300',
-    'group/input',
-    'peer/input',
-
-    'focus:outline-none',
-    'focus:text-text-color-on-dark',
-    'focus:bg-form-color-background-focus',
-    'focus:border-form-color-border-focus',
   ],
   {
     variants: {
@@ -193,7 +191,6 @@ export const dialog = cva([
 ]);
 
 export const empty = cva([
-  'text-text-color-body-lighter',
   'flex',
   'flex-col',
   'justify-center',
@@ -202,60 +199,3 @@ export const empty = cva([
   'p-2',
   'w-full',
 ]);
-
-export const item = cva(['group/item', 'gap-2'], {
-  variants: {
-    isActive: {
-      true: [],
-    },
-
-    isMulti: {
-      true: [],
-    },
-  },
-
-  compoundVariants: [
-    {
-      isActive: true,
-      isMulti: false,
-      class: [
-        'bg-interactive-color-background-subdued/20',
-        'hover:bg-interactive-color-background-subdued/30',
-      ],
-    },
-  ],
-
-  defaultVariants: {
-    isActive: false,
-    isMulti: false,
-  },
-});
-
-export const deleteButton = cva(
-  [
-    'opacity-80',
-    'outline-none',
-    'transition-opacity',
-
-    'hover:bg-transparent',
-    'hover:opacity-100',
-
-    '!focus:outline-none',
-    '!focus:outline-offset-0',
-    '!focus:outline-transparent',
-
-    'group-hover:text-text-color-on-dark',
-  ],
-  {
-    variants: {
-      isFocused: {
-        true: ['text-text-color-on-dark'],
-        false: ['text-text-color-on-light', '!focus:text-text-color-on-light'],
-      },
-    },
-
-    defaultVariants: {
-      isFocused: false,
-    },
-  }
-);

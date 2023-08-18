@@ -19,7 +19,7 @@ export type BadgeProps = {
  * @returns {JSX.Element} The rendered badge component.
  */
 export const Badge = ({
-  className,
+  className='',
   label,
   variant = 'default',
   color = 'primary',
