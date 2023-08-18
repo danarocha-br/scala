@@ -6,12 +6,11 @@ import { Popover } from '../Popover';
 import { Command } from '../Command';
 import { Stack } from '../Stack';
 import { FormErrorMessage } from '../FormErrorMessage';
-
-import * as S from './styles';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
 import { IconButton } from '../IconButton';
 import { useToggle } from '../../hooks/useToggle';
+import * as S from './styles';
 
 export type SelectOption = {
   readonly label: string;
@@ -205,8 +204,8 @@ export const Select = React.forwardRef<HTMLInputElement, SelectProps>(
                   role="combobox"
                   name={name}
                   aria-expanded={openCombobox}
-                  onFocus={() => toggleFocus(true)}
-                  onBlur={() => toggleFocus(false)}
+                  onFocus={() => toggleFocus()}
+                  onBlur={() => toggleFocus()}
                   className={S.inputWrapper({
                     isFocused: openCombobox,
                     variant,
