@@ -1,6 +1,7 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 import { ThemeToggle, ThemeToggleProps, Stack } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
+import { useState } from 'react';
 
 export default {
   title: 'Components/ThemeToggle',
@@ -37,14 +38,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack
-          align="center"
-          justify="center"
-          css={{
-            h: '100vh',
-            px: 200,
-          }}
-        >
+        <Stack align="center" justify="center" className="h-screen px-[200px]">
           {Story()}
         </Stack>
       );
@@ -52,4 +46,13 @@ export default {
   ],
 } as Meta;
 
-export const Default: StoryObj<ThemeToggleProps> = {};
+export const Default: Story<ThemeToggleProps> = (args) => {
+  const [isDark, setIsDark] = useState(false);
+  return (
+    <ThemeToggle
+      {...args}
+      isDark={isDark}
+      onThemeChange={() => setIsDark(!isDark)}
+    />
+  );
+};

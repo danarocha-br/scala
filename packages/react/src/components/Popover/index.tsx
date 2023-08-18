@@ -12,7 +12,7 @@ const Root = ({ children, trigger, ...props }: PopoverProps) => {
   return (
     <PopoverPrimitive.Root {...props}>
       <PopoverPrimitive.Trigger asChild>
-        <div>{trigger}</div>
+        <div className="w-full">{trigger}</div>
       </PopoverPrimitive.Trigger>
       {children}
     </PopoverPrimitive.Root>
@@ -29,15 +29,21 @@ const Content = React.forwardRef<
   PopoverContentProps
 >(
   (
-    { className, align = 'center', sideOffset = 4, unstyled = false, ...props },
+    {
+      className = '',
+      align = 'center',
+      sideOffset = 4,
+      unstyled = false,
+      ...props
+    },
     ref
   ) => (
-    <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Portal className="w-full">
       <PopoverPrimitive.Content
         ref={ref}
         align={align}
         sideOffset={sideOffset}
-        className={S.ContainerContent({ className, unstyled })}
+        className={S.ContainerContent({ unstyled, className })}
         {...props}
       />
     </PopoverPrimitive.Portal>

@@ -1,6 +1,50 @@
 import { Story, Meta } from '@storybook/react';
-import { Form, Select, SelectProps, Stack } from '@compasso/scala';
+import {
+  Form,
+  Select,
+  SelectProps,
+  Stack,
+  SelectOption,
+} from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
+
+const PROJECTS = [
+  {
+    value: 'custom name',
+    label: 'Custom name',
+    slot: (
+      <div className="h-2 w-2 rounded-circle bg-feedback-color-background-warning-enabled" />
+    ),
+  },
+  {
+    value: 'bit longer name',
+    label: 'Bit longer name',
+    slot: (
+      <div className="h-2 w-2 rounded-circle bg-feedback-color-background-success-enabled" />
+    ),
+  },
+  {
+    value: 'much larger name to test',
+    label: 'Much larger name to test',
+    slot: (
+      <div className="h-2 w-2 rounded-circle bg-feedback-color-background-danger-enabled" />
+    ),
+  },
+  {
+    value: 'regular',
+    label: 'Regular',
+    slot: (
+      <div className="h-2 w-2 rounded-circle bg-feedback-color-background-info-subdued" />
+    ),
+  },
+  {
+    value: 'astro',
+    label: 'Astro',
+    slot: (
+      <div className="h-2 w-2 rounded-circle bg-feedback-color-background-info-subdued" />
+    ),
+  },
+] satisfies SelectOption[];
 
 export default {
   title: 'Form/Select',
@@ -14,20 +58,19 @@ export default {
     },
   },
   args: {
-    name: 'select',
     label: 'Select an item',
+    emptyMessage: 'No options found',
+    placeholder: 'Choose...',
+    truncationLabel: 'projects selected',
+    createOptionLabel: 'projects selected',
     variant: 'default',
     isMulti: false,
     disabled: false,
     loading: false,
-    isSearchable: true,
     isClearable: true,
-    noOptionMessage: 'No options found',
-    placeholder: 'Select one option',
-    options: [
-      { label: 'Option 1', value: 'Option 1' },
-      { label: 'Option 2', value: 'Option 2' },
-    ],
+    isSearchable: true,
+    isCreatable: false,
+    options: PROJECTS,
   },
   argTypes: {
     label: {
@@ -41,6 +84,21 @@ export default {
       },
     },
     placeholder: {
+      table: {
+        category: 'Text',
+      },
+    },
+    emptyMessage: {
+      table: {
+        category: 'Text',
+      },
+    },
+    truncationLabel: {
+      table: {
+        category: 'Text',
+      },
+    },
+    createOptionLabel: {
       table: {
         category: 'Text',
       },
@@ -69,6 +127,11 @@ export default {
         category: 'State',
       },
     },
+    isCreatable: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
     isMulti: {
       table: {
         category: 'Modifiers',
@@ -84,12 +147,12 @@ export default {
         category: 'Modifiers',
       },
     },
-    noOptionMessage: {
+    options: {
       table: {
-        category: 'Modifiers',
+        category: 'Text',
       },
     },
-    options: {
+    defaultOptions: {
       table: {
         category: 'Text',
       },
@@ -98,7 +161,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 350 }}>
+        <Stack align="center" justify="center" className="h-screen w-[350px]">
           {Story()}
         </Stack>
       );
@@ -109,14 +172,20 @@ export default {
 export const Default: Story<SelectProps> = (args) => {
   return (
     <Form>
-      <Select {...args} />
-      <Select {...args} icon="business" />
+      <Select {...args} name="1" />
+      <Select {...args} name="2" icon="business" />
     </Form>
   );
 };
 
 export const isMulti = Default.bind({});
 isMulti.args = {
+  isMulti: true,
+};
+
+export const DefaultValues = Default.bind({});
+DefaultValues.args = {
+  defaultOptions: [PROJECTS[0]],
   isMulti: true,
 };
 
@@ -140,4 +209,11 @@ HasError.args = {
   errors: {
     message: 'I am an error message.',
   },
+};
+
+export const HasExtraAction = Default.bind({});
+HasExtraAction.args = {
+  onAction: () => alert('hello'),
+  actionLabel: 'Edit',
+  actionIcon: 'edit',
 };

@@ -88,7 +88,7 @@ export const IconSet: Story<IconProps> = (args) => (
         <Text
           as="p"
           size="xs"
-          color="caption"
+          color="danger"
           className="bg-surface-color-background-default w-full text-center"
         >
           {icon}

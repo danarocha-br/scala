@@ -1,32 +1,19 @@
-import { styled } from '../../styles';
-import { Text } from '../Text';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('div', {});
+export const container = cva([]);
 
-export const Label = styled(Text, {
-  defaultVariants: {
-    size: 'xs',
-    color: 'caption',
-  },
-});
+export const steps = cva([
+  'grid',
+  'grid-cols-[repeat(var(--steps-count),_1fr)]',
+  'gap-2',
+  'mt-1',
+]);
 
-export const Steps = styled('div', {
-  d: 'grid',
-  gridTemplateColumns: 'repeat(var(--steps-count), 1fr)',
-  gap: '$spacing-2',
-  mt: '$spacing-1',
-});
-
-export const Step = styled('div', {
-  h: '$spacing-1',
-  borderRadius: '$radii-sm',
-  bg: '$surface-color-background-hover',
-
+export const step = cva(['h-1', 'rounded-sm'], {
   variants: {
     isActive: {
-      true: {
-        bg: '$feedback-color-background-success-subdued',
-      },
+      true: ['bg-feedback-color-background-success-subdued'],
+      false: ['bg-surface-color-background-hover'],
     },
   },
 

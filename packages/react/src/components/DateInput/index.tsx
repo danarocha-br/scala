@@ -1,5 +1,5 @@
 import { ElementRef, forwardRef, useCallback, useState } from 'react';
-import { ReactDatePickerProps } from 'react-datepicker';
+import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
 
 import { Box } from '../Box';
 import { Icon, iconPath } from '../Icon';
@@ -32,7 +32,7 @@ export type DateInputProps = {
   ReactDatePickerProps;
 
 export const DateInput = forwardRef<
-  ElementRef<typeof S.DateInput>,
+  ElementRef<typeof DatePicker>,
   DateInputProps
 >(
   (
@@ -50,7 +50,7 @@ export const DateInput = forwardRef<
       isClearable = true,
       selected,
       errors,
-      className,
+      className='',
       ...props
     }: DateInputProps,
     ref
@@ -74,17 +74,19 @@ export const DateInput = forwardRef<
 
     return (
       <Box className='w-full !z-[1]'>
-        <S.DateContainer
-          isFocused={isFocused}
-          hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
-          isDisabled={disabled || loading}
-          isReadOnly={readOnly}
-          hasIcon={Boolean(icon)}
-          isLoading={loading}
-          variant={variant}
+        <Box className={StyledInput.container({
+          isFocused,
+          hasError: Boolean(errors) && !areErrorsEmpty ? true : false,
+          isReadOnly: readOnly,
+          hasIcon:Boolean(icon),
+          isLoading: loading,
+          variant
+        })}
         >
           {variant !== 'table' && (
-            <StyledInput.Label htmlFor={name} isReadOnly={readOnly}>
+            <Box as='label' htmlFor={name} className={StyledInput.label({
+              isReadOnly: readOnly,
+            })}>
               <Stack gap="1">
                 {Boolean(icon) && (
                   <Icon
@@ -116,10 +118,10 @@ export const DateInput = forwardRef<
                   color="danger"
                 />
               ) : null}
-            </StyledInput.Label>
+            </Box>
           )}
 
-          <S.DateInput
+          <DatePicker
             id={name}
             name={name}
             ref={ref}
@@ -127,8 +129,8 @@ export const DateInput = forwardRef<
             aria-label={label}
             disabled={disabled || loading}
             readOnly={readOnly}
-            variant={variant}
-            isFocused={isFocused}
+            // variant={variant}
+            // isFocused={isFocused}
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
             selected={selected}
@@ -159,7 +161,7 @@ export const DateInput = forwardRef<
             ]}
             {...props}
           />
-        </S.DateContainer>
+        </Box>
 
         {Boolean(errors) && !areErrorsEmpty ? (
           <FormErrorMessage>{errors.message}</FormErrorMessage>

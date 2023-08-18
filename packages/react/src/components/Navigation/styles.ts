@@ -1,297 +1,199 @@
-import { Content, Root } from '@radix-ui/react-collapsible';
-import { transparentize } from 'polished';
-import { styled, keyframes } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-const open = keyframes({
-  from: { width: 0, opacity: 1 },
-  to: { width: 0, opacity: 1 },
-  // to: { width: 240, opacity: 1 },
-});
+export const anchor = cva(
+  [
+    'group',
+    'font-sans',
+    'no-underline',
+    'inline-flex',
+    'items-center',
+    'gap-3',
+    'px-2',
+    'py-2',
+    'rounded-sm',
+    'w-full',
+    'relative',
+    'transition-all',
+    'duration-500',
+    'outline',
+    'outline-transparent',
 
-const close = keyframes({
-  from: { width: 0, opacity: 1 },
-  to: { width: 0, opacity: 1 },
-  // to: { width: 0, opacity: 0 },
-});
+    'hover:opacity-100',
+    'focus-visible:opacity-100',
+    'focus-visible:outline-dashed',
+    'focus-visible:outline-offeset-2',
+    'focus-visible:outline-surface-color-background-hover',
+    'data-[mode=dark]:focus-visible:outline-neutral-700',
 
-export const Anchor = styled('a', {
-  color: '$text-color-body',
-  fontFamily: '$font-family-sans',
-  textDecoration: 'none',
-  opacity: 0.65,
-
-  d: 'inline-flex',
-  align: 'center',
-  gap: '$spacing-3',
-  px: '$spacing-2',
-  py: '$spacing-2',
-  borderRadius: '$radii-sm',
-
-  w: '100%',
-  position: 'relative',
-  transition: '$base',
-
-  outline: '1px solid transparent',
-
-  '& > span': {
-    position: 'relative',
-    top: '-2px',
-    transform: 'translateX(0px)',
-    transition: '$slow',
-  },
-
-  '&:focus-visible': {
-    opacity: 1,
-    outline: '1px dashed',
-    outlineOffset: '2px',
-    outlineColor: '$surface-color-background-pressed',
-
-    [`.dark-theme &`]: {
-      outlineColor: '$color-neutral-700',
-    },
-  },
-
-  variants: {
-    isActive: {
-      true: {
-        color: '$text-color-body',
-        fontWeight: '$font-weight-medium',
-        background: '$color-royal-50',
-        opacity: 1,
-
-        '& > svg': {
-          color: '$brand-color-primary',
-        },
-
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          background: '$interactive-color-background-disabled',
-
-          '& > svg': {
-            color: '$feedback-color-background-danger-subdued',
-          },
-        },
-      },
-    },
-
-    hasShortcut: {
-      true: {},
-    },
-
-    disabled: {
-      true: {
-        cursor: 'not-allowed',
-        opacity: 0.4,
-
-        '&::after': {
-          content: 'PRO',
-          position: 'absolute',
-          right: '$spacing-4',
-
-          color: '$text-color-on-dark',
-          backgroundColor: '$action-color-background-primary-enabled',
-          fontSize: '$font-size-xs',
-          py: '$spacing-1',
-          px: '$spacing-2',
-          borderRadius: '$radii-sm',
-
-          [`.dark-theme &`]: {
-            color: '$action-color-text-primary-enabled',
-          },
-        },
-      },
-    },
-  },
-
-  compoundVariants: [
-    {
-      isActive: true,
-      hasShortcut: true,
-      css: {
-        fontWeight: '$regular',
-      },
-    },
-
-    {
-      disabled: false,
-      css: {
-        '&:hover': {
-          color: '$text-color-body',
-          bg: '$action-color-background-transparent-disabled',
-          opacity: 1,
-
-          '& svg': {
-            fill: '$brand-color-primary',
-          },
-
-          '& > span': {
-            transform: 'translateX(4px)',
-          },
-        },
-      },
-    },
-
-    {
-      hasShortcut: true,
-      disabled: false,
-      css: {
-        '&:hover': {
-          '&::after': {
-            content: 'attr(data-title)',
-            position: 'absolute',
-            right: '$spacing-2',
-
-            color: '$text-color-caption',
-            fontSize: '$font-size-xs',
-            py: '$spacing-1',
-            px: '$spacing-2',
-            borderRadius: '$radii-sm',
-          },
-        },
-      },
-    },
+    'aria-disabled:transition-none',
+    'aria-disabled:cursor-not-allowed',
+    'aria-disabled:opacity-40',
+    'aria-disabled:select-none',
+    'aria-disabled:after:content-["PRO"]',
+    'aria-disabled:after:text-text-color-on-dark',
+    'aria-disabled:after:bg-action-color-background-primary-enabled',
+    'aria-disabled:after:text-xs',
+    'aria-disabled:after:absolute',
+    'aria-disabled:after:right-4',
+    'aria-disabled:after:py-1',
+    'aria-disabled:after:px-2',
+    'aria-disabled:after:rounded-sm',
+    'aria-disabled:after:data-[mode=dark]:text-action-color-text-primary-enabled',
   ],
+  {
+    variants: {
+      isActive: {
+        true: [
+          'text-text-color-body',
+          'font-medium',
+          'bg-interactive-color-background-disabled',
+          'opacity-100',
+          '[&_svg]:fill-brand-color-primary',
+          'data-[mode=dark]:text-text-color-on-dark',
+          'data-[mode=dark]:[&_svg]:fill-feedback-color-background-danger-subdued',
+          'data-[mode=dark]:text-text-color-on-dark',
+        ],
+        false: ['text-text-color-body', 'opacity-60'],
+      },
 
-  defaultVariants: {
-    isActive: false,
-    hasShortcut: false,
-    disabled: false,
-  },
-});
-
-export const Container = styled('aside', {
-  h: '100%',
-  d: 'block',
-  bg: 'transparent',
-});
-
-export const CollapsibleContent = styled(Content, {
-  overflow: 'hidden',
-  d: 'flex',
-  flexDirection: 'column',
-  justify: 'space-between',
-  px: '$spacing-2',
-  h: 'calc(100% - 60px)',
-
-  '&[data-state="open"]': {
-    animation: `${open} 400ms ease-in`,
-    backgroundColor: '$surface-color-background-default',
-    [`.dark-theme &`]: {
-      bg: '$surface-color-background-pressed',
-    },
-  },
-  '&[data-state="closed"]': {
-    animation: `${close} 200ms ease-in`,
-  },
-});
-
-export const CollapsibleRoot = styled(Root, {
-  height: '100vh',
-  position: 'sticky',
-  top: 0,
-
-  '&[data-state="open"]': {
-    bg: '$surface-color-background-default',
-    borderRight: '1px solid',
-    borderColor: `${transparentize(0.7, '#D5DBDB')}`,
-    minWidth: 240,
-
-    [`.dark-theme &`]: {
-      bg: '$surface-color-background-pressed',
-    },
-  },
-
-  ['.dark-theme &']: {
-    borderColor: `${transparentize(0.7, '#252e30')}`,
-  },
-});
-
-export const Header = styled('div', {
-  px: '$spacing-2',
-  pb: 4,
-  pt: '$spacing-2',
-  h: 53,
-
-  d: 'flex',
-  justify: 'space-between',
-  align: 'center',
-
-  '&[data-state="open"]': {
-    backgroundColor: '$surface-color-background-default',
-
-    [`.dark-theme &`]: {
-      bg: '$surface-color-background-pressed',
-    },
-  },
-
-  variants: {
-    isClosed: {
-      true: {
-        borderBottom: '1px solid',
-        borderColor: `${transparentize(0.6, '#D5DBDB')}`,
-        backgroundColor: '$surface-color-background-default',
-
-        ['.dark-theme &']: {
-          borderColor: `${transparentize(0.6, '#252e30')}`,
-          bg: '$surface-color-background-pressed',
-        },
+      hasShortcut: {
+        true: [
+          'aria-disabled:hover:after:content-[attr(data-title)]',
+          'aria-disabled:hover:after:absolute',
+          'aria-disabled:hover:after:right-2',
+          'aria-disabled:hover:after:text-text-color-caption',
+          'aria-disabled:hover:after:text-xs',
+          'aria-disabled:hover:after:py-1',
+          'aria-disabled:hover:after:px-2',
+          'aria-disabled:hover:after:rounded-sm',
+        ],
       },
     },
-  },
 
-  defaultVariants: {
-    isClosed: false,
-  },
-});
+    compoundVariants: [
+      {
+        isActive: true,
+        hasShortcut: true,
+        class: ['font-regular'],
+      },
+    ],
 
-export const Footer = styled('footer', {
-  py: '$spacing-2',
+    defaultVariants: {
+      isActive: false,
+      hasShortcut: false,
+    },
+  }
+);
 
-  d: 'flex',
-  justify: 'space-between',
-  align: 'center',
-  w: '100%',
-});
+export const label = cva([
+  'relative',
+  'top-[-2px]',
+  'translate-x-0',
+  'transition-transform',
+  'duration-500',
 
-export const ToogleButton = styled('button', {
-  all: 'unset',
-  w: 'auto',
+  'group-hover:translate-x-1',
+  'group-hover:aria-disabled:translate-x-0',
+]);
 
-  p: '$spacing-2',
-  pb: '$spacing-1',
-  mb: '$spacing-1',
-  borderRadius: '$radii-md',
-  transition: '$base',
-  border: '1px solid transparent',
+export const container = cva(['h-full', 'block', 'bg-transparent']);
 
-  '&:hover': {
-    bg: '$action-color-background-transparent-hover',
-  },
+export const content = cva([
+  'overflow-hidden',
+  'flex',
+  'flex-col',
+  'justify-between',
+  'px-2',
+  'h-[calc(100%_-_60px)]',
 
-  '&:focus': {
-    bg: '$action-color-background-transparent-disabled',
-    border: '1px dashed $surface-color-background-hover',
-  },
-});
+  'data-[state=open]:animate-[navigation-open_400ms_ease-in]',
+  'data-[state=open]:bg-surface-color-background-default',
+  'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
 
-export const Svg = styled('svg', {
-  transform: 'scale(1.1)',
+  'data-[state=closed]:animate-[navigation-close_200ms_ease-in]',
+]);
 
-  '& .fill': {
-    fill: '$loading-color-background-subdued',
-  },
-  '& .outline': {
-    fill: '$text-color-body',
-  },
-});
+export const root = cva([
+  'h-full',
+  'sticky',
+  'top-0',
 
-export const MobileMenuBar = styled('div', {
-  position: 'fixed',
-  bottom: 0,
-  zIndex: '$100',
+  'data-[state=open]:bg-surface-color-background-default',
+  'data-[state=open]:border-r',
+  'data-[state=open]:border-[#D5DBDB]/50',
+  'data-[state=open]:w-[(minmax(15rem,_18rem))]',
+  'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
+  'data-[state=open]:data-[mode=dark]:border-[#252e30]/70',
+]);
 
-  w: '100%',
-  h: '$10',
+export const header = cva(
+  [
+    'px-2',
+    'pb-1',
+    'pt-2',
+    'h-[53px]',
+    'flex',
+    'items-center',
+    'justify-between',
 
-  bg: '$interactive-color-background-enabled',
-});
+    'data-[state=open]:bg-surface-color-background-default',
+    'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
+  ],
+  {
+    variants: {
+      isClosed: {
+        true: [
+          'border-b',
+          'border-[#D5DBDB]/50',
+          'bg-surface-color-background-default',
+          'data-[mode=dark]:border-[#252e30]/70',
+          'data-[mode=dark]:bg-surface-color-background-pressed',
+        ],
+      },
+    },
+
+    defaultVariants: {
+      isClosed: false,
+    },
+  }
+);
+
+export const footer = cva([
+  'py-2',
+  'flex',
+  'justify-between',
+  'items-center',
+  'w-full',
+]);
+
+export const toogleButton = cva([
+  'w-auto',
+  'p-2',
+  'mb-1',
+  'rounded-sm',
+  'transition-all',
+  'border',
+  'border-dashed',
+  'border-transparent',
+  'outline-none',
+
+  'hover:bg-action-color-background-transparent-hover',
+
+  'focus:bg-action-color-background-transparent-disabled',
+  'focus:border-surface-color-background-hover',
+]);
+
+export const svg = cva([
+  'scale-[1.1]',
+  '[&_.svg-fill]:fill-loading-color-background-subdued',
+  '[&_.svg-outline]:fill-text-color-body',
+]);
+
+export const mobileMenuBar = cva([
+  'bg-interactive-color-background-enabled',
+  'fixed',
+  'bottom-0',
+  'z-max',
+  'w-full',
+  'h-10',
+]);

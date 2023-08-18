@@ -84,7 +84,11 @@ export default {
       return (
         <OverlayProvider>
           <PanelProvider>
-            <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
+            <Stack
+              align="center"
+              justify="center"
+              className="h-screen w-[399px]"
+            >
               {Story()}
             </Stack>
           </PanelProvider>

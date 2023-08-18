@@ -2,7 +2,6 @@ import { cva } from 'class-variance-authority';
 
 export const button = cva(
   [
-    'text-action-color-text-transparent-enabled',
     'bg-action-color-background-transparent-enabled',
     'flex',
     'items-center',
@@ -24,7 +23,6 @@ export const button = cva(
 
     'active:scale-95',
 
-    '[&_svg]:fill-action-color-text-transparent-enabled',
   ],
   {
     variants: {
@@ -44,15 +42,16 @@ export const button = cva(
       },
 
       color: {
-        primary: ['focus:outline-action-color-border-transparent-pressed'],
+        primary: [
+          'text-action-color-text-transparent-enabled',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
         secondary: [
           'text-interactive-color-background-enabled',
-          '[&_svg]:fill-interactive-color-background-enabled',
           'focus:outline-action-color-border-transparent-pressed',
         ],
         danger: [
           'text-action-color-background-danger-enabled',
-          '[&_svg]:fill-action-color-background-danger-enabled',
           'focus:outline-action-color-border-transparent-pressed',
         ],
       },

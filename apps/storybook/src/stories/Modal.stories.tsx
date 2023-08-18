@@ -102,7 +102,11 @@ export default {
       return (
         <OverlayProvider>
           <ModalProvider>
-            <Stack align="center" justify="center" css={{ h: '100vh', w: 600 }}>
+            <Stack
+              align="center"
+              justify="center"
+              className="h-screen w-[600px]"
+            >
               {Story()}
             </Stack>
           </ModalProvider>
@@ -135,16 +139,9 @@ Passive.args = {
 export const WithCustomHeader = Transactional.bind({});
 WithCustomHeader.args = {
   headerSlot: (
-    <Stack gap="1" align="center" css={{ height: 'inherit', mt: 3 }}>
+    <Stack gap="1" align="center">
       <IconButton label="Levels" icon="help" size="sm" />
-      <Box
-        css={{
-          background: '$action-color-border-transparent-enabled',
-          height: '$spacing-4',
-          width: '1px',
-          mx: '$spacing-2',
-        }}
-      />
+      <Box className="bg-action-color-border-transparent-enabled h-4 w-[1px] mx-2" />
       <Avatar size="sm" username="Dana Rocha" />
       <Breadcrumb.Root>
         <Breadcrumb.Item label="Dana Rocha" as="a" href="/plan" isActive />

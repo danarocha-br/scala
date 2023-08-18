@@ -42,7 +42,7 @@ export const button = cva([
   'focus:outline-2',
   'focus:outline-offset-2',
   'focus:outline-action-color-border-transparent-pressed/70',
-  'transition-colors'
+  'transition-colors',
 ]);
 
 export const link = cva([
@@ -55,5 +55,15 @@ export const link = cva([
   'focus:outline-2',
   'focus:outline-offset-2',
   'focus:outline-action-color-border-transparent-pressed/70',
-  'transition-colors'
+  'transition-colors',
+]);
+
+export const icon = cva([
+  '-translate-x-1',
+  'opacity-0',
+  'transition-all',
+  'duration-300',
+  'ease-in-out',
+  'group-hover:translate-x-[0px]',
+  'group-hover:opacity-100',
 ]);

@@ -1,5 +1,6 @@
 import { ElementRef, forwardRef, useCallback, useState } from 'react';
 import { NumericFormatProps, NumericFormat } from 'react-number-format';
+import { Button } from '@ariakit/react';
 
 import * as StyledInput from '../TextInput/styles';
 import { Icon, iconPath } from '../Icon';
@@ -7,8 +8,6 @@ import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Spinner } from '../Spinner';
 import { FormErrorMessage } from '../FormErrorMessage';
-
-import * as S from './styles';
 
 export type NumberInputProps = {
   name?: string;
@@ -62,7 +61,7 @@ export const NumberInput = forwardRef<
     decimalSeparator = ',',
     type = 'text',
     errors,
-    className,
+    className = '',
     ...props
   }: NumberInputProps): JSX.Element => {
     /**
@@ -83,22 +82,24 @@ export const NumberInput = forwardRef<
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box className={`w-full ${className}`}>
-        <StyledInput.Container
-          isFocused={isFocused}
-          hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
-          isDisabled={disabled || loading}
-          isReadOnly={readOnly}
-          hasIcon={Boolean(icon)}
-          isLoading={loading}
-          variant={variant}
+      <Box className={`relative w-full ${className}`}>
+        <Box
+          className={StyledInput.container({
+            variant,
+            isFocused,
+            hasError: Boolean(errors) && !areErrorsEmpty ? true : false,
+            isDisabled: disabled || loading,
+            isReadOnly: readOnly,
+            hasIcon: Boolean(icon),
+            isLoading: loading,
+          })}
         >
           {hasAction && (
-            <StyledInput.SettingsButton
+            <Button
               aria-label={actionLabel}
               onClick={onAction}
               type="button"
-              className="input__action"
+              className={`input__action ${StyledInput.settingsButton()}`}
               disabled={disabled || readOnly || loading}
             >
               {actionLabel}{' '}
@@ -108,18 +109,25 @@ export const NumberInput = forwardRef<
                 size="xs"
                 color="current"
               />
-            </StyledInput.SettingsButton>
+            </Button>
           )}
 
           {variant !== 'table' && (
-            <StyledInput.Label htmlFor={name} isReadOnly={readOnly}>
-              <Stack gap="1">
+            <Box
+              as="label"
+              className={StyledInput.label({
+                isReadOnly: readOnly,
+                isDisabled: disabled || loading,
+              })}
+              htmlFor={name}
+            >
+              <Stack gap="2" align="center">
                 {Boolean(icon) && (
                   <Icon
                     label="input icon"
                     name={icon || 'user'}
                     size="xs"
-                    className="input__icon"
+                    className={StyledInput.icon({ isFocused })}
                   />
                 )}
 
@@ -144,35 +152,41 @@ export const NumberInput = forwardRef<
                   color="danger"
                 />
               ) : null}
-            </StyledInput.Label>
+            </Box>
           )}
 
           {Boolean(addon) && (
-            <StyledInput.Addon
-              isFocused={isFocused}
-              isTable={variant === 'table'}
-              isReadOnly={readOnly}
-              isDisabled={disabled}
+            <Box
+              as="span"
+              className={`c-input__addon ${StyledInput.addon({
+                isFocused,
+                isTable: variant === 'table',
+                isReadOnly: readOnly,
+                isDisabled: disabled || loading,
+              })}`}
             >
               {addon}
-            </StyledInput.Addon>
+            </Box>
           )}
 
           <NumericFormat
             id={name}
             {...props}
+            className={StyledInput.baseInputStyle({
+              variant,
+              isFocused,
+              isDisabled: disabled || loading,
+              isReadOnly: readOnly,
+              hasAddon: Boolean(addon),
+            })}
             aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
             aria-label={label}
             placeholder={placeholder}
             type={type}
             disabled={disabled || loading}
             readOnly={readOnly}
-            hasAddon={Boolean(addon)}
-            variant={variant}
-            isFocused={isFocused}
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
-            customInput={S.Input}
             allowLeadingZeros
             allowNegative={allowNegative}
             decimalSeparator={decimalSeparator}
@@ -180,7 +194,7 @@ export const NumberInput = forwardRef<
             thousandsGroupStyle="thousand"
             thousandSeparator={props.thousandSeparator}
           />
-        </StyledInput.Container>
+        </Box>
 
         {Boolean(errors) && !areErrorsEmpty ? (
           <FormErrorMessage>{errors.message}</FormErrorMessage>

@@ -56,7 +56,7 @@ const Item = ({
   label,
   as = 'a',
   icon,
-  className,
+  className = '',
   //@ts-ignore
   href,
   //@ts-ignore
@@ -76,7 +76,7 @@ const Item = ({
           name={icon || 'settings'}
           size="xs"
           label="icon"
-          className="translate-x-[-4px] opacity-0 group-hover:translate-x-[0px] group-hover:opacity-100 transition-opacity transition-transform duration-[0.3s] ease-in-out"
+          className={S.icon()}
         />
       )}
     </Box>

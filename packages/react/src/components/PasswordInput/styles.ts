@@ -1,11 +1,9 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Button = styled('button', {
-  all: 'unset',
-  position: 'absolute',
-  right: '$spacing-2',
-  bottom: '$spacing-2',
-
-  bg: 'transparent',
-  zIndex: 2,
-});
+export const button = cva([
+  'bg-transparent',
+  'absolute',
+  'right-2',
+  'bottom-2',
+  'z-[2]',
+]);

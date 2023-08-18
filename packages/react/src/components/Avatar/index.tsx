@@ -60,7 +60,7 @@ export const Avatar = ({
   showUsername = false,
   initialsColor,
   username,
-  className,
+  className = '',
   ...props
 }: AvatarProps): JSX.Element => (
   <Stack className="avatar" gap={size === 'md' ? '2' : '3'} align="center">
@@ -98,8 +98,8 @@ export const Avatar = ({
     {showUsername && !loading && (
       <Text
         weight="medium"
-        leading='1'
-        className="avatar__username transition-all scale-95"
+        leading="1"
+        className="avatar-username scale-95 transition-all duration-300 group-hover:translate-x-1 group-focus:translate-x-1"
       >
         {username}
       </Text>

@@ -61,9 +61,6 @@ export const container = cva([
   'rounded-md',
   'border',
   'border-action-color-border-transparent-enabled',
-
-  '[&_.callout__content]:px-4',
-  '[&_.callout__content]:pb-2',
 ]);
 
 export const marker = cva(['w-1', 'h-auto', 'rounded-tl-md', 'rounded-bl-md'], {

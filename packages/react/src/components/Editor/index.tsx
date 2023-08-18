@@ -41,7 +41,7 @@ export type EditorProps = {
  * @return {JSX.Element} - The rendered Editor component.
  */
 export const Editor = ({
-  className,
+  className='',
   content,
   placeholder,
   variant = 'ghost',

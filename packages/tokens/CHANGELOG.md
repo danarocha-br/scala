@@ -1,5 +1,11 @@
 # @compasso/design-tokens
 
+## 2.3.4
+
+### Patch Changes
+
+- Remove stitches and have tailwindcss
+
 ## 2.3.3
 
 ### Patch Changes

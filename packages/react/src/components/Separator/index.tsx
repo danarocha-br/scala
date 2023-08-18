@@ -15,11 +15,13 @@ export type SeparatorProps = {
  */
 export const Separator = ({
   orientation,
-  className,
+  className = '',
   ...props
 }: SeparatorProps): JSX.Element => {
   const separatorClassName = S.separator({ className });
-  return <Root className={separatorClassName} orientation={orientation} {...props} />;
+  return (
+    <Root className={separatorClassName} orientation={orientation} {...props} />
+  );
 };
 
 Separator.displayName = 'Separator';

@@ -33,7 +33,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', px: 200 }}>
+        <Stack align="center" justify="center" className="h-screen w-[200px]">
           {Story()}
         </Stack>
       );

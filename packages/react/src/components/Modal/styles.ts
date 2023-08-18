@@ -1,30 +1,31 @@
 import { cva } from 'class-variance-authority';
 
 export const modalOverlay = cva([
-  'bg-color-neutral-800',
+  'bg-neutral-800',
   'fixed',
   'inset-0',
   'left-0',
   'z-max',
-  'motion-safe:animate-[animate-overlay_100ms_cubic-bezier(0.16, 1, 0.3, 1)_forwards]',
+  'animate-overlay',
 ]);
 
 export const modalContent = cva([
   'font-sans',
   'bg-surface-color-background-default',
-  'roundex-md',
+  'rounded-md',
   'shadow-high',
   'fixed',
   'top-1/2',
   'left-1/2',
-  'translate-[-50%, -50%]',
+  'translate-x-1/2',
+  'translate-y-1/2',
   'w-full',
   'h-full',
   'z-max',
 
   'focus:outline-none',
 
-  'motion-safe:animate-[animate-show-content_150ms_cubic-bezier(0.390, 0.575, 0.565, 1.000)_both]',
+  'motion-safe:animate-show-overlay-content',
   'delay-[10ms]',
 
   'md:w-[85vw]',
@@ -44,7 +45,7 @@ export const modalTitle = cva(
       },
 
       hasCustomHeader: {
-        true: ['h-6', 'pt-0'],
+        true: ['pb-0', 'flex', 'items-center'],
       },
     },
 
@@ -59,7 +60,7 @@ export const modalDescription = cva([
   'text-text-color-caption',
   'text-[15px]',
   'leading-[1.5]',
-  'm-[10px 0 20px]',
+  'm-[10px_0_20px]',
   'px-3',
 ]);
 
@@ -74,4 +75,5 @@ export const modalFooter = cva([
   'py-2',
   'bottom-0',
   'right-1',
+  'fixed',
 ]);

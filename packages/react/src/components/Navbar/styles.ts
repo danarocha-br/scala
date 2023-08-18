@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 
 export const nav = cva([
   'bg-surface-color-background-default',
-  'border',
+  'border-b',
   'border-[#D5DBDB]/50',
   'w-full',
   'h-[53px]',
@@ -15,6 +15,6 @@ export const nav = cva([
   'justify-between',
   'items-center',
 
-  '[data-mode=dark]:bg-surface-color-background-pressed',
-  '[data-mode=dark]:border-[#252e30]/70',
+  'data-[mode=dark]:bg-surface-color-background-pressed',
+  'data-[mode=dark]:border-[#252e30]/70',
 ]);

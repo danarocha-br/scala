@@ -58,11 +58,6 @@ export const WithPlaceholder: StoryObj<EditorProps> = {
     content: '',
     placeholder: 'Write something ...',
     variant: 'form',
-    css: {
-      '& .c-editor': {
-        width: '500px',
-        height: '400px',
-      },
-    },
+    className: '[&_.c-editor]:w-[500px] [&_.c-editor]:h-[400px]',
   },
 };

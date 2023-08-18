@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Toast, ToastProps } from '@compasso/scala';
+import { Toast, ToastProps, ToastProvider } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 export default {
@@ -84,13 +84,13 @@ export default {
       },
     },
   },
-  // decorators: [
-  //   (Story) => (
-  //     <ToastProvider>
-  //       <Story />
-  //     </ToastProvider>
-  //   ),
-  // ],
+  decorators: [
+    (Story) => (
+      <ToastProvider>
+        <Story />
+      </ToastProvider>
+    ),
+  ],
 } as Meta<ToastProps>;
 
 export const Default: StoryObj<ToastProps> = {};

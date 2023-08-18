@@ -27,7 +27,7 @@ export const Icon = ({
   size = 'md',
   name = 'plus',
   label,
-  className,
+  className='',
   ...props
 }: IconProps): JSX.Element => (
   <svg

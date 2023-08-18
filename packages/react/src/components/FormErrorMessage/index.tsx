@@ -18,7 +18,7 @@ export type FormErrorMessageProps = {
  * @return {React.ReactNode} The rendered form error message.
  */
 export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({
-  className,
+  className='',
   variant,
   children,
   ...props

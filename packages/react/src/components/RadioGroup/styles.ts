@@ -1,24 +1,9 @@
-import { styled } from '../../styles';
-import {
-  Indicator as PrimitiveIndicator,
-  Item as PrimitiveItem,
-  Root as PrimitiveRoot,
-} from '@radix-ui/react-radio-group';
+import { cva } from 'class-variance-authority';
 
-export const Indicator = styled(PrimitiveIndicator, {
-  all: 'unset',
-});
-
-export const Root = styled(PrimitiveRoot, {
-  d: 'flex',
-  flexDirection: 'column',
-  gap: '$spacing-2',
-
+export const root = cva(['flex', 'flex-col', 'gap-2'], {
   variants: {
     fullWidth: {
-      true: {
-        width: '100%',
-      },
+      true: ['w-full'],
     },
   },
   defaultVariants: {
@@ -26,339 +11,291 @@ export const Root = styled(PrimitiveRoot, {
   },
 });
 
-export const Item = styled(PrimitiveItem, {
-  all: 'unset',
+export const item = cva(
+  [
+    'group',
+    'flex',
+    'items-center',
+    'gap-3',
+    'rounded-md',
+    'select-none',
+    'cursor-pointer',
+    'relative',
+    'transition-all',
+    'duration-300',
 
-  d: 'flex',
-  alignItems: 'center',
-  gap: '$spacing-3 !important',
+    'data-[state=checked]:opacity-100',
+    'disabled:cursor-not-allowed'
+  ],
+  {
+    variants: {
+      variant: {
+        primary: ['gap-2', 'pr-2', 'py-1', 'rounded-pill'],
 
-  userSelect: 'none',
-  '-webkit-user-select': 'none',
-  cursor: 'pointer',
+        secondary: [
+          'border-2',
+          'border-action-color-border-transparent-enabled',
+          'opacity-70',
+          'py-6',
+          'px-3',
+          'gap-2',
 
-  borderRadius: '$radii-md',
-  transition: '$base',
-  position: 'relative',
+          '[&_svg_circle]:stroke-none',
+          'data-[state=checked]:bg-form-color-background-default',
+          'data-[state=checked]:border-interactive-color-background-enabled',
+          'data-[state=checked]:shadow-low',
+          'data-[state=checked]:opacity-100',
+        ],
 
-  '&[data-state="checked"]': {
-    opacity: 1,
+        boxed: [
+          'border',
+          'border-form-color-border-default',
+          'opacity-100',
+          'py-6',
+          'px-3',
+          'gap-2',
+          'w-full',
+          'flex-col',
 
-    '& svg path': {
-      transition: 'all .3s ease',
-    },
-    '& svg .inner': {
-      strokeDasharray: 38,
-      transitionDelay: '.1s',
-    },
-    '& svg .outer': {
-      strokeDashoffset: 0,
-    },
-  },
+          'data-[state=checked]:bg-form-color-background-default',
+          'data-[state=checked]:border-interactive-color-background-enabled',
+          'data-[state=checked]:border-2',
+          'data-[state=checked]:opacity-100',
 
-  variants: {
-    variant: {
-      primary: {
-        gap: '$spacing-2',
-        pr: '$spacing-2',
-        py: '$spacing-1',
-        borderRadius: '$radii-pill',
+          '[&_span]:mt-5',
+        ],
       },
-      secondary: {
-        border: '2px solid',
-        borderColor: '$interactive-color-background-disabled',
-        opacity: 0.7,
 
-        py: '$spacing-6',
-        px: '$spacing-3',
-        gap: '$spacing-2',
-
-        '& svg circle': {
-          stroke: 'none',
-        },
-
-        '&[data-state="checked"]': {
-          bg: '$form-color-background-default',
-          borderColor: '$interactive-color-background-enabled',
-          boxShadow: '$30',
-          opacity: 100,
-        },
+      hasError: {
+        true: ['border-form-color-border-error'],
       },
-      boxed: {
-        border: '1px solid',
-        borderColor: '$form-color-border-default',
-        opacity: 1,
 
-        py: '$spacing-6',
-        px: '$spacing-3',
-        gap: '$spacing-2',
+      hasIcon: {
+        true: [],
+      },
 
-        w: '100%',
-        flexDirection: 'column',
+      isDisabled: {
+        true: [
+          'border-form-color-border-disabled',
+          'cursor-not-allowed',
 
-        '& svg circle': {
-          stroke: 'none',
-        },
+          '[&_span]:opacity-60',
+          '[&_label]:opacity-60',
+        ],
+      },
 
-        '& svg': {
-          position: 'absolute',
-          top: '$spacing-2',
-          left: '$spacing-2',
-        },
-
-        '& span': {
-          mt: '$spacing-5',
-        },
-
-        '&[data-state="checked"]': {
-          bg: '$form-color-background-default',
-          borderColor: '$interactive-color-background-enabled',
-          borderWidth: 1.5,
-          opacity: 100,
-
-          '& .radio__icon': {
-            color: '$interactive-color-background-enabled',
-          },
-        },
+      fullWidth: {
+        true: ['w-full'],
       },
     },
 
-    hasError: {
-      true: {
-        borderColor: '$form-color-border-error',
-
-        '& svg circle': {
-          stroke: '$form-color-border-error',
-        },
+    compoundVariants: [
+      {
+        variant: 'primary',
+        isDisabled: false,
+        class: ['active:scale(0.97)'],
       },
-    },
+      {
+        variant: 'secondary',
+        isDisabled: false,
+        class: [
+          'hover:border-interactive-color-background-enabled',
+          'hover:scale-[.99]',
+          'hover:opacity-100',
 
-    hasIcon: {
-      true: {},
-    },
-
-    isDisabled: {
-      true: {
-        borderColor: '$form-color-border-disabled',
-        cursor: 'not-allowed',
-
-        '& span, & label, & .radio__icon': {
-          opacity: 0.65,
-        },
+          'active:scale(0.97)',
+        ],
       },
-    },
+      {
+        variant: 'boxed',
+        isDisabled: false,
+        class: [
+          'hover:border-interactive-color-background-enabled',
+          'hover:scale-[.99]',
+          'hover:opacity-100',
 
-    fullWidth: {
-      true: {
-        width: '100%',
+          'active:scale(0.97)',
+        ],
       },
-    },
-  },
+      {
+        variant: 'boxed',
+        hasIcon: true,
+        class: ['items-baseline', '[&_label]:relative', '[&_label]:top-5'],
+      },
+    ],
 
-  compoundVariants: [
-    {
+    defaultVariants: {
       variant: 'primary',
       isDisabled: false,
-      css: {
-        '&:hover': {
-          // bg: '$form-disabled',
-
-          '& svg path': {
-            transition: 'all .4s ease',
-          },
-
-          '& svg .outer': {
-            strokeDashoffset: 0,
-          },
-        },
-
-        '&:active': {
-          transform: ' scale(.97)',
-        },
-      },
+      fullWidth: false,
     },
-    {
-      variant: 'secondary',
-      isDisabled: false,
-      css: {
-        '&:hover': {
-          borderColor: '$interactive-color-background-enabled',
-          transform: ' scale(.99)',
-          opacity: 100,
+  }
+);
 
-          '& svg path': {
-            transition: 'all .4s ease',
-          },
+export const fieldset = cva(
+  [
+    'flex',
+    'flex-col',
+    'gap-2',
+    'outine-none',
+    'border-none',
+    'p-0',
+    'w-full',
+    'select-none',
 
-          '& svg .outer': {
-            strokeDashoffset: 0,
-          },
-        },
-
-        '&:active': {
-          transform: ' scale(.97)',
-        },
-      },
-    },
-    {
-      variant: 'boxed',
-      isDisabled: false,
-      css: {
-        '&:hover': {
-          borderColor: '$interactive-color-background-enabled',
-          transform: ' scale(.99)',
-          opacity: 100,
-
-          '& svg path': {
-            transition: 'all .4s ease',
-          },
-
-          '& svg .outer': {
-            strokeDashoffset: 0,
-          },
-        },
-
-        '&:active': {
-          transform: ' scale(.97)',
-        },
-      },
-    },
-    {
-      variant: 'boxed',
-      hasIcon: true,
-      css: {
-        alignItems: 'baseline',
-
-        '& .radio__icon': {
-          mt: 40,
-          ml: '$spacing-1',
-        },
-
-        '& label': {
-          position: 'relative',
-          top: '$spacing-5',
-        },
-      },
-    },
+    'focus-visible:aria-[activedescendant]:shadow-low',
+    'focus-visible:aria-[activedescendant]:rounded-md',
   ],
+  {
+    variants: {
+      variant: {
+        primary: [],
+        secondary: ['w-full'],
+        boxed: [
+          'w-full',
+          'grid',
+          'grid-cols-[1fr]',
+          'grid-rows-[auto]',
+          '[column-gap=16px]',
+          '[row-gap=16px]',
 
-  defaultVariants: {
-    variant: 'primary',
-    isDisabled: false,
-    fullWidth: false,
-  },
-});
-
-export const Fieldset = styled('fieldset', {
-  all: 'unset',
-  d: 'flex',
-  flexDirection: 'column',
-  gap: '$spacing-2',
-
-  outline: 'none',
-  border: 'none',
-  p: '0',
-  userSelect: 'none',
-  w: '100%',
-
-  '&:focus-visible': {
-    '&[aria-activedescendant]': {
-      boxShadow: '0 0 0 3px $colors$form-color-background-disabled',
-      borderRadius: '$radii-md',
-    },
-  },
-
-  variants: {
-    variant: {
-      primary: {},
-      secondary: {
-        w: '100%',
+          'md:grid-cols-[1fr_1fr_1fr]',
+        ],
       },
-      boxed: {
-        w: '100%',
-        // flexDirection: 'row',
-        // justifyContent: 'strecth',
-        d: 'grid',
-        gridTemplateColumns: '1fr',
-        gridTemplateRows: 'auto',
-        columnGap: '16px',
-        rowGap: '16px',
+      fullWidth: {
+        true: [],
+      },
+    },
 
-        '@bp-md': {
-          gridTemplateColumns: '1fr 1fr 1fr',
+    compoundVariants: [
+      {
+        variant: 'boxed',
+        fullWidth: true,
+        class: ['md:flex', 'md:flex-row'],
+      },
+    ],
+
+    defaultVariants: {
+      variant: 'primary',
+      fullWidth: false,
+    },
+  }
+);
+
+export const svg = cva(
+  ['fill-none', 'align-middle', '[&_circle]:stroke-2', '[&_path]:stroke-2'],
+  {
+    variants: {
+      variant: {
+        primary: [],
+        secondary: [],
+        boxed: ['[&_circle]:stroke-none', 'absolute', 'top-2', 'left-2'],
+      },
+      hasError: {
+        true: [
+          '[&_path]:stroke-form-color-border-error',
+          '[&_circle]:stroke-form-color-border-error',
+        ],
+        false: [
+          '[&_path]:stroke-interactive-color-background-enabled',
+          '[&_circle]:stroke-form-color-border-default',
+        ],
+      },
+
+      isDisabled: {
+        true: {
+          true: ['[&_path]:form-color-border-default'],
         },
       },
     },
-    fullWidth: {
-      true: {},
-    },
-  },
 
-  compoundVariants: [
-    {
-      variant: 'boxed',
-      fullWidth: true,
-      css: {
-        '@bp-md': {
-          d: 'flex',
-          flexDirection: 'row',
-        },
-      },
+    defaultVariants: {
+      variant: 'primary',
+      hasError: false,
+      isDisabled: false,
     },
+  }
+);
+
+export const svgOuter = cva(
+  [
+    'stroke-2',
+    '[stroke-dasharray:57px]',
+    '[stroke-dashoffset:57px]',
+
+    'group-data-[state=checked]:transition-all',
+    'group-data-[state=checked]:duration-300',
+    'group-data-[state=checked]:[stroke-dashoffset:0]',
   ],
+  {
+    variants: {
+      variant: {
+        primary: [],
+        secondary: [],
 
-  defaultVariants: {
-    variant: 'primary',
-    fullWidth: false,
-  },
-});
-
-export const Svg = styled('svg', {
-  fill: 'none',
-  verticalAlign: 'middle',
-
-  '& circle': {
-    strokeWidth: 2,
-    stroke: '$form-color-border-default',
-  },
-
-  '& path': {
-    strokeWidth: 2,
-    stroke: '$interactive-color-background-enabled',
-  },
-
-  '& .inner': {
-    strokeWidth: 6,
-    strokeDasharray: 19,
-    strokeDashoffset: 19,
-  },
-
-  '& .outer': {
-    strokeWidth: 2,
-    strokeDasharray: 57,
-    strokeDashoffset: 57,
-  },
-
-  variants: {
-    hasError: {
-      true: {
-        '& path': {
-          stroke: '$form-color-border-error',
-        },
+        boxed: [],
+      },
+      isDisabled: {
+        true: ['opacity-60'],
+        false: ['group-hover:transition-all', 'group-hover:duration-300'],
       },
     },
+    defaultVariants: {
+      variant: 'primary',
+    },
+    compoundVariants: [
+      {
+        variant: 'primary',
+        isDisabled: false,
+        class: ['group-hover:[stroke-dashoffset:0]'],
+      },
+      {
+        variant: 'secondary',
+        isDisabled: false,
+        class: ['group-hover:[stroke-dashoffset:0]'],
+      },
+      {
+        variant: 'boxed',
+        isDisabled: false,
+        class: ['group-hover:[stroke-dashoffset:0]'],
+      },
+    ],
+  }
+);
 
-    isDisabled: {
-      true: {
-        '& path': {
-          stroke: '$form-color-border-default',
-        },
+export const svgInner = cva([
+  'stroke-[6px]',
+  '[stroke-dasharray:19px]',
+  '[stroke-dashoffset:19px]',
+
+  'group-data-[state=checked]:transition-all',
+  'group-data-[state=checked]:duration-300',
+  'group-data-[state=checked]:[stroke-dasharray:38px]',
+  'group-data-[state=checked]:delay-100',
+
+  'group-hover:transition-all',
+  'group-hover:duration-300',
+]);
+
+export const radioIcon = cva(
+  [
+    'group-data-[state=checked]:text-interactive-color-background-enabled',
+    'group-data-[state=checked]:fill-interactive-color-background-enabled',
+  ],
+  {
+    variants: {
+      variant: {
+        primary: [],
+        secondary: [],
+
+        boxed: ['mt-[40px]', 'ml-1'],
+      },
+      isDisabled: {
+        true: ['opacity-60'],
       },
     },
-  },
-
-  defaultVariants: {
-    hasError: false,
-    isDisabled: false,
-  },
-});
+    defaultVariants: {
+      variant: 'primary',
+    },
+  }
+);

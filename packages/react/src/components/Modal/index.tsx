@@ -1,4 +1,3 @@
-//@ts-noCheck
 import React, {
   forwardRef,
   useCallback,
@@ -19,12 +18,11 @@ import {
 
 import { Button } from '../Button';
 import { Stack } from '../Stack';
+import { Box } from '../Box';
 import { useOverlay } from '../../hooks/useOverlay';
 import { IconButton } from '../IconButton';
 import { ScrollView } from '../ScrollView';
-
 import * as S from './styles';
-import { Box } from '../Box';
 
 export type ModalHandlesProps = {
   openModal: () => void;
@@ -42,11 +40,12 @@ export type ModalProps = {
   onButtonPrimaryClick: () => void;
   onButtonSecondaryClick?: () => void;
   headerSlot?: React.ReactNode;
-  className: string;
+  className?: string;
 } & PrimitiveDialogProps;
 
 export type ModalContentProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
 export const Modal = forwardRef(
@@ -54,14 +53,13 @@ export const Modal = forwardRef(
     {
       title,
       description,
-      children,
+      children = '',
       variant = 'transactional',
       buttonPrimaryLabel,
       onButtonPrimaryClick,
       buttonSecondaryLabel,
       onButtonSecondaryClick,
       headerSlot,
-      className,
     }: ModalProps,
     ref
   ) => {
@@ -88,13 +86,17 @@ export const Modal = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function DialogContent({ children, ...props }: ModalContentProps) {
+    function DialogContent({
+      children,
+      className = '',
+      ...props
+    }: ModalContentProps) {
       return (
         <DialogPortal>
           <Overlay className={S.modalOverlay()} />
           <Content
             {...props}
-            className={S.modalContent()}
+            className={S.modalContent({ className })}
             onInteractOutside={closeModal}
             onEscapeKeyDown={closeModal}
           >
@@ -111,13 +113,13 @@ export const Modal = forwardRef(
             fullWidth
             align="center"
             justify="between"
-            className="border-tl-md border-tr-md border-b border-form-color-border-default bg-surface-color-background-subdued px-3 pb-2"
+            className="rounded-tl-md rounded-tr-md border-b border-form-color-border-default bg-surface-color-background-subdued px-3 pb-2"
           >
             <Title
-            // className={S.modalTitle({
-            //   variant,
-            //   hasCustomHeader: !!headerSlot ? true : false,
-            // })}
+              className={S.modalTitle({
+                variant,
+                hasCustomHeader: !!headerSlot ? true : false,
+              })}
             >
               <>{headerSlot ? headerSlot : title}</>
             </Title>
@@ -155,7 +157,6 @@ export const Modal = forwardRef(
                   onClick={onButtonSecondaryClick || closeModal}
                   size="sm"
                   type="button"
-                  animateOnHover
                 />
 
                 <Button
@@ -172,6 +173,7 @@ export const Modal = forwardRef(
                 label={buttonPrimaryLabel || 'Ok'}
                 onClick={onButtonPrimaryClick}
                 size="sm"
+                animateOnHover
               />
             )}
           </Box>

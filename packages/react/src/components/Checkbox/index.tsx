@@ -6,8 +6,8 @@ import {
 
 import { FormErrorMessage } from '../FormErrorMessage';
 import { Text } from '../Text';
-import * as S from './styles';
 import { Box } from '../Box';
+import * as S from './styles';
 
 export type CheckboxFieldsetProps = {
   legend: string;
@@ -54,7 +54,7 @@ const CheckboxItem = forwardRef<
 >(
   (
     {
-      className,
+      className = '',
       variant = 'regular',
       name,
       errors,
@@ -91,7 +91,7 @@ const CheckboxItem = forwardRef<
                 className={S.svg()}
               >
                 <path
-                  className="fill-none stroke-interactive-color-background-enabled stroke-2 transition-all duration-[0.6s] [stroke-dasharray:71px] [stroke-dashoffset:0] group-hover:[stroke-dashoffset:0] group-data-[disabled]:fill-form-color-border-default group-data-[state=checked]:fill-interactive-color-border-enabled"
+                  className={S.svgPathRegular({ disabled })}
                   style={{
                     strokeLinecap: 'round',
                     strokeLinejoin: 'round',
@@ -100,7 +100,7 @@ const CheckboxItem = forwardRef<
                 ></path>
                 <polyline
                   points="4 12 8 15 16 6"
-                  className="ml-1 translate-x-[2px] translate-y-[1px] scale-[.85] fill-none stroke-white stroke-2 transition-all duration-300 [stroke-dasharray:18px] [stroke-dashoffeset:18px] group-data-[state=checked]:[stroke-dashoffset:0]"
+                  className={S.svgPolylineRegular()}
                   style={{
                     strokeLinecap: 'round',
                     strokeLinejoin: 'round',
@@ -115,15 +115,21 @@ const CheckboxItem = forwardRef<
               <Box
                 as="svg"
                 width="14px"
-                height="12px"
-                viewBox="0 0 14 12"
+                height="13px"
+                viewBox="0 0 20 20"
                 className={S.svgTask()}
                 style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }}
               >
                 <polyline
-                  className="stroke-feedback-color-background-success-enabled stroke-2"
-                  points="1 7.6 5 11 13 1"
-                ></polyline>
+                  className={S.svgPolylineTask()}
+                  points="5 12 10 17 19 8"
+                  style={{
+                    fill: 'none',
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeWidth: 2,
+                  }}
+                />
               </Box>
             </Box>
           )}

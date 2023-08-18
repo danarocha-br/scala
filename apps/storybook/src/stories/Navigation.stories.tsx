@@ -6,11 +6,11 @@ import {
   Stack,
   Icon,
   Tooltip,
-  Button,
   Shortcut,
   Text,
   Box,
   SearchButton,
+  IconButton,
 } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { useState } from 'react';
@@ -33,11 +33,7 @@ export default {
     children: (
       <>
         <Stack direction="column" gap="2" fullWidth>
-          <SearchButton
-            label="Search"
-            shortcut="⌘ + K"
-            css={{ mb: '$spacing-4' }}
-          />
+          <SearchButton label="Search" shortcut="⌘ + K" className="mb-4" />
           <Navigation.Item
             label="Projects"
             icon="project"
@@ -79,13 +75,13 @@ export default {
     userMenu: (
       <>
         <Dropdown.Item textValue="Configurações">
-          <Icon name="settings" label="settings" css={{ mr: '$spacing-2' }} />
+          <Icon name="settings" label="settings" className="mr-2" />
           <a href="/">
             Configurações <Dropdown.RightSlot>⌘ C</Dropdown.RightSlot>
           </a>
         </Dropdown.Item>
         <Dropdown.Item textValue="Preferências">
-          <Icon name="settings" label="settings" css={{ mr: '$spacing-2' }} />
+          <Icon name="settings" label="settings" className="mr-2" />
           <a href="/">
             Preferências <Dropdown.RightSlot>⌘ P</Dropdown.RightSlot>
           </a>
@@ -131,7 +127,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <Stack gap="8" align="center" css={{ h: '100vh' }}>
+      <Stack gap="8" align="center" className="h-screen">
         {Story()}
       </Stack>
     ),
@@ -149,17 +145,17 @@ WithFooter.args = {
   footer: (
     <>
       <Tooltip content="Made with ❤️ by Compasso">
-        <Text color="body-lighter" css={{ ml: '$spacing-3' }}>
+        <Text color="body-lighter" className="ml-3">
           C
         </Text>
       </Tooltip>
-      <Box css={{ d: 'inline-flex', mr: '$spacing-2', gap: '$spacing-2' }}>
+      <Box className="inline-flex mr-2 gap-2">
         <Tooltip content="Configuraçoes" slot={<Shortcut shortcut="⌘ C" />}>
-          <Button label="settings" variant="icon" icon="settings" size="sm" />
+          <IconButton label="settings" icon="settings" size="sm" />
         </Tooltip>
 
         <Tooltip content="Ajuda / Feedback" slot={<Shortcut shortcut="⌘ H" />}>
-          <Button label="help" variant="icon" icon="help" size="sm" />
+          <IconButton label="help" icon="help" size="sm" />
         </Tooltip>
       </Box>
     </>
@@ -177,25 +173,20 @@ export const WithNavigationToggle: Story<NavigationProps> = (args) => {
       footer={
         <>
           <Tooltip content="Made with ❤️ by Compasso">
-            <Text color="body-lighter" css={{ ml: '$spacing-3' }}>
+            <Text color="body-lighter" className="ml-3">
               C
             </Text>
           </Tooltip>
-          <Box css={{ d: 'inline-flex', mr: '$spacing-2', gap: '$spacing-2' }}>
+          <Box className="inline-flex mr-2 gap-2">
             <Tooltip content="Configuraçoes" slot={<Shortcut shortcut="⌘ C" />}>
-              <Button
-                label="settings"
-                variant="icon"
-                icon="settings"
-                size="sm"
-              />
+              <IconButton label="settings" icon="settings" size="sm" />
             </Tooltip>
 
             <Tooltip
               content="Ajuda / Feedback"
               slot={<Shortcut shortcut="⌘ H" />}
             >
-              <Button label="help" variant="icon" icon="help" size="sm" />
+              <IconButton label="help" icon="help" size="sm" />
             </Tooltip>
           </Box>
         </>
@@ -235,9 +226,9 @@ export const NavigationItem: Story<NavigationProps> = () => (
   <Stack
     direction="column"
     justify="center"
-    css={{ h: '100vh', w: '100%', px: 380 }}
+    className="h-screen w-full px-[380px]"
   >
-    <Text size="xs" css={{ ml: '$spacing-3' }}>
+    <Text size="xs" className="ml-3">
       Regular Active
     </Text>
     <Navigation.Item
@@ -246,12 +237,12 @@ export const NavigationItem: Story<NavigationProps> = () => (
       href="/invoices"
       isActive
     />
-    <Text size="xs" css={{ ml: '$spacing-3' }}>
+    <Text size="xs" className="ml-3">
       Regular
     </Text>
     <Navigation.Item icon="invoice" label="Invoices" href="/invoices" />
 
-    <Text size="xs" css={{ ml: '$spacing-3' }}>
+    <Text size="xs" className="ml-3">
       With Shortcut
     </Text>
     <Navigation.Item
@@ -261,17 +252,16 @@ export const NavigationItem: Story<NavigationProps> = () => (
       shortcut="cmd + p"
     />
 
-    <Text size="xs" css={{ ml: '$spacing-3' }}>
+    <Text size="xs" className="ml-3">
       Disabled
     </Text>
     <Navigation.Item
       icon="invoice"
       label="Invoices"
       href="/invoices"
-      shortcut="cmd + p"
       disabled
     />
-    <Text size="xs" css={{ ml: '$spacing-3' }}>
+    <Text size="xs" className="ml-3">
       Loading
     </Text>
     <Navigation.Item

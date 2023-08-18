@@ -13,7 +13,7 @@ const stack = cva(['box-border', 'flex'], {
       row: ['flex-row'],
       column: ['flex-col'],
       'row-reverse': ['flex-row-reverse'],
-      'column-reverse': ['flex-column-reverse'],
+      'column-reverse': ['flex-col-reverse'],
     },
 
     align: {
@@ -73,7 +73,7 @@ export const Stack = forwardRef(
     {
       as: Component = 'div',
       children,
-      className,
+      className = '',
       direction,
       align,
       justify,

@@ -9,14 +9,12 @@ export const ContainerContent = cva(
     'rounded-sm',
     'outline-none',
     'transition-all',
-    'duration-500',
-    'ease-[cubic-bezier(0.16, 1, 0.3, 1)]',
-    'will-chage-[transform, opacity]',
+    'will-chage-[transform,_opacity]',
 
-    'data-[state=open]:data-[side=top]:animate-[slide-up-and-fade]',
-    'data-[state=open]:data-[side=right]:animate-[slide-right-and-fade]',
-    'data-[state=open]:data-[side=bottom]:animate-[slide-bottom-and-fade]',
-    'data-[state=open]:data-[side=left]:animate-[slide-left-and-fade]',
+    'data-[state=open]:data-[side=top]:animate-slide-up',
+    'data-[state=open]:data-[side=right]:animate-slide-right',
+    'data-[state=open]:data-[side=bottom]:animate-slide-down',
+    'data-[state=open]:data-[side=left]:animate-slide-left',
     'z-max',
   ],
   {
@@ -24,7 +22,7 @@ export const ContainerContent = cva(
       unstyled: {
         true: [],
 
-        false: ['shadow-high', 'bg-surface-color-text-default', 'p-2'],
+        false: ['shadow-medium', 'bg-surface-color-background-default', 'p-2'],
       },
     },
   }

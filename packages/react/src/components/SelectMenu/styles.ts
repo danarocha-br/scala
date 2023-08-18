@@ -1,110 +1,85 @@
-import { styled } from '../../styles';
-import {
-  SelectTrigger,
-  ScrollUpButton,
-  ScrollDownButton,
-  Content,
-  Viewport,
-  Item,
-  Label,
-  Separator,
-  ItemIndicator,
-  Root,
-  Value,
-  Icon,
-  Group,
-  ItemText,
-  Portal,
-} from '@radix-ui/react-select';
+import { cva } from 'class-variance-authority';
 
-export const SelectBox = styled(SelectTrigger, {
-  all: 'unset',
-  color: '$text-color-body',
-  fontFamily: '$font-family-sans',
-  fontSize: '$font-size-sm',
-  backgroundColor: 'transparent',
-  border: '1px solid transparent',
+export const selectBox = cva([
+  'text-text-color-body',
+  'font-sans',
+  'text-sm',
+  'bg-transparent',
+  'border',
+  'border-dashed',
+  'border-transparent',
+  'rounded-sm',
+  'inline-flex',
+  'items-center',
+  'justify-center',
+  'py-0',
+  'px-2',
+  'gap-2',
+  'h-[40px]',
+  'relative',
+  'transition-all',
+  'outline-none',
 
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  'hover:bg-action-color-background-transparent-disabled',
+  'focus:bg-action-color-background-transparent-disabled',
+  'focus:border-surface-color-background-hover',
+  'focus:outline-none',
+]);
 
-  borderRadius: '$radii-sm',
-  padding: '0 $spacing-2',
-  height: 40,
-  gap: '$spacing-2',
-  position: 'relative',
-  transition: '$base',
+export const selectContent = cva([
+  'overflow-hidden',
+  'bg-surface-color-background-default',
+  'rounded-md',
+  'shadow-low',
+]);
 
-  '&:hover': {
-    background: '$action-color-background-transparent-disabled',
-  },
-  '&:focus': {
-    background: '$action-color-background-transparent-disabled',
-    border: '1px dashed',
-    borderColor: '$surface-color-background-hover',
-  },
-});
+export const selectViewport = cva(['font-sans', 'p-2']);
 
-export const SelectContent = styled(Content, {
-  overflow: 'hidden',
-  backgroundColor: '$surface-color-background-subdued',
-  borderRadius: '$radii-md',
-  boxShadow: '$elevation-low',
-});
+export const selectItem = cva([
+  'font-sans',
+  'text-sm',
+  'text-text-color-body',
+  'rounded-sm',
+  'flex',
+  'items-center',
+  'h-5',
+  'py-0',
+  'pr-2',
+  'pl-5',
+  'relative',
+  'select-none',
+  'outline-none',
 
-export const SelectViewport = styled(Viewport, {
-  padding: '$spacing-2',
-  fontFamily: '$font-family-sans',
-});
+  'data-[disabled]:text-text-color-body-lighter',
+  'data-[disabled]:cursor-not-allowed',
 
-export const SelectItem = styled(Item, {
-  all: 'unset',
-  fontSize: '$font-size-sm',
-  color: '$text-color-body',
-  borderRadius: '$radii-sm',
-  display: 'flex',
-  alignItems: 'center',
-  height: '$spacing-5',
-  padding: '0 8px 0 32px',
-  position: 'relative',
-  userSelect: 'none',
+  'focus:text-text-color-on-dark',
+  'focus:bg-interactive-color-background-subdued',
+  'focus:outline-none',
+  'focus:[&_>_svg]:text-text-color-on-dark',
+]);
 
-  '&[data-disabled]': {
-    color: '$text-color-body-lighter',
-    cursor: 'not-allowed',
-  },
+export const selectLabel = cva([
+  'text-xs',
+  'text-text-color-body',
+  'py-0',
+  'px-4',
+]);
 
-  '&:focus': {
-    backgroundColor: '$interactive-color-background-subdued',
-    color: '$text-color-on-dark',
+export const selectSeparator = cva([
+  'bg-form-color-border-default',
+  'h-[1px]',
+  'm-[5px]',
+]);
 
-    '> svg': {
-      color: '$text-color-on-dark',
-    },
-  },
-});
-
-export const SelectLabel = styled(Label, {
-  padding: '0 24px',
-  fontSize: '$font-size-xs',
-  color: '$text-color-body',
-});
-
-export const SelectSeparator = styled(Separator, {
-  height: 1,
-  backgroundColor: '$form-color-border-default',
-  margin: 5,
-});
-
-export const SelectItemIndicator = styled(ItemIndicator, {
-  position: 'absolute',
-  left: 0,
-  width: 24,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
+export const selectItemIndicator = cva([
+  'absolute',
+  'left-0',
+  'w-4',
+  'inline-flex',
+  'items-center',
+  'justify-center',
+]);
 
 const scrollButtonStyles = {
   display: 'flex',
@@ -116,21 +91,14 @@ const scrollButtonStyles = {
   cursor: 'default',
 };
 
-export const SelectScrollUpButton = styled(ScrollUpButton, scrollButtonStyles);
+export const selectScrollUpButton = cva([
+  'text-text-color-body',
+  'bg-surface-color-background-default',
+  'flex',
+  'items-center',
+  'justify-center',
+  'h-4',
+  'cursor-default',
+]);
 
-export const SelectScrollDownButton = styled(
-  ScrollDownButton,
-  scrollButtonStyles
-);
-
-export const SelectItemText = styled(ItemText, {
-  d: 'flex',
-  gap: '$spacing-1',
-  alignItems: 'center',
-});
-
-export const SelectRoot = Root;
-export const SelectValue = Value;
-export const SelectIcon = Icon;
-export const SelectGroup = Group;
-export const SelectPortal = Portal;
+export const selectItemText = cva(['flex', 'gap-1', 'items-center']);

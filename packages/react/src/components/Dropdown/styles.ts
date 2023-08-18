@@ -4,24 +4,26 @@ export const dropdownMenuContent = cva([
   'font-sans',
   'bg-surface-color-background-default',
   'rounded-sm',
-  'shadow-[0px -7px 20px 0px #00000010, 0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026]',
+  'shadow-low',
   'w-full',
   'min-w-[200px]',
   'p-1',
+  'transition-all',
 
-  'motion-safe:duration-500',
-  'motion-safe:ease-[cubic-bezier(0.16, 1, 0.3, 1)]',
-  'motion-safe:will-change-[transform, opacity]',
-  'motion-safe:data-[state=open]:data-[side=top]:animate-[slide-up-and-fade]',
-  'motion-safe:data-[state=open]:data-[side=right]:animate-[slide-right-and-fade]',
-  'motion-safe:data-[state=open]:data-[side=left]:animate-[slide-left-and-fade]',
-  'motion-safe:data-[state=open]:data-[side=down]:animate-[slide-down-and-fade]',
+  'will-change-[transform,_opacity]',
+  'data-[state=open]:data-[side=top]:animate-slide-up',
+
+  'data-[state=open]:data-[side=right]:animate-slide-right',
+
+  'data-[state=open]:data-[side=bottom]:animate-slide-down',
+
+  'data-[state=open]:data-[side=left]:animate-slide-left',
 ]);
 
 export const dropdownMenuArrow = cva([
   'fill-current',
   'fill-text-color-on-dark',
-  'data-[mode=dark]:data-[mode=dark]:fill-text-color-on-light',
+  'data-[mode=dark]:fill-text-color-on-light',
 ]);
 
 const itemStyles = [
@@ -33,8 +35,8 @@ const itemStyles = [
   'border',
   'border-dashed',
   'border-transparent',
-  'h-5',
-  'px-3',
+  'py-2',
+  'px-2',
   'flex',
   'items-center',
   'cursor-pointer',
@@ -65,6 +67,10 @@ export const dropdownItem = cva(itemStyles);
 export const rightSlot = cva([
   'text-text-color-caption',
   'text-sm',
+  'bg-action-color-background-transparent-hover',
+  'rounded-sm',
+  'px-1',
+
   'focus:text-text-color-body',
   'data-[disabled]:text-action-color-background-transparent-hover',
 ]);

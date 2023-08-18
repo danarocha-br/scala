@@ -35,7 +35,7 @@ export const IconButton = ({
   icon,
   disabled = false,
   loading = false,
-  className,
+  className = '',
   ...props
 }: IconButtonProps): JSX.Element => (
   <AccessibleButton
@@ -47,6 +47,7 @@ export const IconButton = ({
     <Icon
       name={icon}
       label={label}
+      color='current'
       size={size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'xs'}
     />
   </AccessibleButton>

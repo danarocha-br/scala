@@ -23,7 +23,7 @@ export default {
   },
   decorators: [
     (Story) => {
-      return <Box css={{ p: '$spacing-6' }}>{Story()}</Box>;
+      return <Box className="p-6">{Story()}</Box>;
     },
   ],
   argTypes: {

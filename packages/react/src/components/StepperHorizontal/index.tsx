@@ -1,4 +1,5 @@
-
+import { Box } from '../Box';
+import { Text } from '../Text';
 import * as S from './styles';
 
 export type StepperHorizontalProps = {
@@ -10,20 +11,27 @@ export type StepperHorizontalProps = {
 export const StepperHorizontal = ({
   count,
   currentStep = 1,
-  className,
+  className = '',
   ...props
-}: StepperHorizontalProps): JSX.Element => (
-  <S.Container className={className} {...props}>
-    <S.Label>
-      {currentStep} / {count}{' '}
-    </S.Label>
+}: StepperHorizontalProps): JSX.Element => {
+  return (
+    <Box className={S.container({ className })} {...props}>
+      <Text size="xs" color="caption">
+        {currentStep} / {count}{' '}
+      </Text>
+      <Box
+        className={S.steps()}
+        //@ts-ignore
+        style={{ '--steps-count': count }}
+      >
+        {Array.from({ length: count }, (_, i) => i + 1).map((step) => {
+          const isActive = currentStep >= step;
 
-    <S.Steps >
-      {Array.from({ length: count }, (_, i) => i + 1).map((step) => {
-        return <S.Step key={step} isActive={currentStep >= step} />;
-      })}
-    </S.Steps>
-  </S.Container>
-);
+          return <Box className={S.step({ isActive })} key={step} />;
+        })}
+      </Box>
+    </Box>
+  );
+};
 
 StepperHorizontal.displayName = 'StepperHorizontal';

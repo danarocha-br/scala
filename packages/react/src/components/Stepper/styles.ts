@@ -1,181 +1,128 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Menu = styled('ul', {
-  all: 'unset',
-  fontFamily: '$font-family-sans',
+export const container = cva([
+  'group/container',
+  'relative',
+  'hover:w-auto',
+  'transition-all',
+]);
 
-  d: 'flex',
-  fd: 'column',
+export const menu = cva([
+  'font-sans',
+  'flex',
+  'flex-col',
+  'gap-3',
+  'w-full',
+  'pointer-events-none',
 
-  pointerEvents: 'none',
+  'group-hover/container:opacity-100',
+  'group-hover/container:translate-y-0',
+  'group-hover/container:pointer-events-auto',
+]);
 
-  w: '100px',
-});
+export const menuItem = cva(
+  [
+    'font-sans',
+    'text-text-color-body-lighter',
+    'whitespace-nowrap',
+    'transition-all',
 
-export const MenuItem = styled('li', {
-  all: 'unset',
-  fontFamily: '$font-family-sans',
-  color: '$text-color-body-lighter',
-  whiteSpace: 'nowrap',
+    'after:content-[""]',
+    'after:bg-form-color-border-default',
+    'after:absolute',
+    'after:left-2',
+    'after:w-[10px]',
+    'after:h-[10px]',
+    'after:rounded-circle',
+    'after:transition-all',
 
-  '&::after': {
-    content: '',
-    position: 'absolute',
-    left: '$spacing-2',
-    width: 10,
-    height: 10,
-    borderRadius: '50%',
-    background: '$form-color-border-default',
-    transition: '$base',
-  },
+    'before:content-[""]',
+    'before:bg-form-color-border-default',
+    'before:absolute',
+    'before:left-[12px]',
+    'before:mt-2',
+    'before:w-[2px]',
+    'before:h-5',
+    'before:transition-all',
+    'last:before:hidden',
 
-  '&:not(:last-child)': {
-    '&::before': {
-      content: '',
-      position: 'absolute',
-      left: '12px',
-      mt: '$spacing-2',
-      w: '2px',
-      h: '$spacing-5',
-      background: '$form-color-border-default',
-      transition: '$base',
-    },
-  },
+    'first:mt-4',
 
-  '&:first-child': {
-    mt: '$spacing-4',
-  },
-
-  '& a': {
-    all: 'unset',
-    cursor: 'pointer',
-    mb: '$spacing-3',
-
-    color: '$text-color-body',
-    fontWeight: '$font-weight-medium',
-
-    d: 'inline-block',
-    opacity: 0,
-    transform: 'translateY(-10px)',
-    transition: '$base',
-    ml: '$spacing-5',
-
-    '&:hover': {
-      color: '$interactive-color-background-subdued',
-
-      '&::after': {
-        bg: '$interactive-color-background-subdued',
+    'group-hover/container:mb-3',
+    'group-hover/container:after:translate-y-[6px]',
+  ],
+  {
+    variants: {
+      isActive: {
+        true: [
+          'after:bg-interactive-color-background-subdued',
+          'group-hover/container:after:bg-interactive-color-background-enabled',
+        ],
       },
     },
-  },
+    defaultVariants: {
+      isActive: false,
+    },
+  }
+);
 
-  variants: {
-    isActive: {
-      true: {
-        '& a': {
-          color: '$interactive-color-background-subdued',
-        },
-        '&::after': {
-          bg: '$interactive-color-background-subdued',
-        },
+export const anchor = cva(
+  [
+    'text-text-color-body',
+    'font-medium',
+    'inline-block',
+    'ml-5',
+    'opacity-100',
+    'cursor-pointer',
+    'translate-y-[-8px]',
+    'transition-all',
+
+    'hover:text-interactive-color-background-subdued',
+    'hover:after:bg-interactive-color-background-subdued',
+
+    'group-hover/container:opacity-100',
+    'group-hover/container:translate-x-0',
+    'group-hover/container:translate-y-[-2px]',
+  ],
+  {
+    variants: {
+      isActive: {
+        true: ['text-interactive-color-background-subdued'],
       },
     },
-  },
+  }
+);
 
-  defaultVariants: {
-    isActive: false,
-  },
-});
+export const backButton = cva([
+  'group/item',
+  'font-sans',
+  'font-medium',
+  'cursor-pointer',
+  'flex',
+  'items-center',
+  'justify-center',
+  'gap-2',
+]);
 
-export const BackButton = styled('a', {
-  all: 'unset',
-  fontFamily: '$font-family-sans',
+export const backLabel = cva([
+  'text-text-color-caption',
+  'inline-block',
+  'ml-2',
+  'opacity-0',
+  'translate-x-2',
+  'transition-all',
 
-  cursor: 'pointer',
-  fontWeight: '$font-weight-medium',
+  'group-hover/container:opacity-100',
+  'group-hover/container:translate-x-[-1px]',
+]);
 
-  d: 'flex',
-  alignItems: 'center',
-  justifyItems: 'center',
-
-  gap: '$spacing-2',
-
-  '& div': {
-    position: 'relative',
-    d: 'flex',
-    alignItems: 'center',
-    justifyItems: 'center',
-
-    w: '$spacing-5',
-    h: '$spacing-5',
-    borderRadius: '50%',
-    background: '$interactive-color-background-subdued',
-  },
-
-  '& span': {
-    d: 'inline-block',
-    color: '$text-color-caption',
-    marginLeft: '$spacing-2',
-    opacity: 0,
-    transform: 'translateX(-20px)',
-    transition: 'all .2s ease',
-  },
-
-  '&:hover': {
-    '& span': {
-      color: '$text-color-body',
-    },
-  },
-});
-
-export const Container = styled('div', {
-  position: 'relative',
-
-  '&:hover': {
-    w: 'auto',
-
-    [`& ${Menu}`]: {
-      opacity: 1,
-      transform: 'translateY(0)',
-      pointerEvents: 'auto',
-    },
-
-    [`& ${MenuItem}`]: {
-      mb: '$spacing-4',
-
-      '&::after': {
-        transform: 'translateY(6px)',
-      },
-
-      '& a': {
-        opacity: 1,
-        transform: 'translateX(0)',
-      },
-    },
-
-    [`& ${BackButton}`]: {
-      '& span': {
-        transform: 'translateX(0)',
-        opacity: 1,
-      },
-    },
-  },
-
-  variants: {
-    isActive: {
-      true: {
-        '&:hover': {
-          [`& ${MenuItem}`]: {
-            '&::after': {
-              bg: '$interactive-color-background-enabled',
-            },
-          },
-        },
-      },
-    },
-  },
-
-  defaultVariants: {
-    isActive: false,
-  },
-});
+export const iconWrapper = cva([
+  'bg-interactive-color-background-subdued',
+  'relative',
+  'flex',
+  'items-center',
+  'justify-center',
+  'w-5',
+  'h-5',
+  'rounded-circle',
+]);

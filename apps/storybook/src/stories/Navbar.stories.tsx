@@ -52,7 +52,7 @@ export default {
           align="center"
           justify="center"
           fullWidth
-          css={{ h: '100vh', px: '$spacing-4' }}
+          className="h-screen px-4"
         >
           {Story()}
         </Stack>
@@ -66,6 +66,6 @@ export const NoTitle: StoryObj<NavbarProps> = {};
 NoTitle.args = {
   pageTitle: '',
   slot: (
-    <Text css={{ w: '100%' }}>This is a slot for anything to be placed.</Text>
+    <Text className="w-full">This is a slot for anything to be placed.</Text>
   ),
 };

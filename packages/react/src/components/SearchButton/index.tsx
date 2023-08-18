@@ -21,7 +21,7 @@ export type SearchButtonProps = {
 export const SearchButton = ({
   label,
   shortcut,
-  className,
+  className = '',
   ...props
 }: SearchButtonProps): JSX.Element => (
   <Box as="button" className={S.container({ className })} {...props}>

@@ -14,7 +14,7 @@ export const Box = forwardRef(
     {
       as: Component = 'div',
       children,
-      className,
+      className='',
       ...props
     },
     forwardedRef

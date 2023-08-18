@@ -56,6 +56,7 @@ export const editorMenu = cva([
   'bg-surface-color-background-default',
   'border',
   'border-action-color-border-transparent-enabled',
+  'shadow-low',
   'flex',
   'items-center',
   'gap-2',
@@ -77,7 +78,6 @@ export const editorMenu = cva([
 
 export const customButton = cva(
   [
-    'text-text-color-body-lighter',
     'font-sans',
     'font-light',
     'text-md',
@@ -93,8 +93,6 @@ export const customButton = cva(
     'w-4',
     'h-4',
 
-    '[&_svg]:fill-text-color-body-lighter',
-
     'focus:outline-2',
     'focus:outline-offset-[.5px]',
     'focus:outline-action-color-border-transparent-pressed',
@@ -105,11 +103,15 @@ export const customButton = cva(
         true: [
           'text-action-color-text-primary-enabled',
           'bg-action-color-background-primary-enabled',
+
           '[&_svg]:fill-text-color-on-dark',
 
           'hover:bg-action-color-background-primary-hover',
         ],
         false: [
+          'text-text-color-body-lighter',
+          '[&_svg]:fill-text-color-body-lighter',
+
           'hover:bg-action-color-background-transparent-hover',
           'hover:[&_svg]:fill-text-color-body',
         ],
@@ -141,8 +143,8 @@ export const customInput = cva([
   'placeholder:text-text-color-caption',
 
   'motion-safe:duration-500',
-  'motion-safe:ease-[cubic-bezier(0.16, 1, 0.3, 1)]',
-  'motion-safe:will-change-[transform, opacity]',
+  'motion-safe:ease-[cubic-bezier(0.16,_1,_0.3,_1)]',
+  'motion-safe:will-change-[transform,_opacity]',
   'motion-safe:data-[state=open]:data-[side=top]:animate-[slide-up-and-fade]',
   'motion-safe:data-[state=open]:data-[side=right]:animate-[slide-right-and-fade]',
   'motion-safe:data-[state=open]:data-[side=left]:animate-[slide-left-and-fade]',

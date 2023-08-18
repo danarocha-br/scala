@@ -1,6 +1,6 @@
-//@ts-nocheck
+//@ts-noCheck
 import { ElementRef, forwardRef } from 'react';
-import {
+import PrimitiveSelect, {
   components,
   GroupBase,
   NoticeProps,
@@ -10,6 +10,7 @@ import {
   MultiValueProps,
   SingleValueProps,
 } from 'react-select';
+import { Button } from '@ariakit/react';
 
 import { Icon, iconPath } from '../Icon';
 import { Text } from '../Text';
@@ -33,7 +34,11 @@ export const SelectableButton = ({
   isActive,
   ...props
 }: SelectableButtonProps): JSX.Element => (
-  <S.ButtonContainer className={className} {...props} isActive={isActive} role="combobox">
+  <Button
+    className={S.buttonContainer({ isActive })}
+    role="combobox"
+    {...props}
+  >
     {!!icon && <Icon name={icon} size="sm" label="icon" color="current" />}
     {!!label && (
       <Text size="sm" color="current">
@@ -41,7 +46,7 @@ export const SelectableButton = ({
       </Text>
     )}
     {children && children}
-  </S.ButtonContainer>
+  </Button>
 );
 
 SelectableButton.displayName = 'Button';
@@ -73,7 +78,7 @@ export type SelectableMenuProps = {
 };
 
 export const SelectableMenu = forwardRef<
-  ElementRef<typeof S.CustomSelect>,
+  ElementRef<typeof PrimitiveSelect>,
   SelectableMenuProps
 >(
   (
@@ -112,7 +117,7 @@ export const SelectableMenu = forwardRef<
                 label="checked"
                 size="sm"
                 color="caption"
-                className='ml-2'
+                className="ml-2"
               />
             </Stack>
           )}
@@ -142,12 +147,7 @@ export const SelectableMenu = forwardRef<
     const NoOptionsMessage = (props: NoticeProps) => {
       return (
         <components.NoOptionsMessage {...props}>
-          <Text
-            as="p"
-            color="body-lighter"
-            align="center"
-            className='py-2'
-          >
+          <Text as="p" color="body-lighter" align="center" className="py-2">
             {noOptionMessage}
           </Text>
         </components.NoOptionsMessage>
@@ -159,11 +159,12 @@ export const SelectableMenu = forwardRef<
     };
 
     return (
-      <Box className={{ w: '100%', className }}>
-        <S.Container isDisabled={disabled}>
-          <S.CustomSelect
+      <Box className={`w-full ${className}`}>
+        <Box className={S.container({ isDisabled: disabled })}>
+          <PrimitiveSelect
             id={name}
             ref={ref}
+            className={S.select()}
             classNamePrefix="c-selectable"
             options={options}
             isLoading={loading}
@@ -182,7 +183,7 @@ export const SelectableMenu = forwardRef<
             }}
             {...props}
           />
-        </S.Container>
+        </Box>
       </Box>
     );
   }

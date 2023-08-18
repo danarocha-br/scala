@@ -25,7 +25,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '50vh', w: '50vw' }}>
+        <Stack align="center" justify="center" className="h-[50vh] w-[50vh]">
           {Story()}
         </Stack>
       );
