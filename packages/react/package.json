@@ -1,6 +1,6 @@
 {
   "name": "@compasso/scala",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Scala components package for react",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -66,7 +66,6 @@
     "@tiptap/starter-kit": "^2.0.4",
     "@tiptap/suggestion": "^2.0.4",
     "@types/react-datepicker": "^4.8.0",
-    "@uidotdev/usehooks": "^2.1.0",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "framer-motion": "^7.6.2",

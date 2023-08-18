@@ -2159,7 +2159,6 @@ __metadata:
     "@types/react-datepicker": ^4.8.0
     "@types/react-dom": ^18.0.6
     "@types/uuid": ^8.3.4
-    "@uidotdev/usehooks": ^2.1.0
     autoprefixer: ^10.4.14
     class-variance-authority: ^0.7.0
     cmdk: ^0.2.0
@@ -7120,16 +7119,6 @@ __metadata:
     "@typescript-eslint/types": 6.4.0
     eslint-visitor-keys: ^3.4.1
   checksum: 42eb614b9c0a49b6929e093757d772fd27fe5dda9c75f4c7820d1710012c8257eea9bd4f1c4173e2265a8a9ad86cefc1a21869893e7304f3b29b94fa1f987554
-  languageName: node
-  linkType: hard
-
-"@uidotdev/usehooks@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@uidotdev/usehooks@npm:2.1.0"
-  peerDependencies:
-    react: ">=18.0.0"
-    react-dom: ">=18.0.0"
-  checksum: f5ee9c5028064910611610ab2d9b28a17f5d9f9c10da8f50730b9803d229b14d1cc0495966377dad33705f0ea1765438688485791708624b8133915fd2e0d403
   languageName: node
   linkType: hard
 

@@ -10,8 +10,8 @@ import { FormErrorMessage } from '../FormErrorMessage';
 import * as S from './styles';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
-import { useToggle } from '@uidotdev/usehooks';
 import { IconButton } from '../IconButton';
+import { useToggle } from '../../hooks/useToggle';
 
 export type SelectOption = {
   readonly label: string;
