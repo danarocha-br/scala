@@ -1,4 +1,4 @@
-import { Content, useEditor } from '@tiptap/react';
+import { Content, useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import Link from '@tiptap/extension-link';
@@ -13,12 +13,11 @@ import Link from '@tiptap/extension-link';
 
 import 'highlight.js/styles/tokyo-night-dark.css';
 
-import { CSS } from '../../styles';
 import * as S from './styles';
 import { ToolbarOptions } from './ToolbarOptions';
 
 export type EditorProps = {
-  css?: CSS;
+  className?: string;
   content?: Content;
   placeholder?: string;
   variant?: 'ghost' | 'form';
@@ -31,8 +30,18 @@ export type EditorProps = {
 // lowlight.registerLanguage('js', js);
 // lowlight.registerLanguage('ts', ts);
 
+/**
+ * Render the Editor component.
+ *
+ * @param {string} content - The content of the editor.
+ * @param {string} placeholder - The placeholder text for the editor.
+ * @param {string} variant - The variant of the editor.
+ * @param {boolean} onUpdate - A function to handle updates to the editor content.
+ * @param {boolean} editable - Whether the editor is editable or not.
+ * @return {JSX.Element} - The rendered Editor component.
+ */
 export const Editor = ({
-  css,
+  className,
   content,
   placeholder,
   variant = 'ghost',
@@ -68,10 +77,9 @@ export const Editor = ({
 
   return (
     <>
-      <S.EditorContainer
+      <EditorContent
+        className={S.editorContainer({ variant, className })}
         editor={editor}
-        variant={variant}
-        css={css}
         {...props}
       />
       {/*

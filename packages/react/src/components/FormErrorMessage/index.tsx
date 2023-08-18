@@ -1,4 +1,4 @@
-import { CSS } from '../../styles';
+import { Box } from '../Box';
 import { Text } from '../Text';
 
 import * as S from './styles';
@@ -6,20 +6,28 @@ import * as S from './styles';
 export type FormErrorMessageProps = {
   children: React.ReactNode;
   variant?: 'inside' | 'outside';
-  css?: CSS;
+  className?: string;
 };
 
+/**
+ * React component that renders a form error message.
+ *
+ * @param {string} className - The class name of the component.
+ * @param {string} variant - The variant of the component.
+ * @param {React.ReactNode} children - The children of the component.
+ * @return {React.ReactNode} The rendered form error message.
+ */
 export const FormErrorMessage: React.FC<FormErrorMessageProps> = ({
-  css,
+  className,
   variant,
   children,
   ...props
 }) => (
-  <S.Container role="alert" variant={variant} css={css} {...props}>
+  <Box role="alert" className={S.container({ variant, className })} {...props}>
     <Text size="sm" color="danger">
       {children}
     </Text>
-  </S.Container>
+  </Box>
 );
 
 FormErrorMessage.displayName = 'FormErrorMessage';

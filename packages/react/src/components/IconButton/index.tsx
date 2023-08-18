@@ -1,7 +1,8 @@
-import { CSS } from '../../styles';
+import { Button as AccessibleButton } from '@ariakit/react';
+import { VariantProps } from 'class-variance-authority';
+
 import { Icon } from '../Icon';
 import { iconPath } from '../Icon/iconPath';
-
 import * as S from './styles';
 
 export type IconButtonProps = {
@@ -12,8 +13,9 @@ export type IconButtonProps = {
   icon: keyof typeof iconPath;
   disabled?: boolean;
   loading?: boolean;
-  css?: CSS;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+  className?: string;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof S.button>;
 
 /**
  * Renders an icon button component.
@@ -33,17 +35,13 @@ export const IconButton = ({
   icon,
   disabled = false,
   loading = false,
-  css,
+  className,
   ...props
 }: IconButtonProps): JSX.Element => (
-  <S.Container
-    variant={variant}
-    size={size}
-    color={color}
+  <AccessibleButton
     disabled={disabled || loading}
-    loading={loading}
     aria-label={label}
-    css={css}
+    className={S.button({ size, color, variant, loading, className })}
     {...props}
   >
     <Icon
@@ -51,7 +49,7 @@ export const IconButton = ({
       label={label}
       size={size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'xs'}
     />
-  </S.Container>
+  </AccessibleButton>
 );
 
 IconButton.displayName = 'IconButton';

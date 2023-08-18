@@ -3,7 +3,8 @@ import ReactSkeleton, {
   SkeletonTheme,
   SkeletonProps as ReactSkeletonProps,
 } from 'react-loading-skeleton';
-import { theme } from '../../styles';
+//@ts-ignore
+import { theme } from '../../../tailwind.config.js';
 
 export type SkeletonProps = {
   children: React.ReactNode;
@@ -15,11 +16,16 @@ const SkeletonItem = (props: ReactSkeletonProps) => (
 );
 SkeletonItem.displayName = 'Skeleton.Item';
 
+/**
+ * Renders a SkeletonRoot component with the provided children and props.
+ *
+ * @param {SkeletonProps} children - The children elements to be rendered inside the SkeletonRoot component.
+ * @param {SkeletonProps} props - Additional props to be passed to the SkeletonRoot component.
+ * @return {JSX.Element} The rendered SkeletonRoot component.
+ */
 const SkeletonRoot = ({ children, ...props }: SkeletonProps): JSX.Element => (
   <SkeletonTheme
-    //@ts-ignore
-    baseColor={theme.colors['loading-color-background-default']}
-    //@ts-ignore
+    baseColor={theme.colors['loading-color-background']}
     highlightColor={theme.colors['loading-color-background-subdued']}
     borderRadius="999px"
     {...props}

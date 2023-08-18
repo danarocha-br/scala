@@ -14,7 +14,7 @@ export default {
     },
   },
   args: {
-    css: { minWidth: 400 },
+    className: 'min-w-[400px]',
     children: (
       <>
         <Command.Input placeholder="Type a command or search..." />
@@ -43,12 +43,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack
-          align="center"
-          justify="center"
-          fullWidth
-          css={{ h: '100vh', px: '$spacing-4' }}
-        >
+        <Stack align="center" justify="center" fullWidth className="px-4">
           {Story()}
         </Stack>
       );

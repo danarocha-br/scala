@@ -1,113 +1,78 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Header = styled('header', {
-  fontSize: '$font-size-md',
-  fontWeight: '$font-weight-medium',
-  borderTopRightRadius: '$radii-md',
+export const header = cva(
+  [
+    'font-sans',
+    'text-md',
+    'rounded-tr-md',
+    'flex',
+    'items-center',
+    'gap-2',
+    'w-full',
+    'h-5',
 
-  d: 'flex',
-  alignItems: 'center',
-  gap: '$spacing-2',
-  w: '100%',
-  h: '$spacing-4',
-  py: '$spacing-1',
-  position: 'relative',
+    'relative',
 
-  [`.dark-theme &`]: {
-    color: '$text-color-on-light',
-  },
+    '[data-mode=dark]:text-text-color-on-light',
+  ],
+  {
+    variants: {
+      variant: {
+        info: [
+          'text-feedback-color-background-info-enabled',
+          'bg-feedback-color-background-info-disabled',
 
-  '& h5': {
-    all: 'unset',
-    px: '$spacing-4',
-  },
+          '[data-mode=dark]:bg-[#405fed1c]',
+          '[data-mode=dark]:text-text-color-on-dark',
+        ],
+        success: [
+          'text-feedback-color-background-success-enabled',
+          'bg-feedback-color-background-success-disabled/60',
 
-  variants: {
-    variant: {
-      info: {
-        color: '$interactive-color-background-enabled',
-        background: '#d2e7feb3',
-
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          background: '#405fed1c',
-        },
-      },
-      success: {
-        color: '$feedback-color-background-success-default',
-        background: '$color-forest-100',
-
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          bg: '#37b1351a',
-        },
-      },
-      danger: {
-        color: '$feedback-color-background-danger-default',
-        bg: '$color-froly-100',
-
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          bg: '#f1786f17',
-        },
-      },
-      warning: {
-        color: '$feedback-color-background-warning-default',
-        bg: '#fddeba60',
-
-        [`.dark-theme &`]: {
-          color: '$text-color-on-dark',
-          bg: '#fcc88d1f',
-        },
+          '[data-mode=dark]:text-text-color-on-dark',
+          '[data-mode=dark]:bg-[#37b1351a]',
+        ],
+        danger: [
+          'text-feedback-color-background-danger-enabled',
+          'bg-feedback-color-background-danger-disabled/60',
+          '[data-mode=dark]:text-text-color-on-dark',
+          '[data-mode=dark]:bg-[#f1786f17]',
+        ],
+        warning: [
+          'text-feedback-color-background-warning-enabled',
+          'bg-feedback-color-background-warning-disabled',
+          '[data-mode=dark]:text-text-color-on-dark',
+          '[data-mode=dark]:bg-[#fcc88d1f]',
+        ],
       },
     },
-  },
-  defaultVariants: {
-    variant: 'info',
-  },
-});
 
-export const Container = styled('div', {
-  fontFamily: '$font-family-sans',
-  w: '100%',
-  d: 'flex',
+    defaultVariants: {
+      variant: 'info',
+    },
+  }
+);
 
-  borderRadius: '$radii-md',
-  border: '1px solid',
-  borderColor: '$action-color-border-transparent-enabled !important',
+export const container = cva([
+  'font-sans',
+  'text-sm',
+  'w-full',
+  'flex',
+  'rounded-md',
+  'border',
+  'border-action-color-border-transparent-enabled',
 
-  fontSize: '$font-size-sm !important',
+  '[&_.callout__content]:px-4',
+  '[&_.callout__content]:pb-2',
+]);
 
-  '& .callout__content': {
-    px: '$spacing-4',
-    pb: '$spacing-2',
-  },
-});
-
-export const Marker = styled('div', {
-  w: '$spacing-1',
-  h: 'auto',
-  borderTopLeftRadius: '$radii-md',
-  borderBottomLeftRadius: '$radii-md',
-
+export const marker = cva(['w-1', 'h-auto', 'rounded-tl-md', 'rounded-bl-md'], {
   variants: {
     variant: {
-      info: {
-        background: '$color-royal-300',
-
-        [`.dark-theme &`]: {
-          background: '$color-royal-500',
-        },
-      },
-      success: {
-        bg: '$feedback-color-background-success-default',
-      },
-      danger: {
-        bg: '$feedback-color-background-danger-default',
-      },
-      warning: {
-        bg: '$feedback-color-background-warning-default',
-      },
+      info: ['bg-feedback-color-background-info-enabled'],
+      success: ['bg-feedback-color-background-success-enabled'],
+      danger: ['bg-feedback-color-background-danger-enabled'],
+      warning: ['bg-feedback-color-background-warning-enabled'],
     },
   },
 

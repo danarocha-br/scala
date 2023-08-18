@@ -1,45 +1,31 @@
-import { styled, keyframes } from '../../styles';
-import { Content } from '@radix-ui/react-popover';
+import { cva } from 'class-variance-authority';
 
-const slideUpAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(6px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
+export const ContainerContent = cva(
+  [
+    'text-text-color-body',
+    'font-sans',
+    'text-sm',
+    'min-w-[120px]',
+    'rounded-sm',
+    'outline-none',
+    'transition-all',
+    'duration-500',
+    'ease-[cubic-bezier(0.16, 1, 0.3, 1)]',
+    'will-chage-[transform, opacity]',
 
-const slideRightAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(-6px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
-});
+    'data-[state=open]:data-[side=top]:animate-[slide-up-and-fade]',
+    'data-[state=open]:data-[side=right]:animate-[slide-right-and-fade]',
+    'data-[state=open]:data-[side=bottom]:animate-[slide-bottom-and-fade]',
+    'data-[state=open]:data-[side=left]:animate-[slide-left-and-fade]',
+    'z-max',
+  ],
+  {
+    variants: {
+      unstyled: {
+        true: [],
 
-const slideDownAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-6px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideLeftAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(6px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
-});
-
-export const ContainerContent = styled(Content, {
-  color: '$text-color-body',
-  fontFamily: '$font-family-sans',
-  fontSize: '$font-size-sm',
-  backgroundColor: '$surface-color-background-default',
-  p: '$spacing-2',
-  minWidth: 120,
-  borderRadius: '$radii-sm',
-  boxShadow: '$elevation-high',
-  outline: 'none',
-
-  animationDuration: '500ms',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  willChange: 'transform, opacity',
-  '&[data-state="open"]': {
-    '&[data-side="top"]': { animationName: slideDownAndFade },
-    '&[data-side="right"]': { animationName: slideLeftAndFade },
-    '&[data-side="bottom"]': { animationName: slideUpAndFade },
-    '&[data-side="left"]': { animationName: slideRightAndFade },
-  },
-  zIndex: '$max',
-});
+        false: ['shadow-high', 'bg-surface-color-text-default', 'p-2'],
+      },
+    },
+  }
+);

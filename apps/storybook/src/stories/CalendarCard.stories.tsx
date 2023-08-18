@@ -39,24 +39,18 @@ export default {
       {
         id: '1',
         title: 'Onboarding',
-        color: 'pink',
+        color: 'bg-[pink]',
       },
       {
-        id: '1',
+        id: '2',
         title: 'Tech',
-        color: 'green',
+        color: 'bg-[green]',
       },
     ],
     editMenuItems: (
       <>
-        <Dropdown.Item
-          css={{
-            '& svg': {
-              ml: -4,
-            },
-          }}
-        >
-          <Icon name="edit" label="edit" size="sm" css={{ mr: '$spacing-2' }} />
+        <Dropdown.Item className="[&_svg]:-ml-1">
+          <Icon name="edit" label="edit" size="sm" className="mr-2" />
           Mark as draft
         </Dropdown.Item>
         <Dropdown.Item
@@ -66,12 +60,7 @@ export default {
             },
           }}
         >
-          <Icon
-            name="copy"
-            label="duplicate"
-            size="sm"
-            css={{ mr: '$spacing-2' }}
-          />
+          <Icon name="copy" label="duplicate" size="sm" className="mr-2" />
           Duplicate
         </Dropdown.Item>
         <Dropdown.Item
@@ -81,7 +70,7 @@ export default {
             },
           }}
         >
-          <Icon name="move" label="move" size="sm" css={{ mr: '$spacing-2' }} />
+          <Icon name="move" label="move" size="sm" className="mr-2" />
           Move
         </Dropdown.Item>
         <Dropdown.Item
@@ -91,12 +80,7 @@ export default {
             },
           }}
         >
-          <Icon
-            name="trash"
-            label="delete"
-            size="sm"
-            css={{ mr: '$spacing-2' }}
-          />
+          <Icon name="trash" label="delete" size="sm" className="mr-2" />
           Delete
         </Dropdown.Item>
       </>
@@ -110,12 +94,7 @@ export default {
           align="center"
           justify="center"
           fullWidth
-          css={{
-            h: '100vh',
-            px: '$spacing-4',
-            w: '50vw',
-            background: '$background-default',
-          }}
+          className="h-screen px-4 w-[50vw] bg-background-color-default"
         >
           {Story()}
         </Stack>

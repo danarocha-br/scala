@@ -1,7 +1,6 @@
 import React from 'react';
-import { CSS } from '../../styles';
-import { Icon } from '../Icon';
 
+import { Icon } from '../Icon';
 import * as S from './styles';
 
 export type StepperItemProps = {
@@ -16,7 +15,7 @@ export type StepperProps = {
   backHref: string;
   backLabel?: string;
   items: StepperItemProps[];
-  css?: CSS;
+  className?: string;
 };
 
 export const Stepper = ({
@@ -30,15 +29,8 @@ export const Stepper = ({
 
   return (
     <S.Container
-      css={{
-        '&:hover': {
-          '& li:not(:last-child)': {
-            '&::before': {
-              h: `calc(${items.length} * 20px)`,
-            },
-          },
-        },
-      }}
+    className={`hover:[&_li:not(:last-child)::before]h-[${`calc(${items.length} * 20px)`}]`}
+
       {...props}
     >
       <Component>
@@ -48,7 +40,7 @@ export const Stepper = ({
               name="arrowLeft"
               color="on-dark"
               label="arrow"
-              css={{ position: 'relative', left: '$spacing-1' }}
+              className='relative left-1'
             />
           </div>
 

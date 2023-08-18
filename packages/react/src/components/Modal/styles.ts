@@ -1,127 +1,77 @@
-import { styled, keyframes } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-import {
-  Root,
-  Trigger,
-  Overlay,
-  Content,
-  Close,
-  Title,
-  Description,
-} from '@radix-ui/react-dialog';
+export const modalOverlay = cva([
+  'bg-color-neutral-800',
+  'fixed',
+  'inset-0',
+  'left-0',
+  'z-max',
+  'motion-safe:animate-[animate-overlay_100ms_cubic-bezier(0.16, 1, 0.3, 1)_forwards]',
+]);
 
-const overlayShow = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 0.6 },
-});
+export const modalContent = cva([
+  'font-sans',
+  'bg-surface-color-background-default',
+  'roundex-md',
+  'shadow-high',
+  'fixed',
+  'top-1/2',
+  'left-1/2',
+  'translate-[-50%, -50%]',
+  'w-full',
+  'h-full',
+  'z-max',
 
-const contentShow = keyframes({
-  '0%': {
-    opacity: 0,
-    transformOrigin: 'bottom left',
-    transform: 'translate(-50%, -48%) scale(.96)',
-  },
+  'focus:outline-none',
 
-  '100%': {
-    opacity: 1,
-    transform: 'translate(-50%, -50%) scale(1)',
-  },
-});
+  'motion-safe:animate-[animate-show-content_150ms_cubic-bezier(0.390, 0.575, 0.565, 1.000)_both]',
+  'delay-[10ms]',
 
-export const ModalOverlay = styled(Overlay, {
-  backgroundColor: '$color-neutral-800',
-  position: 'fixed',
-  inset: 0,
-  left: 0,
-  zIndex: '$max',
+  'md:w-[85vw]',
+  'md:h-[80vh]',
+  'xl:w-[60vw]',
+  'xl:h-[80vh]',
+]);
 
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 100ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
-  },
-});
-
-export const ModalContent = styled(Content, {
-  fontFamily: '$font-family-sans',
-  backgroundColor: '$surface-color-background-default',
-  borderRadius: '$radii-md',
-  boxShadow: '$elevation-high',
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '100%',
-  height: '100%',
-  zIndex: '$max',
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${contentShow} 150ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
-    animationDelay: '10ms',
-  },
-  '&:focus': { outline: 'none' },
-
-  '@bp-md': {
-    width: '85vw',
-    height: '80vh',
-  },
-
-  '@bp-xl': {
-    width: '60vw',
-    height: '80vh',
-  },
-});
-
-export const ModalTitle = styled(Title, {
-  margin: 0,
-  fontWeight: '$font-weight-medium',
-  color: '$text-color-body-lighter',
-  fontSize: '$font-size-md',
-  pt: '$spacing-2',
-
-  variants: {
-    variant: {
-      danger: {
-        color: '$feedback-danger-color-background-default',
+export const modalTitle = cva(
+  ['text-text-color-body-lighter', 'font-medium', 'text-md', 'm-0', 'pt-2'],
+  {
+    variants: {
+      variant: {
+        danger: ['text-feedback-danger-color-background-default'],
+        transactional: [],
+        passive: [],
       },
-      transactional: {},
-      passive: {},
-    },
-    hasCustomHeader: {
-      true: {
-        height: '$spacing-6',
-        pt: '0',
+
+      hasCustomHeader: {
+        true: ['h-6', 'pt-0'],
       },
     },
-  },
 
-  defaultVariants: {
-    variant: 'transactional',
-  },
-});
+    defaultVariants: {
+      variant: 'transactional',
+      hasCustomHeader: false,
+    },
+  }
+);
 
-export const ModalDescription = styled(Description, {
-  margin: '10px 0 20px',
-  color: '$text-color-caption',
-  fontSize: 15,
-  lineHeight: 1.5,
-  px: '$spacing-3',
-});
+export const modalDescription = cva([
+  'text-text-color-caption',
+  'text-[15px]',
+  'leading-[1.5]',
+  'm-[10px 0 20px]',
+  'px-3',
+]);
 
-export const ModalClose = styled(Close, {
-  position: 'relative',
-  right: -8,
-});
+export const modalClose = cva(['relative', 'right-[-8px]']);
 
-export const ModalFooter = styled('footer', {
-  d: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
-  gap: '$spacing-3',
-  px: '$spacing-2',
-  py: '$spacing-2',
-  position: 'fixed',
-  bottom: 0,
-  right: '$spacing-1',
-});
-
-export const Modal = styled(Root, {});
-export const ModalTrigger = Trigger;
+export const modalFooter = cva([
+  'flex',
+  'justify-end',
+  'items-center',
+  'gap-3',
+  'px-2',
+  'py-2',
+  'bottom-0',
+  'right-1',
+]);

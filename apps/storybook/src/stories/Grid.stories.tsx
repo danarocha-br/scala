@@ -3,7 +3,10 @@ import { Grid, GridProps, Text } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 
 const CHILDREN = Array.from({ length: 5 }).map((_, i) => (
-  <Text key={i} css={{ bg: '$froly200', py: '$2', px: '$6' }}>
+  <Text
+    key={i}
+    className="bg-feedback-color-background-danger-disabled py-2 px-6"
+  >
     I am a row {1 + i}
   </Text>
 ));

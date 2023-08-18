@@ -1,8 +1,9 @@
-import { CustomButton, EditorMenu } from '../styles';
+import { BubbleMenu, Editor } from '@tiptap/react';
+
 import { Box } from '../../Box';
-import { Editor } from '@tiptap/react';
 import { Icon } from '../../Icon';
 import { LinkPopover } from './LinkPopover';
+import { editorMenu, customButton } from '../styles';
 
 type ToolbarOptionsProps = {
   editor: Editor;
@@ -16,7 +17,7 @@ type ToolbarOptionsProps = {
  */
 export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
   return (
-    <EditorMenu editor={editor}>
+    <BubbleMenu className={editorMenu()} editor={editor}>
       {renderButton(
         'H1',
         () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
@@ -33,13 +34,7 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         editor.isActive('heading', { level: 3 })
       )}
 
-      <Box
-        css={{
-          background: '$action-color-border-transparent-enabled',
-          width: '1px',
-          height: '$spacing-4',
-        }}
-      />
+      <Box className="h-4 w-[1px] bg-action-color-border-transparent-enabled" />
 
       {renderButton(
         <Icon name="text-bold" label="Bold" size="xs" />,
@@ -68,7 +63,7 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
       )}
 
       <LinkPopover editor={editor} />
-    </EditorMenu>
+    </BubbleMenu>
   );
 };
 
@@ -79,8 +74,8 @@ const renderButton = (
   isActive: boolean
 ) => {
   return (
-    <CustomButton onClick={onClick} isActive={isActive}>
+    <Box as="button" className={customButton({ isActive })} onClick={onClick}>
       {label}
-    </CustomButton>
+    </Box>
   );
 };

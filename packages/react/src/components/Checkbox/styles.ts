@@ -1,280 +1,173 @@
-import { styled } from '../../styles';
-import {
-  Root as CheckboxPrimitiveRoot,
-  Indicator as CheckboxPrimitiveIndicator,
-} from '@radix-ui/react-checkbox';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('div', {
-  d: 'flex',
-  flexDirection: 'column',
-  gap: '$spacing-2',
-});
+export const container = cva(['flex', 'flex-col', 'gap-2']);
 
-export const Indicator = styled(CheckboxPrimitiveIndicator, { all: 'unset' });
+export const root = cva(
+  [
+    'group',
+    'flex',
+    'items-center',
+    'gap-2',
+    'relative',
+    'outline-none',
+    'data-[disabled=true]:cursor-not-allowed',
+    'data-[disabled=true]:opacity-60',
+  ],
+  {
+    variants: {
+      variant: {
+        regular: [],
+        task: ['transition-all', 'translate-0'],
+      },
 
-export const CheckboxWrapper = styled('div', {
-  mr: '$spacing-2',
-  width: '20px',
-  height: '20px',
-
-  border: '2px solid',
-  borderColor: '$form-color-border-default',
-  borderRadius: '$radii-sm',
-
-  '&:focus': {
-    outline: '2px solid',
-    outlineOffset: '2px',
-    outlineColor: 'red',
-  },
-
-  variants: {
-    hasError: {
-      true: {
-        borderColor: '$form-color-border-error',
+      hasError: {
+        true: [],
       },
     },
-  },
+    defaultVariants: {
+      variant: 'regular',
+      hasError: false,
+    },
+  }
+);
 
-  defaultVariants: {
-    hasError: false,
-  },
-});
+export const checkboxWrapper = cva(
+  [
+    'mr-2',
+    'w-[20px]',
+    'h-[20px]',
+    'border-2',
+    'border-form-color-border-default',
+    'rounded-sm',
 
-export const CheckboxWrapperTask = styled('div', {
-  position: 'relative',
-  d: 'inline-block',
-  w: '20px',
-  h: '20px',
-  mr: '$spacing-2',
-
-  border: '2px solid',
-  borderColor: '$form-color-border-default',
-  borderRadius: '$radii-sm',
-
-  '&::before': {
-    content: '',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    margin: '-14px 0px 0px -12px',
-    w: '20px',
-    h: '20px',
-    borderRadius: '$radii-circle',
-    bg: '$feedback-color-background-success-default',
-    transform: 'scale(0)',
-  },
-
-  '&::after': {
-    content: '',
-    position: 'absolute',
-    top: '7px',
-    left: '4px',
-    width: '3px',
-    height: '2px',
-    borderRadius: '3px',
-    boxShadow:
-      '0 -18px 0 $colors$feedback-color-background-success-default, 12px -12px 0 $colors$feedback-color-background-success-default, 18px 0 0 $colors$feedback-color-background-success-default, 12px 12px 0 $colors$feedback-color-background-success-default, 0 18px 0 $colors$feedback-color-background-success-default, -12px 12px 0 $colors$feedback-color-background-success-default, -18px 0 0 $colors$feedback-color-background-success-default, -12px -12px 0 $colors$feedback-color-background-success-default',
-    transform: 'scale(0)',
-  },
-});
-
-export const Root = styled(CheckboxPrimitiveRoot, {
-  all: 'unset',
-
-  d: 'flex',
-  alignItems: 'center',
-  gap: '$spacing-2',
-  position: 'relative',
-
-  '&[data-disabled]': {
-    cursor: 'not-allowed',
-    opacity: 0.6,
-  },
-
-  variants: {
-    variant: {
-      regular: {
-        '& > label': {
-          pointerEvents: 'none',
-          verticalAlign: 'middle',
-        },
-
-        '&:hover:not([disabled])': {
-          [`& ${CheckboxWrapper}`]: {
-            '& svg': {
-              '& path': {
-                strokeDashoffset: 0,
-              },
-            },
-          },
-        },
-
-        '&[data-disabled]': {
-          [`& ${CheckboxWrapper}`]: {
-            borderColor: '$form-color-border-default',
-            '& svg': {
-              '& path': {
-                fill: '$form-color-border-default',
-              },
-            },
-          },
-        },
-
-        '&[data-state="checked"]': {
-          [`& ${CheckboxWrapper}`]: {
-            borderColor: '$interactive-color-border-enabled',
-
-            '& svg': {
-              '& path': {
-                fill: '$interactive-color-border-enabled',
-              },
-              '& polyline': {
-                strokeDashoffset: 0,
-              },
-            },
-          },
-        },
+    'focus:outline-2',
+    'focus:outline-offset-2',
+    'focus:outline-action-color-border-transparent-pressed',
+    'group-data-[disabled]:cursor-not-allowed',
+  ],
+  {
+    variants: {
+      variant: {
+        regular: [
+          'group-data-[disabled]:border-form-color-border-default',
+          'group-data-[state=checked]:border-interactive-color-border-enabled',
+        ],
+        task: ['transition-all', '[transform:translateZ(0)]'],
       },
-
-      task: {
-        transition: '$base',
-        transform: 'translateZ(0)',
-
-        '& > label': {
-          position: 'relative',
-          transition: 'color .3s ease',
-
-          '&::after': {
-            content: '',
-            position: 'absolute',
-            top: '54%',
-            left: '0',
-            width: '0',
-            height: '1px',
-            bg: '$text-color-body-lighter',
-          },
-        },
-
-        '&:hover:not([disabled]):not([data-state="checked"])': {
-          [`& ${CheckboxWrapperTask}`]: {
-            borderColor: '$feedback-color-background-success-default',
-          },
-        },
-
-        '&[data-state="checked"]': {
-          [`& ${CheckboxWrapperTask}`]: {
-            borderColor: 'transparent',
-
-            '& svg': {
-              transform: 'scale(1.1)',
-              transition: 'all .4s ease',
-              transitionDelay: '.1s',
-            },
-
-            '&::before': {
-              transform: 'scale(1.1)',
-              opacity: 0,
-              transition: 'all .3s ease',
-            },
-
-            '&::after': {
-              transform: 'scale(1.5)',
-              opacity: 0,
-              transition: 'all .6s ease',
-            },
-          },
-          '& label': {
-            color: '$text-color-body-lighter',
-
-            '&::after': {
-              w: '100%',
-              transition: 'all .4s ease',
-            },
-          },
-        },
+      hasError: {
+        true: ['border-form-color-border-error'],
       },
     },
 
-    hasError: {
-      true: {},
+    defaultVariants: {
+      hasError: false,
     },
-  },
+  }
+);
 
-  defaultVariants: {
-    variant: 'regular',
-    hasError: false,
-  },
-});
+export const checkboxWrapperTask = cva([
+  'relative',
+  'inline-block',
+  'w-[20px]',
+  'h-[20px]',
+  'mr-2',
+  'border-2',
+  'border-form-color-border-default',
+  'rounded-sm',
 
-export const Svg = styled('svg', {
-  position: 'absolute',
-  top: '4.2px',
-  left: '-0.1px',
+  'before:content-[""]',
+  'before:bg-feedback-color-background-success-default',
+  'before:absolute',
+  'before:left-1/2',
+  'before:top-1/2',
+  'before:m-[-14px 0px 0px -12px]',
+  'before:w-[20px]',
+  'before:h-[20px]',
+  'before:rounded-circle',
+  'before:scale-0',
 
-  '& path': {
-    fill: 'none',
-    stroke: '$interactive-color-background-enabled',
-    strokeWidth: 2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    strokeDasharray: '71px',
-    strokeDashoffset: '71px',
-    transition: 'all .6s ease',
-  },
+  'after:content-[""]',
+  'after:absolute',
+  'after:left-1',
+  'after:top-[7px]',
+  'after:w-[3px]',
+  'after:h-[2px]',
+  'after:rounded-[3px]',
+  'after:[box-shadow:0 0 -18px 0 red, 12px -12px 0 red, 18px 0 0 red, 12px 12px 0 red, 0 18px 0 red, -12px 12px 0 red, -18px 0 0 red, -12px -12px 0 red]',
+  'after:scale-0',
 
-  '& polyline': {
-    fill: 'none',
-    stroke: '#FFF',
-    strokeWidth: 2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    strokeDasharray: '18px',
-    strokeDashoffset: '18px',
-    transition: 'all, .3s ease',
-    transform: 'scale(.85) translateX(2px) translateY(1px)',
-    ml: '$spacing-1',
-  },
-});
+  'group-hover:border-feedback-color-background-success-enabled',
+  'group-data-[state=checked]:border-transparent',
 
-export const SvgTask = styled('svg', {
-  position: 'relative',
-  transform: 'scale(0)',
-  fill: 'none',
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
+  'group-data-[state=checked]:before:scale-[1.1]',
+  'group-data-[state=checked]:before:opacity-0',
+  'group-data-[state=checked]:before:transition-all',
 
-  '& polyline': {
-    strokeWidth: 2,
-    stroke: '$feedback-color-background-success-default',
-  },
-});
+  'group-data-[state=checked]:after:scale-[1.5]',
+  'group-data-[state=checked]:after:opacity-0',
+  'group-data-[state=checked]:transition-all',
+  'group-data-[state=checked]:duration-[0.6s]',
+]);
 
-export const Fieldset = styled('fieldset', {
-  all: 'unset',
-  d: 'flex',
-  flexDirection: 'column',
-  gap: '$spacing-3',
-
-  outline: 'none',
-  border: 'none',
-  p: '0',
-  '&:focus-visible': {
-    '&[aria-activedescendant]': {
-      boxShadow: '0 0 0 3px $colors$form-color-background-disabled',
-      borderRadius: '$radii-md',
-    },
-  },
-
+export const label = cva([], {
   variants: {
     variant: {
-      regular: {},
-      task: {
-        w: '100%',
-      },
+      regular: ['pointer-events-none', 'align-middle'],
+      task: [
+        'text-text-color-body-lighter',
+        'relative',
+        'transition-color',
+        'duration-[.3s]',
+        'after:content-[""]',
+        'after:bg-text-color-body-lighter',
+        'after:absolute',
+        'after:top-[54%]',
+        'after:left-0',
+        'after:w-0',
+        'after:h-[1px]',
+        'after:transition-all',
+
+        'after:group-data-[state=checked]:text-text-color-body-lighter',
+        'after:group-data-[state=checked]:w-full',
+        'after:group-data-[state=checked]:transition-all',
+      ],
     },
   },
-
   defaultVariants: {
     variant: 'regular',
   },
 });
+
+export const svg = cva([
+  'absolute',
+  'top-[4.2px]',
+  'left-[-0.1px]',
+  'transition-all',
+  'duration-[.6s]',
+  'ease',
+]);
+
+export const svgTask = cva([
+  'relative',
+  'scale-0',
+  'fill-none',
+
+  'group-data-[state=checked]:scale(1.1)',
+  'group-data-[state=checked]:transition-all',
+  'group-data-[state=checked]:delay-[.1s]',
+]);
+
+export const fieldset = cva(
+  ['flex', 'flex-col', 'gap-3', 'outline-none', 'border-none', 'p-0'],
+  {
+    variants: {
+      variant: {
+        regular: [],
+        task: ['w-full'],
+      },
+      defaultVariants: {
+        variant: 'regular',
+      },
+    },
+  }
+);

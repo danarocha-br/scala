@@ -83,7 +83,7 @@ export default {
           gap="8"
           align="center"
           justify="center"
-          css={{ h: '100vh', px: 200 }}
+          className="h-screen px-[200px]"
         >
           {Story()}
         </Stack>
@@ -94,7 +94,12 @@ export default {
 
 export const Sizes: Story<AvatarProps> = (args) => (
   <>
-    <Avatar {...args} size="sm" bgColor="pink" initialsColor="black" />
+    <Avatar
+      {...args}
+      size="sm"
+      bgColor="bg-royal-400"
+      initialsColor="text-white"
+    />
     <Avatar {...args} />
     <Avatar {...args} size="lg" />
   </>

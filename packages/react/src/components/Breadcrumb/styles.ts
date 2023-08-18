@@ -1,68 +1,59 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('li', {
-  fontFamily: '$font-family-sans',
-  fontSize: '$font-size-md',
-  fontWeight: '$font-weight-regular',
-  listStyle: 'none',
-  cursor: 'pointer',
-  transition: '$base',
-  display: 'inline-flex',
+export const bredcrumItem = cva(
+  [
+    'group',
+    'font-sans',
+    'text-md',
+    'list-none',
+    'cursor-pointer',
+    'transition-all',
+    'inline-flex',
+    'items-center',
+    'gap-1',
 
-  '& button, & a': {
-    all: 'unset',
-  },
-
-  '& a': {
-    textDecoration: 'none',
-  },
-
-  '&:hover': {
-    '& .breadcrumb__item--icon': {
-      opacity: 1,
-      transform: 'translateX(4px)',
-    },
-  },
-
-  '& a, & button': {
-    color: '$text-color-caption',
-    borderRadius: '$radii-sm',
-    padding: '$spacing-1 $spacing-2',
-    whiteSpace: 'nowrap',
-
-    '&:hover': {
-      backgroundColor: '$action-color-background-transparent-hover',
-    },
-
-    '&:focus': {
-      outline: '2px solid',
-      outlineOffset: '2px',
-      outlineColor: '$action-color-border-transparent-pressed !important',
-    },
-  },
-
-  '& .breadcrumb__item--icon': {
-    opacity: 0,
-    transform: 'translateX(-2px)',
-    transition: 'opacity, transform 0.3s ease-in-out',
-  },
-
-  '&:not(:last-child):after': {
-    content: '/',
-    color: '$text-color-caption',
-    opacity: 0.5,
-    mt: '$spacing-1',
-    ml: '$spacing-2',
-    mr: '$spacing-1',
-  },
-
-  variants: {
-    isActive: {
-      true: {
-        '& a, & button': {
-          color: '$text-color-body',
-        },
+    '[&:not(:last-child):after]:content-["/"]',
+    '[&:not(:last-child):after]:text-text-color-caption',
+    '[&:not(:last-child):after]:text-text-color-caption',
+    '[&:not(:last-child):after]:opacity-50',
+    '[&:not(:last-child):after]:ml-2',
+    '[&:not(:last-child):after]:mr-1',
+  ],
+  {
+    variants: {
+      isActive: {
+        true: ['[&_a]:text-text-color-body', '[&_button]:text-text-color-body'],
+        false: [
+          '[&_a]:text-text-color-caption',
+          '[&_button]:text-text-color-caption',
+        ],
       },
     },
-  },
-});
+  }
+);
+
+export const button = cva([
+  'outline-none',
+  'rounded-sm',
+  'py-1',
+  'px-2',
+  'whitespace-nowrap',
+  'hover:bg-action-color-background-transparent-hover/70',
+  'focus:outline-2',
+  'focus:outline-offset-2',
+  'focus:outline-action-color-border-transparent-pressed/70',
+  'transition-colors'
+]);
+
+export const link = cva([
+  'outline-none',
+  'no-underline',
+  'whitespace-nowrap',
+  'py-1',
+  'px-2',
+  'hover:bg-action-color-background-transparent-hover/70',
+  'focus:outline-2',
+  'focus:outline-offset-2',
+  'focus:outline-action-color-border-transparent-pressed/70',
+  'transition-colors'
+]);

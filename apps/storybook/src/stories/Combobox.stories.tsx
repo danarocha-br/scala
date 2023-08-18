@@ -30,7 +30,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 600 }}>
+        <Stack align="center" justify="center" className="h-screen w-[600px]">
           {Story()}
         </Stack>
       );
@@ -52,7 +52,7 @@ export const Default: Story<ComboboxProps> = () => {
 
   return (
     <Combobox
-      css={{ width: '180px' }}
+      className="w-[180px]"
       trigger={<Selectable.Button label="Select a language" icon="globe" />}
       emptyMessage="No language found"
       inputPlaceholder="Select a language"
@@ -65,22 +65,20 @@ export const Default: Story<ComboboxProps> = () => {
             onSelect={() => {
               setValue(language.value);
             }}
-            css={{
-              backgroundColor:
-                language.value === value
-                  ? '$interactive-color-background-disabled'
-                  : 'transparent',
-            }}
+            className={`${
+              language.value === value
+                ? 'bg-interactive-color-background-disabled'
+                : 'bg-transparent'
+            }`}
           >
             {language.label}
             <Icon
               name="checkcircle"
               label="selected"
               color="success"
-              css={{
-                opacity: language.value === value ? 1 : 0,
-                ml: 'auto',
-              }}
+              className={`${
+                language.value === value ? 'opacity-100' : 'opacity-0'
+              } ml-auto`}
             />
           </Command.Item>
         ))}

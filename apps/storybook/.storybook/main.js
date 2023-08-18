@@ -1,10 +1,16 @@
 const { mergeConfig } = require('vite');
 
+const getStories = () => {
+  return process.argv[4] === '-stories'
+    ? [`../${process.argv[5]}`]
+    : [
+        '../src/pages/**/*.stories.@(js|mdx|ts|tsx)',
+        '../src/stories/**/*.stories.@(tsx)',
+      ];
+};
+
 module.exports = {
-  stories: [
-    '../src/pages/**/*.stories.mdx',
-    '../src/stories/**/*.stories.@(tsx)',
-  ],
+  stories: () => getStories(),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -12,7 +18,7 @@ module.exports = {
     '@storybook/addon-a11y',
     'storybook-addon-designs',
     '@geometricpanda/storybook-addon-badges',
-    'multiple-themes-stitches',
+    // "storybook-addon-data-theme-switcher",
   ],
   framework: '@storybook/react',
   core: {

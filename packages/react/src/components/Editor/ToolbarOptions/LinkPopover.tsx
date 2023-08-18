@@ -1,16 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tiptap/react';
-import { Popover, PopoverTrigger } from '@radix-ui/react-popover';
+import {
+  Popover,
+  PopoverTrigger,
+  Content as PopoverContent,
+  Arrow as PopoverArrow,
+} from '@radix-ui/react-popover';
 
 import { Icon } from '../../Icon';
 import { Stack } from '../../Stack';
 import { IconButton } from '../../IconButton';
 import { Box } from '../../Box';
 import {
-  CustomButton,
-  CustomPopoverContent,
-  CustomInput,
-  CustomPopoverArrow,
+  customButton,
+  customInput,
+  popoverArrow,
+  popoverContent,
 } from '../styles';
 import { CopyButton } from '../../CopyButton';
 
@@ -78,14 +83,18 @@ export const LinkPopover: React.FC<CustomLinkPromptProps> = ({ editor }) => {
     <>
       <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
         <PopoverTrigger asChild>
-          <CustomButton isActive={hasLink}>
+          <Box
+            as="button"
+            className={customButton({ isActive: hasLink ? true : false })}
+          >
             <Icon name="link" label="link" size="xs" />
-          </CustomButton>
+          </Box>
         </PopoverTrigger>
-        <CustomPopoverContent sideOffset={5} side="top">
+        <PopoverContent className={popoverContent()} sideOffset={5} side="top">
           <Stack align="center">
             <Icon name="link" label="link" size="xs" />
-            <CustomInput
+            <Box
+              as="input"
               ref={inputRef}
               id="linkInput"
               type="text"
@@ -95,18 +104,12 @@ export const LinkPopover: React.FC<CustomLinkPromptProps> = ({ editor }) => {
               }}
               placeholder="URL"
               onKeyPress={(e) => e.key === 'Enter' && applyLink()}
+              className={customInput()}
             />
 
             {selectionHasLink() && (
               <>
-                <Box
-                  css={{
-                    background: '$action-color-border-transparent-enabled',
-                    width: '1px',
-                    height: '$spacing-4',
-                    mr: '$spacing-2',
-                  }}
-                />
+                <Box className="mr-2 h-4 w-[1px] bg-action-color-border-transparent-enabled" />
                 <CopyButton content={url} />
                 <IconButton
                   label="Remove link"
@@ -118,8 +121,8 @@ export const LinkPopover: React.FC<CustomLinkPromptProps> = ({ editor }) => {
             )}
           </Stack>
 
-          <CustomPopoverArrow />
-        </CustomPopoverContent>
+          <PopoverArrow className={popoverArrow()} />
+        </PopoverContent>
       </Popover>
     </>
   );

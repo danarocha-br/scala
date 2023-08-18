@@ -1,25 +1,32 @@
-import { CSS } from '../../styles';
 
+import { VariantProps } from 'class-variance-authority';
+
+import { Box } from '../Box';
 import * as S from './styles';
 
 export type CardProps = {
-  as?: React.ElementType<unknown> | any;
-  css?: CSS;
+  className?: string;
   children: React.ReactNode;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onClick?: () => void;
-};
+} & VariantProps<typeof S.card>;
 
+/**
+ * Renders a card component with the provided children and additional props.
+ *
+ * @param {ReactNode} props.children - The children to be rendered inside the card.
+ * @param {string} props.className - Additional CSS class name for the card.
+ * @return {JSX.Element} The rendered card component.
+ */
 export const Card = ({
   children,
-  css,
-  as,
+  className,
   ...props
 }: CardProps): JSX.Element => (
-  <S.Container as={as} css={css} {...props}>
+  <Box className={S.card({ className })} {...props}>
     {children}
-  </S.Container>
+  </Box>
 );
 
 Card.displayName = 'Card';

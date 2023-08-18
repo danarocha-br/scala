@@ -1,15 +1,14 @@
-import { CSS } from '../../styles';
 import { Stack } from '../Stack';
 
 export type FormProps = {
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit?: () => any;
 };
 
 export const Form = ({
-  css,
+  className,
   children,
   onSubmit,
   ...props
@@ -19,7 +18,7 @@ export const Form = ({
     direction="column"
     gap="3"
     fullWidth
-    css={css}
+    className={className}
     onSubmit={onSubmit}
     {...props}
   >

@@ -1,5 +1,14 @@
+import React from 'react';
 import { themes } from '@storybook/theming';
-import { theme, darkTheme } from '../../../packages/react/src/styles';
+import '../../../packages/react/dist/index.css';
+
+// export const preview = {
+//   globalTypes: {
+//     dataThemes: {
+//       defaultValue: 'dark',
+//     },
+//   },
+// };
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -33,23 +42,11 @@ export const parameters = {
     values: [
       {
         name: 'light',
-        value: theme.colors['surface-color-background-default'],
+        value: '#fff',
       },
       {
         name: 'dark',
-        value: darkTheme.colors['surface-color-background-default'],
-      },
-    ],
-  },
-  multipleThemesStitches: {
-    values: [
-      {
-        name: 'Light',
-        theme: theme,
-      },
-      {
-        name: 'Dark',
-        theme: darkTheme,
+        value: '#000',
       },
     ],
   },

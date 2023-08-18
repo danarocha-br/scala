@@ -1,29 +1,35 @@
 import React from 'react';
-import { CSS } from '../../styles';
+import {
+  Root,
+  Viewport,
+  Scrollbar,
+  Thumb,
+  Corner,
+} from '@radix-ui/react-scroll-area';
 
 import * as S from './styles';
 
 export type ScrollViewProps = {
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
 };
 
 export const ScrollView = ({
   children,
-  css,
+  className,
   ...props
 }: ScrollViewProps): JSX.Element => (
-  <S.ScrollArea css={css} {...props} className="c-scrollarea">
-    <S.ScrollViewport>{children}</S.ScrollViewport>
+  <Root {...props} className={`c-scrollarea ${S.scrollArea({ className })}`}>
+    <Viewport className={S.scrollViewport()}>{children}</Viewport>
 
-    <S.ScrollBar orientation="vertical">
-      <S.SrollThumb />
-    </S.ScrollBar>
-    <S.ScrollBar orientation="horizontal">
-      <S.SrollThumb />
-    </S.ScrollBar>
-    <S.ScrollCorner />
-  </S.ScrollArea>
+    <Scrollbar orientation="vertical" className={S.scrollBar()}>
+      <Thumb className={S.srollThumb()} />
+    </Scrollbar>
+    <Scrollbar orientation="horizontal" className={S.scrollBar()}>
+      <Thumb className={S.srollThumb()} />
+    </Scrollbar>
+    <Corner className={S.scrollCorner()} />
+  </Root>
 );
 
 ScrollView.displayName = 'ScrollView';

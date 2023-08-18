@@ -1,11 +1,9 @@
-import { CSS } from '../../styles';
-
 import { Popover } from '../Popover';
 import { Command } from '../Command';
 
 export type ComboboxProps = {
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
   emptyMessage: string;
   inputPlaceholder: string;
   trigger: React.ReactNode;
@@ -16,20 +14,12 @@ export const Combobox = ({
   emptyMessage,
   inputPlaceholder,
   trigger,
-  css,
+  className,
 }: ComboboxProps) => {
   return (
     <Popover.Root trigger={trigger}>
-      <Popover.Content
-        css={{
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-        }}
-      >
-        <Command.Root css={css}>
+      <Popover.Content unstyled className="flex flex-col justify-center">
+        <Command.Root className={className}>
           <Command.Input placeholder={inputPlaceholder} />
 
           <Command.List>

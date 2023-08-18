@@ -1,4 +1,3 @@
-import { CSS } from '../../styles';
 import { Box } from '../Box';
 import { Icon } from '../Icon';
 
@@ -8,7 +7,7 @@ export type SelectMenuProps = {
   label: string;
   defaultValue?: string;
   children: React.ReactNode;
-  css?: CSS;
+  className?: string;
 };
 
 const SelectGroup = S.SelectGroup;
@@ -27,10 +26,10 @@ const SelectMenuBase = ({
   label,
   defaultValue,
   children,
-  css,
+  className,
   ...props
 }: SelectMenuProps): JSX.Element => (
-  <Box css={css} {...props}>
+  <Box className={className} {...props}>
     <S.SelectRoot defaultValue={defaultValue}>
       <S.SelectBox aria-label={label}>
         <S.SelectValue defaultValue={defaultValue || label} />
@@ -39,7 +38,7 @@ const SelectMenuBase = ({
             label="open menu"
             name="chevronDown"
             size="sm"
-            css={{ position: 'relative', right: 0 }}
+            className='relative right-0'
           />
         </S.SelectIcon>
       </S.SelectBox>

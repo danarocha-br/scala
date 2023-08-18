@@ -1,6 +1,5 @@
 import React from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
-import { CSS } from '../../styles';
 
 import { Icon, iconPath } from '../Icon';
 import { Skeleton } from '../Skeleton';
@@ -13,7 +12,7 @@ import { UserProfile } from '../UserProfile';
 import * as S from './styles';
 
 export type NavigationProps = {
-  css?: CSS;
+  className?: string;
   user_name: string;
   user_email: string;
   user_imageURL?: string;
@@ -36,6 +35,7 @@ export type NavItemProps = {
   loading?: boolean;
   isActive?: boolean;
   disabled?: boolean;
+  className?: string;
 };
 
 //TODO: add mobile navigation
@@ -66,7 +66,7 @@ const NavItem = ({
       </S.Anchor>
     </Component>
   ) : (
-    <Box css={{ px: '$spacing-2' }}>
+    <Box className="px-2">
       <Skeleton.Root>
         <Skeleton.Item width={200} />
       </Skeleton.Root>
@@ -82,16 +82,16 @@ const Wrapper = ({
   user_imageURL,
   showNavigation = true,
   loading = false,
-  css,
   children,
   userMenu,
   footer,
   isNavigationOpen = true,
   onNavigationOpenChange,
+  className,
   ...props
 }: NavigationProps) => {
   return (
-    <Box css={{ position: 'sticky', top: 0, css }} {...props}>
+    <Box className={`sticky top-0 ${className}`} {...props}>
       <S.CollapsibleRoot
         open={isNavigationOpen}
         onOpenChange={onNavigationOpenChange}
@@ -144,14 +144,9 @@ const Wrapper = ({
             {showNavigation && (
               <Stack
                 direction="column"
-                gap={2}
+                gap="2"
                 justify="between"
-                css={{
-                  mt: '$spacing-2',
-                  mb: '$spacing-3',
-                  width: '100%',
-                  height: '100%',
-                }}
+                className="mb-3 mt-2 h-full w-full"
               >
                 {children}
               </Stack>

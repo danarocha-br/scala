@@ -1,5 +1,4 @@
 import React, { forwardRef, ElementRef } from 'react';
-import { CSS } from '../../styles';
 import {
   components,
   GroupBase,
@@ -18,7 +17,6 @@ import { Box } from '../Box';
 import { Spinner } from '../Spinner';
 import { Stack } from '../Stack';
 import * as StyledSelect from '../Select/styles';
-
 import * as S from './styles';
 
 type Option = {
@@ -66,7 +64,7 @@ export type SelectCreatableProps = {
   setFieldValue?: (field: string, value: any, shouldValidate?: boolean) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
-  css?: CSS;
+  className?: string;
 };
 
 export const SelectCreatable = forwardRef<
@@ -91,7 +89,7 @@ export const SelectCreatable = forwardRef<
       noOptionMessage = 'No options found.',
       icon,
       errors,
-      css,
+      className,
       value,
       ...props
     }: SelectCreatableProps,
@@ -120,7 +118,7 @@ export const SelectCreatable = forwardRef<
             as="p"
             color="body-lighter"
             align="center"
-            css={{ py: '$spacing-2' }}
+            className='py-2'
           >
             {noOptionMessage}
           </Text>
@@ -148,7 +146,7 @@ export const SelectCreatable = forwardRef<
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', css }}>
+      <Box className={`w-full ${className}`}>
         <StyledSelect.Container
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
           isDisabled={disabled}
@@ -167,7 +165,7 @@ export const SelectCreatable = forwardRef<
                 )}
                 {label}
               </Stack>
-              {loading && <Spinner size="xs" css={{ mr: -2 }} />}
+              {loading && <Spinner size="xs" className='mr-2' />}
 
               {Boolean(errors) && !areErrorsEmpty && (
                 <Icon

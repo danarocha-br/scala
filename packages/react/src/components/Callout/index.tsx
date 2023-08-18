@@ -1,9 +1,8 @@
 import React from 'react';
-import { CSS } from '../../styles';
 
 import { iconPath, Icon } from '../Icon';
 import { Stack } from '../Stack';
-
+import { Box } from '../Box';
 import * as S from './styles';
 
 export type CalloutProps = {
@@ -11,7 +10,7 @@ export type CalloutProps = {
   children: React.ReactNode;
   icon?: keyof typeof iconPath;
   variant?: 'info' | 'success' | 'danger' | 'warning';
-  css?: CSS;
+  className?: string;
 };
 
 export const Callout = ({
@@ -20,24 +19,27 @@ export const Callout = ({
   icon,
   variant = 'info',
 }: CalloutProps): JSX.Element => (
-  <S.Container>
-    <S.Marker variant={variant} />
+  <Box className={S.container()}>
+    <Box className={S.marker({ variant })} />
     <Stack gap="2" direction="column" fullWidth>
       {Boolean(title) && (
-        <S.Header variant={variant}>
+        <Box as="header" className={S.header({ variant })}>
           {!!icon && (
             <Icon
               label={(Boolean(title) && title) || 'icon'}
               name={icon}
               color="current"
-              css={{ left: '$spacing-3', mr: -8, position: 'relative' }}
+              size="sm"
+              className="relative left-3 mr-[-8px]"
             />
           )}
-          <h5>{title}</h5>
-        </S.Header>
+          <h5 className="px-4 py-2">{title}</h5>
+        </Box>
       )}
-      <span className="callout__content">{children}</span>
+      <Box as="span" className="callout__content pb-2 pl-5">
+        {children}
+      </Box>
     </Stack>
-  </S.Container>
+  </Box>
 );
 Callout.displayName = 'Callout';

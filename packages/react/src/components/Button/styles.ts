@@ -1,497 +1,342 @@
-import { styled, keyframes } from '../../styles';
-import { Button as AccessibleButton } from '@ariakit/react';
-
-const MoveScaleUpInitial = keyframes({
-  to: { transform: 'translate3d(0,-100%,0) scale3d(1,1.1,1)', opacity: 0 },
-});
-
-const MoveScaleUpEnd = keyframes({
-  from: {
-    transform: 'translate3d(0,50%,0) scale3d(1,1.1,1)',
-    opacity: 0,
-  },
-  to: {
-    transform: 'translate3d(0,0,0)',
-    opacity: 1,
-  },
-});
-
-export const MoveLoadingGradientStart = keyframes({
-  '0%': {
-    clipPath:
-      'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
-  },
-  '25%': {
-    clipPath:
-      'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) calc(100% - $$borderWidth), calc(100% - $$borderWidth) 100%, 100% 100%, 100% 0%, 0% 0%)',
-  },
-  '50%': {
-    clipPath:
-      'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, 100% 0%, 0% 0%)',
-  },
-  '75%': {
-    '-webkit-clip-path':
-      'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth $$borderWidth, $$borderWidth 0%, 0% 0%)',
-  },
-  '100%': {
-    '-webkit-clip-path':
-      'polygon(0% 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, $$borderWidth 100%, 0% 100%)',
-  },
-});
-
-// const MoveLoadingGradientEnd = keyframes({
-//   '0%': { backgroundPosition: '15% 0%' },
-//   '50%': { backgroundPosition: '50% 0%' },
-//   '100%': { backgroundPosition: '50% 100%' },
-// });
+import { cva } from 'class-variance-authority';
 
 //TODO: button disabled fix cursor
 
-export const Container = styled(AccessibleButton, {
-  userSelect: 'none',
-  boxSizing: 'border-box',
-  '-webkit-appearance': 'none',
+export const button = cva(
+  [
+    'group',
+    'select-none',
+    'box-border',
+    'font-sans',
+    'font-medium',
+    'whitespace-nowrap',
+    'pointer-events-auto',
+    'flex',
+    'items-center',
+    'justify-center',
+    'overflow-hidden',
+    'relative',
+    'outline-none',
+    'outline-transparent',
+    'border-none',
+    'cursor-pointer',
+    'transition-all',
 
-  fontFamily: '$font-family-sans',
-  fontWeight: '$font-weight-medium',
-  whiteSpace: 'nowrap',
-  pointerEvents: 'initial',
+    'focus:outline-2',
+    'focus:outline-offset-2',
+    'focus-visible:outline-2',
+    'focus-visible:offset-2',
+    'focus-visible:outline-transparent',
 
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+    'aria-disabled:opacity-50',
+    'aria-disabled:cursor-not-allowed',
 
-  overflow: 'hidden',
-  position: 'relative',
-  outline: 'none',
-  border: 'none',
-  outlineColor: 'transparent',
-  transition: 'all 300ms ease, outline 1ms',
-  cursor: 'pointer',
+    'active:scale-95',
 
-  '&:focus, &[data-focus-visible]': {
-    outline: '2px solid',
-    outlineOffset: '2px',
-    outlineColor: 'transparent',
-  },
+    '[&_svg]:z-[1]',
+  ],
+  {
+    variants: {
+      color: {
+        primary: [],
+        secondary: [],
+        danger: [],
+      },
 
-  '&[aria-disabled="true"]': {
-    opacity: '0.65',
-    cursor: 'not-allowed',
-  },
+      variant: {
+        primary: [],
 
-  '&:active': {
-    transform: 'scale(0.94)',
-  },
+        transparent: [
+          'font-normal',
+          'bg-action-color-background-transparent-enabled',
 
-  '& svg': {
-    zIndex: '$1',
-  },
+          'hover:bg-action-color-background-transparent-hover',
 
+          'aria-disabled:hover:bg-action-color-background-transparent-hover',
+
+          '[&_svg]:bg-action-color-background-transparent-hover',
+          '[&_svg]:rounded-md',
+          '[&_svg]:mr-2',
+          '[&_svg]:p-1',
+        ],
+      },
+
+      size: {
+        lg: ['text-md', 'rounded-md', 'h-[64px]', 'px-4'],
+        md: ['text-md', 'h-[54px]', 'px-4', 'rounded-md'],
+        sm: [
+          'text-sm',
+          'h-[40px]',
+          'px-3',
+          'rounded-sm',
+          'focus:outline-2',
+          'focus:outline-offset-0',
+          'focus:outline-transparent',
+        ],
+        xs: [
+          'text-xs',
+          'h-[28px]',
+          'px-2',
+          'rounded-sm',
+          'h-[30px]',
+          'focus:outline-2',
+          'focus:outline-offset-0',
+          'focus:outline-transparent',
+        ],
+      },
+
+      fullWidth: {
+        true: ['w-full'],
+      },
+
+      animateOnHover: {
+        true: [
+          'hover:before:translate-0',
+          'hover:before:scale-150',
+          'hover:before:transition-transform',
+          'hover:before:duration-[0.4s]',
+          'hover:before:ease-[cubic-bezier(0.1, 0, 0.3, 1)]',
+
+          'hover:after:transform-0',
+          'hover:after:duration-[0.05s]',
+          'hover:after:delay-[0.4s]',
+          'hover:after:ease-linear',
+
+          '[&_span]:inline-flex',
+          '[&_span]:items-center',
+          '[&_span]:justify-center',
+          '[&_span]:relative',
+          '[&_span]:h-full',
+
+          'before:content-[""]',
+          'before:w-[120%]',
+          'before:h-0',
+          'before:absolute',
+          'before:pb-[120%]',
+          'before:top-[-110%]',
+          'before:left-[-10%]',
+          'before:rounded-[50%]',
+          'before:translate-y[68%]',
+          'before:scale-0',
+
+          'after:content-[""]',
+          'after:w-full',
+          'after:h-full',
+          'after:absolute',
+          'after:top-0',
+          'after:left-0',
+          'after:rounded-[50%]',
+          'after:translate-y-[-100%]',
+          'after:motion-safe:animate-[transform_0.4s_cubic-bezier(0.1, 0, 0.3, 1)]',
+        ],
+      },
+
+      disabled: {
+        true: ['cursor-not-allowed'],
+      },
+
+      loading: {
+        true: [
+          'relative',
+          'bg-action-color-background-transparent-hover',
+
+          'after:content-[""]',
+          'after:absolute',
+          'after:top-0',
+          'after:right-0',
+          'after:bottom-0',
+          'after:left-0',
+          'after:rounded-md',
+          'after:bg-loading-gradient',
+          '!after:border-[2.4px]',
+          '!after:border-neutral-200',
+          'after:bg-100',
+          'after:clip-path-[var(--button-loading-clip-path)]',
+          'after:animate-button-loading',
+        ],
+      },
+    },
+    compoundVariants: [
+      {
+        color: 'primary',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-action-color-background-primary-pressed',
+          'after:bg-action-color-background-primary-pressed',
+        ],
+      },
+
+      {
+        color: 'secondary',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-interactive-color-background-pressed',
+          'after:bg-interactive-color-background-pressed',
+        ],
+      },
+
+      {
+        color: 'danger',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-feedback-color-background-danger-pressed',
+          'after:bg-feedback-color-background-danger-pressed',
+        ],
+      },
+
+      {
+        variant: 'transparent',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-surface-color-background-subdued',
+          'after:bg-surface-color-background-subdued',
+        ],
+      },
+      {
+        variant: 'transparent',
+        color: 'secondary',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-surface-color-background-subdued',
+          'after:bg-surface-color-background-subdued',
+        ],
+      },
+      {
+        variant: 'transparent',
+        color: 'danger',
+        animateOnHover: true,
+
+        class: [
+          'before:bg-surface-color-background-subdued',
+          'after:bg-surface-color-background-subdued',
+        ],
+      },
+      {
+        variant: 'primary',
+        color: 'primary',
+        class: [
+          'text-action-color-text-primary-enabled',
+          'bg-action-color-background-primary-enabled',
+          'hover:bg-action-color-background-primary-hover',
+          'focus:outline-action-color-border-primary-pressed',
+          'aria-disabled:text-action-color-text-primary-disabled',
+          'aria-disabled:bg-action-color-background-primary-disabled',
+        ],
+      },
+      {
+        variant: 'primary',
+        color: 'secondary',
+        class: [
+          'text-action-color-text-secondary-enabled',
+          'bg-action-color-background-secondary-enabled',
+          'hover:bg-action-color-background-secondary-hover',
+          'focus:outline-action-color-border-secondary-pressed',
+          'aria-disabled:text-action-color-text-secondary-disabled',
+          'aria-disabled:bg-action-color-background-secondary-disabled',
+        ],
+      },
+      {
+        variant: 'primary',
+        color: 'danger',
+        class: [
+          'text-action-color-text-danger-enabled',
+          'bg-action-color-background-danger-enabled',
+          'hover:bg-action-color-background-danger-hover',
+          'focus:outline-action-color-border-danger-pressed',
+          'aria-disabled:text-action-color-text-danger-disabled',
+          'aria-disabled:bg-action-color-background-danger-disabled',
+        ],
+      },
+      {
+        variant: 'transparent',
+        color: 'primary',
+        class: [
+          'text-text-color-body',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
+      },
+
+      {
+        variant: 'transparent',
+        color: 'secondary',
+
+        class: [
+          'text-interactive-color-background-enabled',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
+      },
+      {
+        variant: 'transparent',
+        color: 'danger',
+
+        class: [
+          'text-feedback-color-background-danger-enabled',
+          'focus:outline-action-color-border-transparent-pressed',
+        ],
+      },
+      {
+        variant: 'transparent',
+        size: 'xs',
+        class: ['px-1'],
+      },
+      {
+        variant: 'transparent',
+        size: 'sm',
+        class: ['px-2'],
+      },
+      {
+        variant: 'transparent',
+        size: 'md',
+        class: ['px-3', 'h-[50px]', '[&_svg]:mr-1'],
+      },
+      {
+        variant: 'transparent',
+        size: 'lg',
+        class: ['px-4', 'h-[64px]', '[&_svg]:mr-0'],
+      },
+    ],
+
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+      color: 'primary',
+      fullWidth: false,
+      animateOnHover: false,
+      loading: false,
+    },
+  }
+);
+
+export const icon = cva(['relative'], {
   variants: {
-    color: {
-      primary: {},
-      secondary: {},
-      danger: {},
-    },
-
     variant: {
-      primary: {},
-
-      transparent: {
-        fontWeight: '$font-weight-regular',
-        background: '$action-color-background-transparent-enabled !important',
-
-        '&:hover:not([disabled])': {
-          background: '$action-color-background-transparent-hover !important',
-        },
-
-        '&[aria-disabled="true"]': {
-          background: '$action-color-background-transparent-hover  !important',
-        },
-
-        '& svg': {
-          backgroundColor: '$action-color-background-transparent-hover',
-          borderRadius: '$radii-md',
-          mr: '$spacing-2',
-          p: '$spacing-1',
-        },
-
-        '&:hover': {
-          '& svg': {
-            backgroundColor: '$action-color-background-transparent-pressed',
-          },
-        },
-      },
+      primary: [],
+      transparent: [
+        'group-hover:bg-action-color-background-transparent-hover relative',
+      ],
     },
-
     size: {
-      lg: {
-        fontSize: '$font-size-md',
-        padding: '$spacing-4 $spacing-4',
-        borderRadius: '$radii-md',
-        height: 64,
-      },
-      md: {
-        fontSize: '$font-size-md',
-        padding: '$spacing-3 $spacing-4',
-        borderRadius: '$radii-md',
-      },
-      sm: {
-        fontSize: '$font-size-sm',
-        padding: '$spacing-1 $spacing-3',
-        h: 40,
-        borderRadius: '$radii-sm',
-
-        '&:focus, &[data-focus-visible]': {
-          outline: '2px solid',
-          outlineOffset: '0px',
-          outlineColor: 'transparent',
-        },
-      },
-      xs: {
-        fontSize: '$font-size-xs',
-        padding: '$spacing-1 $spacing-2',
-        h: 30,
-        borderRadius: '$radii-sm',
-
-        '&:focus, &[data-focus-visible]': {
-          outline: '2px solid',
-          outlineOffset: '0px',
-          outlineColor: 'transparent',
-        },
-      },
-    },
-
-    fullWidth: {
-      true: {
-        w: '100%',
-      },
-    },
-
-    animateOnHover: {
-      true: {
-        '&:hover:not([disabled])': {
-          '&::before': {
-            transform: 'translate3d(0,0,0) scale3d(1,1,1)',
-            transition: 'transform 0.4s cubic-bezier(0.1, 0, 0.3, 1)',
-          },
-
-          '&::after': {
-            transform: 'translate3d(0,0,0)',
-            transitionDuration: '0.05s',
-            transitionDelay: '0.4s',
-            transitionTimingFunction: 'linear',
-          },
-
-          span: {
-            animation: `${MoveScaleUpInitial} 0.3s forwards, ${MoveScaleUpEnd} 0.3s forwards 0.3s`,
-          },
-        },
-
-        '& span': {
-          display: 'block',
-          position: 'relative',
-          zIndex: '$1',
-        },
-
-        '&::before': {
-          content: '',
-          width: '120%',
-          height: '0',
-          position: 'absolute',
-          paddingBottom: '120%',
-          top: '-110%',
-          left: '-10%',
-          borderRadius: '50%',
-          transform: 'translate3d(0,68%,0) scale3d(0,0,0)',
-        },
-
-        '&::after': {
-          content: '',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          w: '100%',
-          h: '100%',
-          transform: 'translate3d(0,-100%,0)',
-          transition: 'transform 0.4s cubic-bezier(0.1, 0, 0.3, 1)',
-        },
-      },
-    },
-
-    loading: {
-      true: {
-        $$borderWidth: '2.4px',
-        $$gradient:
-          'linear-gradient(99deg, $colors$color-neutral-200, $colors$color-royal-300, $colors$color-froly-300)',
-        position: 'relative',
-        background: '$action-color-background-transparent-hover ',
-
-        '&::after': {
-          content: '',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          borderRadius: '$radii-md',
-          // border: '$$borderWidth solid $neutral200',
-          background: '$$gradient',
-          backgroundSize: '100% 100%',
-          clipPath:
-            'polygon(0% 100%, $$borderWidth 100%, $$borderWidth $$borderWidth, calc(100% - $$borderWidth) $$borderWidth, calc(100% - $$borderWidth) calc(100% - $$borderWidth), $$borderWidth calc(100% - $$borderWidth), $$borderWidth 100%, 100% 100%, 100% 0%, 0% 0%)',
-          animation: `${MoveLoadingGradientStart} 2s ease-in-out alternate infinite`,
-        },
-      },
+      lg: ['left-[-12px]'],
+      md: ['left-[-12px]'],
+      sm: ['left-[-6px]'],
+      xs: ['left-[-2px], mr-1'],
     },
   },
   compoundVariants: [
     {
-      color: 'primary',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$action-color-background-primary-pressed',
-        },
-        '&::after': {
-          background: '$action-color-background-primary-pressed',
-        },
-      },
-    },
-
-    {
-      color: 'secondary',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$interactive-color-background-hover',
-        },
-        '&::after': {
-          background: '$interactive-color-background-hover',
-        },
-      },
-    },
-
-    {
-      color: 'danger',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$feedback-color-background-danger-hover',
-        },
-        '&::after': {
-          background: '$feedback-color-background-danger-hover',
-        },
-      },
-    },
-
-    {
-      variant: 'transparent',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$surface-color-background-subdued ',
-        },
-        '&::after': {
-          background: '$surface-color-background-subdued ',
-        },
-      },
-    },
-    {
-      variant: 'transparent',
-      color: 'secondary',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$action-color-background-secondary-disabled',
-        },
-        '&::after': {
-          background: '$action-color-background-secondary-disabled',
-        },
-      },
-    },
-    {
-      variant: 'transparent',
-      color: 'danger',
-      animateOnHover: true,
-
-      css: {
-        '&::before': {
-          background: '$feedback-color-background-danger-disabled',
-        },
-        '&::after': {
-          background: '$feedback-color-background-danger-disabled',
-        },
-      },
-    },
-    {
-      variant: 'primary',
-      color: 'primary',
-      css: {
-        color: '$action-color-text-primary-enabled',
-        background: '$action-color-background-primary-enabled',
-
-        '&:hover:not([disabled])': {
-          background: '$action-color-background-primary-hover',
-
-          '& span': {
-            zIndex: '$1',
-          },
-        },
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$action-color-border-primary-pressed',
-        },
-        '&[aria-disabled="true"]': {
-          color: '$action-color-text-primary-disabled ',
-          background: '$action-color-background-primary-disabled',
-        },
-      },
-    },
-    {
-      variant: 'primary',
-      color: 'secondary',
-      css: {
-        color: '$action-color-text-secondary-enabled',
-        background: '$action-color-background-secondary-enabled',
-
-        '&:hover:not([disabled])': {
-          background: '$action-color-background-secondary-hover',
-          '& span': {
-            zIndex: '$1',
-          },
-        },
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$action-color-border-secondary-pressed',
-          background: '$action-color-background-secondary-hover',
-        },
-        '&[aria-disabled="true"]': {
-          color: '$action-color-text-secondary-disabled ',
-          background: '$action-color-background-secondary-disabled',
-        },
-      },
-    },
-    {
-      variant: 'primary',
-      color: 'danger',
-      css: {
-        color: '$feedback-color-text-danger-default',
-        background: '$feedback-color-background-danger-default',
-
-        '&:hover:not([disabled])': {
-          background: '$feedback-color-background-danger-hover',
-        },
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$feedback-color-border-danger-pressed',
-        },
-        '&[aria-disabled="true"]': {
-          color: '$feedback-color-text-danger-disabled ',
-          background: '$feedback-color-background-danger-disabled',
-        },
-      },
-    },
-    {
-      variant: 'transparent',
-      color: 'primary',
-
-      css: {
-        color: '$text-color-body',
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
-      },
-    },
-
-    {
-      variant: 'transparent',
-      color: 'secondary',
-
-      css: {
-        color: '$interactive-color-background-enabled',
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$action-color-border-transparent-pressed ',
-        },
-      },
-    },
-    {
-      variant: 'transparent',
-      color: 'danger',
-
-      css: {
-        color: '$feedback-color-background-danger-default',
-        '&:focus, &[data-focus-visible]': {
-          outlineColor: '$action-color-border-transparent-pressed',
-        },
-      },
-    },
-    // {
-    //   variant: 'icon',
-    //   animateOnHover: true,
-
-    //   css: {
-    //     '&::before': {
-    //       background: '$surface-color-background-subdued ',
-    //       borderRadius: '50%',
-    //       paddingBottom: '150%',
-    //       top: '0%',
-    //       left: '-10%',
-    //     },
-    //     '&::after': {
-    //       background: '$surface-color-background-subdued ',
-    //     },
-    //   },
-    // },
-    {
-      variant: 'transparent',
-      size: 'xs',
-      css: {
-        px: '$spacing-1',
-      },
-    },
-    {
-      variant: 'transparent',
-      size: 'sm',
-      css: {
-        px: '$spacing-2',
-      },
-    },
-    {
       variant: 'transparent',
       size: 'md',
-      css: {
-        px: '$spacing-3',
-        height: '50px',
-
-        '& svg': {
-          mr: '$spacing-1 ',
-        },
-      },
+      class: ['!mr-0']
     },
     {
       variant: 'transparent',
       size: 'lg',
-      css: {
-        px: '$spacing-4',
-        height: '64px',
-
-        '& svg': {
-          mr: '0 ',
-        },
-      },
-    },
-  ],
-
-  defaultVariants: {
-    variant: 'primary',
-    size: 'md',
-    color: 'primary',
-    fullWidth: false,
-    animateOnHover: false,
-    loading: false,
-  },
+      class: ['!mr-0']
+    }
+  ]
 });

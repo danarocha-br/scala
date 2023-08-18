@@ -1,153 +1,97 @@
-import { CSS, styled } from '../../styles';
+import { cva, VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-export type TextProps = {
-  as?: React.ElementType;
-  css?: CSS;
-} & React.ComponentProps<typeof Text>;
+export const text = cva(
+  ['m-0', 'font-sans', 'font-normal', 'tabular-nums', 'block'],
+  {
+    variants: {
+      size: {
+        xxs: ['text-xxs'],
+        xs: ['text-xs'],
+        sm: ['text-sm'],
+        md: ['text-md'],
+        lg: ['text-lg'],
+        xl: ['text-xl'],
+        '2xl': ['text-2xl'],
+        '3xl': ['text-3xl'],
+        '4xl': ['text-4xl'],
+      },
 
-export const Text = styled('span', {
-  margin: '0',
-  fontFamily: '$font-family-sans',
-  fontWeight: '$font-weight-regular',
-  fontVariantNumeric: 'tabular-nums',
-  display: 'block',
+      color: {
+        body: ['text-text-color-body'],
+        'body-lighter': ['text-text-color-body-lighter'],
+        caption: ['text-text-color-caption'],
+        success: ['text-text-color-success'],
+        danger: ['text-text-color-danger'],
+        warning: ['text-text-color-warning'],
+        'on-dark': ['text-text-color-on-dark'],
+        'on-light': ['text-text-color-on-light'],
+        inverted: ['text-text-color-inverted'],
+        current: ['text-current'],
+      },
 
-  variants: {
-    size: {
-      xxs: {
-        fontSize: '$font-size-xxs',
-        lineHeight: '$line-height-1',
+      weight: {
+        light: 'font-light',
+        regular: 'font-normal',
+        medium: 'font-medium',
+        semibold: 'font-semibold',
       },
-      xs: {
-        fontSize: '$font-size-xs',
-        lineHeight: '$line-height-2',
+
+      align: {
+        center: ['text-center'],
+        left: ['text-left'],
+        right: ['text-right'],
       },
-      sm: {
-        fontSize: '$font-size-sm',
-        lineHeight: '$line-height-3',
-      },
-      md: {
-        fontSize: '$font-size-md',
-        lineHeight: '$line-height-4',
-      },
-      lg: {
-        fontSize: '$font-size-lg',
-        lineHeight: '$line-height-4',
-      },
-      //TODO: divive these to heading instead
-      xl: {
-        fontSize: '$font-size-xl',
-        lineHeight: '$line-height-5',
-      },
-      '2xl': {
-        fontSize: '$font-size-2xl',
-        lineHeight: '$line-height-6',
-      },
-      '3xl': {
-        fontSize: '$font-size-3xl',
-        lineHeight: '$line-height-5',
-      },
-      '4xl': {
-        fontSize: '$font-size-4xl',
-        lineHeight: '$line-height-6',
+
+      leading: {
+        '1': ['leading-tight'],
+        '2': ['leading-snug'],
+        '3': ['leading-normal'],
+        '4': ['leading-relaxed'],
+        '5': ['leading-loose'],
+        '6': ['leading-3'],
+        '7': ['leading-4'],
+        '8': ['leading-5'],
+        '9': ['leading-6'],
       },
     },
-
-    color: {
-      body: {
-        color: '$text-color-body',
-      },
-      'body-lighter': {
-        color: '$text-color-body-lighter',
-      },
-      caption: {
-        color: '$text-color-caption',
-      },
-      success: {
-        color: '$text-color-success',
-      },
-      danger: {
-        color: '$text-color-danger',
-      },
-      warning: {
-        color: '$text-color-warning',
-      },
-      'on-dark': {
-        color: '$text-color-on-dark',
-      },
-      'on-light': {
-        color: '$text-color-on-light',
-      },
-      current: {
-        color: 'inherit',
-      },
+    defaultVariants: {
+      align: 'left',
+      size: 'md',
+      color: 'body',
+      leading: '4',
+      weight: 'regular',
     },
+  }
+);
 
-    weight: {
-      light: {
-        fontWeight: '$font-weight-light',
-      },
-      regular: {
-        fontWeight: '$font-weight-regular',
-      },
-      medium: {
-        fontWeight: '$font-weight-medium',
-      },
-      semibold: {
-        fontWeight: '$font-weight-semibold',
-      },
+export type TextProps = Polymorphic.ForwardRefComponent<
+  'span',
+  { children: React.ReactNode; className?: string } & VariantProps<typeof text>
+>;
+
+export const Text = forwardRef(
+  (
+    {
+      as: Component = 'span',
+      children,
+      className,
+      size,
+      color,
+      weight,
+      align,
+      leading,
+      ...props
     },
-
-    align: {
-      center: {
-        textAlign: 'center',
-      },
-      left: {
-        textAlign: 'left',
-      },
-      right: {
-        textAlign: 'right',
-      },
-    },
-
-    leading: {
-      1: {
-        lineHeight: '$line-height-1',
-      },
-      2: {
-        lineHeight: '$line-height-2',
-      },
-      3: {
-        lineHeight: '$line-height-3',
-      },
-      4: {
-        lineHeight: '$line-height-4',
-      },
-      5: {
-        lineHeight: '$line-height-5',
-      },
-      6: {
-        lineHeight: '$line-height-6',
-      },
-      7: {
-        lineHeight: '$line-height-7',
-      },
-      8: {
-        lineHeight: '$line-height-8',
-      },
-      9: {
-        lineHeight: '$line-height-9',
-      },
-    },
-  },
-
-  defaultVariants: {
-    align: 'left',
-    size: 'md',
-    color: 'body',
-    leading: '4',
-    weight: 'regular',
-  },
-});
-
-Text.displayName = 'Text';
+    forwardedRef
+  ) => (
+    <Component
+      {...props}
+      ref={forwardedRef}
+      className={text({ size, color, weight, align, leading, className })}
+    >
+      {children}
+    </Component>
+  )
+) as TextProps;

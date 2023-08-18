@@ -82,7 +82,11 @@ export default {
       return (
         <OverlayProvider>
           <DialogProvider>
-            <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
+            <Stack
+              align="center"
+              justify="center"
+              className="h-screen w-[400px]"
+            >
               {Story()}
             </Stack>
           </DialogProvider>

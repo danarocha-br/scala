@@ -1,52 +1,30 @@
-import { styled } from '../../styles';
+import { cva } from 'class-variance-authority';
 
-export const SVG = styled('svg', {
-  fill: 'currentColor',
-
+export const svg = cva(['fill-current'], {
   variants: {
     color: {
-      body: {
-        color: '$text-color-body',
-      },
-      'body-lighter': {
-        color: '$text-color-body-lighter',
-      },
-      caption: {
-        color: '$text-color-caption',
-      },
-      danger: {
-        color: '$text-color-danger',
-      },
-      success: {
-        color: '$text-color-success',
-      },
-      warning: {
-        color: '$text-color-warning',
-      },
-      'on-light': {
-        color: '$text-color-on-light',
-      },
-      'on-dark': {
-        color: '$text-color-on-dark',
-      },
-      current: {
-        color: 'currentColor',
-      },
+      body: ['text-text-color-body'],
+      'body-lighter': ['text-text-color-body-lighter'],
+      caption: ['text-text-color-caption'],
+      success: ['text-text-color-success'],
+      danger: ['text-text-color-danger'],
+      warning: ['text-text-color-warning'],
+      'on-dark': ['text-text-color-on-dark'],
+      'on-light': ['text-text-color-on-light'],
+      inverted: ['text-text-color-inverted'],
+      current: ['text-current'],
     },
 
     size: {
-      xs: {
-        width: '$spacing-3',
-      },
-      sm: {
-        width: 20,
-      },
-      md: {
-        width: '$spacing-4',
-      },
-      lg: {
-        width: '$spacing-5',
-      },
+      xs: ['w-3'],
+      sm: ['w-[20px]'],
+      md: ['w-4'],
+      lg: ['w-5'],
     },
+  },
+
+  defaultVariants: {
+    color: 'body-lighter',
+    size: 'md',
   },
 });

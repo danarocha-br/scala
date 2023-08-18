@@ -34,8 +34,12 @@ export default {
       table: {
         category: 'Modifiers',
       },
+      options: ['info', 'success', 'warning', 'danger'],
+      control: {
+        type: 'inline-radio',
+      },
     },
-    css: {
+    className: {
       table: {
         category: 'Modifiers',
       },
@@ -49,7 +53,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" css={{ h: '100vh', w: 399 }}>
+        <Stack align="center" justify="center" className="h-screen w-96">
           {Story()}
         </Stack>
       );

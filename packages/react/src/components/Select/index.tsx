@@ -1,5 +1,4 @@
 import React, { ElementRef, forwardRef } from 'react';
-import { CSS } from '../../styles';
 import {
   components,
   GroupBase,
@@ -48,7 +47,7 @@ export type SelectProps = {
   setFieldValue?: (field: string, value: any, shouldValidate?: boolean) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
-  css?: CSS;
+  className?: string;
 };
 
 export const Select = forwardRef<
@@ -73,7 +72,7 @@ export const Select = forwardRef<
       noOptionMessage = 'No options found.',
       icon,
       errors,
-      css,
+      className,
       value,
       ...props
     }: SelectProps,
@@ -98,12 +97,7 @@ export const Select = forwardRef<
     const NoOptionsMessage = (props: NoticeProps) => {
       return (
         <components.NoOptionsMessage {...props}>
-          <Text
-            as="p"
-            color="body-lighter"
-            align="center"
-            css={{ py: '$spacing-2' }}
-          >
+          <Text as="p" color="body-lighter" align="center" className="py-2">
             {noOptionMessage}
           </Text>
         </components.NoOptionsMessage>
@@ -130,7 +124,7 @@ export const Select = forwardRef<
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', css }}>
+      <Box className={`w-full ${className}`}>
         <S.Container
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
           isDisabled={disabled}
@@ -149,7 +143,7 @@ export const Select = forwardRef<
                 )}
                 {label}
               </Stack>
-              {loading && <Spinner size="sm" css={{ mr: -2 }} />}
+              {loading && <Spinner size="sm" className='mr-2' />}
 
               {Boolean(errors) && !areErrorsEmpty && (
                 <Icon

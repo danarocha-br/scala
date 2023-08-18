@@ -1,10 +1,8 @@
 import React, { ElementRef, forwardRef } from 'react';
-import { CSS } from '../../styles';
 
 import { Icon, iconPath } from '../Icon';
 import { Text } from '../Text';
 import { FormErrorMessage } from '../FormErrorMessage';
-
 import * as S from './styles';
 
 export type RadioOptionProps = {
@@ -27,7 +25,7 @@ export type RadioGroupProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
   onChange?: (value: string) => void;
-  css?: CSS;
+  className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
 
 export const RadioGroup = forwardRef<
@@ -46,7 +44,7 @@ export const RadioGroup = forwardRef<
       defaultValue,
       options,
       onChange,
-      css,
+      className,
     }: RadioGroupProps,
     ref
   ): JSX.Element => {
@@ -61,7 +59,7 @@ export const RadioGroup = forwardRef<
         disabled={disabled}
         value={value}
         onValueChange={onChange}
-        css={css}
+        className={className}
         fullWidth={fullWidth}
       >
         <Text
@@ -69,7 +67,7 @@ export const RadioGroup = forwardRef<
           size="sm"
           color="body-lighter"
           weight="regular"
-          css={{ mb: '$spacing-2' }}
+          className='mb-2'
         >
           {legend}
         </Text>

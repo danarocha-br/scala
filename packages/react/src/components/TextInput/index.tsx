@@ -1,5 +1,4 @@
 import React, { forwardRef, useCallback, useState, ElementRef } from 'react';
-import { CSS } from '../../styles';
 
 import { Icon, iconPath } from '../Icon';
 import { Box } from '../Box';
@@ -31,7 +30,7 @@ export type TextInputProps = {
   variant?: 'default' | 'table';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
-  css?: CSS;
+  className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'>;
 
 export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
@@ -52,7 +51,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
       onAction,
       actionLabel = 'Settings',
       actionIcon = 'settings',
-      css,
+      className,
       errors,
       ...props
     }: TextInputProps,
@@ -76,7 +75,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
     const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
 
     return (
-      <Box css={{ w: '100%', position: 'relative', css }}>
+      <Box className={`w-full relative ${className}`}>
         <S.Container
           isFocused={isFocused}
           hasError={Boolean(errors) && !areErrorsEmpty ? true : false}
@@ -122,8 +121,7 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
               {loading && (
                 <Box
                   as="span"
-                  className="input__icon--loading"
-                  css={{ position: 'absolute', right: '$spacing-2' }}
+                  className="input__icon--loading abssolute right-2"
                 >
                   <Spinner size="xs" />
                 </Box>
@@ -131,12 +129,11 @@ export const TextInput = forwardRef<ElementRef<typeof S.Input>, TextInputProps>(
 
               {Boolean(errors) && !areErrorsEmpty ? (
                 <Icon
-                  className="input__icon--error"
+                  className="input__icon--error mr-[-8px]"
                   label="error"
                   name="alert"
                   size="xs"
                   color="danger"
-                  css={{ mr: -8 }}
                 />
               ) : null}
             </S.Label>

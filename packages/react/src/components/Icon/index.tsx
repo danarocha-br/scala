@@ -1,57 +1,47 @@
-import { CSS } from '../../styles';
-
-import type * as Stitches from '@stitches/react';
+import { VariantProps } from 'class-variance-authority';
 
 import { iconPath } from './iconPath';
 import * as S from './styles';
 
-export type IconColorProps =
-  | 'body'
-  | 'body-lighter'
-  | 'caption'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'current'
-  | 'on-light'
-  | 'on-dark';
-
 export type IconProps = {
   name: keyof typeof iconPath;
-  color?: IconColorProps;
   /** Accessibility naming. */
   label: string;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  css?: CSS;
   className?: string;
-} & Stitches.VariantProps<typeof S.SVG>;
+} & VariantProps<typeof S.svg>;
 
 export * from './iconPath';
 
+/**
+ * Renders an SVG icon.
+ *
+ * @param {string} [props.color='body-lighter'] - The color of the icon.
+ * @param {string} [props.size='md'] - The size of the icon.
+ * @param {string} [props.name='plus'] - The name of the icon.
+ * @param {string} [props.label] - The accessibility label for the icon.
+ * @param {string} [props.className] - The class name for the icon.
+ * @returns {JSX.Element} The rendered SVG icon.
+ */
 export const Icon = ({
   color = 'body-lighter',
   size = 'md',
   name = 'plus',
   label,
   className,
-  css,
   ...props
 }: IconProps): JSX.Element => (
-  <S.SVG
-    className={className}
-    color={color}
-    size={size}
+  <svg
+    className={S.svg({ color, size, className })}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMid meet"
     aria-label={label}
     aria-hidden="true"
     focusable="false"
-    css={css}
     {...props}
   >
     <path d={iconPath[name]} fillRule="evenodd" clipRule="evenodd" />
-  </S.SVG>
+  </svg>
 );
 
 Icon.displayName = 'Icon';

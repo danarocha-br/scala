@@ -24,7 +24,7 @@ export default {
           align="center"
           justify="center"
           fullWidth
-          css={{ h: '100vh', px: '$spacing-4' }}
+          className="h-screen px-4"
         >
           {Story()}
         </Stack>

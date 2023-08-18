@@ -1,26 +1,20 @@
-import { styled } from '../../styles';
-import { transparentize } from 'polished';
+import { cva } from 'class-variance-authority';
 
-export const Container = styled('nav', {
-  w: '100%',
-  h: 53,
-  pl: '$spacing-4',
-  pr: '$spacing-4',
+export const nav = cva([
+  'bg-surface-color-background-default',
+  'border',
+  'border-[#D5DBDB]/50',
+  'w-full',
+  'h-[53px]',
+  'pl-4',
+  'pr-4',
+  'sticky',
+  'top-0',
+  'z-[100]',
+  'flex',
+  'justify-between',
+  'items-center',
 
-  position: 'sticky',
-  top: 0,
-  zIndex: '$100',
-
-  d: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-
-  bg: '$surface-color-background-default',
-  borderBottom: '1px solid',
-  borderColor: `${transparentize(0.5, '#D5DBDB')}`,
-
-  ['.dark-theme &']: {
-    borderColor: `${transparentize(0.7, '#252e30')}`,
-    bg: '$surface-color-background-pressed',
-  },
-});
+  '[data-mode=dark]:bg-surface-color-background-pressed',
+  '[data-mode=dark]:border-[#252e30]/70',
+]);

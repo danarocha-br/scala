@@ -4,11 +4,15 @@ import {
   Trigger,
   MenuContentProps,
   Portal,
+  Content,
+  Item,
+  DropdownMenuItemProps,
+  Separator,
+  DropdownMenuSeparatorProps,
+  Arrow,
 } from '@radix-ui/react-dropdown-menu';
 
-import { CSS } from '../../styles';
 import { Box } from '../Box';
-
 import * as S from './styles';
 
 export type DropdownProps = {
@@ -23,39 +27,81 @@ export type DropdownProps = {
   /** event handler called when the open state of the dropdown menu changes. */
   onOpenChange?: (open: boolean) => void;
   align?: 'center' | 'end' | 'start';
-  css?: CSS;
+  className?: string;
 };
 
-const DropdownItem = S.DropdownItem;
+export type DropdownItemProps = DropdownMenuItemProps &
+  React.RefAttributes<HTMLDivElement>;
+/**
+ * Render a dropdown item component.
+ *
+ * @param {React.ReactNode} children - The content to be rendered inside the item.
+ * @return {React.ReactElement} The rendered dropdown item component.
+ */
+const DropdownItem = ({ children, ...props }: DropdownItemProps) => (
+  <Item className={S.dropdownItem()} {...props}>
+    {children}
+  </Item>
+);
 DropdownItem.displayName = 'Item';
 
-const DropdownRightSlot = S.RightSlot;
+export type DropdownRightSlotProps = {
+  children: React.ReactNode;
+};
+
+/**
+ * Renders the right slot component of the Dropdown.
+ *
+ * @param {DropdownRightSlotProps} children - The content to be rendered inside the right slot.
+ * @return {JSX.Element} The rendered right slot component.
+ */
+const DropdownRightSlot = ({ children }: DropdownRightSlotProps) => (
+  <Box className={S.rightSlot()}>{children}</Box>
+);
 DropdownItem.displayName = 'RightSlot';
 
-const DropdownSeparator = S.DropdownSeparator;
+export type DropdownSeparatorProps = DropdownMenuSeparatorProps &
+  React.RefAttributes<HTMLDivElement>;
+
+const DropdownSeparator = ({ ...props }: DropdownMenuSeparatorProps) => (
+  <Separator className={S.dropdownSeparator()} {...props} />
+);
 DropdownItem.displayName = 'Separator';
 
+/**
+ * Renders the content of a dropdown menu.
+ *
+ * @param {ReactNode} children - The children elements to be rendered inside the dropdown menu content.
+ * @param {...any} props - Additional props to be spread on the dropdown menu content.
+ * @returns {JSX.Element} - The rendered dropdown menu content.
+ */
 function DropdownMenuContent({
   children,
   ...props
 }: MenuContentProps): JSX.Element {
   return (
     <Portal>
-      <S.DropdownMenuContent
-        sideOffset={8}
-        alignOffset={5}
-        arrowPadding={8}
-        {...props}
-      >
+      <Content sideOffset={8} alignOffset={5} arrowPadding={8} {...props}>
         {children}
-        <S.DropdownMenuArrow />
-      </S.DropdownMenuContent>
+        <Arrow className={S.dropdownMenuArrow()} />
+      </Content>
     </Portal>
   );
 }
 
+/**
+ * Render a base dropdown component.
+ *
+ * @param {ReactNode} children - The content of the dropdown component.
+ * @param {ReactNode} trigger - The trigger element for the dropdown component.
+ * @param {boolean} open - Whether the dropdown is open or not.
+ * @param {boolean} defaultOpen - Whether the dropdown is open by default or not.
+ * @param {function} onOpenChange - The callback function when the dropdown open state changes.
+ * @param {string} align - The alignment of the dropdown component.
+ * @return {ReactElement} The rendered dropdown component.
+ */
 const DropdownBase = ({
-  css,
+  className,
   children,
   trigger,
   open,
@@ -64,11 +110,7 @@ const DropdownBase = ({
   align = 'center',
   ...props
 }: DropdownProps) => (
-  <Box
-    className="dropdown"
-    css={{ position: 'relative', w: 'max-content', zIndex: '$max', css }}
-    {...props}
-  >
+  <Box className={`dropdown relative z-max max-w-max ${className}`} {...props}>
     <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       <>
         <Trigger asChild className="dropdown__trigger">

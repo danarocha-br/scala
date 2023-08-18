@@ -1,20 +1,18 @@
 import React from 'react';
-import { CSS } from '../../styles';
+import { Button as AccessibleButton } from '@ariakit/react';
+import { VariantProps } from 'class-variance-authority';
+
 import { Icon, iconPath } from '../Icon';
 import * as S from './styles';
 
 export type ButtonProps = {
   label: string;
-  variant?: 'primary' | 'transparent';
-  color?: 'primary' | 'secondary' | 'danger';
-  size?: 'lg' | 'md' | 'sm' | 'xs';
   icon?: keyof typeof iconPath;
-  fullWidth?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  animateOnHover?: boolean;
-  css?: CSS;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+  className?: string;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof S.button>;
 
 export const Button = ({
   variant = 'primary',
@@ -30,31 +28,24 @@ export const Button = ({
   icon,
   ...props
 }: ButtonProps): JSX.Element => {
-  const iconSize = size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'md';
-  const iconLeft =
-    size === 'lg'
-      ? '-14px'
-      : size === 'md'
-      ? '-8px'
-      : size === 'sm'
-      ? '-6px'
-      : '-2px';
-  const iconMarginRight = size === 'xs' ? '$spacing-1' : '0';
+  const iconSize =
+    size === 'md' ? 'md' : size === 'sm' ? 'sm' : size == 'xs' ? 'xs' : 'md';
 
   return (
-    <S.Container
-      variant={variant}
-      size={size}
-      fullWidth={fullWidth}
-      color={color}
+    <AccessibleButton
       disabled={disabled || loading}
-      loading={loading}
       onClick={onClick}
       aria-label={label}
-      animateOnHover={animateOnHover}
       type={type}
       {...props}
-      className="button"
+      className={S.button({
+        size,
+        color,
+        variant,
+        loading,
+        fullWidth,
+        animateOnHover,
+      })}
     >
       {Boolean(icon) && (
         <Icon
@@ -62,18 +53,20 @@ export const Button = ({
           label={label}
           color="current"
           size={iconSize}
-          css={{
-            left: iconLeft,
-            position: 'relative',
-            mr: iconMarginRight,
-          }}
+          className={S.icon({ size, variant })}
         />
       )}
 
-      <span className="button__content">{label}</span>
+      <span
+        className={`button__content z-[1] ${
+          !loading && animateOnHover && 'group-hover:animate-button-on-hover'
+        }`}
+      >
+        {label}
+      </span>
 
       <span aria-hidden className="button__disco" />
-    </S.Container>
+    </AccessibleButton>
   );
 };
 

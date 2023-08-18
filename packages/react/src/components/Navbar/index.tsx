@@ -1,5 +1,4 @@
-import { CSS } from '../../styles';
-import { Button } from '../Button';
+import { Box } from '../Box';
 import { IconButton } from '../IconButton';
 import { Shortcut } from '../Shortcut';
 import { Stack } from '../Stack';
@@ -14,7 +13,7 @@ export type NavbarProps = {
   isDark: boolean;
   slot?: React.ReactNode;
   onThemeChange: () => void;
-  css?: CSS;
+  className?: string;
   optionsButtonLabel?: string;
   themeButtonLabel?: string;
   optionsButtonOnClick?: () => void;
@@ -28,13 +27,13 @@ export const Navbar = ({
   optionsButtonLabel,
   optionsButtonOnClick,
   themeButtonLabel,
-  css,
+  className,
   ...props
 }: NavbarProps) => (
   //TODO - make navbar mobile friendly
-  <S.Container css={css} {...props}>
+  <Box className={S.nav({className})} {...props}>
     {Boolean(pageTitle) && (
-      <Text size="lg" color="body-lighter" css={{ whiteSpace: 'nowrap' }}>
+      <Text size="lg" color="body-lighter" className='whitespace-nowrap'>
         {pageTitle}
       </Text>
     )}
@@ -42,15 +41,15 @@ export const Navbar = ({
     {slot && (
       <Stack
         align="center"
-        gap={4}
+        gap='4'
         justify="end"
-        css={{ flex: 2, px: !pageTitle ? '' : '$spacing-12' }}
+        className={`flex-2 ${!pageTitle ? '' : 'px=12'}`}
       >
         {slot}
       </Stack>
     )}
 
-    <Stack align="center" gap={2}>
+    <Stack align="center" gap='2'>
       <Tooltip
         content={themeButtonLabel || 'Change theme'}
         slot={<Shortcut shortcut="⌘ T" />}
@@ -68,6 +67,6 @@ export const Navbar = ({
         />
       )}
     </Stack>
-  </S.Container>
+  </Box>
 );
 Navbar.displayName = 'Navbar';
