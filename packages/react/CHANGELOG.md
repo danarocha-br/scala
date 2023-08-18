@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.5
+
+### Patch Changes
+
+- Export tailwind config as a preset
+
 ## 0.0.4
 
 ### Patch Changes

@@ -59,3 +59,5 @@ export * from './hooks/useOverlay';
 export * from './hooks/useSidebarNavigation';
 export * from './hooks/useToast';
 export * from './hooks/useToggle';
+
+export * as scalaPreset from './styles/tailwindPreset';
