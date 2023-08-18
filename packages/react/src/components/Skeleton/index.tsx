@@ -1,38 +1,66 @@
 import React from 'react';
-import ReactSkeleton, {
-  SkeletonTheme,
-  SkeletonProps as ReactSkeletonProps,
-} from 'react-loading-skeleton';
-//@ts-ignore
-import { theme } from '../../../tailwind.config.js';
+import { VariantProps } from 'class-variance-authority';
+
+import { Box } from '../Box';
+import * as S from './styles';
 
 export type SkeletonProps = {
   children: React.ReactNode;
-};
+} & VariantProps<typeof S.root>;
 
-const SkeletonItem = (props: ReactSkeletonProps) => (
-  //@ts-ignore
-  <ReactSkeleton {...props} />
-);
-SkeletonItem.displayName = 'Skeleton.Item';
+export type SkeletonItemProps = {
+  width?: number | string;
+  height?: number | string;
+  count?: number;
+} & VariantProps<typeof S.item>;
 
 /**
- * Renders a SkeletonRoot component with the provided children and props.
+ * Renders a skeleton item.
  *
- * @param {SkeletonProps} children - The children elements to be rendered inside the SkeletonRoot component.
- * @param {SkeletonProps} props - Additional props to be passed to the SkeletonRoot component.
- * @return {JSX.Element} The rendered SkeletonRoot component.
+ * @param {SkeletonItemProps} props - The props for the skeleton item.
+ * @returns {JSX.Element} The rendered skeleton item.
  */
-const SkeletonRoot = ({ children, ...props }: SkeletonProps): JSX.Element => (
-  <SkeletonTheme
-    baseColor={theme.colors['loading-color-background']}
-    highlightColor={theme.colors['loading-color-background-subdued']}
-    borderRadius="999px"
-    {...props}
-  >
-    {children}
-  </SkeletonTheme>
-);
+const SkeletonItem = ({
+  width = '100%',
+  height = 16,
+  count = 1,
+  ...props
+}: SkeletonItemProps): JSX.Element => {
+  const countArray = Array.from({ length: count });
+
+  return (
+    <>
+      {countArray.map((_, index) => (
+        <Box
+          key={index}
+          className={S.item()}
+          style={{ width, height }}
+          {...props}
+        />
+      ))}
+    </>
+  );
+};
+
+SkeletonItem.displayName = 'Skeleton.Item';
+
+type SkeletonRootProps = {
+  children: React.ReactNode;
+} & SkeletonProps;
+
+/**
+ * Renders the skeleton root component.
+ * @param children - The content to be rendered inside the skeleton root.
+ * @param props - Additional props to be applied to the skeleton root.
+ * @returns The skeleton root component.
+ */
+const SkeletonRoot: React.FC<SkeletonRootProps> = ({ children, ...props }) => {
+  return (
+    <Box className={S.root()} {...props}>
+      {children}
+    </Box>
+  );
+};
 SkeletonRoot.displayName = 'Skeleton.Root';
 
 export const Skeleton = { Root: SkeletonRoot, Item: SkeletonItem };

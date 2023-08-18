@@ -1,4 +1,3 @@
-import 'react-loading-skeleton/dist/skeleton.css';
 import './styles/main.css';
 
 export * from './components/Box';

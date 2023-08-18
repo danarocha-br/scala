@@ -1,6 +1,6 @@
 {
   "name": "@compasso/scala",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Scala components package for react",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -74,7 +74,6 @@
     "match-sorter": "^6.3.1",
     "polished": "^4.2.2",
     "react-datepicker": "^4.8.0",
-    "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^5.1.1",
     "react-select": "^5.6.0",
     "uuid": "^9.0.0"

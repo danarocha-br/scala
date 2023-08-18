@@ -92,6 +92,7 @@ export default {
         </Dropdown.Item>
       </>
     ),
+    loading: false,
   },
   argTypes: {
     children: {
@@ -105,6 +106,11 @@ export default {
       },
     },
     css: {
+      table: {
+        category: 'Modifiers',
+      },
+    },
+    loading: {
       table: {
         category: 'Modifiers',
       },
@@ -201,7 +207,7 @@ export const ExampleLoading: Story<NavigationProps> = (args) => (
 ExampleLoading.args = {
   loading: true,
   children: (
-    <>
+    <Stack direction="column" gap="4" fullWidth className="mt-4">
       <Navigation.Item
         label="Projects"
         icon="project"
@@ -218,16 +224,12 @@ ExampleLoading.args = {
         loading
       />
       <Navigation.Item label="Clients" icon="user" href="/clients" loading />
-    </>
+    </Stack>
   ),
 };
 
 export const NavigationItem: Story<NavigationProps> = () => (
-  <Stack
-    direction="column"
-    justify="center"
-    className="h-screen w-full px-[380px]"
-  >
+  <Stack direction="column" justify="center" className="h-screen w-full px-10">
     <Text size="xs" className="ml-3">
       Regular Active
     </Text>

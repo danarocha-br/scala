@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.6
+
+### Patch Changes
+
+- Remove skeleton dependencies and build a custom one
+
 ## 0.0.5
 
 ### Patch Changes
