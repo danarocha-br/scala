@@ -110,7 +110,7 @@ export const content = cva([
 
   'data-[state=open]:w-full',
   'data-[state=closed]:opacity-100',
-  'data-[state=closed]:w-0',
+  'data-[state=closed]:w-[40px]',
   'transition-[width,opacity]',
 
   'delay-300',
@@ -149,7 +149,7 @@ export const header = cva(
     'px-2',
     'pb-1',
     'pt-2',
-    'h-[53px]',
+    'h-[46.5px]',
     'flex',
     'items-center',
     'justify-between',

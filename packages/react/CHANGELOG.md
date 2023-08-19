@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.9
+
+### Patch Changes
+
+- Styles updates
+
 ## 0.0.8
 
 ### Patch Changes

@@ -43,6 +43,7 @@ export const Navbar = ({
         align="center"
         gap="4"
         justify="end"
+        fullWidth
         className={`flex-2 ${!pageTitle ? '' : 'px-12'}`}
       >
         {slot}

@@ -189,7 +189,7 @@
     --feedback-color-background-info-disabled: var(--color-royal-50);
 
     --navigation-surface-color-background: var(
-      --bg-surface-color-background-default
+      --surface-color-background-default
     );
     --navigation-surface-color-border: 180deg 8% 92%;
 
@@ -251,7 +251,7 @@
     --text-color-success: var(--color-forest-400);
     --text-color-warning: var(--color-macaroni-600);
     --text-color-danger: var(--color-froly-600);
-    --text-color-on-light: var(--color-white);
+    --text-color-on-light: var(--color-neutral-800);
     --text-color-on-dark: var(--color-white);
     --text-color-inverted: var(--color-neutral-800);
 

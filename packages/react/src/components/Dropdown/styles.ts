@@ -29,7 +29,7 @@ export const dropdownMenuArrow = cva([
   'dark:fill-text-color-on-light',
 ]);
 
-const itemStyles = [
+export const dropdownItem = cva([
   'text-text-color-body-lighter',
   'font-normal',
   'text-sm',
@@ -62,9 +62,7 @@ const itemStyles = [
   '[&_>_a]:flex',
   '[&_>_a]:justify-between',
   '[&_>_a]:w-full',
-];
-
-export const dropdownItem = cva(itemStyles);
+]);
 
 export const rightSlot = cva([
   'text-text-color-caption',

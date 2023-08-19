@@ -62,7 +62,11 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Stack align="center" justify="center" className="h-screen px-[200px]">
+        <Stack
+          align="center"
+          justify="center"
+          className="h-screen px-[200px] bg-surface-color-background-default"
+        >
           {Story()}
         </Stack>
       );
