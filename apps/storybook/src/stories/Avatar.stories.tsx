@@ -83,7 +83,7 @@ export default {
           gap="8"
           align="center"
           justify="center"
-          className="h-screen px-[200px]"
+          className="h-screen px-[200px] bg-background-color-default"
         >
           {Story()}
         </Stack>

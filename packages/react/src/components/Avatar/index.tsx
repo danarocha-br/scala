@@ -99,7 +99,7 @@ export const Avatar = ({
       <Text
         weight="medium"
         leading="1"
-        className="avatar-username scale-95 transition-all duration-300 group-hover:translate-x-1 group-focus:translate-x-1"
+        className="avatar-username scale-95 truncate whitespace-nowrap transition-all duration-300 group-hover:translate-x-1 group-focus:translate-x-1"
       >
         {username}
       </Text>

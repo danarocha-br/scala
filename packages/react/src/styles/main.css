@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    --font-sans: 'Plus Jakarta Sans', -apple--apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+      'Helvetica Neue', sans-serif;
+
     --color-froly-900: 9deg 88% 33%;
     --color-froly-800: 9deg 78% 43%;
     --color-froly-700: 7deg 68% 50%;
@@ -46,7 +50,7 @@
     --color-royal-300: 222deg 87% 72%;
     --color-royal-200: 218deg 95% 85%;
     --color-royal-100: 211deg 96% 91%;
-    --color-royal-50: 212deg 100% 97%;
+    --color-royal-50: 212deg 100% 96%;
 
     --color-white: 0deg 0% 100%;
     --color-neutral-900: 193deg 18% 10%;
@@ -105,7 +109,7 @@
     --action-color-border-transparent-enabled: var(--color-neutral-200);
     --action-color-border-transparent-pressed: 120deg 3% 93%;
     --action-color-background-transparent-enabled: transparent;
-    --action-color-background-transparent-hover: 120deg 3% 93%;
+    --action-color-background-transparent-hover: 120deg 3% 94%;
     --action-color-background-transparent-pressed: var(--color-neutral-200);
     --action-color-background-transparent-disabled: 120deg 4% 95%;
 
@@ -184,6 +188,11 @@
     --feedback-color-background-info-pressed: var(--color-royal-700);
     --feedback-color-background-info-disabled: var(--color-royal-50);
 
+    --navigation-surface-color-background: var(
+      --bg-surface-color-background-default
+    );
+    --navigation-surface-color-border: 180deg 8% 92%;
+
     --background-color-default: 60deg 9% 98%;
     --background-color-gradient: linear-gradient(
       89.99deg #fbf8f6 13.34%,
@@ -206,6 +215,12 @@
       100% 0%,
       0% 0%
     );
+
+    --elevation-low: 0px -3px 2px 0px #00000005, 0px 6px 10px 0px #00000014,
+    --elevation-medium: 0px 0px 5.8px 3px #00000008,
+      0px 24px 38px 0px #0000001a,
+    --elevation-high: 0px -1px 2.5px 0px #00000014,
+      0px 6.3px 8.5px 0px #00000000, 0px 30px 48px 0px #00000026;
   }
 
   [data-theme='dark'] {
@@ -248,16 +263,16 @@
     --interactive-color-background-subdued: var(--color-royal-300);
     --interactive-color-background-hover: var(--color-royal-500);
     --interactive-color-background-pressed: var(--color-royal-600);
-    --interactive-color-background-disabled: 229deg 83% 70%;
+    --interactive-color-background-disabled: 229deg 55% 70%;
 
     --action-color-text-transparent-disabled: var(--color-white);
     --action-color-text-transparent-enabled: var(--color-neutral-300);
     --action-color-border-transparent-enabled: var(--color-neutral-700);
-    --action-color-border-transparent-pressed: 120deg 2% 88%;
+    --action-color-border-transparent-pressed: 193deg 12% 15%;
     --action-color-background-transparent-enabled: transparent;
-    --action-color-background-transparent-hover: 120deg 2% 88%;
+    --action-color-background-transparent-hover: 193deg 12% 15%;
     --action-color-background-transparent-pressed: var(--color-neutral-600);
-    --action-color-background-transparent-disabled: 120deg 2% 88%;
+    --action-color-background-transparent-disabled: 193deg 12% 15%;
 
     --action-color-text-primary-enabled: var(--color-neutral-900);
     --action-color-text-primary-disabled: var(--color-neutral-300);
@@ -334,14 +349,24 @@
     --feedback-color-background-info-pressed: var(--color-royal-600);
     --feedback-color-background-info-disabled: 229deg 83% 70%;
 
+    --navigation-surface-color-background: var(--color-neutral-900);
+    --navigation-surface-color-border: 195deg 13% 9%;
+
     --background-color-default: 192deg 18% 11%;
     --background-color-gradient: linear-gradient(
       89.99deg #fbf8f6 13.34%,
       #f4f4ed 99.99%
     );
+
+    --elevation-low: 0px -3px 2px 0px #ffffff05, 0px 6px 10px 0px #ffffff14,
+    --elevation-medium: 0px 0px 5.8px 3px #ffffff08,
+      0px 24px 38px 0px #ffffff1a,
+    --elevation-high: 0px -1px 2.5px 0px #ffffff14,
+      0px 6.3px 8.5px 0px #ffffff00, 0px 30px 48px 0px #ffffff26;
   }
 
   @media (prefers-color-scheme: dark) {
+
   }
 }
 
@@ -363,5 +388,5 @@ body {
 }
 
 ::selection {
-  background-color: 'hsl(var(--brand-color-primary))';
+  background-color: hsl(var(--brand-color-primary));
 }

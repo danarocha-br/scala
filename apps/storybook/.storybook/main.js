@@ -18,6 +18,7 @@ module.exports = {
     '@storybook/addon-a11y',
     'storybook-addon-designs',
     '@geometricpanda/storybook-addon-badges',
+    'storybook-addon-theme-changer'
   ],
   framework: '@storybook/react',
   core: {

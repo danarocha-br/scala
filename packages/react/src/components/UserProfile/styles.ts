@@ -6,7 +6,7 @@ export const trigger = cva([
   'cursor-pointer',
   'pl-2',
   'pr-3',
-  'py-2',
+  'py-1',
   'border',
   'border-dashed',
   'border-transparent',
@@ -17,7 +17,7 @@ export const trigger = cva([
   'outline-none',
   'group',
 
-  'hover:bg-surface-color-background-disabled',
+  'hover:bg-action-color-background-transparent-hover',
 
   'focus:bg-action-color-background-transparent-hover',
   'focus:border-surface-color-background-hover',

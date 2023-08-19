@@ -5,6 +5,9 @@ export const dropdownMenuContent = cva([
   'bg-surface-color-background-default',
   'rounded-sm',
   'shadow-low',
+  'dark:shadow-[black]/20',
+  'border',
+  'border-surface-color-background-hover',
   'w-full',
   'min-w-[200px]',
   'p-1',
@@ -23,7 +26,7 @@ export const dropdownMenuContent = cva([
 export const dropdownMenuArrow = cva([
   'fill-current',
   'fill-text-color-on-dark',
-  'data-[mode=dark]:fill-text-color-on-light',
+  'dark:fill-text-color-on-light',
 ]);
 
 const itemStyles = [
@@ -32,9 +35,6 @@ const itemStyles = [
   'text-sm',
   'text-left',
   'rounded-sm',
-  'border',
-  'border-dashed',
-  'border-transparent',
   'py-2',
   'px-2',
   'flex',
@@ -46,11 +46,13 @@ const itemStyles = [
 
   'hover:text-text-color-body',
   'hover:bg-interactive-color-background-enabled',
-  'hover:data-[mode=dark]:bg-royal-500',
+  'dark:hover:bg-interactive-color-background-disabled/20',
 
   'focus:text-text-color-body',
   'focus:bg-interactive-color-text-enabled',
+  'focus:border-transparent',
   'focus:border-interactive-color-background-disabled',
+  'dark:focus:bg-interactive-color-background-disabled/20',
   'focus:outline-none',
 
   'data-[disabled]:text-text-color-caption',

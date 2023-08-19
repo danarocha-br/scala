@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.8
+
+### Patch Changes
+
+- Resolve dark style on few components
+
 ## 0.0.7
 
 ### Patch Changes

@@ -52,7 +52,7 @@ export default {
           align="center"
           justify="center"
           fullWidth
-          className="h-screen px-4"
+          className="h-screen bg-background-color-default px-4"
         >
           {Story()}
         </Stack>

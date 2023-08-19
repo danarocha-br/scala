@@ -11,7 +11,7 @@ export const Shortcut = ({
   <Text
     size="xs"
     weight="medium"
-    className="c-shortcut leading-2 h-auto rounded-sm bg-surface-color-background-hover px-1 pb-[1px] ml-auto"
+    className="c-shortcut leading-2 h-auto rounded-sm bg-surface-color-background-hover dark:bg-surface-color-background-subdued px-1 pb-[1px] ml-auto"
     aria-label={shortcut}
     {...props}
   >

@@ -15,15 +15,16 @@ export const anchor = cva(
     'relative',
     'transition-all',
     'duration-500',
-    'outline',
+    'outline-none',
     'outline-transparent',
 
     'hover:opacity-100',
+    'focus-visible:outline',
     'focus-visible:opacity-100',
     'focus-visible:outline-dashed',
     'focus-visible:outline-offeset-2',
-    'focus-visible:outline-surface-color-background-hover',
-    'data-[mode=dark]:focus-visible:outline-neutral-700',
+    'focus-visible:outline-action-color-border-transparent-pressed',
+    'dark:focus-visible:outline-neutral-800',
 
     'aria-disabled:transition-none',
     'aria-disabled:cursor-not-allowed',
@@ -34,11 +35,11 @@ export const anchor = cva(
     'aria-disabled:after:bg-action-color-background-primary-enabled',
     'aria-disabled:after:text-xs',
     'aria-disabled:after:absolute',
-    'aria-disabled:after:right-4',
+    'aria-disabled:after:right-2',
     'aria-disabled:after:py-1',
     'aria-disabled:after:px-2',
     'aria-disabled:after:rounded-sm',
-    'aria-disabled:after:data-[mode=dark]:text-action-color-text-primary-enabled',
+    'dark:aria-disabled:after:text-action-color-text-primary-enabled',
   ],
   {
     variants: {
@@ -48,12 +49,14 @@ export const anchor = cva(
           'font-medium',
           'bg-interactive-color-background-disabled',
           'opacity-100',
+
           '[&_svg]:fill-brand-color-primary',
-          'data-[mode=dark]:text-text-color-on-dark',
-          'data-[mode=dark]:[&_svg]:fill-feedback-color-background-danger-subdued',
-          'data-[mode=dark]:text-text-color-on-dark',
+          'dark:text-text-color-on-dark',
+          'dark:bg-interactive-color-background-disabled/20',
+          'dark:[&_svg]:fill-feedback-color-background-danger-subdued',
+          'dark:text-text-color-on-dark',
         ],
-        false: ['text-text-color-body', 'opacity-60'],
+        false: ['text-text-color-body', 'opacity-50'],
       },
 
       hasShortcut: {
@@ -96,8 +99,6 @@ export const label = cva([
   'group-hover:aria-disabled:translate-x-0',
 ]);
 
-export const container = cva(['h-full', 'block', 'bg-transparent']);
-
 export const content = cva([
   'overflow-hidden',
   'flex',
@@ -105,26 +106,43 @@ export const content = cva([
   'justify-between',
   'px-2',
   'h-[calc(100%_-_60px)]',
+  'duration-300',
 
-  'data-[state=open]:animate-[navigation-open_400ms_ease-in]',
-  'data-[state=open]:bg-surface-color-background-default',
-  'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
+  'data-[state=open]:w-full',
+  'data-[state=closed]:opacity-100',
+  'data-[state=closed]:w-0',
+  'transition-[width,opacity]',
 
-  'data-[state=closed]:animate-[navigation-close_200ms_ease-in]',
+  'delay-300',
 ]);
 
-export const root = cva([
-  'h-full',
-  'sticky',
-  'top-0',
-
-  'data-[state=open]:bg-surface-color-background-default',
-  'data-[state=open]:border-r',
-  'data-[state=open]:border-[#D5DBDB]/50',
-  'data-[state=open]:w-[(minmax(15rem,_18rem))]',
-  'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
-  'data-[state=open]:data-[mode=dark]:border-[#252e30]/70',
-]);
+export const root = cva(
+  [
+    'h-screen',
+    'sticky',
+    'top-0',
+    'data-[state=open]:w-[17rem]',
+    'data-[state=closed]:w-0',
+    // 'transition-[width]',
+    // 'duration-300',
+    'group/root'
+  ],
+  {
+    variants: {
+      isClosed: {
+        true: [],
+        false: [
+          'border-r',
+          'border-navigation-surface-color-border',
+          'bg-navigation-surface-color-background',
+        ],
+      },
+    },
+    defaultVariants: {
+      isClosed: false,
+    },
+  }
+);
 
 export const header = cva(
   [
@@ -135,19 +153,17 @@ export const header = cva(
     'flex',
     'items-center',
     'justify-between',
+    'gap-1',
 
-    'data-[state=open]:bg-surface-color-background-default',
-    'data-[state=open]:data-[mode=dark]:bg-surface-color-background-pressed',
+    'data-[state=open]:bg-navigation-surface-color-background',
   ],
   {
     variants: {
       isClosed: {
         true: [
           'border-b',
-          'border-[#D5DBDB]/50',
-          'bg-surface-color-background-default',
-          'data-[mode=dark]:border-[#252e30]/70',
-          'data-[mode=dark]:bg-surface-color-background-pressed',
+          'border-navigation-surface-color-border',
+          'bg-navigation-surface-color-background',
         ],
       },
     },
@@ -168,8 +184,7 @@ export const footer = cva([
 
 export const toogleButton = cva([
   'w-auto',
-  'p-2',
-  'mb-1',
+  'p-1',
   'rounded-sm',
   'transition-all',
   'border',
@@ -181,6 +196,7 @@ export const toogleButton = cva([
 
   'focus:bg-action-color-background-transparent-disabled',
   'focus:border-surface-color-background-hover',
+  'dark:focus:border-surface-color-background-hover',
 ]);
 
 export const svg = cva([

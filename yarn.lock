@@ -2105,6 +2105,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@compasso/docs@workspace:apps/docs":
+  version: 0.0.0-use.local
+  resolution: "@compasso/docs@workspace:apps/docs"
+  dependencies:
+    "@compasso/design-tokens": "*"
+    "@compasso/eslint-config": "*"
+    "@compasso/scala": "*"
+    "@compasso/ts-config": "*"
+    "@types/node": 20.5.1
+    "@types/react": 18.2.20
+    "@types/react-dom": 18.2.7
+    autoprefixer: 10.4.15
+    eslint: 8.47.0
+    eslint-config-next: 13.4.18
+    next: 13.4.18
+    next-themes: ^0.2.1
+    postcss: 8.4.28
+    react: 18.2.0
+    react-dom: 18.2.0
+    tailwindcss: 3.3.3
+    typescript: 5.1.6
+  languageName: unknown
+  linkType: soft
+
 "@compasso/eslint-config@*, @compasso/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@compasso/eslint-config@workspace:packages/eslint-config"
@@ -2215,6 +2239,7 @@ __metadata:
     react-dom: ^18.2.0
     react-syntax-highlighter: ^15.5.0
     storybook-addon-designs: ^6.3.1
+    storybook-addon-theme-changer: ^0.1.2
     vite: ^3.1.8
   languageName: unknown
   linkType: soft
@@ -10826,30 +10851,6 @@ __metadata:
   checksum: d7381bca22ed11933a1ccf376db7a94bee2c57aa61e490f680124fa2d1cd27e94eba641d9f45be57caab4f9a6579de0983466f620a2cd6230d7ec93312105ae7
   languageName: node
   linkType: hard
-
-"docs@workspace:apps/docs":
-  version: 0.0.0-use.local
-  resolution: "docs@workspace:apps/docs"
-  dependencies:
-    "@compasso/design-tokens": "*"
-    "@compasso/eslint-config": "*"
-    "@compasso/scala": "*"
-    "@compasso/ts-config": "*"
-    "@types/node": 20.5.1
-    "@types/react": 18.2.20
-    "@types/react-dom": 18.2.7
-    autoprefixer: 10.4.15
-    eslint: 8.47.0
-    eslint-config-next: 13.4.18
-    next: 13.4.18
-    next-themes: ^0.2.1
-    postcss: 8.4.28
-    react: 18.2.0
-    react-dom: 18.2.0
-    tailwindcss: 3.3.3
-    typescript: 5.1.6
-  languageName: unknown
-  linkType: soft
 
 "doctrine@npm:^2.1.0":
   version: 2.1.0
@@ -21140,6 +21141,26 @@ __metadata:
   dependencies:
     "@figspec/react": ^1.0.0
   checksum: 63d91358540a59801028b4fe2fe61a2cad52ac2354efde0959f081379045230af4ea6dea6a8abddae2a7eb14699fd04024dec44b6fd396065e0e585d31980635
+  languageName: node
+  linkType: hard
+
+"storybook-addon-theme-changer@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "storybook-addon-theme-changer@npm:0.1.2"
+  peerDependencies:
+    "@storybook/addons": ^6.4.0
+    "@storybook/api": ^6.4.0
+    "@storybook/components": ^6.4.0
+    "@storybook/core-events": ^6.4.0
+    "@storybook/theming": ^6.4.0
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 6943e49fd726b5642a0f4be5ec34343f204f0b27b3689dc6d15d43457833f442c7c68834b6deddd4b3ea2d039afadc7a58689aad17a7a789fff88c9ffc30898a
   languageName: node
   linkType: hard
 

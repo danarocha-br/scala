@@ -2,13 +2,11 @@ import React from 'react';
 import { themes } from '@storybook/theming';
 import '../../../packages/react/dist/index.css';
 
-// export const preview = {
-//   globalTypes: {
-//     dataThemes: {
-//       defaultValue: 'dark',
-//     },
-//   },
-// };
+export const globalTypes = {
+  themes: {
+    defaultValue: ['light', 'dark'],
+  },
+};
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

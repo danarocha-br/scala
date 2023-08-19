@@ -133,7 +133,11 @@ export default {
   },
   decorators: [
     (Story) => (
-      <Stack gap="8" align="center" className="h-screen">
+      <Stack
+        gap="8"
+        align="center"
+        className="h-screen bg-background-color-default"
+      >
         {Story()}
       </Stack>
     ),

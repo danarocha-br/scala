@@ -3,7 +3,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   content: ['./src/**/*.{ts,tsx}', '../../apps/**/*.{ts,tsx}'],
-  darkMode: ['class', '[data-mode="dark"]'],
+  darkMode: ['class', '[data-theme="dark"]'],
   presets: [require('./src/styles/tailwindPreset')],
   plugins: [],
   corePlugins: {

@@ -402,6 +402,17 @@ module.exports = {
           },
         },
       },
+      navigation: {
+        surface: {
+          color: {
+            background:
+              'hsl(var(--navigation-surface-color-background) / <alpha-value>)',
+            border:
+              'hsl(var(--navigation-surface-color-border) / <alpha-value>)',
+          },
+        },
+      },
+
       loading: {
         color: {
           background: {
@@ -550,12 +561,12 @@ module.exports = {
           '100%': { opacity: 1, transform: 'translateX(0)' },
         },
         'navigation-open': {
-          from: { width: 0, opacity: 1 },
+          from: { width: 0, opacity: 0 },
           to: { width: 0, opacity: 1 },
         },
         'navigation-close': {
           from: { width: 0, opacity: 1 },
-          to: { width: 0, opacity: 1 },
+          to: { width: 0, opacity: 0 },
         },
         'spinner-dash': {
           '0%': {
