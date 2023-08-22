@@ -15,7 +15,7 @@ export default {
   },
   args: {
     label: 'Label',
-    variant: 'primary',
+    variant: 'contained',
     color: 'primary',
     size: 'md',
     fullWidth: false,
@@ -109,7 +109,7 @@ export const DefaultVariant: Story<ButtonProps> = (args) => (
   </>
 );
 DefaultVariant.args = {
-  variant: 'primary',
+  variant: 'contained',
 };
 
 export const TransparentVariant: Story<ButtonProps> = (args) => (

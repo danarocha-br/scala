@@ -53,7 +53,7 @@
     --color-royal-50: 212deg 100% 96%;
 
     --color-white: 0deg 0% 100%;
-    --color-neutral-900: 193deg 18% 10%;
+    --color-neutral-900: 193deg 20% 8.5%;
     --color-neutral-800: 194deg 17% 15%;
     --color-neutral-700: 201deg 15% 23%;
     --color-neutral-600: 201deg 10% 33%;
@@ -350,9 +350,9 @@
     --feedback-color-background-info-disabled: 229deg 83% 70%;
 
     --navigation-surface-color-background: var(--color-neutral-900);
-    --navigation-surface-color-border: 195deg 13% 9%;
+    --navigation-surface-color-border: 195deg 18% 5%;
 
-    --background-color-default: 192deg 18% 11%;
+    --background-color-default: 192deg 20% 10%;
     --background-color-gradient: linear-gradient(
       89.99deg #fbf8f6 13.34%,
       #f4f4ed 99.99%

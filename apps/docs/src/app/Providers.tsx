@@ -4,12 +4,12 @@ import React from "react";
 import { ThemeProvider } from "next-themes";
 import { ToastProvider, SideBarNavigationProvider } from "@compasso/scala";
 
-import "./globals.css";
 import "@compasso/scala/dist/index.css";
+import "./globals.css";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
+    <ThemeProvider enableSystem={false}>
       <ToastProvider>
         <SideBarNavigationProvider>{children}</SideBarNavigationProvider>
       </ToastProvider>

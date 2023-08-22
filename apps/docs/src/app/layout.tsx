@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import Providers from "./Providers";
+import { Page } from "@/components/Page";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body className={plusJakartaSans.className}>
         <div className="min-h-screen">
-          <Providers>{children}</Providers>
+          <Providers>
+            <Page>{children}</Page>
+          </Providers>
         </div>
       </body>
     </html>
