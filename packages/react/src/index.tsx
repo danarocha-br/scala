@@ -13,6 +13,7 @@ export * from './components/Button';
 export * from './components/Callout';
 export * from './components/CalendarCard';
 export * from './components/Card';
+export * from './components/Chip';
 export * from './components/Checkbox';
 export * from './components/Combobox';
 export * from './components/Command';

@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 export const text = cva(
-  ['m-0', 'font-sans', 'font-normal', 'tabular-nums', 'block'],
+  ['m-0', 'font-normal', 'tabular-nums', 'block'],
   {
     variants: {
       size: {

@@ -81,7 +81,7 @@ export const Avatar = ({
       )}
       <AvatarPrimitive.Fallback
         delayMs={600}
-        className={`${bgColor || 'bg-brand-color-primary'} ${
+        className={`avatar-initials ${bgColor || 'bg-brand-color-primary'} ${
           initialsColor || 'text-white'
         } ${S.fallback({
           loading,

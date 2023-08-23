@@ -7,20 +7,19 @@ export const button = cva(
     'group',
     'select-none',
     'box-border',
-    'font-sans',
     'font-medium',
     'whitespace-nowrap',
     'pointer-events-auto',
     'flex',
     'items-center',
     'justify-center',
-    'overflow-hidden',
     'relative',
     'outline-none',
     'outline-transparent',
     'border-none',
     'cursor-pointer',
     'transition-all',
+
 
     'focus:outline-2',
     'focus:outline-offset-2',
@@ -44,7 +43,7 @@ export const button = cva(
       },
 
       variant: {
-        primary: [],
+        contained: [],
 
         transparent: [
           'font-normal',
@@ -91,6 +90,7 @@ export const button = cva(
 
       animateOnHover: {
         true: [
+          'overflow-hidden',
           'hover:before:translate-0',
           'hover:before:scale-150',
           'hover:before:transition-transform',
@@ -217,7 +217,7 @@ export const button = cva(
         ],
       },
       {
-        variant: 'primary',
+        variant: 'contained',
         color: 'primary',
         class: [
           'text-action-color-text-primary-enabled',
@@ -229,7 +229,7 @@ export const button = cva(
         ],
       },
       {
-        variant: 'primary',
+        variant: 'contained',
         color: 'secondary',
         class: [
           'text-action-color-text-secondary-enabled',
@@ -241,7 +241,7 @@ export const button = cva(
         ],
       },
       {
-        variant: 'primary',
+        variant: 'contained',
         color: 'danger',
         class: [
           'text-action-color-text-danger-enabled',
@@ -302,7 +302,7 @@ export const button = cva(
     ],
 
     defaultVariants: {
-      variant: 'primary',
+      variant: 'contained',
       size: 'md',
       color: 'primary',
       fullWidth: false,
@@ -315,7 +315,7 @@ export const button = cva(
 export const icon = cva(['relative'], {
   variants: {
     variant: {
-      primary: [],
+      contained: [],
       transparent: [
         'group-hover:bg-action-color-background-transparent-hover relative',
       ],

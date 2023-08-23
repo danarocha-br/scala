@@ -110,7 +110,7 @@ export const content = cva([
 
   'data-[state=open]:w-full',
   'data-[state=closed]:opacity-100',
-  'data-[state=closed]:w-[40px]',
+  'data-[state=closed]:w-[48px]',
   'transition-[width,opacity]',
 
   'delay-300',
@@ -122,7 +122,7 @@ export const root = cva(
     'sticky',
     'top-0',
     'data-[state=open]:w-[17rem]',
-    'data-[state=closed]:w-0',
+    'data-[state=closed]:w-[48px]',
     // 'transition-[width]',
     // 'duration-300',
     'group/root'

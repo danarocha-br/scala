@@ -1,117 +1,191 @@
 import { cva } from 'class-variance-authority';
 
 export const badge = cva(
-  [
-    'font-sans',
-    'text-sm',
-    'border-1',
-    'px-2',
-    'pb-[1px]',
-    'white-space-nowrap',
-  ],
+  ['text-sm', 'px-2', 'pb-[1px]', 'white-space-nowrap'],
   {
     variants: {
       variant: {
-        default: 'rounded-sm',
+        boxed: 'rounded-sm',
         pill: 'rounded-pill',
       },
 
       color: {
-        primary: [
-          'bg-action-color-background-primary-enabled',
-          'border-action-color-background-primary-enabled',
-        ],
-        info: [
-          'bg-feedback-color-background-info-enabled',
-          'border-feedback-color-background-info-enabled',
-        ],
-        warning: [
-          'bg-feedback-color-background-warning-enabled',
-          'border-feedback-color-background-warning-enabled',
-        ],
-        danger: [
-          'bg-feedback-color-background-danger-enabled',
-          'border-feedback-color-background-danger-enabled',
-        ],
-        success: [
-          'bg-feedback-color-background-success-enabled',
-          'border-feedback-color-background-success-enabled',
-        ],
-        'on-dark': ['bg-text-color-on-dark', 'border-text-color-on-dark'],
+        neutral: [],
+        info: [],
+        warning: [],
+        danger: [],
+        success: [],
+        'on-dark': [],
       },
 
-      outlined: {
-        true: ['bg-transparent', 'border'],
+      type: {
+        filled: [],
+        outlined: [],
+        inverted: [],
       },
     },
 
     compoundVariants: [
       {
-        color: 'primary',
-        outlined: true,
-        class: ['text-action-color-background-primary-enabled'],
+        color: 'neutral',
+        type: 'outlined',
+        class: [
+          'text-action-color-background-primary-enabled',
+          'border',
+          'border-action-color-background-primary-enabled',
+        ],
       },
       {
-        color: 'primary',
-        outlined: false,
-        class: ['text-action-color-text-primary-enabled'],
+        color: 'neutral',
+        type: 'filled',
+        class: [
+          'text-action-color-background-primary-enabled',
+          'bg-action-color-background-primary-disabled/40',
+        ],
+      },
+      {
+        color: 'neutral',
+        type: 'inverted',
+        class: [
+          'text-action-color-text-primary-enabled',
+          'bg-action-color-background-primary-enabled',
+        ],
+      },
+
+      {
+        color: 'info',
+        type: 'outlined',
+        class: [
+          'text-feedback-color-background-info-enabled',
+          'border',
+          'border-feedback-color-background-info-enabled',
+        ],
       },
       {
         color: 'info',
-        outlined: true,
-        class: ['text-feedback-color-background-info-enabled'],
+        type: 'filled',
+        class: [
+          'text-feedback-color-background-info-enabled',
+          'dark:text-feedback-color-text-info-enabled',
+          'bg-feedback-color-background-info-disabled',
+        ],
       },
       {
         color: 'info',
-        outlined: false,
-        class: ['text-feedback-color-text-info-enabled'],
+        type: 'inverted',
+        class: [
+          'text-feedback-color-text-info-enabled',
+          'bg-feedback-color-background-info-enabled',
+        ],
+      },
+
+      {
+        color: 'warning',
+        type: 'outlined',
+        class: [
+          'text-feedback-color-background-warning-pressed',
+          'border',
+          'border-feedback-color-background-warning-enabled',
+        ],
       },
       {
         color: 'warning',
-        outlined: true,
-        class: ['text-feedback-color-background-warning-pressed'],
+        type: 'filled',
+        class: [
+          'text-feedback-color-background-warning-pressed',
+          'dark:text-feedback-color-text-warning-enabled',
+          'bg-feedback-color-background-warning-disabled',
+        ],
       },
       {
         color: 'warning',
-        outlined: false,
-        class: ['text-feedback-color-text-warning-enabled'],
+        type: 'inverted',
+        class: [
+          'text-feedback-color-text-warning-enabled',
+          'bg-feedback-color-background-warning-enabled',
+        ],
+      },
+
+      {
+        color: 'danger',
+        type: 'outlined',
+        class: [
+          '!text-feedback-color-background-danger-enabled',
+          'border',
+          'border-feedback-color-background-danger-enabled',
+        ],
       },
       {
         color: 'danger',
-        outlined: true,
-        class: ['!text-feedback-color-background-danger-enabled'],
+        type: 'filled',
+        class: [
+          'text-feedback-color-background-danger-enabled',
+          'dark:text-feedback-color-text-danger-enabled',
+          'bg-feedback-color-background-danger-disabled',
+        ],
       },
       {
         color: 'danger',
-        outlined: false,
-        class: ['text-feedback-color-text-danger-enabled'],
+        type: 'inverted',
+        class: [
+          'text-feedback-color-text-danger-enabled',
+          'bg-feedback-color-background-danger-enabled',
+        ],
+      },
+
+      {
+        color: 'on-dark',
+        type: 'outlined',
+        class: [
+          'text-text-color-on-dark',
+          'dark:!text-text-color-on-dark',
+          'border',
+          'border-text-color-on-dark',
+        ],
       },
       {
         color: 'on-dark',
-        outlined: true,
-        class: ['text-text-color-on-dark'],
+        type: 'filled',
+        class: ['text-text-color-on-dark', 'bg-text-color-on-dark/5'],
       },
       {
         color: 'on-dark',
-        outlined: false,
-        class: ['text-[inherit]'],
+        type: 'inverted',
+        class: ['text-text-color-on-dark', 'bg-text-color-on-dark'],
+      },
+
+      {
+        color: 'success',
+        type: 'outlined',
+        class: [
+          '!text-feedback-color-background-success-enabled',
+          'border',
+          'border-feedback-color-background-success-enabled',
+        ],
       },
       {
         color: 'success',
-        outlined: true,
-        class: ['!text-feedback-color-background-success-enabled'],
+        type: 'filled',
+        class: [
+          'text-feedback-color-background-success-enabled',
+          'dark:text-feedback-color-text-success-enabled',
+          'bg-feedback-color-background-success-disabled',
+        ],
       },
       {
         color: 'success',
-        outlined: false,
-        class: ['text-feedback-color-text-success-enabled'],
+        type: 'inverted',
+        class: [
+          'text-feedback-color-text-success-enabled',
+          'bg-feedback-color-background-success-enabled',
+        ],
       },
     ],
 
     defaultVariants: {
-      variant: 'default',
-      color: 'primary',
-      outlined: false,
+      variant: 'boxed',
+      color: 'neutral',
+      type: 'filled',
     },
   }
 );

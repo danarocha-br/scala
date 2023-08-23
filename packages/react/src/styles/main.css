@@ -263,7 +263,7 @@
     --interactive-color-background-subdued: var(--color-royal-300);
     --interactive-color-background-hover: var(--color-royal-500);
     --interactive-color-background-pressed: var(--color-royal-600);
-    --interactive-color-background-disabled: 229deg 55% 70%;
+    --interactive-color-background-disabled: 229deg 45% 70%;
 
     --action-color-text-transparent-disabled: var(--color-white);
     --action-color-text-transparent-enabled: var(--color-neutral-300);
@@ -290,7 +290,7 @@
     --action-color-background-secondary-enabled: var(--color-royal-400);
     --action-color-background-secondary-hover: var(--color-royal-500);
     --action-color-background-secondary-pressed: var(--color-royal-600);
-    --action-color-background-secondary-disabled: 229deg 83% 70%;
+    --action-color-background-secondary-disabled: 229deg 45% 70%;
 
     --action-color-text-danger-enabled: var(--color-neutral-900);
     --action-color-text-danger-disabled: var(--color-neutral-900);
@@ -317,7 +317,7 @@
     --feedback-color-background-danger-subdued: var(--color-froly-500);
     --feedback-color-background-danger-hover: var(--color-froly-700);
     --feedback-color-background-danger-pressed: var(--color-froly-800);
-    --feedback-color-background-danger-disabled: 4deg 82% 69%;
+    --feedback-color-background-danger-disabled: 4deg 32% 67%;
 
     --feedback-color-text-warning-enabled: var(--color-neutral-900);
     --feedback-color-text-warning-disabled: var(--color-neutral-500);
@@ -327,7 +327,7 @@
     --feedback-color-background-warning-subdued: var(--color-macaroni-600);
     --feedback-color-background-warning-hover: var(--color-macaroni-800);
     --feedback-color-background-warning-pressed: var(--color-macaroni-900);
-    --feedback-color-background-warning-disabled: 32deg 94% 58%;
+    --feedback-color-background-warning-disabled: 32deg 44% 65%;
 
     --feedback-color-text-success-enabled: var(--color-forest-900);
     --feedback-color-text-success-disabled: var(--color-forest-500);
@@ -337,7 +337,7 @@
     --feedback-color-background-success-subdued: var(--color-forest-300);
     --feedback-color-background-success-hover: var(--color-forest-500);
     --feedback-color-background-success-pressed: var(--color-forest-600);
-    --feedback-color-background-success-disabled: 119deg 54% 45%;
+    --feedback-color-background-success-disabled: 119deg 14% 47%;
 
     --feedback-color-text-info-enabled: var(--color-royal-900);
     --feedback-color-text-info-disabled: var(--color-royal-500);
@@ -347,7 +347,7 @@
     --feedback-color-background-info-subdued: var(--color-royal-300);
     --feedback-color-background-info-hover: var(--color-royal-500);
     --feedback-color-background-info-pressed: var(--color-royal-600);
-    --feedback-color-background-info-disabled: 229deg 83% 70%;
+    --feedback-color-background-info-disabled: 229deg 45% 70%;
 
     --navigation-surface-color-background: var(--color-neutral-900);
     --navigation-surface-color-border: 195deg 18% 5%;

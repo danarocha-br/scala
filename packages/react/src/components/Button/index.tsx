@@ -15,7 +15,7 @@ export type ButtonProps = {
   VariantProps<typeof S.button>;
 
 export const Button = ({
-  variant = 'primary',
+  variant = 'contained',
   size = 'md',
   color = 'primary',
   fullWidth = false,
@@ -58,7 +58,7 @@ export const Button = ({
       )}
 
       <span
-        className={`button__content z-[1] ${
+        className={`button__content z-[1]  ${
           !loading && animateOnHover && 'group-hover:animate-button-on-hover'
         }`}
       >

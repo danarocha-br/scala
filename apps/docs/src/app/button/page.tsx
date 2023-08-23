@@ -129,7 +129,7 @@ const ButtonDocs = () => {
       <Code
         code={codeVariants}
         scope={scope}
-        header={`import { Button } from "@compasso/scala"`}
+        header={`import { Button } from "@compasso/scala";`}
         slot={slotVariants}
         className="pt-4"
       />
@@ -141,7 +141,7 @@ const ButtonDocs = () => {
       <Code
         code={codeSizes}
         scope={scope}
-        header={`import { Button } from "@compasso/scala"`}
+        header={`import { Button } from "@compasso/scala";`}
       />
 
       <Text as="h2" className="pt-4">
@@ -151,7 +151,7 @@ const ButtonDocs = () => {
       <Code
         code={codeIcons}
         scope={scope}
-        header={`import { Button } from "@compasso/scala"`}
+        header={`import { Button } from "@compasso/scala";`}
         slot={slotVariantsWithIcons}
       />
 
@@ -162,7 +162,7 @@ const ButtonDocs = () => {
       <Code
         code={codeAnimation}
         scope={scope}
-        header={`import { Button } from "@compasso/scala"`}
+        header={`import { Button } from "@compasso/scala";`}
         slot={slotVariants}
         className="pt-4"
       />
@@ -174,7 +174,7 @@ const ButtonDocs = () => {
       <Code
         code={codeStates}
         scope={scope}
-        header={`import { Button } from "@compasso/scala"`}
+        header={`import { Button } from "@compasso/scala";`}
         className="pt-4"
       />
     </Stack>

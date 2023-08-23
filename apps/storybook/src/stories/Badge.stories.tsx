@@ -15,9 +15,9 @@ export default {
   },
   args: {
     label: 'Badge',
-    outlined: false,
-    variant: 'default',
-    color: 'primary',
+    type: 'filled',
+    variant: 'boxed',
+    color: 'neutral',
   },
   argTypes: {
     as: {
@@ -39,7 +39,16 @@ export default {
       table: {
         category: 'Modifiers',
       },
-      options: ['default', 'pill'],
+      options: ['boxed', 'pill'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    type: {
+      table: {
+        category: 'Modifiers',
+      },
+      options: ['filled', 'inverted', 'outlined'],
       control: {
         type: 'inline-radio',
       },
@@ -48,7 +57,7 @@ export default {
       table: {
         category: 'Modifiers',
       },
-      options: ['primary', 'info', 'danger', 'warning', 'on-dark'],
+      options: ['neutral', 'info', 'danger', 'warning', 'on-dark'],
       control: {
         type: 'inline-radio',
       },
@@ -74,9 +83,9 @@ export default {
   ],
 } as Meta<BadgeProps>;
 
-export const Default: Story<BadgeProps> = (args) => (
+export const Boxed: Story<BadgeProps> = (args) => (
   <>
-    <Badge {...args} color="primary" />
+    <Badge {...args} color="neutral" />
     <Badge {...args} color="info" />
     <Badge {...args} color="warning" />
     <Badge {...args} color="danger" />
@@ -87,7 +96,7 @@ export const Default: Story<BadgeProps> = (args) => (
 
 export const Pill: Story<BadgeProps> = (args) => (
   <>
-    <Badge {...args} color="primary" variant="pill" />
+    <Badge {...args} color="neutral" variant="pill" />
     <Badge {...args} color="info" variant="pill" />
     <Badge {...args} color="warning" variant="pill" />
     <Badge {...args} color="danger" variant="pill" />
@@ -98,11 +107,11 @@ export const Pill: Story<BadgeProps> = (args) => (
 
 export const Outlined: Story<BadgeProps> = (args) => (
   <>
-    <Badge {...args} color="primary" outlined />
-    <Badge {...args} color="info" outlined />
-    <Badge {...args} color="warning" outlined />
-    <Badge {...args} color="danger" outlined />
-    <Badge {...args} color="success" outlined />
-    <Badge {...args} color="on-dark" outlined />
+    <Badge {...args} color="neutral" type="outlined" />
+    <Badge {...args} color="info" type="outlined" />
+    <Badge {...args} color="warning" type="outlined" />
+    <Badge {...args} color="danger" type="outlined" />
+    <Badge {...args} color="success" type="outlined" />
+    <Badge {...args} color="on-dark" type="outlined" />
   </>
 );

@@ -19,16 +19,16 @@ export type BadgeProps = {
  * @returns {JSX.Element} The rendered badge component.
  */
 export const Badge = ({
-  className='',
+  className = '',
   label,
-  variant = 'default',
-  color = 'primary',
-  outlined = false,
+  variant = 'boxed',
+  type = 'filled',
+  color = 'neutral',
   ...props
 }: BadgeProps): JSX.Element => (
   <Box
     as="span"
-    className={S.badge({ color, variant, outlined, className })}
+    className={S.badge({ color, variant, type, className })}
     {...props}
   >
     {label}

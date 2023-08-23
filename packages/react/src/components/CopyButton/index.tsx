@@ -7,6 +7,7 @@ export type CopyButtonProps = {
   className?: string;
   content: string;
   copiedLabel?: string;
+  theme?: 'dark' | 'light' | 'none';
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
@@ -20,6 +21,7 @@ export type CopyButtonProps = {
 export const CopyButton = ({
   className='',
   content,
+  theme='none',
 }: CopyButtonProps): JSX.Element => {
   const [isCopied, setIsCopied] = useState(false);
   const [, setIsShown] = useState(true);
@@ -72,7 +74,7 @@ export const CopyButton = ({
       variants={motionVariants}
       onClick={handleCopy}
       whileTap={{ scale: 0.9 }}
-      className={S.button({ className })}
+      className={S.button({ className, theme })}
     >
       <motion.svg
         width="24"
@@ -91,7 +93,7 @@ export const CopyButton = ({
           custom={1}
         />
         <motion.path
-          className={S.iconClipboard()}
+          className={S.iconClipboard({theme})}
           fillRule="evenodd"
           clipRule="evenodd"
           d="M10 6.75H14C16.0633 6.75 16.5785 5.74237 16.7072 4.83366C19.0541 5.11458 20.25 6.16757 20.25 10.0001V16.0001C20.25 19.7001 19.52 21.2501 15 21.2501H9C4.48 21.2501 3.75 19.7001 3.75 16.0001V10.0001C3.75 6.15562 4.95339 5.10804 7.31482 4.83106C7.64404 6.75 9.14851 6.75 10 6.75ZM7.29019 3.33296C7.56014 1.25 9.12491 1.25 10 1.25H14C14.8739 1.25 16.4356 1.25 16.7087 3.32445C20.2821 3.71998 21.75 5.69851 21.75 9.99005V15.9901C21.75 20.1701 20.62 22.7501 15 22.7501H9C3.38 22.7501 2.25 20.1701 2.25 16.0001V10.0001C2.25 5.69953 3.71756 3.72043 7.29019 3.33296ZM8.75001 3.99018C8.75137 2.75 9.0126 2.75 10 2.75H14C14.9848 2.75 15.2473 2.75 15.25 3.98049C15.2488 4.00477 15.2488 4.02887 15.25 4.05274C15.2496 4.99927 15.2275 5.25 14 5.25H10C9.02604 5.25 8.75862 5.25 8.75021 4.05978C8.75117 4.03686 8.75112 4.01364 8.75001 3.99018Z"

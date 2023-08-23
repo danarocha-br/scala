@@ -4,14 +4,16 @@ import * as S from './styles';
 export type ThemeToggleProps = {
   isDark: boolean;
   onThemeChange?: () => void;
+  className?: string;
 };
 
 export const ThemeToggle = ({
+  className='',
   isDark,
   onThemeChange,
 }: ThemeToggleProps): JSX.Element => {
   return (
-    <Button className={S.button({})} onClick={onThemeChange}>
+    <Button className={S.button({className})} onClick={onThemeChange}>
       <svg
         className={S.svg({ isDark })}
         width="32px"
