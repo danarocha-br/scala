@@ -59,7 +59,7 @@ export default {
   },
   args: {
     label: 'Select an item',
-    emptyMessage: 'No options found',
+    emptyMessage: 'No options found.',
     placeholder: 'Choose...',
     truncationLabel: 'projects selected',
     createOptionLabel: 'projects selected',

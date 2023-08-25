@@ -2,153 +2,251 @@ import { cva } from 'class-variance-authority';
 
 export const container = cva(
   [
-    'font-sans',
-    'font-regular',
-    'bg-action-color-background-transparent-hover',
-    'rounded-sm',
-    'w-full',
-    'h-[34px]',
+    'group',
     'flex',
     'flex-col',
-    'items-start',
     'justify-center',
-    'z-auto',
-    'relative',
+    'items-start',
+    'w-full',
+    'border',
+    'border-form-color-border-default',
+    'rounded-md',
     'transition-all',
-    'group',
-    'outline-none',
+    'duration-300',
+    'overflow-visible',
 
-    'hover:text-text-color-body',
-    'hover:bg-interactive-color-background-disabled',
-    'hover:cursor-pointer',
-
-    'hover:[.c-selectable__control]:text-text-color-body',
-    'hover:[.c-selectable__control]:bg-interactive-color-background-disabled',
-    'hover:[.c-selectable__control]:outline-none',
-
-    'focus:outline-action-color-background-transparent-hover',
+    'peer-focus/input:border-form-color-border-focus',
   ],
   {
     variants: {
       isDisabled: {
-        true: [
-          'cursor-not-allowed',
-          'opacity-60',
+        true: ['cursor-not-allowed', 'opacity-70', 'select-none'],
 
-          '[.c-selectable--is-disabled]:bg-form-form-color-background-default',
-
-          'hover:border-form-color-border-default',
-          'hover:[.c-selectable__control]:bg-form-color-background-default',
-          'hover:[.c-selectable__input-container]:text-text-color-body',
-          'hover:[.c-selectable__placeholder]:text-text-color-body-lighter',
-          'hover:[.c-selectable__clear-indicator]:text-text-color-body',
-          'hover:[.c-selectable__dropdown-indicator]:text-text-color-caption',
-          'hover:[.c-selectable__dropdown-indicator]:opacity-60',
+        false: [
+          'bg-surface-color-background-subdued',
+          'hover:border-form-color-border-focus',
         ],
+      },
+
+      hasError: {
+        true: ['border-form-color-border-error'],
+      },
+
+      isLoading: {
+        true: [],
       },
     },
     defaultVariants: {
+      isDisabled: false,
+      isLoading: false,
+    },
+  }
+);
+
+export const label = cva(
+  [
+    'text-text-color-body-lighter',
+    'text-xs',
+    'font-medium',
+    'py-1',
+    'px-3',
+    'flex',
+    'justify-between',
+    'w-[-webkit-fill-available]',
+    'relative',
+
+    '[&.select-icon--error]:absolute',
+    '[&.select-icon--error]:right-1',
+  ],
+  {
+    variants: {
+      isFocused: {
+        true: ['[&_svg]:text-form-color-background-focus'],
+      },
+
+      isDisabled: {
+        true: ['opacity-70'],
+      },
+    },
+
+    defaultVariants: {
+      isFocused: false,
       isDisabled: false,
     },
   }
 );
 
-export const select = cva([
+export const icon = cva([
+  'fill-current',
+  'peer-focus:fill-form-color-background-focus',
+  'peer-focus-within:fill-form-color-background-focus',
+  'data-[mode=dark]:peer-focus:fill-form-color-background-subdued',
+]);
+
+export const placeholder = cva([], {
+  variants: {
+    isDisabled: {
+      true: ['opacity-70'],
+      false: [
+        'text-text-color-caption',
+        'group-hover:text-text-color-on-dark',
+        'group-focus/input:text-text-color-on-dark',
+      ],
+    },
+    isFocused: {
+      true: ['text-text-color-on-dark'],
+      false: ['text-text-color-caption'],
+    },
+  },
+
+  defaultVariants: {
+    isDisabled: false,
+    isFocused: false,
+  },
+});
+
+export const inputWrapper = cva(
+  [
+    'bg-form-color-background-default',
+    'flex',
+    'justify-between',
+    'items-center',
+    'gap-1',
+    'pl-3',
+    'pr-2',
+    'w-full',
+    'transition-all',
+    'duration-300',
+    'group/input',
+    'peer/input',
+
+    'focus:outline-none',
+    'focus:text-text-color-on-dark',
+    'focus:bg-form-color-background-focus',
+    'focus:border-form-color-border-focus',
+  ],
+  {
+    variants: {
+      variant: {
+        default: [
+          'border-t',
+          'border-form-color-border-default',
+          'rounded-bl-[5px]',
+          'rounded-br-[5px]',
+          'min-h-[41px]',
+        ],
+        table: ['rounded-none', 'border-none', 'min-h-[50px]'],
+      },
+
+      isFocused: {
+        true: [
+          'text-text-color-on-dark',
+          'bg-form-color-background-focus',
+          'border-form-color-border-focus',
+        ],
+      },
+
+      isDisabled: {
+        true: [
+          'cursor-not-allowed',
+          'opacity-70',
+          'select-none',
+          'bg-form-color-border-disabled',
+        ],
+
+        false: [
+          'group-hover:text-text-color-on-dark',
+          'group-hover:bg-form-color-background-hover',
+          'group-hover:border-form-color-border-hover',
+        ],
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      isFocused: false,
+      isDisabled: false,
+    },
+  }
+);
+
+export const dialog = cva([
+  'absolute',
+  'top-2',
+  'z-10',
   'w-full',
+  'rounded-md',
+  'border',
+  'border-action-color-border-transparent-pressed',
+  'bg-surface-color-background-default',
+  'outline-none',
+]);
 
-  '[.c-selectable]:w-full',
-  '[.c-selectable__control]:w-full',
-  '[.c-selectable__control]:font-sans',
-  '[.c-selectable__control]:text-sm',
-  'md:[.c-selectable__control]:text-md',
-  '[.c-selectable__control]:bg-transparent',
-  '[.c-selectable__control]:border-none',
-  '[.c-selectable__control]:appearance-none',
-  '[.c-selectable__control]:px-1',
-  '[.c-selectable__control]:transition-all',
-  '[.c-selectable__control]:shadow-none',
-  '[.c-selectable__control]:outline-none',
-  '[.c-selectable__control]:outline-action-color-background-transparent-hover',
+export const empty = cva([
+  'text-text-color-body-lighter',
+  'flex',
+  'flex-col',
+  'justify-center',
+  'items-center',
+  'gap-3',
+  'p-2',
+  'w-full',
+]);
 
-  '[.c-selectable__control--is-focused]:text-text-color-body',
-  '[.c-selectable__control--is-focused]:bg-interactive-color-background-disabled',
-  '[.c-selectable__control--is-focused]:outline-2',
-  '[.c-selectable__control--is-focused]:outline-offset-2',
-  '[.c-selectable__control--is-focused]:outline-interactive-color-background-disabled',
+export const item = cva(['group/item', 'gap-2'], {
+  variants: {
+    isActive: {
+      true: [],
+    },
 
-  '[.c-selectable__control__placeholder]:text-text-color-body-lighter',
-  '[.c-selectable__control__placeholder]:font-regular',
+    isMulti: {
+      true: [],
+    },
+  },
 
-  '[.c-selectable__single-value]:text-text-color-body',
+  compoundVariants: [
+    {
+      isActive: true,
+      isMulti: false,
+      class: [
+        'bg-royal-200/50',
+        'hover:bg-royal-200/50',
+        'aria-selected:bg-royal-200/50',
+        'aria-selected:hover:bg-royal-200/50',
 
-  '[.c-selectable__option]:text-text-color-body',
-  '[.c-selectable__option]:py-12',
-  '[.c-selectable__option]:transition-all',
-  '[.c-selectable__option]:flex',
-  '[.c-selectable__option]:gap-1',
+        'dark:bg-interactive-color-background-enabled/70',
+        'dark:hover:bg-interactive-color-background-enabled/70',
+        'dark:aria-selected:bg-interactive-color-background-enabled/70',
+        'dark:aria-selected:hover:bg-interactive-color-background-enabled/70',
+      ],
+    },
+  ],
 
-  '[.c-selectable__single-value]:text-text-color-body',
+  defaultVariants: {
+    isActive: false,
+    isMulti: false,
+  },
+});
 
-  '[.c-selectable__option]:gap-1',
-  '[.c-selectable__option]:justify-between',
-  '[.c-selectable__option]:items-center',
-  '[.c-selectable__option]:whitespace-nowrap',
-  '[.c-selectable__option]:w-full',
-  '[.c-selectable__option]:rounded-xs',
+export const deleteButton = cva([
+  'opacity-80',
+  'outline-none',
+  'transition-opacity',
 
-  '[.c-selectable__option--is-focused]:bg-action-color-background-transparent-hover',
+  'hover:bg-transparent',
+  'hover:opacity-100',
 
-  '[.c-selectable__option--is-selected]:bg-interactive-color-background-disabled',
+  '!focus:outline-none',
+  '!focus:outline-offset-0',
+  '!focus:outline-transparent',
 
-  '[.c-selectable__menu]:bg-surface-color-background-default',
-  '[.c-selectable__menu]:rounded-sm',
-  '[.c-selectable__menu]:border',
-  '[.c-selectable__menu]:border-action-color-border-transparent-enabled',
-  '[.c-selectable__menu]:shadow-low',
-  '[.c-selectable__menu]:p-1',
-  '[.c-selectable__menu]:z-[3]',
-  '[.c-selectable__menu]:min-w-[120px]',
-  '[.c-selectable__menu]:w-auto',
-
-  '[.c-selectable__menu-list]:p-0',
-  '[.c-selectable__menu-list]:rounded-sm',
-
-  '[.c-selectable--is-disabled]:cursor-not-allowed',
-  '[.c-selectable--is-disabled]:opacity-60',
-  '[.c-selectable--is-disabled]:bg-surface-color-background-default',
-
-  '[.c-selectable__value-container--is-multi]:gap-1',
-  '[.c-selectable__multi-value]:bg-transparent',
-  '[.c-selectable__multi-value]:relative',
-  '[.c-selectable__multi-value]:transition-all',
-
-  '[.c-selectable__multi-value__label]:text-text-color-body',
-  '[.c-selectable__multi-value__label]:text-sm',
-  '[.c-selectable__multi-value__label]:flex',
-  '[.c-selectable__multi-value__label]:items-center',
-  '[.c-selectable__multi-value__label]:gap-1',
-  '[.c-selectable__multi-value__label]:relative',
-  '[.c-selectable__multi-value__label]:top-[-1px]',
-  '[.c-selectable__multi-value__label]:p-0',
-
-  '[.c-selectable__multi-value__remove]:text-text-color-caption',
-  '[.c-selectable__multi-value__remove]:opacity-50',
-  '[.c-selectable__multi-value__remove]:p-0',
-  '[.c-selectable__multi-value__remove]:ml-1',
-  '[.c-selectable__multi-value__remove]:hidden',
-
-  '[.c-selectable__multi-value]:hover:[.c-selectable__multi-value__remove]:flex',
+  'hover:text-text-color-danger',
+  'group-hover:text-text-color-on-dark',
 ]);
 
 export const buttonContainer = cva(
   [
-    'font-sans',
-    'text-text-color-body-lighter',
-    'bg-action-color-background-transparent-hover',
-    'border-none',
     'rounded-sm',
     'outline-none',
-    'outline-transparent',
     'cursor-pointer',
     'flex',
     'items-center',
@@ -159,6 +257,7 @@ export const buttonContainer = cva(
 
     'hover:text-text-color-body',
     'hover:bg-interactive-color-background-disabled',
+    'dark:hover:bg-interactive-color-background-disabled/50',
 
     'focus:outline-2',
     'focus:outline-offset-2',
@@ -167,9 +266,26 @@ export const buttonContainer = cva(
     'active:scale-95',
     'aria-disabled:opacity-50',
     'aria-disabled:cursor-not-allowed',
+    'aria-disabled:select-none',
   ],
   {
     variants: {
+      hasError: {
+        false: [
+          'text-text-color-body-lighter',
+          'bg-action-color-background-transparent-hover',
+          'border-none',
+          'outline-transparent',
+        ],
+        true: [
+          'outline-2',
+          'outline-offset-3',
+          'outline-action-color-border-danger-pressed',
+          'dark:outline-action-color-border-danger-pressed/30',
+          'bg-action-color-background-danger-disabled/60',
+          'dark:bg-action-color-background-danger-disabled/40',
+        ],
+      },
       isActive: {
         true: ['text-text-color-body'],
       },
@@ -177,6 +293,36 @@ export const buttonContainer = cva(
 
     defaultVariants: {
       isActive: false,
+      hasError: false,
+    },
+  }
+);
+
+export const chips = cva(
+  [
+    'truncate',
+    'text-left',
+    'text-sm',
+    'flex',
+    'gap-1',
+    'w-full',
+    'items-center',
+  ],
+  {
+    variants: {
+      hasSlot: {
+        true: [
+          '[&_svg]:w-3',
+          '[&_svg]:h-3',
+
+          '[&_.avatar_span]:w-3',
+          '[&_.avatar_span]:h-3',
+          '[&_.avatar-initials]:text-xxs',
+        ],
+      },
+    },
+    defaultVariants: {
+      hasSlot: false,
     },
   }
 );

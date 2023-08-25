@@ -1,16 +1,48 @@
 'use client';
 
-import React from 'react';
-import { Chip, Stack, Text, Avatar, Icon } from '@compasso/scala';
+import React, { useState } from 'react';
+import { Chip, Stack, Text, Avatar, Icon, RadioGroup } from '@compasso/scala';
 import { Code } from '@/components/Code';
 
 const ChipDocs = () => {
+  const [color, setColor] = useState('neutral');
   const scope = { Chip, Stack, Avatar, Icon };
+
+  const slotColors = (
+    <Stack direction="column" gap="1" fullWidth className="">
+      <Text size="sm" weight="semibold" color="caption">
+        Colors:
+      </Text>
+      <RadioGroup
+        name="colors"
+        value={color}
+        className="scale-90"
+        options={[
+          {
+            label: 'neutral',
+            value: 'neutral',
+          },
+          {
+            label: 'highlight',
+            value: 'highlight',
+          },
+        ]}
+        onChange={(e) => setColor(e)}
+      />
+    </Stack>
+  );
 
   const codeVariants = `
   <Stack gap="4">
-    <Chip label="Standard" />
-    <Chip label="Removable" removable />
+    <Chip label="Standard" color="${color}" />
+    <Chip label="Removable" color="${color}" removable />
+  </Stack>
+`;
+
+  const codeMaxWidth = `
+  <Stack gap="4">
+    <Chip label="Very long label goes here" color="${color}" hasMaxWidth />
+    <Chip label="Very long label goes here" color="${color}" removable hasMaxWidth />
   </Stack>
 `;
 
@@ -46,6 +78,7 @@ const ChipDocs = () => {
       <Code
         code={codeVariants}
         scope={scope}
+        slot={slotColors}
         header={`import { Chip } from "@compasso/scala";`}
         className="pt-4"
       />
@@ -54,6 +87,16 @@ const ChipDocs = () => {
       <Code
         code={codeSlots}
         scope={scope}
+        slot={slotColors}
+        header={`import { Chip } from "@compasso/scala";`}
+        className="pt-4"
+      />
+
+      <Text as="h3">Has max-width</Text>
+      <Code
+        code={codeMaxWidth}
+        scope={scope}
+        slot={slotColors}
         header={`import { Chip } from "@compasso/scala";`}
         className="pt-4"
       />

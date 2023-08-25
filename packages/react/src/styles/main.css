@@ -141,7 +141,7 @@
     --action-color-background-danger-disabled: var(--color-froly-100);
 
     --surface-color-text-default: var(--color-neutral-900);
-    --surface-color-border-default: var(--color-neutral-300);
+    --surface-color-border-default: var(--color-neutral-200);
     --surface-color-background-default: var(--color-white);
     --surface-color-background-subdued: var(--color-neutral-100);
     --surface-color-background-hover: var(--color-neutral-200);
@@ -295,7 +295,7 @@
     --action-color-text-danger-enabled: var(--color-neutral-900);
     --action-color-text-danger-disabled: var(--color-neutral-900);
     --action-color-border-danger-enabled: var(--color-froly-600);
-    --action-color-border-danger-pressed: var(--color-froly-800);
+    --action-color-border-danger-pressed: var(--color-froly-300);
     --action-color-background-danger-enabled: var(--color-froly-600);
     --action-color-background-danger-hover: var(--color-froly-700);
     --action-color-background-danger-pressed: var(--color-froly-800);
@@ -388,5 +388,5 @@ body {
 }
 
 ::selection {
-  background-color: hsl(var(--brand-color-primary));
+  background-color: hsl(var(--color-froly-200));
 }

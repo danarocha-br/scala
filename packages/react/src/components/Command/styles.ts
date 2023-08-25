@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority';
 export const commandContainer = cva([
   'text-text-color-body',
   'bg-surface-color-background-default',
-  'font-sans',
+  'dark:bg-neutral-800',
   'text-sm',
   'flex',
   'flex-col',
@@ -73,17 +73,18 @@ export const commandItem = cva([
   '[&_svg]:relative',
   '[&_svg]:-left-1',
 
-  'hover:bg-action-color-background-transparent-hover/60',
+  'hover:bg-action-color-background-transparent-hover',
+  'dark:hover:bg-action-color-background-transparent-hover/60',
 
-  'focus:bg-action-color-background-transparent-hover/60',
+  'focus:bg-action-color-background-transparent-hover',
   'focus:outline-2',
   'focus:outline-offset-2',
-  'focus:outline-offset-action-color-background-transparent-hover',
+  'focus:outline-action-color-background-transparent-hover',
 
-  'focus-within:bg-action-color-background-transparent-hover/60',
+  'focus-within:bg-action-color-background-transparent-hover',
   'focus-within:outline-2',
   'focus-within:outline-offset-2',
-  'focus-within:outline-offset-action-color-background-transparent-hover',
+  'focus-within:outline-action-color-background-transparent-hover',
 
   'aria-disabled:opacity-50',
   'aria-disabled:pointer-events-none',
@@ -110,4 +111,29 @@ export const commandSeparator = cva([
   'h-[2px]',
   'bg-action-color-border-transparent-pressed/60',
   'my-2',
+]);
+
+export const commandFooter = cva([
+  'text-xs',
+  'text-text-color-caption',
+  'bg-surface-color-background-subdued',
+  'dark:bg-neutral-900/40',
+  'border-t',
+  'border-surface-color-border-default',
+  'py-2',
+  'px-2',
+  'mt-2',
+]);
+export const commandFooterIcons = cva([
+  'text-xs',
+  'font-normal',
+  'flex',
+  'h-3',
+  'w-3',
+  'p-[2px]',
+  'items-center',
+  'justify-center',
+  'rounded-[2px]',
+  'bg-neutral-300/30',
+  'text-center',
 ]);

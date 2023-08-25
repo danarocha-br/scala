@@ -12,7 +12,7 @@ const Root = ({ children, trigger, ...props }: PopoverProps) => {
   return (
     <PopoverPrimitive.Root {...props}>
       <PopoverPrimitive.Trigger asChild>
-        <div className="w-full">{trigger}</div>
+        <div>{trigger}</div>
       </PopoverPrimitive.Trigger>
       {children}
     </PopoverPrimitive.Root>

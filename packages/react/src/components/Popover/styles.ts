@@ -3,7 +3,6 @@ import { cva } from 'class-variance-authority';
 export const ContainerContent = cva(
   [
     'text-text-color-body',
-    'font-sans',
     'text-sm',
     'min-w-[120px]',
     'rounded-sm',

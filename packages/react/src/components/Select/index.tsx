@@ -42,7 +42,6 @@ export type SelectProps = {
   onAction?: () => void;
   actionIcon?: keyof typeof iconPath;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
   className?: string;
 };
@@ -113,19 +112,19 @@ export const Select = React.forwardRef<HTMLInputElement, SelectProps>(
       });
     };
 
-    const updateOption = (option: SelectOption, newOption: SelectOption) => {
-      setUserOptions((prev) =>
-        prev.map((f) => (f.value === option.value ? newOption : f))
-      );
-      setSelectedValues((prev) =>
-        prev.map((f) => (f.value === option.value ? newOption : f))
-      );
-    };
+    // const updateOption = (option: SelectOption, newOption: SelectOption) => {
+    //   setUserOptions((prev) =>
+    //     prev.map((f) => (f.value === option.value ? newOption : f))
+    //   );
+    //   setSelectedValues((prev) =>
+    //     prev.map((f) => (f.value === option.value ? newOption : f))
+    //   );
+    // };
 
-    const deleteOption = (option: SelectOption) => {
-      setUserOptions((prev) => prev.filter((f) => f.value !== option.value));
-      setSelectedValues((prev) => prev.filter((f) => f.value !== option.value));
-    };
+    // const deleteOption = (option: SelectOption) => {
+    //   setUserOptions((prev) => prev.filter((f) => f.value !== option.value));
+    //   setSelectedValues((prev) => prev.filter((f) => f.value !== option.value));
+    // };
 
     const handleDeleteAllOptions = () => {
       setUserOptions([]);
@@ -201,6 +200,7 @@ export const Select = React.forwardRef<HTMLInputElement, SelectProps>(
             trigger={
               <div className="w-full rounded-bl-md rounded-br-md">
                 <Button
+                  ref={ref}
                   role="combobox"
                   name={name}
                   aria-expanded={openCombobox}
@@ -284,7 +284,9 @@ export const Select = React.forwardRef<HTMLInputElement, SelectProps>(
 
                 <Command.Group className="max-h-[240px] overflow-auto p-1">
                   {options.map((option) => {
-                    const isActive = selectedValues.includes(option);
+                    const isActive = selectedValues.some(
+                      (selectedValue) => selectedValue.value === option.value
+                    );
                     return (
                       <Command.Item
                         key={option.value}

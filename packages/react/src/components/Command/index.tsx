@@ -8,6 +8,8 @@ import {
 import { Icon } from '../Icon';
 import { Stack } from '../Stack';
 import * as S from './styles';
+import { Box } from '../Box';
+import { Spinner } from '../Spinner';
 
 type CommandRootProps = {
   className?: string;
@@ -48,7 +50,7 @@ const CommandInput = React.forwardRef<
   <Stack
     align="center"
     gap="2"
-    className={`border-b border-action-color-border-transparent-pressed p-2 ${className}`}
+    className={`border-b border-action-color-border-transparent-enabled p-2 ${className}`}
     cmdk-input-wrapper=""
   >
     <Icon name="search" label="search" size="xs" color="caption" />
@@ -114,6 +116,65 @@ const CommandItem = React.forwardRef<
 
 CommandItem.displayName = 'Item';
 
+type CommandLoadingProps = {
+  className?: string;
+} & React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>;
+
+const CommandLoading = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Loading>,
+  CommandLoadingProps
+>(({ ...props }, ref) => (
+  <CommandPrimitive.Loading ref={ref} {...props}>
+    <Stack align="center" justify="center" fullWidth className="py-3">
+      <Spinner size="sm" />
+    </Stack>
+  </CommandPrimitive.Loading>
+));
+
+CommandLoading.displayName = 'Loading';
+
+type CommandFooterProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
+const CommandFooter = ({
+  className = '',
+  children,
+  ...props
+}: CommandFooterProps) => (
+  <Stack
+    as="footer"
+    align="center"
+    justify="between"
+    fullWidth
+    className={S.commandFooter({ className })}
+    {...props}
+  >
+    {children ? (
+      children
+    ) : (
+      <>
+        <Stack as="span" align="center" gap="1">
+          <Box className={S.commandFooterIcons()}>↑</Box>
+          <Box className={S.commandFooterIcons()}>↓</Box>
+          to navigate
+        </Stack>
+        {/* <Stack as="span" align="center" gap="1">
+          <Box className={S.commandFooterIcons()}>⏎</Box>
+          to select
+        </Stack>
+        <Stack as="span" align="center" gap="1">
+          <Box className={S.commandFooterIcons()}>⎋</Box>
+          to close
+        </Stack> */}
+      </>
+    )}
+  </Stack>
+);
+
+CommandFooter.displayName = 'Footer';
+
 export const Command = {
   Root: CommandRoot,
   Dialog: CommandDialog,
@@ -122,5 +183,7 @@ export const Command = {
   Empty: CommandEmpty,
   Group: CommandGroup,
   Item: CommandItem,
+  Loading: CommandLoading,
   Separator: CommandSeparator,
+  Footer: CommandFooter,
 };

@@ -5,21 +5,31 @@ export const container = cva(
     'text-sm',
     'text-text-color-body-lighter',
     'border',
-    'bg-action-color-background-transparent-disabled',
-    'border-action-color-border-transparent-enabled',
     'rounded-sm',
 
-    'pb-[1px]',
     'white-space-nowrap',
-    'transition-[width_5s_2s_ease,_opacity_3s_0s_ease]',
+    'transition-[width_5s_2s_ease,_opacity_3s_0s_ease,_background-color_3s_0s_ease]',
+    '[&_span]:pb-[1px]',
   ],
   {
     variants: {
+      color: {
+        neutral: [
+          'bg-action-color-background-transparent-disabled',
+          'border-transparent',
+        ],
+        highlight: [
+          'bg-surface-color-background-default',
+          'border-surface-color-background-subdued',
+        ],
+      },
       removable: {
         true: [
           'pr-[2px]',
           '[&_svg]:fill-text-color-caption',
           '[&_button]:-ml-1',
+
+          'hover:bg-surface-color-background-default',
         ],
       },
       isRemoved: {
@@ -42,11 +52,16 @@ export const container = cva(
           '[&_.avatar-initials]:text-xxs',
         ],
       },
+      hasMaxWidth: {
+        true: ['max-w-[120px]', '[&_span]:truncate'],
+      },
     },
     defaultVariants: {
+      color: 'neutral',
       hasSlot: false,
       removable: false,
       isRemoved: false,
+      hasMaxWidth: false,
     },
   }
 );
@@ -62,4 +77,5 @@ export const button = cva([
 
   'hover:[&_svg]:fill-action-color-background-danger-enabled',
   'hover:bg-action-color-background-danger-disabled',
+  'dark:hover:bg-action-color-background-danger-disabled/20',
 ]);
