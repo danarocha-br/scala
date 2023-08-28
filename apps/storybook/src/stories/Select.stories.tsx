@@ -2,9 +2,9 @@ import { Story, Meta } from '@storybook/react';
 import {
   Form,
   Select,
+  SelectOption,
   SelectProps,
   Stack,
-  SelectOption,
 } from '@compasso/scala';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 

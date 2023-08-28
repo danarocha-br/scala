@@ -1,8 +1,4 @@
-export type SelectOption = {
-  readonly label: string;
-  readonly value: string;
-  readonly slot?: React.ReactNode;
-};
+import { SelectOption } from '.';
 
 const optionExistsInSet = new Set();
 
@@ -137,4 +133,30 @@ export const onComboboxOpenChange = (
     setOpenCombobox(false);
   }
   setOpenCombobox(!openCombobox);
+};
+
+/**
+ * Updates an option in the select options array and updates the selected values.
+ *
+ * @param {SelectOption} option - The option to update.
+ * @param {SelectOption} newOption - The new option to replace the old option.
+ * @param {React.Dispatch<React.SetStateAction<SelectOption[]>>} setUserOptions - The state setter for the select options array.
+ * @param {(setter: (selectedOptions: SelectOption[]) => SelectOption[]) => void} setSelectedValues - The function to update the selected values.
+ */
+export const updateOption = (
+  option: SelectOption,
+  newOption: SelectOption,
+  setUserOptions: React.Dispatch<React.SetStateAction<SelectOption[]>>,
+  setSelectedValues: (
+    setter: (selectedOptions: SelectOption[]) => SelectOption[]
+  ) => void
+) => {
+  setUserOptions((prevOptions) =>
+    prevOptions.map((opt) => (opt.value === option.value ? newOption : opt))
+  );
+  setSelectedValues((prevSelectedValues) =>
+    prevSelectedValues.map((val) =>
+      val.value === option.value ? newOption : val
+    )
+  );
 };

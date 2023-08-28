@@ -3,7 +3,6 @@ import { cva } from 'class-variance-authority';
 export const container = cva(
   [
     'group',
-    'font-sans',
     'flex',
     'flex-col',
     'justify-center',
@@ -142,8 +141,8 @@ export const inputWrapper = cva(
         default: [
           'border-t',
           'border-form-color-border-default',
-          'rounded-bl-[5px]',
-          'rounded-br-[5px]',
+          'rounded-bl-[6px]',
+          'rounded-br-[6px]',
           'min-h-[41px]',
         ],
         table: ['rounded-none', 'border-none', 'min-h-[50px]'],
@@ -240,9 +239,9 @@ export const deleteButton = cva(
     'hover:bg-transparent',
     'hover:opacity-100',
 
-    '!focus:outline-none',
-    '!focus:outline-offset-0',
-    '!focus:outline-transparent',
+    'focus:outline-none',
+    'focus:outline-offset-0',
+    'focus:outline-transparent',
 
     'group-hover:text-text-color-on-dark',
   ],
@@ -250,12 +249,41 @@ export const deleteButton = cva(
     variants: {
       isFocused: {
         true: ['text-text-color-on-dark'],
-        false: ['text-text-color-on-light', '!focus:text-text-color-on-light'],
+        false: ['text-text-color-on-light'],
       },
     },
 
     defaultVariants: {
       isFocused: false,
+    },
+  }
+);
+
+export const chips = cva(
+  [
+    'truncate',
+    'text-left',
+    'text-sm',
+    'flex',
+    'gap-1',
+    'w-full',
+    'items-center',
+  ],
+  {
+    variants: {
+      hasSlot: {
+        true: [
+          '[&_svg]:w-3',
+          '[&_svg]:h-3',
+
+          '[&_.avatar_span]:w-3',
+          '[&_.avatar_span]:h-3',
+          '[&_.avatar-initials]:text-xxs',
+        ],
+      },
+    },
+    defaultVariants: {
+      hasSlot: false,
     },
   }
 );

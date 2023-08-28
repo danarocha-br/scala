@@ -14,10 +14,12 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 import { IconButton } from '../IconButton';
 import { Chip } from '../Chip';
-import * as S from './styles';
 
+import * as S from './styles';
+import { Shortcut } from '../Shortcut';
+import { MultiIcon } from './MultiIcon';
+import { Spinner } from '../Spinner';
 import {
-  SelectOption,
   handleCreateOption,
   handleDeleteAllOptions,
   handleDeleteSingleOption,
@@ -25,9 +27,12 @@ import {
   toggleMultiOptions,
   toggleSingleOption,
 } from './helpers';
-import { Shortcut } from '../Shortcut';
-import { MultiIcon } from './MultiIcon';
-import { Spinner } from '../Spinner';
+
+export type SelectOption = {
+  readonly label: string;
+  readonly value: string;
+  readonly slot?: React.ReactNode;
+};
 
 export type SelectableButtonProps = {
   className?: string;
@@ -221,9 +226,14 @@ export const SelectableMenu = forwardRef<
                         (option) => option.value === selectedValues[0].value
                       )
                       .map((option) => (
-                        <span key={option.value}>
+                        <Stack
+                          as="span"
+                          gap="2"
+                          align="center"
+                          key={option.value}
+                        >
                           {!!option.slot && option.slot} {option.label}
-                        </span>
+                        </Stack>
                       ))}
                 </Stack>
 

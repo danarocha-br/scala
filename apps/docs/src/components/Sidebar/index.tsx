@@ -1,15 +1,42 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Stack, Text, Tooltip } from '@compasso/scala';
-import { SwitchTheme } from '../SwitchTheme';
-
-import * as S from './styles';
-import { SIDEBAR_ITEMS } from '@/constants';
 import Link from 'next/link';
 
+import { SwitchTheme } from '../SwitchTheme';
+import { NavigationItem } from '@/constants/sidebar';
+import { SIDEBAR_ITEMS } from '@/constants';
+import * as S from './styles';
+
 export const Sidebar: React.FC = () => {
-  const sidebarItems = Object.values(SIDEBAR_ITEMS);
+  const sidebarItems = useMemo(() => Object.values(SIDEBAR_ITEMS), []);
+
+  const groupedItems = useMemo(() => {
+    const groups = sidebarItems.reduce<Record<string, NavigationItem[]>>(
+      (acc, item) => {
+        const { group } = item;
+        if (!acc[group]) {
+          acc[group] = [];
+        }
+        acc[group].push(item);
+        return acc;
+      },
+      {}
+    );
+
+    // Sort the items within each group
+    Object.keys(groups).forEach((group) => {
+      groups[group].sort((a, b) => a.label.localeCompare(b.label));
+    });
+
+    return groups;
+  }, [sidebarItems]);
+
+  const sortedGroups = useMemo(
+    () => Object.keys(groupedItems).sort(),
+    [groupedItems]
+  );
 
   return (
     <aside className={S.sidebar()}>
@@ -21,15 +48,17 @@ export const Sidebar: React.FC = () => {
       </Stack>
 
       <Stack as="ul" direction="column" className={S.navigationLinks()}>
-        {React.Children.toArray(
-          sidebarItems.map((item) => (
-            <li>
+        {sortedGroups.map((group, index) => (
+          <React.Fragment key={index}>
+            {group ? <li className="my-3 font-semibold">{group}</li> : null}
+
+            {groupedItems[group].map((item) => (
               <Link key={item.label} href={item.href} className="capitalize">
                 {item.label}
               </Link>
-            </li>
-          ))
-        )}
+            ))}
+          </React.Fragment>
+        ))}
       </Stack>
     </aside>
   );

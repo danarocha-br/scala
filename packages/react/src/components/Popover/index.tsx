@@ -8,11 +8,11 @@ export type PopoverProps = {
   trigger: React.ReactNode;
 } & React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root>;
 
-const Root = ({ children, trigger, ...props }: PopoverProps) => {
+const Root = ({ className, children, trigger, ...props }: PopoverProps) => {
   return (
     <PopoverPrimitive.Root {...props}>
       <PopoverPrimitive.Trigger asChild>
-        <div>{trigger}</div>
+        <div className={className}>{trigger}</div>
       </PopoverPrimitive.Trigger>
       {children}
     </PopoverPrimitive.Root>

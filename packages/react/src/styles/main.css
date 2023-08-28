@@ -232,11 +232,11 @@
     --loading-color-background-subdued: var(--color-neutral-300);
     --loading-color-background-default: var(--color-neutral-200);
 
-    --form-color-border-default: var(--color-neutral-200);
-    --form-color-border-hover: var(--color-royal-500);
-    --form-color-border-focus: var(--color-royal-500);
+    --form-color-border-default: var(--color-neutral-900);
+    --form-color-border-hover: var(--color-royal-700);
+    --form-color-border-focus: var(--color-royal-700);
     --form-color-border-error: var(--color-froly-700);
-    --form-color-border-disabled: var(--color-neutral-100);
+    --form-color-border-disabled: var(--color-neutral-800);
 
     --form-color-background-default: var(--color-neutral-800);
     --form-color-background-subdued: var(--color-neutral-700);

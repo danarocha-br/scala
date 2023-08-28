@@ -1,3 +1,9 @@
+export interface NavigationItem {
+  label: string;
+  group: string;
+  href: string;
+}
+
 export default {
   home: {
     label: 'Home',
@@ -26,7 +32,12 @@ export default {
   },
   selectable: {
     label: 'selectable',
-    group: '',
+    group: 'Form',
     href: '/selectable',
+  },
+  select: {
+    label: 'select',
+    group: 'Form',
+    href: '/select',
   },
 };
