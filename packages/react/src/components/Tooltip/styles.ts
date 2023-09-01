@@ -4,7 +4,6 @@ export const content = cva(
   [
     'text-text-color-body',
     'text-xs',
-    'font-sans',
     'bg-surface-color-background-default',
     'px-2',
     'py-1',

@@ -34,30 +34,30 @@ export const ToolbarOptions = ({ editor }: ToolbarOptionsProps) => {
         editor.isActive('heading', { level: 3 })
       )}
 
-      <Box className="h-4 w-[1px] bg-action-color-border-transparent-enabled" />
+      <Box className="ml-2 mr-1 h-4 w-[1px] bg-action-color-border-transparent-enabled" />
 
       {renderButton(
-        <Icon name="text-bold" label="Bold" size="xs" />,
+        <Icon name="text-bold" label="Bold" size="sm" />,
         () => editor.chain().focus().toggleBold().run(),
         editor.isActive('bold')
       )}
       {renderButton(
-        <Icon name="text-italic" label="italic" size="xs" />,
+        <Icon name="text-italic" label="italic" size="sm" />,
         () => editor.chain().focus().toggleItalic().run(),
         editor.isActive('italic')
       )}
       {renderButton(
-        <Icon name="text-strikethrough" label="strike" size="xs" />,
+        <Icon name="text-strikethrough" label="strike" size="sm" />,
         () => editor.chain().focus().toggleStrike().run(),
         editor.isActive('strike')
       )}
       {renderButton(
-        <Icon name="text-bullet-list" label="bullet-list" size="xs" />,
+        <Icon name="text-bullet-list" label="bullet-list" size="sm" />,
         () => editor.chain().focus().toggleBulletList().run(),
         editor.isActive('bulletList')
       )}
       {renderButton(
-        <Icon name="text-ordered-list" label="ordered-list" size="xs" />,
+        <Icon name="text-ordered-list" label="ordered-list" size="sm" />,
         () => editor.chain().focus().toggleOrderedList().run(),
         editor.isActive('orderedList')
       )}

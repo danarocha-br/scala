@@ -3,7 +3,6 @@ import { cva } from 'class-variance-authority';
 export const bredcrumItem = cva(
   [
     'group',
-    'font-sans',
     'text-md',
     'list-none',
     'cursor-pointer',

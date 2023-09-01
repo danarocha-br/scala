@@ -241,6 +241,7 @@ const SelectDocs = () => {
             value: 'true',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setIsDisabled(e)}
       />
       <RadioGroup
@@ -258,6 +259,7 @@ const SelectDocs = () => {
             value: 'true',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setIsLoading(e)}
       />
     </Stack>

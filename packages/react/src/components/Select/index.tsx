@@ -11,7 +11,6 @@ import { Spinner } from '../Spinner';
 import { IconButton } from '../IconButton';
 import { useToggle } from '../../hooks/useToggle';
 import {
-  SelectOption,
   handleCreateOption,
   handleDeleteAllOptions,
   handleDeleteSingleOption,
@@ -23,6 +22,12 @@ import * as S from './styles';
 import { Chip } from '../Chip';
 import { MultiIcon } from '../Selectable/MultiIcon';
 import { Shortcut } from '../Shortcut';
+
+type SelectOption = {
+  readonly label: string;
+  readonly value: string;
+  readonly slot?: React.ReactNode;
+};
 
 export type SelectProps = {
   label?: string;

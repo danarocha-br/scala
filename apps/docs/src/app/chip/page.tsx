@@ -27,6 +27,7 @@ const ChipDocs = () => {
             value: 'highlight',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setColor(e)}
       />
     </Stack>

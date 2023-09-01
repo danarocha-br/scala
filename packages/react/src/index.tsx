@@ -46,6 +46,7 @@ export * from './components/Skeleton';
 export * from './components/Spinner';
 export * from './components/Stepper';
 export * from './components/StepperHorizontal';
+export * from './components/Tabs';
 export * from './components/TextInput';
 export * from './components/ThemeToggle';
 export * from './components/Toast';

@@ -4,7 +4,6 @@ export const editorContainer = cva(
   [
     'w-full',
     '[&_.c-editor]:text-text-color-body',
-    '[&_.c-editor]:font-sans',
     '[&_.c-editor]:outline-none',
     '[&_.c-editor_p]:my-3',
     '[&_.c-editor_h1]:my-3',
@@ -61,7 +60,7 @@ export const editorMenu = cva([
   'items-center',
   'gap-2',
   'px-2',
-  'py-1',
+  'py-2',
   'rounded-sm',
 ]);
 
@@ -78,9 +77,9 @@ export const editorMenu = cva([
 
 export const customButton = cva(
   [
-    'font-sans',
-    'font-light',
-    'text-md',
+    'font-thin',
+    'tabular-nums',
+    'text-[20px]',
     'bg-action-color-text-transparent-hover',
     'cursor-pointer',
     'flex',
@@ -90,8 +89,9 @@ export const customButton = cva(
     'border-none',
     'transition-all',
     'outline-transparent',
-    'w-4',
-    'h-4',
+    'w-6',
+    'h-5',
+    'px-[2px]',
 
     'focus:outline-2',
     'focus:outline-offset-[.5px]',
@@ -133,7 +133,6 @@ export const popoverContent = cva([
 
 export const customInput = cva([
   'text-text-color-body',
-  'font-sans',
   'text-md',
   'outline-none',
   'border-none',

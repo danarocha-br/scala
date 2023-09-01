@@ -25,6 +25,11 @@ export default {
     group: '',
     href: '/chip',
   },
+  editor: {
+    label: 'editor',
+    group: '',
+    href: '/editor',
+  },
   navigation: {
     label: 'navigation',
     group: '',
@@ -39,5 +44,10 @@ export default {
     label: 'select',
     group: 'Form',
     href: '/select',
+  },
+  tabs: {
+    label: 'tabs',
+    group: 'Navigation',
+    href: '/tabs',
   },
 };

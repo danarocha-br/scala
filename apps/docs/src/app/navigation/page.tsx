@@ -1,7 +1,7 @@
 //@ts-nocheck
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   Box,
   Navigation,
@@ -14,41 +14,41 @@ import {
   useSideBarNavigation,
   Icon,
   SearchButton,
-} from "@compasso/scala";
+} from '@compasso/scala';
 
 const sidenavItems = Object.values({
   home: {
-    icon: "home",
-    label: "Home",
-    shortcut: "⇧⌘P",
-    href: "/",
+    icon: 'home',
+    label: 'Home',
+    shortcut: '⇧⌘P',
+    href: '/',
   },
   templates: {
-    icon: "template",
-    label: "Templates",
-    shortcut: "⇧⌘I",
-    href: "/templates",
+    icon: 'template',
+    label: 'Templates',
+    shortcut: '⇧⌘I',
+    href: '/templates',
   },
   onboarding: {
-    icon: "calendar",
-    label: "Onboarding",
-    shortcut: "⇧⌘I",
-    href: "/plans",
+    icon: 'calendar',
+    label: 'Onboarding',
+    shortcut: '⇧⌘I',
+    href: '/plans',
   },
   reports: {
-    icon: "linear-chart",
-    label: "Reports",
-    shortcut: "⇧⌘I",
-    href: "/reports",
+    icon: 'linear-chart',
+    label: 'Reports',
+    shortcut: '⇧⌘I',
+    href: '/reports',
   },
 });
 
 export default function NavigationDoc() {
   const { isSidebarOpen, changeSidebarStatus } = useSideBarNavigation();
   const user = {
-    name: "Dana Rocha",
-    email: "hello@danarocha.com",
-    image_URL: "https://source.unsplash.com/ew_Ou6oiQ2c",
+    name: 'Dana Rocha',
+    email: 'hello@danarocha.com',
+    image_URL: 'https://source.unsplash.com/ew_Ou6oiQ2c',
   };
 
   return (
@@ -88,7 +88,7 @@ export default function NavigationDoc() {
                 C
               </Text>
             </Tooltip>
-            <Box className="inline-flex mr-2 gap-2">
+            <Box className="mr-2 inline-flex gap-2">
               <Tooltip content="Settings" slot={<Shortcut shortcut="⌘ C" />}>
                 <IconButton label="Settings" icon="settings" size="sm" />
               </Tooltip>
@@ -104,8 +104,8 @@ export default function NavigationDoc() {
           <SearchButton
             label="Search"
             shortcut="⌘ + K"
-            className={`group-data-[state=open]/root:opacity-100 group-data-[state=closed]/root:opacity-0 group-data-[state=closed]/root:transition-opacity mb-4 group-data-[state=closed]/root:delay-500`}
-            onClick={() => alert("implement command search")}
+            className={`mb-4 group-data-[state=closed]/root:opacity-0 group-data-[state=open]/root:opacity-100 group-data-[state=closed]/root:transition-opacity group-data-[state=closed]/root:delay-500`}
+            onClick={() => alert('implement command search')}
           />
 
           {React.Children.toArray(

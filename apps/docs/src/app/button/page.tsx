@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button, Stack, Text, RadioGroup } from "@compasso/scala";
-import { Code } from "@/components/Code";
+import React, { useState } from 'react';
+import { Button, Stack, Text, RadioGroup } from '@compasso/scala';
+import { Code } from '@/components/Code';
 
 const ButtonDocs = () => {
-  const [variant, setVariant] = useState("contained");
-  const [variantForIcons, setVariantForIcons] = useState("contained");
+  const [variant, setVariant] = useState('contained');
+  const [variantForIcons, setVariantForIcons] = useState('contained');
 
   const scope = { Button, Stack };
 
@@ -21,14 +21,15 @@ const ButtonDocs = () => {
         className="scale-90"
         options={[
           {
-            label: "contained",
-            value: "contained",
+            label: 'contained',
+            value: 'contained',
           },
           {
-            label: "transparent",
-            value: "transparent",
+            label: 'transparent',
+            value: 'transparent',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setVariant(e)}
       />
     </Stack>
@@ -45,14 +46,15 @@ const ButtonDocs = () => {
         className="scale-90"
         options={[
           {
-            label: "contained",
-            value: "contained",
+            label: 'contained',
+            value: 'contained',
           },
           {
-            label: "transparent",
-            value: "transparent",
+            label: 'transparent',
+            value: 'transparent',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setVariantForIcons(e)}
       />
     </Stack>
@@ -97,7 +99,7 @@ const ButtonDocs = () => {
 
   return (
     <Stack direction="column" gap="4" fullWidth>
-      <Text as="h1" className="leading-tight page-title">
+      <Text as="h1" className="page-title leading-tight">
         Button
       </Text>
       <Text size="lg">

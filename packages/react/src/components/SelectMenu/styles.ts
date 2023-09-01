@@ -2,7 +2,6 @@ import { cva } from 'class-variance-authority';
 
 export const selectBox = cva([
   'text-text-color-body',
-  'font-sans',
   'text-sm',
   'bg-transparent',
   'border',
@@ -33,10 +32,9 @@ export const selectContent = cva([
   'shadow-low',
 ]);
 
-export const selectViewport = cva(['font-sans', 'p-2']);
+export const selectViewport = cva(['p-2']);
 
 export const selectItem = cva([
-  'font-sans',
   'text-sm',
   'text-text-color-body',
   'rounded-sm',

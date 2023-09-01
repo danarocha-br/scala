@@ -5,7 +5,6 @@ export const container = cva(
     'text-text-color-danger',
     'bg-froly-100/40',
     'text-xs',
-    'font-sans',
     'border',
     'border-froly-100/60',
     'pb-1',

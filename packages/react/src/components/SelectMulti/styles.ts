@@ -3,7 +3,6 @@ import { cva } from 'class-variance-authority';
 export const container = cva(
   [
     'group',
-    'font-sans',
     'flex',
     'flex-col',
     'justify-center',

@@ -2,7 +2,6 @@ import { cva } from 'class-variance-authority';
 
 export const container = cva([
   'text-text-color-caption',
-  'font-sans',
   'bg-transparent',
   'border',
   'border-form-color-border-default',

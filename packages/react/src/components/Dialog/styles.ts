@@ -10,7 +10,6 @@ export const dialogOverlay = cva([
 ]);
 
 export const dialogContent = cva([
-  'font-sans',
   'bg-surface-color-background-default',
   'rounded-md',
   'shadow-high',

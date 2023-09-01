@@ -5,7 +5,6 @@ import { Selectable, Stack, Text, Avatar, RadioGroup } from '@compasso/scala';
 import { Code } from '@/components/Code';
 
 const SelectableDocs = () => {
-  const [isClearable, setIsClearable] = useState('false');
   const [isDisabled, setIsDisabled] = useState('false');
   const [isLoading, setIsLoading] = useState('false');
 
@@ -261,6 +260,7 @@ const SelectableDocs = () => {
             value: 'true',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setIsDisabled(e)}
       />
       <RadioGroup
@@ -278,6 +278,7 @@ const SelectableDocs = () => {
             value: 'true',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setIsLoading(e)}
       />
     </Stack>

@@ -45,7 +45,6 @@ export const addon = cva(
 
 export const baseInputStyle = cva(
   [
-    'font-sans',
     'text-text-color-body',
     'text-md',
     'py-2',
@@ -59,7 +58,6 @@ export const baseInputStyle = cva(
 
     'placeholder:text-text-color-body-lighter',
     'placeholder:font-regular',
-    'placeholder:font-sans',
     'placeholder:opacity-40',
 
     'read-only:border-none',
@@ -148,7 +146,6 @@ export const baseInputStyle = cva(
 export const container = cva(
   [
     'group',
-    'font-sans',
     'flex',
     'flex-col',
     'justify-center',

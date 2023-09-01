@@ -1,7 +1,6 @@
 import { cva } from 'class-variance-authority';
 
 export const dropdownMenuContent = cva([
-  'font-sans',
   'bg-surface-color-background-default',
   'rounded-sm',
   'shadow-low',

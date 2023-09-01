@@ -8,7 +8,6 @@ export const container = cva([
 ]);
 
 export const menu = cva([
-  'font-sans',
   'flex',
   'flex-col',
   'gap-3',
@@ -22,7 +21,6 @@ export const menu = cva([
 
 export const menuItem = cva(
   [
-    'font-sans',
     'text-text-color-body-lighter',
     'whitespace-nowrap',
     'transition-all',
@@ -95,7 +93,6 @@ export const anchor = cva(
 
 export const backButton = cva([
   'group/item',
-  'font-sans',
   'font-medium',
   'cursor-pointer',
   'flex',

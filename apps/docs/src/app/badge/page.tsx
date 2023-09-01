@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React, { useState } from 'react';
@@ -28,6 +29,7 @@ const BadgeDocs = () => {
             value: 'pill',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setVariant(e)}
       />
     </Stack>
@@ -133,14 +135,14 @@ const BadgeDocs = () => {
       <Text as="h2" className="pt-4">
         Usage
       </Text>
-      <Text as="p">
+      {/* <Text as="p">
         Clarity: The badge's content should be clear and concise. Avoid long
         strings of text or large numbers. Contrast: Ensure the badge's color
         provides a good contrast against its background so it remains readable.
         Accessibility: Consider users with visual impairments; make sure the
         badge's size and contrast are adequate. Avoid Overuse: Using too many
         badges can overwhelm users. Use them sparingly and only when necessary.
-      </Text>
+      </Text> */}
     </Stack>
   );
 };

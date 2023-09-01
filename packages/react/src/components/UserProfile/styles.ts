@@ -1,7 +1,6 @@
 import { cva } from 'class-variance-authority';
 
 export const trigger = cva([
-  'font-sans',
   'bg-transparent',
   'cursor-pointer',
   'pl-2',

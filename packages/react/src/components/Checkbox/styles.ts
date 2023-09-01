@@ -1,5 +1,7 @@
 import { cva } from 'class-variance-authority';
 
+//TODO: make sure that the checkbox has motion-safe to disable animation when on
+
 export const container = cva(['flex', 'flex-col', 'gap-2']);
 
 export const root = cva(

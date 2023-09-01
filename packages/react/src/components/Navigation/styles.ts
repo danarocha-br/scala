@@ -3,7 +3,6 @@ import { cva } from 'class-variance-authority';
 export const anchor = cva(
   [
     'group',
-    'font-sans',
     'no-underline',
     'inline-flex',
     'items-center',

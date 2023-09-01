@@ -45,7 +45,7 @@
     --color-royal-800: 233deg 70% 31%;
     --color-royal-700: 243deg 75% 38%;
     --color-royal-600: 243deg 75% 47%;
-    --color-royal-500: 238deg 79% 57%;
+    --color-royal-500: 234deg 72% 57%;
     --color-royal-400: 229deg 83% 59%;
     --color-royal-300: 222deg 87% 72%;
     --color-royal-200: 218deg 95% 85%;
@@ -98,10 +98,10 @@
     --interactive-color-text-disabled: var(--color-white);
     --interactive-color-border-enabled: var(--color-royal-500);
     --interactive-color-border-pressed: var(--color-royal-200);
-    --interactive-color-background-enabled: var(--color-royal-600);
-    --interactive-color-background-subdued: var(--color-royal-500);
-    --interactive-color-background-hover: var(--color-royal-700);
-    --interactive-color-background-pressed: var(--color-royal-800);
+    --interactive-color-background-enabled: var(--color-royal-400);
+    --interactive-color-background-subdued: var(--color-royal-300);
+    --interactive-color-background-hover: var(--color-royal-500);
+    --interactive-color-background-pressed: var(--color-royal-600);
     --interactive-color-background-disabled: var(--color-royal-50);
 
     --action-color-text-transparent-enabled: var(--color-neutral-600);
@@ -126,9 +126,9 @@
     --action-color-text-secondary-disabled: var(--color-royal-400);
     --action-color-border-secondary-enabled: var(--color-royal-400);
     --action-color-border-secondary-pressed: 229deg 75% 88%;
-    --action-color-background-secondary-enabled: var(--color-royal-600);
-    --action-color-background-secondary-hover: var(--color-royal-700);
-    --action-color-background-secondary-pressed: var(--color-royal-800);
+    --action-color-background-secondary-enabled: var(--color-royal-400);
+    --action-color-background-secondary-hover: var(--color-royal-500);
+    --action-color-background-secondary-pressed: var(--color-royal-600);
     --action-color-background-secondary-disabled: var(--color-royal-200);
 
     --action-color-text-danger-enabled: var(--color-froly-50);
@@ -248,7 +248,7 @@
     --text-color-body: var(--color-white);
     --text-color-body-lighter: var(--color-neutral-300);
     --text-color-caption: var(--color-neutral-400);
-    --text-color-success: var(--color-forest-400);
+    --text-color-success: var(--color-forest-300);
     --text-color-warning: var(--color-macaroni-600);
     --text-color-danger: var(--color-froly-600);
     --text-color-on-light: var(--color-neutral-800);

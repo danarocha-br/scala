@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Avatar, Stack, Text, RadioGroup } from "@compasso/scala";
-import { Code } from "@/components/Code";
+import React, { useState } from 'react';
+import { Avatar, Stack, Text, RadioGroup } from '@compasso/scala';
+import { Code } from '@/components/Code';
 
 const AvatarDocs = () => {
-  const [variant, setVariant] = useState("circle");
+  const [variant, setVariant] = useState('circle');
 
   const scope = { Avatar, Stack };
 
@@ -20,14 +20,15 @@ const AvatarDocs = () => {
         className="scale-90"
         options={[
           {
-            label: "circle",
-            value: "circle",
+            label: 'circle',
+            value: 'circle',
           },
           {
-            label: "square",
-            value: "square",
+            label: 'square',
+            value: 'square',
           },
         ]}
+        //@ts-ignore
         onChange={(e) => setVariant(e)}
       />
     </Stack>
@@ -68,7 +69,7 @@ const AvatarDocs = () => {
 
   return (
     <Stack direction="column" gap="4" fullWidth>
-      <Text as="h1" className="leading-tight page-title">
+      <Text as="h1" className="page-title leading-tight">
         Avatar
       </Text>
       <Text size="lg">some test</Text>

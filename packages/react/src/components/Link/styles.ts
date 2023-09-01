@@ -10,7 +10,6 @@ export const container = cva([
 
 export const anchor = cva(
   [
-    'font-sans',
     'font-medium',
     'no-underline',
     'outline-none',

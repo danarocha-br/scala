@@ -2,7 +2,6 @@ import { cva } from 'class-variance-authority';
 
 export const header = cva(
   [
-    'font-sans',
     'text-md',
     'rounded-tr-md',
     'flex',
@@ -54,7 +53,6 @@ export const header = cva(
 );
 
 export const container = cva([
-  'font-sans',
   'text-sm',
   'w-full',
   'flex',

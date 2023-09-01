@@ -87,12 +87,12 @@ export const LinkPopover: React.FC<CustomLinkPromptProps> = ({ editor }) => {
             as="button"
             className={customButton({ isActive: hasLink ? true : false })}
           >
-            <Icon name="link" label="link" size="xs" />
+            <Icon name="link" label="link" size="sm" />
           </Box>
         </PopoverTrigger>
         <PopoverContent className={popoverContent()} sideOffset={5} side="top">
           <Stack align="center">
-            <Icon name="link" label="link" size="xs" />
+            <Icon name="link" label="link" size="sm" />
             <Box
               as="input"
               ref={inputRef}

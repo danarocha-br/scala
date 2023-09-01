@@ -10,7 +10,6 @@ export const modalOverlay = cva([
 ]);
 
 export const modalContent = cva([
-  'font-sans',
   'bg-surface-color-background-default',
   'rounded-md',
   'shadow-high',
