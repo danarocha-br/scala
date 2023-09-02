@@ -11,6 +11,7 @@ export const button = cva(
     'outline-transparent',
     'cursor-pointer',
     'transition-all',
+    'leading-none',
 
     'hover:bg-action-color-background-transparent-hover',
 
@@ -22,7 +23,6 @@ export const button = cva(
     'aria-disabled:cursor-not-allowed',
 
     'active:scale-95',
-
   ],
   {
     variants: {

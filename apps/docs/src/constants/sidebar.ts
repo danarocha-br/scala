@@ -20,10 +20,20 @@ export default {
     group: '',
     href: '/button',
   },
+  calendar: {
+    label: 'calendar',
+    group: '',
+    href: '/calendar',
+  },
   chip: {
     label: 'chip',
     group: '',
     href: '/chip',
+  },
+  datepicker: {
+    label: 'datepicker',
+    group: '',
+    href: '/datepicker',
   },
   editor: {
     label: 'editor',

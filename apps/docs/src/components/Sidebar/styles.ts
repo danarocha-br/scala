@@ -11,6 +11,9 @@ export const sidebar = cva([
   'pl-4',
   'pr-2',
   'pt-2',
+  'hidden',
+  'md:flex',
+  'flex-col',
 ]);
 
 export const navigationLinks = cva(['mt-5']);
