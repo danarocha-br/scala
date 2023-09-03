@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.10
+
+### Patch Changes
+
+- Several improvements on different components
+
 ## 0.0.9
 
 ### Patch Changes
