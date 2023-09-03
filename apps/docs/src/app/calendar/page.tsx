@@ -19,14 +19,51 @@ const Calendar = () => {
   );
 };
 
+const componentProps = {
+  'className?': {
+    type: 'string',
+    description: 'to add additional classes when needed.',
+  },
+  'locale?': {
+    type: 'string',
+    description: 'change the locale for the calendar.',
+  },
+  'defaultSelected?': {
+    type: 'Date',
+    description: 'the default selected date in the calendar.',
+  },
+  selected: {
+    type: 'Date | null',
+    description: 'the currently selected date in the calendar.',
+  },
+  'minDate?': {
+    type: 'Date',
+    description: 'the minDate to render the calendar options.',
+  },
+  'maxDate?': {
+    type: 'Date',
+    description: 'the maxDate to render the calendar options.',
+  },
+  onSelect: {
+    type: '(date: Date) => void',
+    description: 'the callback function when a date is selected.',
+  },
+  'disabledDays?': {
+    type: 'Date[]',
+    description: 'an array of disabled dates in the calendar.',
+  },
+  'disabledPastDays?': {
+    type: 'boolean',
+    description: 'whether to disable past days in the calendar.',
+  },
+  'hideHelpers?': {
+    type: 'boolean',
+    description: 'to hide the calendar helpers.',
+  },
+};
+
 const CalendarDocs = () => {
   const scope = { Calendar, Stack };
-  const componentProps = {
-    'className?': {
-      type: 'string',
-      description: 'to add aditional classes when needed.',
-    },
-  };
 
   const code = `
     <Calendar

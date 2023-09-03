@@ -42,10 +42,7 @@ export const svg = cva(
 );
 
 export const light = cva(
-  [
-    '[stroke-dasharray:3px]',
-    '[stroke-dashoffset:0px]',
-  ],
+  ['[stroke-dasharray:3px]', '[stroke-dashoffset:0px]'],
   {
     variants: {
       isDark: {

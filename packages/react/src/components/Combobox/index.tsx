@@ -14,7 +14,7 @@ export const Combobox = ({
   emptyMessage,
   inputPlaceholder,
   trigger,
-  className='',
+  className = '',
 }: ComboboxProps) => {
   return (
     <Popover.Root trigger={trigger}>

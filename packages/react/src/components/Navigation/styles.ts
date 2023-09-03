@@ -124,7 +124,7 @@ export const root = cva(
     'data-[state=closed]:w-[48px]',
     // 'transition-[width]',
     // 'duration-300',
-    'group/root'
+    'group/root',
   ],
   {
     variants: {

@@ -50,7 +50,9 @@ export const Sidebar: React.FC = () => {
       <Stack as="ul" direction="column" className={S.navigationLinks()}>
         {sortedGroups.map((group, index) => (
           <React.Fragment key={index}>
-            {group ? <li className="my-3 font-semibold">{group}</li> : null}
+            {group ? (
+              <li className="my-3 font-semibold capitalize">{group}</li>
+            ) : null}
 
             {groupedItems[group].map((item) => (
               <Link key={item.label} href={item.href} className="capitalize">

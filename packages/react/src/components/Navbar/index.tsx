@@ -31,7 +31,7 @@ export const Navbar = ({
   ...props
 }: NavbarProps) => (
   //TODO - make navbar mobile friendly
-  <Box as='header' className={S.nav({ className })} {...props}>
+  <Box as="header" className={S.nav({ className })} {...props}>
     {Boolean(pageTitle) && (
       <Text size="lg" color="body-lighter" className="whitespace-nowrap">
         {pageTitle}

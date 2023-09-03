@@ -19,7 +19,7 @@ export function getWeekDays({
 
   // Generate an array of numbers from 0 to 6 using Array.from and map each number to a formatted week day
   const weekDays = Array.from(Array(7).keys()).map((day) =>
-    formatter.format(new Date(Date.UTC(2021, 5, day)))
+    formatter.format(new Date(Date.UTC(2021, 10, day)))
   );
 
   // Map each week day to its abbreviated form if 'short' is true, or capitalize the first letter otherwise

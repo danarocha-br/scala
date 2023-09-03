@@ -17,4 +17,3 @@ export const card = cva([
   '[data-mode=dark]:border',
   '[data-mode=dark]:border-surface-color-background-enabled',
 ]);
-

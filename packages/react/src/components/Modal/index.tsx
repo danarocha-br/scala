@@ -118,7 +118,7 @@ export const Modal = forwardRef(
             <Title
               className={S.modalTitle({
                 variant,
-                hasCustomHeader: !!headerSlot ? true : false,
+                hasCustomHeader: headerSlot ? true : false,
               })}
             >
               <>{headerSlot ? headerSlot : title}</>

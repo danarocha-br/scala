@@ -25,7 +25,7 @@ export const item = cva(
     'duration-300',
 
     'data-[state=checked]:opacity-100',
-    'disabled:cursor-not-allowed'
+    'disabled:cursor-not-allowed',
   ],
   {
     variants: {

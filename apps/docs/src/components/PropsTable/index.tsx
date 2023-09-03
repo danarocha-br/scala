@@ -36,11 +36,11 @@ export const PropsTable = <T extends Record<string, PropertyInfo>>({
       case 'number':
         return 'text-froly-500';
       case 'boolean':
-        return 'text-forest-500';
+        return 'text-forest-400';
       case 'React.ReactNode':
         return 'text-[pink]';
       default:
-        return 'text-text-color-body';
+        return 'text-neutral-500';
     }
   };
 

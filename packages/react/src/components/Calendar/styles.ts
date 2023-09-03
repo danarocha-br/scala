@@ -19,7 +19,7 @@ export const header = cva([
   'items-center',
   'justify-between',
   'gap-3',
-  'pl-4',
+  'pl-3',
   'pr-3',
 ]);
 
@@ -97,6 +97,7 @@ export const day = cva(
         ],
         false: [
           'bg-surface-color-background-subdued',
+          'dark:bg-surface-color-background-subdued/50',
           'hover:bg-royal-100',
           'dark:hover:bg-royal-400/60',
         ],
@@ -111,7 +112,48 @@ export const day = cva(
 
 export const inputContainer = cva(['w-full']);
 
-export const input = cva(['w-full']);
+export const input = cva(
+  [
+    'text-text-color-body',
+    'w-full',
+    'py-2',
+    'px-3',
+    'bg-surface-color-background-subdued',
+    'outline-none',
+    'transition-colors',
+
+    'hover:text-text-color-on-dark',
+    'hover:bg-royal-100',
+    'dark:hover:bg-royal-200/40',
+
+    'placeholder:hover:text-text-color-body',
+    'dark:placeholder:hover:text-text-color-on-dark',
+    'placeholder:focus:text-text-color-on-dark',
+  ],
+  {
+    variants: {
+      hasErrors: {
+        true: [
+          'border-interactive-color-border-error',
+          'focus:bg-feedback-color-background-danger-disabled',
+          'focus:text-text-color-on-dark',
+        ],
+        false: [
+          'focus:bg-form-color-background-focus',
+          'focus:text-text-color-on-dark',
+        ],
+      },
+      hideHelpers: {
+        true: ['m-2', 'rounded-sm'],
+      },
+    },
+
+    defaultVariants: {
+      hasErrors: false,
+      hideHelpers: false,
+    },
+  }
+);
 
 export const actionButton = cva([
   'text-text-color-body-lighter',
@@ -124,6 +166,62 @@ export const actionButton = cva([
   'py-1',
   'px-2',
   'transition-colors',
+  'outline-none',
 
   'hover:bg-surface-color-background-subdued',
+
+  'focus:outline-2',
+  'focus:outline-action-color-border-transparent-pressed',
+]);
+
+export const selectContainer = cva([
+  'bg-surface-color-background-default',
+  'dark:bg-neutral-800',
+  'overflow-hidden',
+  'rounded-sm',
+  'shadow-low',
+  'p-1',
+  'min-w-[120px]',
+]);
+
+export const selectValue = cva([
+  'flex',
+  'items-center',
+  'capitalize',
+  'gap-1',
+  'outline-none',
+  'pl-1',
+  'rounded-[2px]',
+
+  'hover:outline-2',
+  'hover:outline-action-color-border-transparent-pressed',
+
+  'focus:outline-2',
+  'focus:outline-action-color-border-transparent-pressed',
+]);
+
+export const selectItem = cva([
+  'text-sm',
+  'capitalize',
+  'leading-none',
+  'text-text-color-body-lighter',
+  'rounded-[3px]',
+  'flex',
+  'items-center',
+  'h-5',
+  'p-2',
+  'relative',
+  'select-none',
+  'transition-all',
+  'outline-none',
+
+  'data-[disabled]:text-text-color-caption',
+  'data-[disabled]:pointer-events-none',
+
+  'data-[highlighted]:outline-none',
+  'data-[highlighted]:bg-interactive-color-background-disabled',
+  'dark:data-[highlighted]:bg-interactive-color-background-disabled/50',
+  'data-[highlighted]:text-interactive-color-border-enabled',
+  'dark:data-[highlighted]:text-text-color-on-dark',
+  'data-[highlighted]:font-semibold',
 ]);

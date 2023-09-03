@@ -44,3 +44,8 @@ export const DisabledPastDays = Default.bind({});
 DisabledPastDays.args = {
   disabledPastDays: true,
 };
+
+export const HideHelpers = Default.bind({});
+HideHelpers.args = {
+  hideHelpers: true,
+};

@@ -1,18 +1,16 @@
-import { ElementRef, forwardRef, useCallback, useState } from 'react';
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
-
+import React, { forwardRef, useMemo, useState } from 'react';
+// TODO: refactor this whole component
 import { Box } from '../Box';
-import { Icon, iconPath } from '../Icon';
-import { FormErrorMessage } from '../FormErrorMessage';
-import * as StyledInput from '../TextInput/styles';
-import { Stack } from '../Stack';
-import { Spinner } from '../Spinner';
-import * as S from './styles';
+import { TextInput } from '../TextInput';
+import { IconButton } from '../IconButton';
+import { deleteButton } from '../Selectable/styles';
+import { Popover } from '../Popover';
+import { Calendar } from '../Calendar';
+import { formatDateToLocaleInShort } from '../../utils/formatDateToLocale';
 
 export type DateInputProps = {
   name?: string;
   label?: string;
-  value?: Date | null | undefined;
   selected: Date | null | undefined;
   locale?: string;
   placeholder?: string;
@@ -20,152 +18,95 @@ export type DateInputProps = {
   loading?: boolean;
   readOnly?: boolean;
   isClearable?: boolean;
-  icon?: keyof typeof iconPath;
   addon?: string;
   variant?: 'default' | 'table';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control?: any;
   className?: string;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'> &
-  ReactDatePickerProps;
+  defaultValue?: Date;
+  disabledPastDays?: boolean;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'>;
 
-export const DateInput = forwardRef<
-  ElementRef<typeof DatePicker>,
-  DateInputProps
->(
+export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
   (
     {
       name,
-      icon,
       label,
-      value,
-      locale,
       placeholder,
-      variant = 'default',
       disabled = false,
       loading = false,
-      readOnly = false,
       isClearable = true,
-      selected,
+      disabledPastDays = false,
+      defaultValue,
       errors,
-      className='',
+      className = '',
+      locale = 'en',
       ...props
     }: DateInputProps,
     ref
   ): JSX.Element => {
-    /**
-     * Get UI States
-     */
-    const [isFocused, setFocus] = useState(Boolean(value));
+    const [selectedDate, setSelectedDate] = useState<Date | null>(
+      defaultValue || null
+    );
+    const [openCalendar, onCalendarStateChange] = useState(false);
 
-    const handleInputFocus = useCallback(() => {
-      setFocus(true);
-    }, [setFocus]);
+    const formattedSelectedDate = useMemo(() => {
+      return selectedDate && formatDateToLocaleInShort(selectedDate, locale);
+    }, [locale, selectedDate]);
 
-    const handleInputBlur = useCallback(() => {
-      if (!value || value.toString().length > 0) {
-        setFocus(false);
-      }
-    }, [setFocus, value]);
+    const [inputValue, setInputValue] = useState('some');
+    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //   return setSelectedDate(e.target.value);
+    // };
 
-    const areErrorsEmpty = Boolean(errors) && Object.keys(errors).length === 0;
+    console.log(formattedSelectedDate);
 
     return (
-      <Box className='w-full !z-[1]'>
-        <Box className={StyledInput.container({
-          isFocused,
-          hasError: Boolean(errors) && !areErrorsEmpty ? true : false,
-          isReadOnly: readOnly,
-          hasIcon:Boolean(icon),
-          isLoading: loading,
-          variant
-        })}
-        >
-          {variant !== 'table' && (
-            <Box as='label' htmlFor={name} className={StyledInput.label({
-              isReadOnly: readOnly,
-            })}>
-              <Stack gap="1">
-                {Boolean(icon) && (
-                  <Icon
-                    label="input icon"
-                    name={icon || 'user'}
+      <Box className={`!z-[1] w-full ${className}`}>
+        <Popover.Root
+          open={!disabled && openCalendar}
+          onOpenChange={onCalendarStateChange}
+          trigger={
+            <Box className="relative">
+              <TextInput
+                ref={ref}
+                id={name}
+                name={name}
+                label={label}
+                placeholder={placeholder}
+                icon="calendar"
+                loading={loading}
+                disabled={disabled}
+                value={inputValue}
+                errors={errors}
+                // onChange={(e) => handleChange(e)}
+                {...props}
+              />
+
+              {isClearable && Boolean(selectedDate) && (
+                <span className="absolute right-2 top-[34px] z-10 h-4">
+                  <IconButton
+                    type="button"
+                    icon="close"
+                    label="remove selection"
                     size="xs"
-                    className="input__icon"
+                    className={deleteButton()}
+                    onClick={() => setSelectedDate(null)}
                   />
-                )}
-
-                {label}
-              </Stack>
-
-              {loading && (
-                <Box
-                  as="span"
-                  className="input__icon--loading absolute right-2"
-                >
-                  <Spinner size="xs" />
-                </Box>
+                </span>
               )}
-
-              {Boolean(errors) && !areErrorsEmpty ? (
-                <Icon
-                  className="input__icon--error mr-[-8px]"
-                  label="error"
-                  name="alert"
-                  size="xs"
-                  color="danger"
-                />
-              ) : null}
             </Box>
-          )}
-
-          <DatePicker
-            id={name}
-            name={name}
-            ref={ref}
-            aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
-            aria-label={label}
-            disabled={disabled || loading}
-            readOnly={readOnly}
-            // variant={variant}
-            // isFocused={isFocused}
-            onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
-            selected={selected}
-            placeholderText={placeholder}
-            isClearable={isClearable && Boolean(value) && !disabled}
-            popperPlacement="bottom-end"
-            locale={locale}
-            // showMonthYearDropdown
-            showYearDropdown
-            dateFormatCalendar="MMMM"
-            yearDropdownItemNumber={15}
-            scrollableYearDropdown
-            popperModifiers={[
-              {
-                name: 'offset',
-                options: {
-                  offset: [3, 8],
-                },
-              },
-              // {
-              //   name: 'preventOverflow',
-              //   options: {
-              //     rootBoundary: 'viewport',
-              //     tether: false,
-              //     altAxis: true,
-              //   },
-              // },
-            ]}
-            {...props}
-          />
-        </Box>
-
-        {Boolean(errors) && !areErrorsEmpty ? (
-          <FormErrorMessage>{errors.message}</FormErrorMessage>
-        ) : null}
+          }
+        >
+          <Popover.Content align="start" unstyled className="w-[300px] py-1">
+            <Calendar
+              selected={selectedDate}
+              onSelect={setSelectedDate}
+              disabledPastDays={disabledPastDays}
+              locale={locale}
+            />
+          </Popover.Content>
+        </Popover.Root>
       </Box>
     );
   }

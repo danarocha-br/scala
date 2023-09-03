@@ -11,12 +11,7 @@ export const box = cva(['box-border']);
 
 export const Box = forwardRef(
   (
-    {
-      as: Component = 'div',
-      children,
-      className='',
-      ...props
-    },
+    { as: Component = 'div', children, className = '', ...props },
     forwardedRef
   ) => (
     <Component

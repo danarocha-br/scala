@@ -25,7 +25,10 @@ export const card = cva(
     variants: {
       status: {
         published: [],
-        draft: ['border-dashed', 'border-action-color-border-danger-enabled/50'],
+        draft: [
+          'border-dashed',
+          'border-action-color-border-danger-enabled/50',
+        ],
       },
     },
   }

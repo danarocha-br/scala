@@ -1,4 +1,3 @@
-
 import { VariantProps } from 'class-variance-authority';
 import * as S from './styles';
 
@@ -15,10 +14,18 @@ export const Spinner = ({
   <svg
     viewBox="-24 -24 48 48"
     xmlns="http://www.w3.org/2000/svg"
-    className={`c-spinner ${S.container({size, className})}`}
+    className={`c-spinner ${S.container({ size, className })}`}
     {...props}
   >
-    <circle className={S.circle()} cx="0" cy="0" r="20" fill="none" strokeWidth="4" strokeLinecap='round' />
+    <circle
+      className={S.circle()}
+      cx="0"
+      cy="0"
+      r="20"
+      fill="none"
+      strokeWidth="4"
+      strokeLinecap="round"
+    />
   </svg>
 );
 

@@ -8,12 +8,12 @@ export type ThemeToggleProps = {
 };
 
 export const ThemeToggle = ({
-  className='',
+  className = '',
   isDark,
   onThemeChange,
 }: ThemeToggleProps): JSX.Element => {
   return (
-    <Button className={S.button({className})} onClick={onThemeChange}>
+    <Button className={S.button({ className })} onClick={onThemeChange}>
       <svg
         className={S.svg({ isDark })}
         width="32px"

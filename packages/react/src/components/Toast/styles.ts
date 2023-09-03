@@ -77,15 +77,9 @@ export const icon = cva([], {
   variants: {
     variant: {
       info: ['fill-interactive-color-background-subdued'],
-      success: [
-        'fill-feedback-color-background-success-enabled',
-      ],
-      danger: [
-        'fill-feedback-color-background-danger-enabled',
-      ],
-      warning: [
-        'fill-feedback-color-background-warning-enabled',
-      ],
+      success: ['fill-feedback-color-background-success-enabled'],
+      danger: ['fill-feedback-color-background-danger-enabled'],
+      warning: ['fill-feedback-color-background-warning-enabled'],
       neutral: ['fill-text-color-caption'],
     },
   },

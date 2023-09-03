@@ -38,7 +38,7 @@ export const CalendarCard = ({
   title,
   tags,
   checklist,
-  className='',
+  className = '',
   draftText,
   status = 'published',
   editMenuItems,

@@ -30,10 +30,15 @@ export default {
     group: '',
     href: '/chip',
   },
-  datepicker: {
-    label: 'datepicker',
-    group: '',
-    href: '/datepicker',
+  // datepicker: {
+  //   label: 'datePicker',
+  //   group: 'form',
+  //   href: '/datepicker',
+  // },
+  dateinput: {
+    label: 'dateInput',
+    group: 'form',
+    href: '/date-input',
   },
   editor: {
     label: 'editor',
@@ -47,12 +52,12 @@ export default {
   },
   selectable: {
     label: 'selectable',
-    group: 'Form',
+    group: 'form',
     href: '/selectable',
   },
   select: {
     label: 'select',
-    group: 'Form',
+    group: 'form',
     href: '/select',
   },
   tabs: {

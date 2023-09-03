@@ -1,12 +1,12 @@
 import { cva } from 'class-variance-authority';
 
 export const container = cva([
-    'rounded-sm',
-    'outline-none',
-    'focus-visible:outline-2',
-    'focus-visible:offset-2',
-    'focus-visible:outline-interactive-color-background-disabled',
-])
+  'rounded-sm',
+  'outline-none',
+  'focus-visible:outline-2',
+  'focus-visible:offset-2',
+  'focus-visible:outline-interactive-color-background-disabled',
+]);
 
 export const anchor = cva(
   [

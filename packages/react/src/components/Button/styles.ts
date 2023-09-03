@@ -20,7 +20,6 @@ export const button = cva(
     'cursor-pointer',
     'transition-all',
 
-
     'focus:outline-2',
     'focus:outline-offset-2',
     'focus-visible:outline-2',
@@ -331,12 +330,12 @@ export const icon = cva(['relative'], {
     {
       variant: 'transparent',
       size: 'md',
-      class: ['!mr-0']
+      class: ['!mr-0'],
     },
     {
       variant: 'transparent',
       size: 'lg',
-      class: ['!mr-0']
-    }
-  ]
+      class: ['!mr-0'],
+    },
+  ],
 });

@@ -94,7 +94,6 @@ const Wrapper = ({
   className = '',
   ...props
 }: NavigationProps) => {
-
   return (
     <Box as="aside" className={`sticky top-0 h-full ${className}`} {...props}>
       <CollapsiblePrimitive.Root
@@ -163,7 +162,7 @@ const Wrapper = ({
             >
               {children}
             </Stack>
-           )}
+          )}
 
           <Box as="footer" className={S.footer()}>
             {Boolean(footer) && footer}

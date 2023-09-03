@@ -47,7 +47,7 @@ export const IconButton = ({
     <Icon
       name={icon}
       label={label}
-      color='current'
+      color="current"
       size={size === 'md' ? 'md' : size === 'sm' ? 'sm' : 'xs'}
     />
   </AccessibleButton>
