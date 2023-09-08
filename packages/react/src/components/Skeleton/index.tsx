@@ -46,17 +46,23 @@ SkeletonItem.displayName = 'Skeleton.Item';
 
 type SkeletonRootProps = {
   children: React.ReactNode;
+  loading?: boolean;
 } & SkeletonProps;
 
 /**
  * Renders the skeleton root component.
  * @param children - The content to be rendered inside the skeleton root.
- * @param props - Additional props to be applied to the skeleton root.
+ * @param loading - Pass it for accessibility.
  * @returns The skeleton root component.
  */
-const SkeletonRoot: React.FC<SkeletonRootProps> = ({ children, ...props }) => {
+
+const SkeletonRoot: React.FC<SkeletonRootProps> = ({
+  children,
+  loading = false,
+  ...props
+}) => {
   return (
-    <Box className={S.root()} {...props}>
+    <Box className={S.root()} aria-busy={loading ? true : false} {...props}>
       {children}
     </Box>
   );
