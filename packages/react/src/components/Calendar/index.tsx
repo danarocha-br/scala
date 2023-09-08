@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { Button as PrimitiveButton } from '@ariakit/react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/pt-BR';
 
 import { Box } from '../Box';
 import { IconButton } from '../IconButton';
