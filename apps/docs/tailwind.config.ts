@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { scalaPreset } = require("../../packages/react/dist");
 
 const config: Config = {
