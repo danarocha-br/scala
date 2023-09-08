@@ -12,7 +12,6 @@ const Calendar = () => {
       <ScalaCalendar
         selected={selectedDate}
         onSelect={setSelectedDate}
-        locale="pt-BR"
         disabledPastDays
       />
     </Stack>
@@ -69,7 +68,6 @@ const CalendarDocs = () => {
     <Calendar
       select="{selectedDate}"
       onSelect="{setSelectedDate}"
-      locale="pt-BR"
       disabledPastDays
     />
 `;

@@ -51,7 +51,7 @@ export const day = cva(
     'w-full',
     'aspect-square',
     'text-center',
-    'rounded-xl',
+    'rounded-circle',
     'outline-color',
     'scale-90',
     'transition-all',
@@ -63,7 +63,10 @@ export const day = cva(
 
     'disabled:bg-transparent',
     'disabled:cursor-not-allowed',
-    'disabled:opacity-40',
+    'disabled:opacity-30',
+    'disabled:border',
+    'disabled:border-dashed',
+    'disabled:border-action-color-border-primary-enabled',
 
     'relative',
   ],
@@ -122,7 +125,7 @@ export const input = cva(
     'outline-none',
     'transition-colors',
 
-    'hover:text-text-color-on-dark',
+    'hover:text-text-color-body',
     'hover:bg-royal-100',
     'dark:hover:bg-royal-200/40',
 
