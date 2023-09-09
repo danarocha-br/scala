@@ -4,11 +4,11 @@ import { Navbar } from '../Navbar';
 
 import * as S from './styles';
 
-type Page = {
+type PageProps = {
   children: React.ReactNode;
 };
 
-export const Page = ({ children }: Page) => {
+export const Page = ({ children }: PageProps) => {
   return (
     <div className={S.page()}>
       <Sidebar />
