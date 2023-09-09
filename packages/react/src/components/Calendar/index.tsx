@@ -65,6 +65,7 @@ export const Calendar = ({
   const calendarButtonDay = useRef(null);
 
   const [inputValue, setInputValue] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
   const [currentDate, setCurrentDate] = useState(() => {

@@ -1,4 +1,4 @@
-import { Content, useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
+import { Content, useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import Link from '@tiptap/extension-link';
@@ -11,7 +11,7 @@ export type EditorProps = {
   content?: Content;
   placeholder?: string;
   variant?: 'ghost' | 'form';
-  onUpdate?: (editor: any) => void;
+  onUpdate?: (editor: unknown) => void;
   editable?: boolean;
 };
 

@@ -52,9 +52,11 @@ export const SelectMulti = forwardRef<HTMLInputElement, SelectMultiProps>(
       onCreateOption,
       ...props
     }: SelectMultiProps,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ref
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isLoading, setIsLoading] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [selected, setSelected] = React.useState<Option[]>(
@@ -76,6 +78,7 @@ export const SelectMulti = forwardRef<HTMLInputElement, SelectMultiProps>(
       value: label.toLowerCase().replace(/\W/g, ''),
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleCreateOption = (inputValue: string) => {
       setIsLoading(true);
 
@@ -225,7 +228,7 @@ export const SelectMulti = forwardRef<HTMLInputElement, SelectMultiProps>(
                   value={inputValue}
                   onValueChange={setInputValue}
                   // onKeyDown={handleKeyDown}
-                  onBlur={(e) => {
+                  onBlur={() => {
                     setOpen(false);
                   }}
                   onMouseDown={(e) => handleOutsideClick(e)}
@@ -272,7 +275,7 @@ export const SelectMulti = forwardRef<HTMLInputElement, SelectMultiProps>(
                             e.stopPropagation();
                             setInputValue('');
                           }}
-                          onSelect={(value) => {
+                          onSelect={() => {
                             setInputValue('');
                             setSelected((prev) => {
                               const findOption = selectableItems.filter(

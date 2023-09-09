@@ -54,6 +54,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
       return selectedDate && formatDateToLocaleInShort(selectedDate, locale);
     }, [locale, selectedDate]);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [inputValue, setInputValue] = useState('some');
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //   return setSelectedDate(e.target.value);

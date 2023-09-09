@@ -42,7 +42,6 @@ export const CalendarCard = ({
   draftText,
   status = 'published',
   editMenuItems,
-  onClick,
   ...props
 }: CalendarCardProps): JSX.Element => {
   return (

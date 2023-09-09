@@ -13,9 +13,7 @@ type ProviderProps = {
 export default function Providers({ children }: ProviderProps) {
   return (
     <ThemeProvider enableSystem={false}>
-      <CodeModeProvider>
-        {children}
-      </CodeModeProvider>
+      <CodeModeProvider>{children}</CodeModeProvider>
     </ThemeProvider>
   );
 }

@@ -2,14 +2,12 @@ import React from 'react';
 import {
   Root,
   Trigger,
-  MenuContentProps,
   Portal,
   Content,
   Item,
   DropdownMenuItemProps,
   Separator,
   DropdownMenuSeparatorProps,
-  Arrow,
 } from '@radix-ui/react-dropdown-menu';
 
 import { Box } from '../Box';

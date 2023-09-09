@@ -1,4 +1,10 @@
-import React, { ReactNode, createContext, useCallback, useContext, useState } from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+} from 'react';
 
 interface SideBarNavigationContextData {
   changeSidebarStatus: () => void;

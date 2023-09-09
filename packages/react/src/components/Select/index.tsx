@@ -89,6 +89,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
     ref
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isFocused, toggleFocus] = useToggle(false);
     const [userOptions, setUserOptions] = useState<SelectOption[]>(options);
     const [openCombobox, setOpenCombobox] = useState(false);

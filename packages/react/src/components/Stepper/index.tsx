@@ -71,7 +71,7 @@ export const Stepper = ({
   ));
 
   return (
-    <Box className={S.container()} {...props}>
+    <Box className={(S.container(), className)} {...props}>
       <Component>{backButton}</Component>
 
       <Box as="ul" className={S.menu()}>

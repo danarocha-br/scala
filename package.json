@@ -25,7 +25,7 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "turbo run build --filter=!storybook && changeset publish"
+    "release": "turbo run build --filter=!storybook --filter=!docs && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.2",

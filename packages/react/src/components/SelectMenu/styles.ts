@@ -79,7 +79,7 @@ export const selectItemIndicator = cva([
   'justify-center',
 ]);
 
-const scrollButtonStyles = {
+export const scrollButtonStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
