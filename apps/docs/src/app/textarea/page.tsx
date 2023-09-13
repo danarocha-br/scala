@@ -1,17 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Tabs, Stack, Text, Textarea } from '@compasso/scala';
 import { Code } from '@/components/Code';
 import { PropsTable } from '@/components/PropsTable';
 
 const TextareaDocs = () => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    return setInputValue(e.target.value);
-  };
-
   const scope = { Textarea, Stack };
   const componentRootProps = {
     defaultValue: {
