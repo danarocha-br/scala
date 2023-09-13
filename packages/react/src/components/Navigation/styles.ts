@@ -148,7 +148,7 @@ export const header = cva(
     'px-2',
     'pb-1',
     'pt-2',
-    'h-[46.5px]',
+    'h-[52.5px]',
     'flex',
     'items-center',
     'justify-between',

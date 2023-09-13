@@ -35,10 +35,10 @@ export default {
   //   group: 'form',
   //   href: '/datepicker',
   // },
-  dateinput: {
-    label: 'dateInput',
+  slider: {
+    label: 'slider',
     group: 'form',
-    href: '/date-input',
+    href: '/slider',
   },
   editor: {
     label: 'editor',
@@ -64,5 +64,10 @@ export default {
     label: 'tabs',
     group: 'Navigation',
     href: '/tabs',
+  },
+  textarea: {
+    label: 'textarea',
+    group: 'form',
+    href: '/textarea',
   },
 };

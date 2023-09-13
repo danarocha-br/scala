@@ -1,5 +1,11 @@
 # @compasso/scala
 
+## 0.0.11
+
+### Patch Changes
+
+- Slider and Textarea component added to lib
+
 ## 0.0.10
 
 ### Patch Changes
