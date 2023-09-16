@@ -175,7 +175,6 @@ export const TextInput = forwardRef<ElementRef<'input'>, TextInputProps>(
               isReadOnly: readOnly,
               hasAddon: Boolean(addon),
             })}
-            {...props}
             aria-invalid={Boolean(errors) && !areErrorsEmpty ? true : false}
             aria-label={label}
             placeholder={placeholder}
@@ -184,6 +183,9 @@ export const TextInput = forwardRef<ElementRef<'input'>, TextInputProps>(
             readOnly={readOnly}
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
+            value={value}
+            onChange={props.onChange}
+            {...props}
             // tabIndex={readOnly && -1}
           />
         </Box>

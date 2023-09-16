@@ -17,7 +17,7 @@ export type ToastMessageTypeProps =
   | 'neutral';
 
 export type ToastMessagesProps = {
-  id: string;
+  id?: string;
   title: string;
   description?: string;
   variant?: ToastMessageTypeProps;
@@ -172,7 +172,7 @@ const ToastRoot = ({
     return messages.map((message) => (
       <ToastItem
         key={message.id}
-        id={message.id}
+        id={message.id ?? ''}
         title={message.title}
         description={message.description}
         variant={message.variant}
